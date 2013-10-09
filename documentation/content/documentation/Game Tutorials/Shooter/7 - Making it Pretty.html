@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><tooltip><HTML><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 40;
+   parent.leftFrame.expandToItem('tree2', 'doc40');
+   var element = parent.leftFrame.document.getElementById('doc40');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<TITLE>Torque 2D - Shooter Tutorial Part 7</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"></HEAD>
+	<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050225;10000000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;17161500">
+    <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--> 
+	</STYLE>
+<BODY id = "BODYID" onLoad = "initComponent()"  lang=en-US dir=ltr text=#000000 link=#0000ff style="width: 700px; padding: 10px;">Shiny!</tooltip><minVersion>1.1</minVersion>
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0.73in; FONT-STYLE: normal">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=5 STYLE="FONT-SIZE: 17pt"><B>Torque
+	2D - Shooter Tutorial - Part 7</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="FONT-SIZE: 16pt"><B>7.
+Making it Pretty</B></FONT></FONT></P>
+<BR>
+
+<H2 CLASS="western">7.1 Blazing Trails</H2>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>At this point, as far as
+functionality goes, this game is complete. However, since T2D has a
+really powerful particle system, it would be a shame to let it go to
+waste. So, this final section deals with  adding particle effects to
+our game and making things look pretty!</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>First, go into the create
+tab of the Level Builder and find the Particle Effects rollout <I>(as
+shown in Figure 7.1.1)</I>.</FONT></FONT></P>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-1.jpg" NAME="graphics1" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.1</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The really neat thing
+about the particle effects rollout is that you can preview the effect
+simply by hovering your mouse over it <I>(as shown in Figure 7.1.2)</I>.
+For our purposes however, we are interested in only two effects.
+Click and drag the particle effect that looks like a line of fire
+shooting to the left into the vicinity of your ship.</FONT></FONT></P>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-2.jpg" NAME="graphics8" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	 7.1.2</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once you have that effect
+dragged out, you will probably notice something that you don't like -
+as with much of what we have dragged into out level, it is not sized
+the way we would want <I>(as shown in Figure 7.1.3)</I>.</FONT></FONT></P>
+
+<BR>
+
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-3.jpg" NAME="graphics9" ALIGN=left BORDER=0><BR CLEAR=left>
+	    <FONT SIZE=1><I><B>Figure 7.1.3</B></I></FONT></P>
+<BR>
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>In fact, the
+particle effect is so small, you have to zoom way in to even see it.
+Thankfully this is an easy fix. To fix this, we need to select our
+particle effect and go into the edit tab. Once you click on the edit
+tab, you will immediately notice something that you haven't seen
+before. Do not panic, this strange thing is the particle builder <I>(as
+shown in Figure 7.1.4)</I>.</FONT></FONT>
+<BR>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-4.jpg" NAME="graphics2" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.4</B></I></FONT></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Inside the particle builder, you can adjust 
+everything about your particles.&nbsp; For now however, we are only interested in one thing 
+- making the particles big enough to look good on our ship.</FONT></FONT></P><BR><FONT face="Arial, sans-serif"><FONT size=2>In the 
+particle builder, click the emitter's name to open the emitter panel and then 
+click Edit Emitter Graph <I>(as shown in Figure 7.1.5)</I>.</FONT></FONT> <BR>  
+       <p style="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-5.jpg" NAME="graphics3" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.5</B></I></FONT></p>
+<br>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When you open the
+graph view of the particle builder, you should see a graph for the
+field that is currently being edited. Below the graph you should see
+a min and max setting, and a time setting. The min and max settings
+allows users to configure the minimum and maximum values of the
+graphs for easy editing. The time allows users to define how long
+their particle will last <I>(as shown in Figure 7.1.6)</I>. </FONT></FONT>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-6.jpg" NAME="graphics4" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.6</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Right
+now we are mainly interested                in the Size X Life  and
+the Particle Life parameters. To edit those parameters, click on the
+Current Field dropdown and find the Size X Life option <I>(as shown
+in Figure 7.1.7)</I>. </FONT></FONT>
+</P>
+<BR>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-7.jpg" NAME="graphics5" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.7</B></I></FONT></P>
+	<br>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>After
+you have it selected, you should see its value in the Graph View. In
+the graph view, you can alter point values, add points, and take them
+away. To alter a point's value, simply click on the point and drag it
+up or down. To add points, simply click on any area in the graph. The
+particle builder will automatically connect the point to the rest of
+the graph points. To remove a point, you can right click the point.
+Also, to make it more convenient for Mac users, you can double click
+a point to remove it. As you change the points on the graph, the
+particle effect on the screen should update automatically. Mess
+around with the graph points until you get a look you are happy with.
+</FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Repeat
+the same process with the Particle Life Base property until you get a
+thruster you are happy with <I>(as shown in Figure 7.1.8)</I>.</FONT></FONT></P>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-8.jpg" NAME="graphics82" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.1.8</B></I></FONT></P>
+<BR CLEAR=left><BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Also,
+if you want to  save this particle effect as a custom effect to use
+over and over, go to the settings tab and click the save button <I>(as
+shown in Figure 7.1.9)</I>. </FONT></FONT>
+</P>
+<BR>
+
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-9.jpg" NAME="graphics7" ALIGN=left BORDER=0><BR CLEAR=left>
+	             <FONT SIZE=1><I><B>Figure 7.1.9</B></I></FONT></P>
+<BR CLEAR=left><BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When you click the save button, you should be shown 
+this prompt asking you where you want to save it.</FONT></FONT>
+<BR CLEAR=left><BR></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Navigate
+down to your yourProjectName/data/particles folder and give it a name
+you will remember and click on the Save File button. Make sure you
+don't save over the original copy of the particle you were editing -
+it will save you a world of headaches later. </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>After
+you are happy with the results of your particle editing, it is time
+to mount it to the player. Add a mount point to the ship and then mount the
+effect to that point.&nbsp;</FONT></FONT>
+<BR>
+</P>
+<P style="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-1-15.jpg" NAME="graphics85" ALIGN=left BORDER=0></P>
+<P style="MARGIN-TOP: 0.08in">&nbsp;</P>
+<P style="MARGIN-TOP: 0.08in">
+<BR>
+
+<BR>&nbsp;</P>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once
+you have your particle effect mounted, test out  your ship in the
+level!</FONT></FONT></P>
+<BR>
+
+<H2 CLASS="western">7.2 Blowing Stuff Up</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that we have an
+engine fire for our player ship, let's add a cool explosion that
+triggers when the player and enemies blow up. To do this requires
+some reworking of our code, so save your T2D project and close out of
+it.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When you have your T2D
+closed, navigate to your yourProjectName/gameScripts folder and open
+up your player.cs file. In this file we will be adding some code to
+our explode() function. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here was our old explode
+function:</FONT></FONT></P>
+
+<pre class = "code">
+function playerShip::explode(%this)
+{
+   %this.isdead = true;
+   %this.setEnabled(false);
+   %this.schedule(2000, "spawn");
+}
+</pre>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 7.2.1</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here is what our new
+explode function should look like (the new code is bolded):</FONT></FONT></P>
+
+<pre class = "code">
+function playerShip::explode(%this)
+{
+   %this.isdead = true;
+   %explosion = new t2dParticleEffect()
+   {
+      scenegraph = %this.scenegraph;
+   };
+
+   %explosion.loadEffect("~/data/particles/big_explosion.eff");
+   %explosion.setEffectLifeMode("KILL", 1);
+   %explosion.setPosition(%this.getPosition());
+   %explosion.playEffect();
+
+
+   %this.setEnabled(false);
+   %this.schedule(2000, "spawn");
+}
+</pre>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 7.2.2</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>As you can see, we have
+loaded the big_explosion particle effect into the function so that
+when it is triggered it will play the effect. We have set it to run
+once and then kill itself so we don't have it running forever. Also,
+we set its position to the position of the object that called it.
+After you get this new code in, you should save your file and open up
+your enemy.cs file. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Inside your enemy.cs
+file, you should change your explode function to mirror mine below
+(new code is bolded):</FONT></FONT></P>
+
+<BR>
+
+
+<BR>
+
+<pre class = "code">
+function enemyShip::explode(%this)
+{
+   <b>%explosion = new t2dParticleEffect()
+   {
+      scenegraph = %this.scenegraph;
+   };
+
+   %explosion.loadEffect("~/data/particles/big_explosion.eff");
+   %explosion.setEffectLifeMode("KILL", 1);
+   %explosion.setPosition(%this.getPosition());
+   %explosion.playEffect();</b>
+   %this.spawn();
+}
+</pre>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 7.2.3</B></I></FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You will notice that we
+did the same thing to our enemy as we did to our player. Once you
+have this code in your file, save it and reload your project in the
+Level Builder.  </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once you have reloaded
+your level in the Level Builder, test it out and see how your new
+particle effects work <I>(as shown in Figure 7.2.1)</I>!!</FONT></FONT></P>
+
+<BR>
+
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-2-1.png" 
+            NAME="graphics6" ALIGN=left BORDER=0 width="700"><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.2.1</B></I></FONT></P>
+<BR CLEAR=left><BR>
+<TABLE WIDTH="100%" BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+  <COLGROUP>
+	<COL WIDTH=256>
+	<THEAD>
+		<TR>
+			<TD WIDTH="100%" VALIGN=top BGCOLOR="#00ff00">
+				<P CLASS="western" ALIGN=center><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>***NOTE***</B></FONT></FONT></P>
+				<P CLASS="western" ALIGN=left ><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+				with your player's engine jet, your explosion particle effect may
+				be too small. So, if this is the case, you should go back to the
+				part in the tutorial that explained how to get your particle effects to
+				look right and play around with it until you get the look you
+				want. This is really where creativity can pay off with a really
+				good looking explosion - I cannot encourage you enough to
+				play around and see what you can do! Also - if you decide
+				to create a custom explosion particle effect, when you save it out,
+				don't forget to go back into the explode functions of your player
+				and enemy and change the file path of:
+				<B>%explosion.loadEffect("~/data/particles/big_explosion.eff");</B> to
+				reflect the final name you gave your particle effect. Good luck!!</FONT></FONT></P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Finally, you may notice
+that your jet still renders when you get hit <I>(as shown in Figure
+7.2.2)</I>:</FONT></FONT></P>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-2-2.jpg" NAME="graphics90" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	7.2.2</B></I></FONT></P>
+<BR>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Thankfully, as with MOST
+things in T2D, this can be fixed easily. Go into the Level Builder
+and click on the flaming jet particle. When you have it selected
+click on the edit tab. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Collapse the particle
+builder and look for the Mounting rollout <I>(as shown in Figure
+7.2.3)</I>:</FONT></FONT></P>
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=4 CELLSPACING=0>
+  <COLGROUP>
+	<COL WIDTH=88>
+	<COL WIDTH=168>
+	<THEAD>
+		<TR VALIGN=top>
+			<TD WIDTH="34%">
+					<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-2-3.jpg" NAME="graphics11" ALIGN=left BORDER=0><BR CLEAR=left>
+					  <FONT SIZE=1><I><B>Figure 7.2.3</B></I></FONT></P>
+				<BR CLEAR=left><BR>
+				</TD>
+			<TD WIDTH="66%">
+				<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+				<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When you have it
+				opened, check the Owned by Mount and Inherit Attributes
+				Checkboxes <I>(as shown in Figure 7.2.4)</I>.</FONT></FONT></P>
+					<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure7-2-4.jpg" NAME="graphics12" ALIGN=left BORDER=0><BR CLEAR=left>
+					       <FONT SIZE=1><I><B>Figure 7.2.4</B></I></FONT></P>
+				<BR CLEAR=left><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+				will make your particles disappear when you do and reappear when
+				you do as well. After you have that completed, save your
+				progress, and enjoy the final version of your game!</FONT></FONT>
+				
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+
+<BR>
+
+<H2 CLASS="western">Conclusion</H2>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Alright,
+then… we did it!  Now you know how to create a simple game in
+T2D, in practically no time at all! As you have gone through this
+tutorial, I hope you appreciated how simple the Level Builder made a
+lot of our tasks. Most of all, we hope that  you now have a very
+solid idea of just how powerful T2D is and how quickly you can create
+cool games with it.  </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+you want more documentation, please check out the TDN wiki, as it
+should provide a great deal of additional documentation resources. 
+Or, if you prefer, just dig straight into the source code.  It’s
+pretty well commented, simply structured, and easy to get a grasp on.
+ Also, you can look at the script files used to create the T2D demos
+for nice examples of how to build things in the engine.  In fact,
+looking at the code in this tutorial versus the code in the T2D
+scroller demo will help you get a feel for what other kinds of code
+you need to begin writing for more advanced situations.  Again, you
+can think of these demos as mini-&quot;Starter Kits&quot;, giving
+you a leg up on creating particular kinds of games.  </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We’ll
+have many, many more docs rolling out over time here, so keep your
+eyes out for them.  </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Thanks
+for reading, and we hope you enjoy T2D!  Please stop on by the forums
+or the community site at any time, where you can sign up for T2D
+announcements.  We really, really want to hear from you on T2D, so
+please get involved in the community somehow.  Working together, we
+can make the best 2D game tool around even better!  </FONT></FONT>
+</P>
+<BR>
+
+<BR>
+<br>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>

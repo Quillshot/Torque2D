@@ -1,0 +1,227 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 63;
+   parent.leftFrame.expandToItem('tree2', 'doc63');
+   var element = parent.leftFrame.document.getElementById('doc63');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="container.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<title>T2D - Workspace Tutorial</title>
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject  page-T2D_WorkspaceTutorial skin-monobook">
+
+<table style="width: 700px;" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700">
+                <a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline">Introduction</span></h2>
+                <p>When creating a new project in Torque 2D, it is important 
+                  to know how to adjust your workspace and how the adjustment affects your
+                  workflow. In this tutorial we are going to cover how to change your 
+                  design resolution, how to change your camera view, and how changing your
+                  workspace in these ways will affect your project. </p>
+                <p><br />
+                  This tutorial will be using the stock TutorialBase project file that 
+                  comes with the engine. To open that file, launch T2D and click <i>Open 
+                  Project</i>. If you are already editing a project, click on <b>File-&gt;Open
+                  Project...</b> Once the file browser is open, navigate to the <i><strong>games/TutorialBase</strong></i> folder. Select the <b>project.t2dProj</b> file to begin. </p><br><br>
+                <a name="Camera_View_and_Design_Resolution" id="Camera_View_and_Design_Resolution"></a>
+                <h2> <span class="mw-headline">Camera View and Design Resolution</span></h2>
+                <p>Your camera view is defined in T2D as a box with a thick border 
+                  around it. The color is based on your Scene Editor grid color 
+                  preferences (<strong>Edit-&gt;Preferences</strong>, Scene Editor tab). Though games can 
+                  take up much more space than this square, all that will be visible to 
+                  the end-user is what is inside of this square at any given moment (<i>as
+                  shown in Figure 1</i>): </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure1.jpg" src="images/WorkspaceFigure1.jpg" border="0" height="480" width="640" /><br />
+                  <b>Figure 1</b> </p><br><br>
+                <p>To begin, let's start by dragging in one of the graphics from the
+                  <strong>Static Sprites</strong> library. I chose to drag in the GarageGames logo (as 
+                  shown in Figure 2). As you can see, once I drop the graphic in my scene,
+                  it is automatically resized in the view. This is because of the design 
+                  resolution. </p>
+                <p><br />
+                  The design resolution is the size that T2D is going to assume your 
+                  camera view is. When it resizes graphics, it is going to resize them 
+                  relative to what the design resolution currently is. By default, the 
+                  design resolution is set to 800 x 600 - therefore all graphics that are 
+                  dragged into the scene will be sized properly relative to the camera 
+                  view. </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure2.jpg" src="images/WorkspaceFigure2.jpg" border="0" height="459" width="612" /><br />
+                  <b>Figure 2</b> </p>
+                <p><br />
+                  To access your design resolution, go up to the<strong> Edit Menu</strong> and choose
+                    <strong>Preferences</strong> (<i>as shown in Figure 3</i>): </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure3.jpg" src="images/WorkspaceFigure3.jpg" border="0" height="237" width="162" /><br />
+                  <b>Figure 3</b> </p>
+                <p><br />
+                  Once you click <strong>Preferences</strong>, you should be confronted by a dialog that 
+                  contains all of your preference settings. You will see three tabs along 
+                  the top of the dialog. Click on the tab marked "<strong>Scene Editor</strong>" (<i>as 
+                  shown in Figure 4</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure4.jpg" src="images/WorkspaceFigure4.jpg" border="0" height="395" width="510" /><br />
+                  <b>Figure 4</b> </p>
+                <p><br /><br>
+                  When you click on the Scene Editor tab of your preferences, you should 
+                  see Figure 5. About halfway down on the left side of your Scene Editor 
+                  preferences is the Design Resolution (as shown in Figure 5). As you can 
+                  see, the design resolution defaults at 800 X 600. </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure5.jpg" src="images/WorkspaceFigure5.jpg" border="0" height="395" width="510" /><br />
+                  <b>Figure 5</b> </p>
+                <p><br /><br>
+                  Let's change the design resolution to something else so you can see the 
+                  effect it has on your workspace. Change your design resolution to 1024 X
+                  768 (<i>as shown in Figure 6</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure6.jpg" src="images/WorkspaceFigure6.jpg" border="0" height="26" width="177" /><br />
+                  <b>Figure 6</b> </p>
+                <p><br /><br>
+                  Now that you have changed the design resolution of your workspace, let's
+                  see what it does to your project. Grab another one of those GarageGames
+                  logos and drop it right next to the one we dragged in their earlier. 
+                  Immediately you should notice something: the logo is sized smaller than 
+                  it was before (<i>as shown in Figure 7</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure7.jpg" src="images/WorkspaceFigure7.jpg" border="0" height="135" width="226" /><br />
+                  <b>Figure 7</b> </p>
+                <p><br />
+                  As stated above, T2D automatically resizes graphics in relation to the 
+                  design resolution. Since the design resolution is 1024 X 768, all of the
+                  subsequent graphics placed in the workspace are going to be smaller. 
+                  You should also note that <em>no graphics placed in the workspace before 
+                  changing the resolution are affected</em>. </p>
+                <p><br />
+                  Change your design resolution back to default (800 X 600) and delete the
+                  second logo we created. Now we are going to explore another method of 
+                  setting up your workspace: the Camera Tool. </p><br><br>
+                <a name="The_Camera_Tool" id="The_Camera_Tool"></a>
+                <h2> <span class="mw-headline">The Camera Tool</span></h2>
+                <p>The Camera Tool allows users to manually change the size of their 
+                  camera view. The <strong>Camera Tool</strong> is located along the top bar of the 
+                    <strong>Scene Editor</strong> (<i>as shown in Figure 8</i>): </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure8.jpg" src="images/WorkspaceFigure8.jpg" border="0" height="89" width="204" /><br />
+                  <b>Figure 8</b> </p>
+                <p><br />
+                  When you click on the Camera Tool, your view zooms out and shows you 
+                  your Camera View as a translucent box with resize handles along the 
+                  outer edges (<i>as shown in Figure 9</i>). You can resize your view in 
+                  many ways: </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure9.jpg" src="images/WorkspaceFigure9.jpg" border="0" height="480" width="640" /><br />
+                  <b>Figure 9</b> </p>
+                <p><br />
+                  First, if you click on any resize handle and drag it in any direction, 
+                  the camera view will resize around its origin while keeping its default 
+                  aspect ratio (<i>as shown in Figure 10</i>). </p>
+                <p><img alt="Image:WorkspaceFigure10.jpg" src="images/WorkspaceFigure10.jpg" border="0" height="170" width="217" /><br />
+                  <b>Figure 10</b> </p>
+                <p><br />
+                  Second, if you click on any resize handle while holding the 
+                    <strong>CTRL</strong> key, it
+                  resizes the camera view keeping the same aspect ratio while anchoring 
+                  the camera view to the opposite handle as you are grabbing (<i>as shown 
+                  in figure 11</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure11.jpg" src="images/WorkspaceFigure11.jpg" border="0" height="178" width="241" /><br />
+                  <b>Figure 11</b> </p>
+                <p><br />
+                  Third, if you click any of the resize handles while holding the 
+                    <strong>SHIFT</strong> 
+                  key, it resizes the camera view from the center but does NOT keep the 
+                  aspect ratio. This gives the user the opportunity to mess up the aspect 
+                  ratio of the scene (not recommended) (<i>as shown in Figure 12</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure12.jpg" src="images/WorkspaceFigure12.jpg" border="0" height="190" width="181" /><br />
+                  <b>Figure 12</b> </p>
+                <p><br />
+                  Finally, if you click on any of the resize handles while holding the 
+                    <strong>SHIFT</strong> and <strong>CTRL</strong>, your camera view will resize freely from an anchor point
+                  opposite the one you grabbed without keeping the aspect ratio (<i>as 
+                  shown in Figure 13</i>). </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure13.jpg" src="images/WorkspaceFigure13.jpg" border="0" height="245" width="230" /><br />
+                  <b>Figure 13</b> </p>
+                <p><br />
+                  Neither of the last two methods are recommended in most cases since if 
+                  you mess up the aspect ratio you will get an interesting, skewed look to
+                  your graphics. However, T2D still allows you to affect the aspect ratio
+                  in case you ever work with an unusual aspect ratio such as those found 
+                  on a widescreen monitor, etc. </p>
+                <p><br />
+                  We now want to make the camera view larger. To do that, use either of 
+                  the first two methods to enlarge the camera view to a reasonably larger 
+                  size. To save the changes you have made to your camera view, click on 
+                  the selection tool (<i>as shown in figure 14</i>) or hit Enter. </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure14.jpg" src="images/WorkspaceFigure14.jpg" border="0" height="105" width="177" /><br />
+                  <b>Figure 14</b> </p>
+                <p><br />
+                  Once you have your camera view changed and saved, drag another copy of 
+                  the GarageGames logo into the scene to see its effects. Your new graphic
+                  should be larger than your original graphic, due to the relative sizing
+                  of the design resolution (as shown in Figure 15) </p>
+                <p><br />
+                  <img alt="Image:WorkspaceFigure15.jpg" src="images/WorkspaceFigure15.jpg" border="0" height="116" width="155" /><br />
+                  <b>Figure 15</b> </p>
+                <p><br />
+                  Even though we made the camera view cover a much larger area, T2D still 
+                  assumes that it represents an 800 X 600 screen and therefore sizes any 
+                  newly imported graphics appropriately. </p><br><br>
+                <a name="Conclusion" id="Conclusion"></a>
+                <h2> <span class="mw-headline">Conclusion</span></h2>
+                <p>This tutorial covered the basics of setting up a workspace, changing 
+                  the camera view and design resolution, and the effect it can have on a 
+                  project. As you become more familiar with this aspect of T2D, you will 
+                  learn to use the methods outlined above to streamline your workflow and 
+                  make your games more efficiently with minimal resize issues. You can 
+                  create all of your art for one resolution and have it sized 
+                  automatically in relation to your camera view or design resolution. I 
+                  hope this tutorial proves useful. Good luck! </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

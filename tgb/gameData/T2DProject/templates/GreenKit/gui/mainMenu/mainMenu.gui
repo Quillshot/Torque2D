@@ -1,0 +1,142 @@
+//--------------------------------------------------------------------------
+// Profiles
+//--------------------------------------------------------------------------
+new AudioDescription(mainMenuEffectsDescription)
+{
+   volume      = 1.0;
+   isLooping   = false;
+   is3D        = false;
+   type        = $effectsAudioType;
+};
+
+new AudioDescription(mainMenuMusicDescription)
+{
+   volume      = 1.0;
+   isLooping   = false;
+   is3D        = false;
+   type        = $musicAudioType;
+};
+
+
+
+new AudioProfile(AudioMenu)
+{
+   filename = "./mainmenu.ogg";
+   description = "mainMenuMusicDescription";
+   preload = true;
+};
+
+new AudioProfile(AudioMenuButtonOver)
+{
+   filename = "./buttonOver.wav";
+   description = "mainMenuEffectsDescription";
+   preload = true;
+};
+new AudioProfile(AudioMenuButtonPress)
+{
+   filename = "./buttonPress.wav";
+   description = "mainMenuEffectsDescription";
+   preload = true;
+};
+
+if(!isObject(mainMenuProfile)) new GuiControlProfile (mainMenuProfile)
+{
+   opaque = true;
+   border = true;
+   fontColor = "0 0 0";
+   fontColorHL = $fontColorHL;
+   fixedExtent = true;
+   justify = "center";
+	canKeyFocus = false;
+	soundButtonOver = "AudioMenuButtonOver";
+	soundButtonDown = "AudioMenuButtonPress";
+};
+
+
+//--------------------------------------------------------------------------
+// Scripts
+//--------------------------------------------------------------------------
+function mainMenu::onWake( %this ) {
+	%this.musicID = alxPlay(AudioMenu);
+}
+
+function mainMenu::onSleep( %this ) {
+	if(0 != %this.musicID) {
+		alxStop( %this.musicID );
+		%this.musicID = 0;
+	}
+}
+
+//--- OBJECT WRITE BEGIN ---
+new GuiChunkedBitmapCtrl(mainMenu) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "width";
+   vertSizing = "height";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 2";
+   visible = "1";
+   bitmap = "./back";
+   useVariable = "0";
+   tile = "0";
+
+   new GuiBitmapButtonCtrl(PlayButton) {
+      profile = "mainMenuProfile";
+      horizSizing = "center";
+      vertSizing = "relative";
+      position = "354" SPC (32);
+      extent = "240 80";
+      minExtent = "8 2";
+      visible = "1";
+      command = "startGame( $Game::CurrentScene );";
+      text = "back";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      bitmap = "./play";
+   };
+   new GuiBitmapButtonCtrl(OptionsButton) {
+      profile = "mainMenuProfile";
+      horizSizing = "center";
+      vertSizing = "relative";
+      position = "354" SPC (1 * 80 + 2 * 32);
+      extent = "240 80";
+      minExtent = "8 2";
+      visible = "1";
+      command = "Canvas.pushDialog( OptionsDlg , 0 );";
+      text = "back";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      bitmap = "./options";
+   };
+   new GuiBitmapButtonCtrl(CreditsButton) {
+      profile = "mainMenuProfile";
+      horizSizing = "center";
+      vertSizing = "relative";
+      position = "354" SPC (2 * 80 + 3 * 32);
+      extent = "240 80";
+      minExtent = "8 2";
+      visible = "1";
+      command = "Canvas.setContent(creditsScreen);";
+      text = "back";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      bitmap = "./credits";
+   };
+   new GuiBitmapButtonCtrl(QuitButton) {
+      profile = "mainMenuProfile";
+      horizSizing = "center";
+      vertSizing = "relative";
+      position = "354" SPC (3 * 80 + 4 * 32);
+      extent = "240 80";
+      minExtent = "8 2";
+      visible = "1";
+      command = "quit();";
+      accelerator = "escape";
+      text = "back";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      bitmap = "./quit";
+   };
+};
+//--- OBJECT WRITE END ---
+

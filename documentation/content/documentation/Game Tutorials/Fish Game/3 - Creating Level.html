@@ -1,0 +1,253 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 28;
+   parent.leftFrame.expandToItem('tree2', 'doc28');
+   var element = parent.leftFrame.document.getElementById('doc28');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Game Tutorial Part 3</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;11482300">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Game Tutorial - Part 3</B></FONT></FONT></P>
+</DIV>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>3. 
+            Creating the Level</B></FONT></FONT></P>
+<H3>
+   <BR>
+   3.1 Add our background image
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our fish moving on key 
+         press, we can give it a level to move around in. We have three background 
+         images that we can place. First we will place the one first on the Static 
+         Sprites list <I>(as shown in Figure 3.1.1)</I>, so click and drag it into your 
+         level. </FONT></FONT>
+</P>
+<BR>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-1-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.1.1</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><BR CLEAR="left">
+            &nbsp;</P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, after dropping the 
+         image into your level it is far too big. This is because the image's source 
+         size was created very big to scale properly with higher resolutions. So lets 
+         scale it down. The easiest way to do this is to zoom out (with your mouse wheel 
+         or the zoom out button) and then grab a corner, hold shift as you drag to keep 
+         its ratio, our goal is to make it just slightly bigger than our camera (which 
+         is represented&nbsp;by the outer&nbsp;blue border line behind our image), to do 
+         this you must first size it just inside the camera <I>(as shown in Figure 3.1.2)</I>, 
+         then scale it out just beyond the camera's borders.</FONT></FONT></P>
+<P>&nbsp; <IMG SRC="images/FishGameFigure3-1-4.gif" NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.1.2</B></I></FONT>
+   <BR>
+   <BR>
+</P>
+<H3><BR>
+   3.2 Setting our background's layer
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now one more thing we need to do before 
+         we can add the next two background images, we need to set this background's 
+         layer. Change the background's layer to 30 <i>(as shown in Figure 3.2.1)</i>.
+         &nbsp;</FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT SIZE="2">Now the Fish should be visible again <i>(as shown in Figure 3.2.4).</i></FONT>
+   <BR>
+</P>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-2-3.jpg" NAME="graphics7" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.2.1</B></I></FONT></P>
+      </TD>
+   </TR>
+</TABLE>
+<P>&nbsp;</P>
+<H3>
+   <BR>
+   3.3 Adding and layering our rock images
+   <BR>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2"></FONT></FONT>
+</H3>
+<P><FONT face="Arial, sans-serif"><FONT size="2">Now that we know the process for 
+         adding, positioning and layering our full screen background images, lets repeat 
+         the process for our two rock images. These will need to be added in a layer 
+         above the background image, but behind the fish image. We also will want to put 
+         a bit of a gap between the two rock layer images so our fish can be made to 
+         swim in between them. Click the &quot;Create&quot; tab to see our images again.</FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now drag the first rock image, the 
+         third image in our Static Sprites library <I>(as shown in Figure 3.3.1)</I>, 
+         into the center of your level. Just like our background image, click one of the 
+         corners and hold the shift key to drag it proportionally, do this on each 
+         corner until it fits our background image nicely. It is better to make it just 
+         a slight bit larger than our background image than smaller <I>(as shown in Figure 
+            3.3.2)</I>. As you can see our image is in front of the fish image, so we 
+         must change it's layer. Click the &quot;Edit&quot; tab and then change it's layer to 20. 
+         Now the rocks should be behind the fish <I>(as shown in Figure 3.3.3)</I>.</FONT></FONT></P>
+<BR>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-2.jpg" NAME="graphics10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.1</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-3.jpg" NAME="graphics11" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.2</B></I></FONT></P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we have our first rock image in, 
+         lets add our second one. As you can see on the rock image we just added, there 
+         are some areas that seem to be detailed very roughly in comparison to the rest. 
+         These are the spots that our next layer will fit over, so when sizing and 
+         positioning our next rock layer we must make sure we fit it nicely over those 
+         areas. Click on the &quot;Create&quot; tab again and this time we are getting the fourth 
+         image in our Static Sprites library <I>(as shown in Figure 3.3.4)</I>. Drag 
+         that image into the center of our level and resize it to fit our other rock 
+         image (just like we did before, you can hold shift to keep the resizing 
+         proportional when using the corner handles on the object).</FONT></FONT></P>
+<BR>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-4.jpg" NAME="graphics12" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.3</B></I></FONT></P>
+      </TD>
+      </TR><tr>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-5.jpg" NAME="graphics13" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.4</B></I></FONT></P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Once you get your object to the right 
+      size and position <I>(as shown in Figure 3.3.4)</I> you can then go to the 
+      &quot;Edit&quot; tab and change its layer to 12. Having it on layer 12 should give us 
+      plenty of layers in between the two rock images to give us the feeling of depth 
+      as the fish move between them <I>(as shown in Figure 3.3.5)</I>. </FONT></FONT>
+<BR>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-6.jpg" NAME="graphics14" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.4</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-3-7.jpg" NAME="graphics15" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.5</B></I></FONT></P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We have now placed our background 
+         image, layered it to be shown behind everything, our back rock image to be 
+         shown behind everything but our background, as well as our front rock image to 
+         be shown a few layers in front of our back rock image. Our base level is 
+         complete, it no longer looks like our fish is swimming in space.</FONT></FONT></P>
+<P>&nbsp;</P>
+<H3>
+   <BR>
+   3.4 Setting our fish to a layer in between our rocks and testing it
+   <BR>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2"></FONT></FONT>
+</H3>
+<P><FONT face="Arial, sans-serif"><FONT size="2">Our final step before testing our fish 
+         swimming in our newly created level, is to change our fish's layer. We have our 
+         back rock layer set to 20 and our front rock layer set to 12, so our fish must 
+         be somewhere in between these layers. I created such a gap so we have a lot of 
+         options to place things in our level in front of or behind our fish, but still 
+         in-between the rocks. So select your fish, you may need to click on the fish's 
+         area a few times to cycle through selections, and then change the fish's layer 
+         to 16 <I>(as shown in Figure 3.4.1)</I>.</FONT></FONT>
+   <BR>
+</P>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-4-2.jpg" NAME="graphics17" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.4.1</B></I></FONT></P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now lets test it!
+         Save the level and press Play.        
+         You should be presented with your fish in the level and can move it (as we did 
+         before) with our a, s, w, and d keys. Try moving behind the lower rocks, as you 
+         can see our fish is layered in between them! <I>(as shown in Figure 3.4.2)</I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure3-4-3.JPG"
+      NAME="graphics18" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.4.2</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you may notice, when we move left or 
+         right, the fish still faces the same way, this will be addressed in Part 4!</FONT></FONT></P>
+<BR>
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

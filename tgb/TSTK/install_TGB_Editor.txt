@@ -1,0 +1,20 @@
+
+Installing TSTK for TGB Editor
+------------------------------
+
+1. Copy the folder "TSTK" from wherever you unzipped it into your TGB root directory.  This is usually something like: "C:\TGB_Pro_1_7_4\tgb\".
+2. Edit the file "~\example\main.cs".
+3. Locate the following lines:
+
+loadPath( "common" );
+loadPath( "tools" );
+
+
+4. Change the above lines to:
+
+loadPath( "common" );
+loadPath( "tools" );
+loadPath( "TSTK" ); 
+
+6. Run the TGB Editor as you normally do.  TSTK is installed. :)
+

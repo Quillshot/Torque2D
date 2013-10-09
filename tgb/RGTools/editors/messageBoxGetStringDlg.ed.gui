@@ -1,0 +1,132 @@
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiControl(MessageBoxGetStringDlg) {
+	profile = "GuiDefaultProfile";
+	horizSizing = "width";
+	vertSizing = "height";
+	position = "0 0";
+	extent = "640 480";
+	minExtent = "8 8";
+	visible = "1";
+	helpTag = "0";
+
+	new GuiWindowCtrl(MBGetStringFrame) {
+      profile = "GuiWindowProfile";
+      horizSizing = "center";
+      vertSizing = "center";
+      position = "170 175";
+      extent = "300 129";
+      minExtent = "48 92";
+      visible = "1";
+      helpTag = "0";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "0";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+
+		new GuiMLTextCtrl(MBGetStringText) {
+         profile = "GuiTextProfile";
+         horizSizing = "center";
+         vertSizing = "bottom";
+         position = "32 36";
+         extent = "236 24";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+         lineSpacing = "2";
+         allowColorChars = "0";
+         maxChars = "-1";
+		};
+		
+      new GuiTextEditCtrl(MBGetStringTextEdit) {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "GuiTextEditProfile";
+         horizSizing = "center";
+         vertSizing = "bottom";
+         position = "32 56";
+         extent = "236 24";
+         minExtent = "8 8";
+       
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "";
+         maxLength = "1024";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
+      }; 	
+      	
+		new GuiButtonCtrl(MBGetStringOKButton) {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "158 88";
+         extent = "110 23";
+         minExtent = "8 8";
+         visible = "1";
+			command = "MessageCallback(MessageBoxGetStringDlg,MessageBoxGetStringDlg.okCallback);";
+         accelerator = "return";
+         helpTag = "0";
+         text = "OK";
+         simpleStyle = "0";
+		};
+		new GuiButtonCtrl() {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "30 88";
+         extent = "110 23";
+         minExtent = "8 8";
+         visible = "1";
+			command = "MessageCallback(MessageBoxGetStringDlg,MessageBoxGetStringDlg.noCallback);";
+         accelerator = "escape";
+         helpTag = "0";
+         text = "CANCEL";
+         simpleStyle = "0";
+		};
+	};
+};
+//--- OBJECT WRITE END ---
+
+function MessageBoxGetString(%title, %message, %okCallback, %noCallback)
+{
+   MBGetStringFrame.setText(%title);
+   Canvas.pushDialog(MessageBoxGetStringDlg);
+   MBSetText(MBGetStringText, MBGetStringFrame, %message);
+   MessageBoxGetStringDlg.okCallback = %okCallback;
+   MessageBoxGetStringDlg.noCallback = %noCallBack;
+}
+
+
+function MessageBoxGetStringDlg::onWake(%this)
+{
+   %this.testEnabled_MBGetStringOKButton();
+}
+
+function MessageBoxGetStringDlg::testEnabled_MBGetStringOKButton(%this)
+{
+   if( (MBGetStringTextEdit.getValue() $= "") )
+   {
+      MBGetStringOKButton.setActive(false);
+   }
+   else  
+   {
+      MBGetStringOKButton.setActive(true);
+   }
+
+   if(%this.isAwake()) %this.schedule( 100, testEnabled_MBGetStringOKButton );
+}
+
+function MessageBoxGetStringDlg::onSleep( %this )
+{
+   %this.okCallback = "";
+   %this.noCallback = "";
+}

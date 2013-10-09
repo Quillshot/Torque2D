@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 21;
+   parent.leftFrame.expandToItem('tree2', 'doc21');
+   var element = parent.leftFrame.document.getElementById('doc21');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>Torque 2D &ndash; Fish Demo Tutorial Part 6</title>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="OpenOffice.org 2.0  (Win32)">
+<meta name="AUTHOR" content="User">
+<meta name="CREATED" content="20050225;10000000">
+<meta name="CHANGEDBY" content="Matt"><meta name="CHANGED" content="20060721;15570900">
+<style> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></style>
+    </head>
+    
+    <BODY id = "BODYID" onLoad = "initComponent()"  dir="ltr" lang="en-US" link="#0000ff" text="#000000" style="width: 700px; padding: 10px;">
+
+
+   
+      
+   
+      <div type="HEADER">
+         <p class="western" style="margin-bottom: 0.73in;" align="center"><font face="Arial, sans-serif"><font style="font-size: 16pt;" size="5"><b>Torque 
+                     2D &ndash; Fish Demo Tutorial - Part 6</b></font></font></p>
+      </div>
+      <p class="western" style="margin-bottom: 0in;" align="justify"><br>
+      </p>
+      <p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font style="font-size: 16pt;" size="4"><b>6. 
+                  Come in at a Random Position</b></font></font></p>
+      <p class="western" style="margin-bottom: 0in;" align="justify">
+         <font face="Arial, sans-serif"><font size="3"><i><b></b></i></font></font>&nbsp;
+      </p>
+      <p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="3"><i><b><H4>6.1 
+                     Adding a random Y position to our script</H4></b></i></font></font>
+      </p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <font face="Arial, sans-serif"><font size="2">Now that we have our fish swimming back 
+               and forth properly, we can add a couple of things to make it a bit more 
+               interesting. One of these things is to place our fish in a random Y position 
+               when it flips and swims back across the screen after hitting a world limit. 
+               This will give the illusion of another fish swimming in, or at least as though 
+               our fish was moving vertically and not just horizontally. If you don't still have it open, open your <i>game.cs</i> script file again. Locate your <i>onWorldLimit()</i>
+               function. It should look like this.</font></font></p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+
+<pre class="code">
+function FishClass::onWorldLimit(%this, %mode, %limit)
+{
+   switch$ (%limit)
+   {
+      case "left":
+         %this.setLinearVelocityX(20);
+         %this.setFlipX(false);
+      
+      case "right":
+         %this.setLinearVelocityX(-20);
+         %this.setFlipX(true);
+   }
+}
+</pre>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <font face="Arial, sans-serif"><font size="2">We need to add a call to both the 
+               &ldquo;left&rdquo; and &ldquo;right&rdquo; responses. This call will set the fish's Y position in a 
+               random number between the top of the level and just above the ground. Make your 
+               function look like this.</font></font></p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+      <pre class = "code">
+function FishClass::onWorldLimit(%this, %mode, %limit)
+{
+   switch$ (%limit)
+   {    
+      case "left":
+         %this.setLinearVelocityX(20);
+         %this.setFlipX(false);
+         %this.setPositionY(getRandom(-35, 25));
+      case "right":
+         %this.setLinearVelocityX(-20);
+         %this.setFlipX(true);
+         %this.setPositionY(getRandom(-35, 25));
+    }
+}
+</pre>
+      <p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code 
+                     Sample 6.1.1</b></i></font></font></p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <font face="Arial, sans-serif"><font size="2">We get a random number between -35 and 
+               25 to set our fish's Y position to. This way the fish's Y position will change 
+               when it hits the world limit. It will now swim in at a different position than 
+               where it left. </font></font>
+      </p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <font face="Arial, sans-serif"><font size="2">Click the <i>Play Level</i> button and you 
+               should see your fish swim out of the level and in at a random position <i>(as 
+                  shown in Figure 6.1.1)</i>. Or, just make sure you followed the steps exactly.</font></font></p>
+      <p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+         <br>
+      </p>
+            <p style="margin-top: 0.08in;"><img src="images/FishDemoFigure6-1-1.gif" name="graphics1" align="left" border="0"><br clear="left">
+               <font size="1"><i><b>Figure 6.1.1</b></i></font></p>
+         <br clear="left">
+         <br>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

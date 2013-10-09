@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 51;
+   parent.leftFrame.expandToItem('tree2', 'doc51');
+   var element = parent.leftFrame.document.getElementById('doc51');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<TITLE>Torque 2D - 3D Shapes Tutorial</TITLE>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050723;15050000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;17212300">
+	<META NAME="SDFOOTNOTE" CONTENT ; ; ; ;P>
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	PRE { direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	PRE.western { so-language: en-US }
+	PRE.ctl { so-language: ar-SA }
+	A:link { color: #0000ff }
+	--> 
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE=5 STYLE="FONT-SIZE: 17pt"><B>Torque
+	2D - 3D Shapes Tutorial</B></FONT></FONT></P>
+</DIV>
+<H2 class=western style="MARGIN-BOTTOM: 0in" ALIGN=left>Getting 
+Started</H2>
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>In
+this tutorial, you'll learn how to use 3D shapes in Torque 
+2D.  The 3D file format that T2D uses is the '.dts' format. 
+This is the same format that is used by the Torque Game Engine and
+other Garage Games products.  There are many tutorials and reference
+documents available on the Garage Games website about creating these
+files using various 3D graphics suites.  We won't go into that here. 
+This tutorial assumes that you already have 3D shapes created and
+converted to the .dts format.</FONT></FONT></P>
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in"> <FONT FACE="Arial, sans-serif"><FONT SIZE=3><BR>To
+prepare for this tutorial, run Torque 2D and create a new
+project by choosing <I>New Project...</I><SPAN STYLE="FONT-STYLE: normal">
+from the file menu.  Name the new project "Shapes" and use
+the </SPAN><I>Empty Game</I><SPAN STYLE="FONT-STYLE: normal"> project
+template.  This creates a new folder called </SPAN><I>Shapes</I><SPAN STYLE="FONT-STYLE: normal">
+in your </SPAN><I>TorqueGameBuilder/Games</I><SPAN STYLE="FONT-STYLE: normal">
+folder.  </SPAN></FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><SPAN STYLE="FONT-STYLE: normal">We'll
+need to add a 3D shape to the </SPAN><I>Shapes</I><SPAN STYLE="FONT-STYLE: normal">
+project for this tutorial.  When you're building your own game you'll
+create your own, but for now we're just going to copy a couple files
+from the </SPAN>TutorialBase <SPAN STYLE="FONT-STYLE: normal">project
+supplied with T2D.  3D shapes are stored in the </SPAN><I>data/shapes</I><SPAN STYLE="FONT-STYLE: normal">
+folder, so open your file browser and  browse to the
+</SPAN><I>TTorque Game Builder 1.7.5 Pro/Games/TutorialBase/game//data/shapes</I><SPAN STYLE="FONT-STYLE: normal">
+folder.  Copy the files called </SPAN><I>player.dts</I><SPAN STYLE="FONT-STYLE: normal">
+and </SPAN><I>player_blue.jpg</I><SPAN STYLE="FONT-STYLE: normal">. 
+Paste them into the </SPAN><I>Torque Game Builder 1.7.5 Pro/Games/Shapes/game/data/shapes</I><SPAN STYLE="FONT-STYLE: normal">
+folder.  These two files are the shape file and the image used to
+paint the shape.  In most cases, you will have at least one image (or
+'texture') that goes along with your 3D shapes.  </SPAN></FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>The final step in this
+process is to reload your project file.  There are two ways to do
+this... you can either close and re-open T2D, or you can select <I>Open
+Project...</I> from the <I>File</I> menu, open a different project,
+then re-open the <I>Shapes</I> project.</FONT></FONT></P>
+
+<BR>
+<H2 class=western style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" 
+ALIGN=left>Using Your 3D Shape In The Level Builder</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>You can now find your
+<I>player.dts</I> shape in the object picker.  In the <I>Create</I>
+tab, scroll down to <I>3D Shapes</I>... there it is!  You can now
+drag it onto the screen just like any other image <I>(as shown in
+Figure 1)</I>.  You can also use the object handles to size it, but
+not to rotate it.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<IMG SRC="images/3DShapesFigure1.png" NAME="Frame2" ALT="Frame2" ALIGN=bottom><br>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Now that we have our 3D
+shape on the screen, let's check out the properties we can edit on
+it.  Go to the <I>Edit </I>tab and check out the <I>3D Shape </I>section
+at the top.  There are 4 properties, each with an <I>X</I>, a <I>Y</I>,
+and a <I>Z</I> value: <I>Angular Velocity</I>, <I>Rotation</I>,
+<I>Offset</I>, and <I>Scale</I>.  The <I>X</I>, <I>Y</I>, and <I>Z</I>
+options are the axes of the shape... you can picture <I>X</I> as a
+line going from left to right through the center of the shape, <I>Y</I>
+as a line going from top to bottom through the center, and <I>Z</I>
+as a line coming up, out of the screen, through the center of the
+object.  While we're checking out these properties, you may want to
+zoom in on the object (with the '+' key).</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>The <I>Angular Velocity</I>
+property applies a constant rotation to the object.  Set the <I>Angular
+Velocity Y</I> property to "20", and you'll see that our
+object was actually facing backwards <I>(as shown in Figure 2)</I>! 
+Set it back to "0" when you're done watching it rotate. 
+<SPAN STYLE="TEXT-DECORATION: none">Take a minute to experiment with
+each of the following properties:</SPAN></FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<IMG SRC="images/3DShapesFigure2.png" NAME="Frame1" ALT="Frame1" ALIGN=bottom><br>
+
+<BR>
+
+<UL STYLE="MARGIN-LEFT: 0.5in">
+	<LI><P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B><I>Angular Velocity</I></B>
+	sets a constant rotation <SPAN STYLE="TEXT-DECORATION: none">around
+	the chosen axis.  </SPAN></FONT></FONT>
+	</P>
+	<LI><P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B><I>Rotation</I></B>
+	sets a rotation value around the axes, but not a moving rotation. 
+	Note that because of the complications of 3D math, combining
+	rotations around different axes can cause some unpredictable
+	effects.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B><I>Offset </I></B>moves
+	the 3D shape along the axes.  Note that you can't move the object
+	toward or away from the camera, because T2D is a two-dimensional
+	world!</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B><I>Scale</I></B>
+	sizes the object in 3D space.  Note that you can't scale the object
+	toward or away from the camera, again because T2D is a
+	two-dimensional world.</FONT></FONT></P></LI>
+</UL>
+
+<BR>
+<H2 class=western style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" 
+ALIGN=left>Accessing A 3D Shape In Code</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>The 3D shape's special 3D
+functions can be accessed through the object's class, just like with
+any other T2D Scene Object.  There are many tutorials that go through
+using class functions in depth.  For this tutorial, it is assumed
+that you understand the basics of this, and we'll just jump into this
+one simple example...</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>First, go to the
+<I>Scripting</I> section in the <I>Edit</I> tab for the 3D shape. 
+Enter "player" as the <I>Class</I>.  Next, add the
+following code to the very bottom of the <I>game.cs</I> file in your
+<I>game/gameScripts </I>folder:</FONT></FONT></P>
+
+<BR>
+
+<PRE CLASS="western" STYLE="FONT-STYLE: normal; TEXT-ALIGN: left; TEXT-DECORATION: none"></PRE>
+<TABLE WIDTH=672 BORDER=1 CELLPADDING=2 CELLSPACING=3 STYLE="page-break-inside: avoid">
+  <COLGROUP>
+	<COL WIDTH=660>
+	<TR>
+		<TD WIDTH=660 BGCOLOR="#ccccff">
+			<PRE CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>sceneWindow2D.setUseObjectMouseEvents(true);</FONT></FONT>
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>function player::onAdd(%this)</FONT></FONT>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>{</FONT></FONT>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE=3>%this.setUseMouseEvents(true);</FONT></FONT>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>}</FONT></FONT>
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>function player::onMouseDown(%this, %modifier, %worldPosition, %mouseClicks)</FONT></FONT>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>{</FONT></FONT>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE=3>%this.setShapeAngularVelocity(0,20,0);</FONT></FONT>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>}</FONT></FONT></PRE>
+		</TD>
+	</TR>
+</TABLE>
+<PRE CLASS="western" STYLE="FONT-STYLE: normal; TEXT-ALIGN: left; TEXT-DECORATION: none"></PRE><P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>To activate this code,
+you will again need to re-load the project, so either close and
+re-open T2D or open another project then re-open this one.  Now,
+click the <I>Play Level</I> button in the toolbar.  When you click on
+the object, it starts to rotate.  </FONT></FONT>
+</P>
+
+<BR>
+<H2 class=western 
+style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none" 
+ALIGN=left>In Conclusion</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>This tutorial has given
+you the bare essentials of using 3D Shapes.  You can find quite a bit
+more detail in the 3D Shapes reference document that is included with
+T2D.  You can also find brief documentation on all the possible
+functions for 3D objects in the T2D Reference under <I>t2dShape3D</I>.</FONT></FONT></P>
+<DIV TYPE=FOOTER>
+	<P ALIGN=center STYLE="MARGIN-TOP: 0.3in; MARGIN-BOTTOM: 0in"><FONT SIZE=1 STYLE="FONT-SIZE: 8pt"><FONT FACE="Arial, sans-serif">
+</DIV>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

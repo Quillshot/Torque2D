@@ -1,0 +1,206 @@
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiControl(datablockManagerDlg) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 2";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl(mangedDBWindow) {
+      canSaveDynamicFields = "0";
+      Profile = "EditorWindowProfile";
+      HorizSizing = "right";
+      VertSizing = "center";
+      position = "50 108";
+      Extent = "340 402";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Roaming Gamer - Datablock Manager";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "1";
+      canMaximize = "1";
+      minSize = "50 50";
+      closeCommand = "canvas.popDialog(datablockManagerDlg);";
+
+      new GuiControl() {
+         canSaveDynamicFields = "0";
+         Profile = "EditorPanelMedium";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 30";
+         Extent = "321 235";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+
+         new GuiTextCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "Managed Datablocks";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "11 6";
+            Extent = "301 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Managed Datablocks";
+            maxLength = "255";
+         };
+         new GuiScrollCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "EditorTransparentScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "10 26";
+            Extent = "302 200";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            willFirstRespond = "1";
+            hScrollBar = "alwaysOn";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+
+            new GuiListBoxCtrl(curManagedDBList) {
+               canSaveDynamicFields = "0";
+               Profile = "EditorListBox";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "1 1";
+               Extent = "282 2";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               AllowMultipleSelections = "0";
+               fitParentWidth = "1";
+            };
+         };
+      }; 
+      
+      new GuiIconButtonCtrl(DBMgr_DeleteButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 272";
+         Extent = "320 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Delete Managed Datablock";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconDelete.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+      new GuiTextEditCtrl(DBMgr_DBNameTextEdit) {
+         canSaveDynamicFields = "0";
+         //internalName = "textEdit";
+         isContainer = "0";
+         Profile = "GuiTextEditProfile";
+         HorizSizing = "right";
+         VertSizing = "center";
+         position = "9 305";
+         Extent = "320 20";
+         MinExtent = "8 20";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "";
+         maxLength = "1024";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+         sinkAllKeyEvents = "0";
+         password = "0";
+         passwordMask = "*";
+      };    
+      
+      new GuiIconButtonCtrl(DBMgr_RenameButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 332";
+         Extent = "155 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         //Command = "EFM";
+         hovertime = "1000";
+         text = "Rename";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         //iconBitmap = "./images/iconCancel.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+      new GuiIconButtonCtrl(DBMgr_DuplicateButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "174 332";
+         Extent = "155 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         //Command = "EFM";
+         hovertime = "1000";
+         text = "Duplicate";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconAdd.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+        
+
+      new GuiIconButtonCtrl(DBMgr_CloseButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 365";
+         Extent = "320 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "canvas.popDialog(datablockManagerDlg);";
+         hovertime = "1000";
+         text = "Close Manager";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconCancel.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      }; 
+   };
+};
+//--- OBJECT WRITE END ---

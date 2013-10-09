@@ -1,0 +1,391 @@
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 61;
+   parent.leftFrame.expandToItem('tree2', 'doc61');
+   var element = parent.leftFrame.document.getElementById('doc61');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Static Sprites Tutorial</TITLE>
+      <META http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+      <META content="OpenOffice.org 2.0  (Win32)" name="GENERATOR">
+      <META content="User" name="AUTHOR">
+      <META content="20050723;15050000" name="CREATED">
+      <META content="Matt" name="CHANGEDBY">
+      <META content="20060801;11575500" name="CHANGED">
+      <META content="ARABIC" name="SDENDNOTE">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P class="western" style="text-align: left; MARGIN-BOTTOM: 0.73in"><FONT face="Arial, sans-serif"><FONT style="FONT-SIZE: 16pt" size="4">
+             <B>Torque 
+                     2D - Static Sprites Tutorial</B></FONT></FONT></P>
+      </DIV>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Introduction</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">In 
+               this tutorial, you'll learn how to set up and use static sprites in Torque 
+               2D (T2D). In case you don't know what I mean when I say 'sprite', a sprite 
+               is a two-dimensional graphic image. In general, sprites can be animated or not, 
+               but a 'static' sprite is one that is not animated. Another term we'll be using 
+               a lot in this tutorial is 'image map', which refers to an image file. As far as 
+               file types go, Torque can use '.jpg' (or '.jpeg') and '.png' image maps. </FONT>
+         </FONT>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial"></FONT><FONT face="Arial, sans-serif"><FONT size="3"><BR>
+            </FONT>To prepare for this tutorial, run Torque 2D and create a new 
+            project by choosing <strong>New Project...</strong><SPAN style="FONT-STYLE: normal"> from the file menu. Name the new project "<strong>Sprites</strong>" and use 
+the </SPAN><strong>Empty Game</strong><SPAN style="FONT-STYLE: normal"> project template. This creates 
+a new folder called </SPAN><strong>Sprites</strong><SPAN style="FONT-STYLE: normal"> in your user documents folder. For example, on Windows Vista or 7 it will be created in </SPAN>
+          <strong>USER_NAME/Documents/MyGames/Sprites</strong><I>.</I></FONT></P>
+<BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><SPAN style="FONT-STYLE: normal">We'll need to add a couple 
+images to the </SPAN><strong>Sprites</strong><SPAN style="FONT-STYLE: normal"> project for this tutorial. When 
+you're building your own game you'll create whatever images you need, but for 
+now we're just going to copy a couple files from the resources supplied with T2D. Open your file browser and 
+browse to the </SPAN><strong>Torque Game Builder 1.7.5 Pro/resources/starterArt/images</strong><SPAN style="FONT-STYLE: normal"> folder. Copy the files named 
+</SPAN><strong>ship.png</strong><SPAN style="FONT-STYLE: normal"> and </SPAN><strong>asteroids.png</strong><SPAN style="FONT-STYLE: normal">. Paste them into the </SPAN>
+          <strong>Sprites/data/images</strong><SPAN style="FONT-STYLE: normal"> folder. This </SPAN>
+          <strong>data/images</strong><SPAN style="FONT-STYLE: normal"> folder is the standard place for any image files used in a 
+project, so&nbsp;when building your&nbsp;own games this is where you will put 
+the graphics you create.</SPAN></FONT></P>
+<BR>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal"
+         align="justify">Loading A Basic Image File</H3>
+      <P><FONT face="Arial">Back in Torque 2D, click the <I>Create</I> tab on the 
+            right side of the screen. To load one of the images that you just put into your 
+            project, click the <strong>Create a new ImageMap</strong> button under that tab <I>(as shown 
+               in Figure 1)</I>. The <strong>Choose Your Image File</strong> dialog will appear. </FONT>
+      </P>
+      <P>&nbsp;</P>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/SpritesFigure1.jpg" align="left" 
+              border="0" name="graphics1" width="700"><BR clear="left">
+         <FONT size="1"><I><B>Figure 1</B></I></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Then 
+               browse out and locate the "<strong>ship.png</strong>" i mage file in our current project's<strong> data/images</strong>
+               folder.&nbsp; Once you select the image click the <strong>Open</strong><EM> </EM>button to bring 
+               it into the Level Builder.</FONT></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial"></FONT>&nbsp;</P>
+      <P></P>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Using 
+         A Static Sprite</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Now 
+               that you've loaded your image file as a sprite, you'll see it as an option in 
+               the <strong>Static Sprites</strong> section of the <strong>Create</strong> tab. Putting it into 
+               your game couldn't be easier: just click, hold, and drag the image from the 
+          <strong>Create</strong>
+               tab into the <strong>Scene View</strong>. When you release the mouse button, you'll see 
+               your sprite with a selection box around it, and a set of widget buttons above 
+               it <I>(as shown in Figure 4)</I>.</FONT></FONT></P>
+      <BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/SpritesFigure4.jpg" align="left" border="0" name="graphics7"><BR clear="left">
+         <FONT size="1"><I><B>Figure 4</B></I></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">To 
+               see your game as it would currently look, you can hit the <strong>Play Level</strong> button 
+               (looks like a little arrow pointing to the right) in the T2D taskbar. Since we 
+               haven't saved our project yet, you will be prompted to do so. Enter "<strong>Level 1</strong>" 
+               as the filename, and click <strong>Save File</strong>. You will now see what we have 
+               built so far, with the default Torque 2D background. Not too 
+               exciting, yet. When you are done, press the stop button in the <strong>Level Control</strong>
+               box.</FONT></FONT></P>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Static 
+         Sprite And Scene Object Properties</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Now 
+               that the ship is inserted into our level, let's check out some of the 
+               properties of the sprite and how to edit them. To do this, select the ship 
+               sprite by clicking on it, then select the <strong>Edit</strong> tab on the right side of 
+               T2D (figure 5). In this tab, you will see many sections, each filled with 
+               properties of the currently selected object. You can click on the arrows to the 
+               left of the section names in order to expand or hide these properties. For now, 
+               we'll be checking out the <strong>Static Sprite</strong><I> </I>and <strong>Scene Object</strong> properties, 
+               so open those sections and collapse all the other ones <I>(as shown in Figure 5)</I>.</FONT></FONT></P>
+      <BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/SpritesFigure5.jpg" align="left" border="0" name="graphics4"><BR clear="left">
+         <FONT size="1"><I><B>Figure 5</B></I></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">All 
+               a static sprite really consists of is an image map, so that is the only 
+               property available in the <strong>Static Sprite</strong><I> </I>section. Changing the 
+          <strong>Image Map</strong>
+               property changes the graphic of your sprite. We don't have any other image maps 
+               loaded, so let's not play with that for now.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">The
+               <strong>Scene Object</strong><I> </I>section is a little more interesting. A 
+          <strong>Scene Object</strong> 
+               is the basic Torque 2D class for anything that is seen in your game, 
+               including static sprites. The properties shown in the <strong>Edit</strong> tab will 
+               cause real-time changes to the selected object, so if you change the 
+          <strong>Position X</strong>
+               property to "60" and the <strong>Position Y</strong><EM> </EM>property to "-40" and press 
+               <strong>Enter</strong>, the ship will move (figure 5). Go ahead and try this now. Drag the ship 
+               back towards the center. You'll see the <strong>Position</strong> properties change as 
+               you do this. We're going to go through all the <strong>Scene Object</strong><I> </I>properties 
+               now. If you would like to, experiment with each one by changing it in the 
+          <strong>Edit</strong>
+               tab and seeing what happens. If you want to use the <strong>Play Level</strong> button to 
+               see how your changes will actually look when the game is running, <U>you must save 
+                  the level first or your changes be lost!</U></FONT></FONT></P>
+      <BR>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Position (X and Y):</B><SPAN> Defines 
+the screen location of the object. These properties can also be changed by 
+dragging the object with the mouse.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Size 
+                  (Width and Height):</B><SPAN> Defines the size of the object. These 
+properties can also be changed by clicking and dragging the handles (small blue 
+squares) on the selection-box that surrounds the 
+object.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Rotation:</B><SPAN> Defines the angle of the object. You can also rotate the 
+object by holding the <I>alt</I> key and dragging the 
+object's handles.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Auto 
+                  Rotation:</B><SPAN> Defines the object's in-game rotation in degrees per 
+second. You can only see the effects of this when your game is actually 
+running.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Flip 
+                  Horizontal:</B><SPAN> Flips the object's image from 
+left-to-right.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Flip 
+                  Vertical: </B>
+               <SPAN>Flips the object's image from 
+top-to-bottom.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Layer:</B><SPAN> Defines the object's screen layer. Higher numbers are 
+further from the camera. For example, if you had a graphic of the ground under 
+your ship, you'd want to set the ground's layer to a higher number than the 
+ship. To see this in action, you can create another ship overlapping the first 
+and increase its layer number.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Group:</B><SPAN> Defines the object's game group. This can be used to group 
+the various objects in your game, especially for working with collisions. For 
+example, you might want a 'player' group, an 'enemy' group, and a 'power-up' 
+group. This is a somewhat advanced property, so don't worry if you don't totally 
+grasp it.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Forward/Back:</B><SPAN> These buttons move an object up and down <U>within 
+                     its layer</U><SPAN style="TEXT-DECORATION: none">. This is similar to the <I>Layer</I> 
+property, but only affects the draw order of objects that are in the same 
+layer.</SPAN></SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Visible:</B><SPAN> Defines whether or 
+not the object is visible. When this is unchecked, your object is 
+invisible.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Lifetime:</B><SPAN> Defines how many 
+seconds of gameplay until an object is automatically deleted from a level. A 
+value of zero means the object will never be deleted. You can only see the 
+effects of this when your game is actually running.</SPAN></FONT></FONT></P>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Cell Mode Image Maps</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">A 'cell' image map is a 
+               single image file that contains multiple pictures. An example of this is the <I>asteroids</I>
+               file that you copied into the <strong>images</strong> folder at the beginning of this 
+               tutorial. Let's check it out! Go back to the <strong>Create</strong> tab, and press the 
+          <strong>Create 
+                  a new Imagemap</strong> button. Choose the <I>asteroids </I>file, and press 
+          <strong>Open</strong>.&nbsp; 
+               Now the asteroids image should be in&nbsp;the Level Builder, the problem is 
+               it's an entire image (which is the default).&nbsp; We want to change the 
+               settings on this&nbsp;Static Sprite, so double click the asteroids image in 
+               the&nbsp;<strong>Object&nbsp;Library</strong><EM>.</EM>&nbsp;The <strong>Image Builder</strong> dialog 
+               comes up <I>(as shown in Figure 6)</I>.</FONT></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">You can see in the 
+               preview screen that this image has 4 different asteroids in it. What we need to 
+               do now is divide it into 4 separate 'cells'. To do this, simply change the 
+          <strong>ImageMap</strong>
+               dropdown to <strong>CELL</strong><I> </I>(figure 6). The preview now shows you the asteroids 
+               divided into separate cells. We'll talk about more of the options in this 
+               dialog in the next section. For now, just click <strong>Save</strong>.</FONT></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><IMG alt="Frame6" src="images/SpritesFigure6.jpg" name="Frame6" 
+              width="700">
+         <BR>
+         <FONT size="1"><I><B>Figure 6</B></I></FONT>
+         <BR>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">You can now see one of 
+               the asteroids in the <strong>Static Sprites</strong> section of the <strong>Create</strong><I> </I>tab. 
+               Under the asteroid, you can see a label that says "1/4". This means that you 
+               are currently viewing cell 1 of 4. If you click on the &quot;1/4&quot; label underneath 
+               the asteroid image, it will move to the next cell. You can drag the visible 
+               asteroid into your game just like you would any other static sprite. Go ahead 
+               and drag one of each asteroid type into the <strong>Scene View</strong><I> (as shown in Figure 7)</I>.</FONT></FONT></P>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/SpritesFigure7.jpg" align="left" border="0" name="graphics5"><BR clear="left">
+         <FONT size="1"><I><B>Figure 7</B></I></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">For information on 
+               building a cell mode image like this one, check out the Image Map reference.</FONT></FONT></P>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">The Image Builder Dialog</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Time to take a look 
+               back at the <strong>Image Builder</strong>. To open the <strong>Image Builder</strong> for any of 
+               your sprites, you can double-click on its image in the <strong>Create</strong> tab. We're 
+               going to use the <strong>asteroids</strong> image as an example, so double click on that. 
+               You'll see the <strong>Image Builder </strong>dialog come up with all the 
+          <strong>asteroids</strong>' 
+               current settings, just like when you originally loaded it.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Let's begin with the 
+               preview image on the right. Under it are 3 buttons: <strong>Background</strong>, 
+          <strong>Zoom 
+                  Selection</strong>, and <strong>Zoom</strong>. We'll go through all of them, now. Again, 
+               feel free to experiment with each.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Background:</B><SPAN> brings up a 
+dialog that lets you change the color of the image background and the color of 
+the borders around each cell.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Zoom Selection:</B><SPAN> lets you 
+zoom in on an individual cell. First click <strong>Zoom Selection</strong>, then click on the cell you want to zoom into. Click 
+          <strong>Zoom 
+                     Out</strong> when done.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Zoom: </B>
+               <SPAN>lets you zoom in on 
+the image map as a whole. First click <strong>Zoom</strong> then 
+click the area of the image you want to zoom in on.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Under these buttons, 
+               there is another row of buttons. They work as follows:</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Delete: </B>
+               <SPAN>deletes the image 
+map from your project.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Cancel: </B>
+               <SPAN>leaves the Image 
+Builder.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Browse:</B><SPAN> takes you to the 
+          <strong>Choose 
+                     Your Image File</strong> dialog. 
+</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Save:</B><SPAN> saves your 
+changes.</SPAN></FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Now let's take a quick 
+               look at the <strong>Image Settings</strong><I> </I>section. The <strong>Image Name</strong> is the name 
+               that Torque 2D will use to refer to this image. It is almost always 
+               best to use the default, which is the image filename with "<strong>ImageMap</strong>" added to 
+               the end. We have already looked at 2 of the 3 image mode choices, <strong>FULL</strong> (use 
+               the whole image) and <strong>CELL</strong><I> </I>(divide the image into cells). The remaining 
+               choice in the <strong>Image Mode</strong><I> </I>dropdown is <strong>KEY</strong>, which is another way to 
+               have multiple images in one file. Key mode is explained in detail in the Image 
+               Maps reference, but basically it is a way to divide your image using a 
+               background color. The <strong>Filter Mode</strong> dropdown lets you choose whether or 
+               not to smooth your image when it is sized. For an example, use <strong>Zoom Selection</strong>
+               to zoom in on one of the asteroids, then change <strong>Filter Mode</strong> to 
+          <strong>NONE</strong>. 
+               You will see the difference very clearly if you look at the edge of the 
+               asteroid.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Adjacent to the 
+          <strong>Image 
+                  Mode</strong> and <strong>Filter Mode</strong> dropdowns there are 5 checkboxes. 
+          <strong>Filter Pad</strong>
+               is used to make sure that cell based images don't bleed into each other. You 
+               will probably want this on any time you have <strong>Image Mode</strong> set to 
+          <strong>CELL</strong>. 
+               The other 4 checkboxes, <strong>Prefer Speed</strong>, <strong>Preload</strong>,<I> </I>
+          <strong>Force 16 Bit</strong><I> </I>and <strong>Allow 
+                  Unload</strong>, are used for memory management and are beyond the scope of this 
+               tutorial. You can read about these properties in the Image Maps reference.</FONT></FONT></P>
+<BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">The final section in 
+               the Image Builder is the <strong>Cell Mode Options</strong>. These properties 
+               define how Torque 2D divides up the cells of an image. They are 
+               explained in full detail in the Image Maps reference, but for now we'll just 
+               take a quick look at <strong>Cell Height</strong> and <strong>Cell Width</strong>. These two 
+               properties define the size (in pixels) of each cell. To see an example of how 
+               this works, change both the values to 62. Now there are 16 cells, each half as 
+               big as the original 4 <I>(as shown in Figure 8)</I>.</FONT></FONT></P>
+      <BR>
+      <IMG alt="Frame8" src="images/SpritesFigure8.jpg" align="bottom" name="Frame8" 
+           width="700">
+      <BR>
+      <FONT size="1"><I><B>Figure 8</B></I></FONT>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Conclusion</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial, sans-serif"><FONT size="3">You now know the basics 
+               of using static sprites in Torque 2D. Experimenting with what you 
+               learned here will give you a more broad understanding of how to best use static 
+               sprites in your game. If you want to know more about image maps in general, 
+               read the 'Image Maps' reference. The Torque forums and TDN will also help 
+               you find answers to any further questions you may have. Enjoy!</FONT></FONT></P>
+<DIV TYPE="FOOTER">
+         <P style="MARGIN-TOP: 0.3in; MARGIN-BOTTOM: 0in" align="center"><FONT style="FONT-SIZE: 8pt" size="1"><FONT face="Arial, sans-serif">Page
+                  <SDFIELD TYPE="PAGE" FORMAT="PAGE" SUBTYPE="RANDOM">6</SDFIELD>
+                  of
+                  <SDFIELD TYPE="DOCSTAT" FORMAT="ARABIC" SUBTYPE="PAGE">8</SDFIELD></FONT></FONT></P>
+         <P style="MARGIN-BOTTOM: 0in" align="center"><I><FONT style="FONT-SIZE: 8pt" size="1"><FONT face="Arial, sans-serif">Revision 
+                     1.2</FONT></FONT></I></P>
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1.4 - 1.1.4.</i></font>

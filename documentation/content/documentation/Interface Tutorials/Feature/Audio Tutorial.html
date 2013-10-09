@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 53;
+   parent.leftFrame.expandToItem('tree2', 'doc53');
+   var element = parent.leftFrame.document.getElementById('doc53');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Tourque 2D - Audio Tutorial</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="CREATED" CONTENT="20060615;17044600">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060724;13275300">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt"><B>Torque 
+                     2D - Audio Tutorial</B></FONT></FONT></P>
+      </DIV>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in">Introduction</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Sound 
+               effects are a very important component of game immersion. As such, Torque 2D
+                (T2D) provides users a robust sound management system for assigning and 
+               playing sound effects in-game. In this tutorial we will show you how to create 
+               your own sound descriptions and profiles, load your sound into your game, and 
+               show you some of the ways you can manipulate sound in T2D. For more reference 
+               on this subject, please refer to the <I>T2D Reference </I>
+               <SPAN STYLE="FONT-STYLE: normal">document
+that is provided with Torque 2D. </SPAN></FONT></FONT>
+      </P>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Setting Up Our Sound Files</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Our first order of business is to get 
+               some sound files to mess around with. In your <strong>games/Reactor/game/data/audio</strong> 
+               folder you will see a sound file used in the demo: <strong>BLIP.WAV</strong>. For the 
+               purposes of our tutorial, we are going to grab it. Copy this file and paste them into your
+          <strong>games/TutorialBase/game/data/audio</strong> folder. 
+               As you might have guessed, we are going to use our <I>TutorialBase</I> project to 
+               test our sound in. </FONT></FONT>      </P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">In order for sounds to be accessed by 
+               T2D, they must have an audio description and an audio profile. An audio 
+               description sets the properties of the sound and the profile sets the name of 
+               the sound, the description to use, and the actual audio file to be referenced. 
+               For this tutorial, we are going to create two audio descriptions, one for 
+               looping sound and one for non-looping sound. </FONT></FONT>
+      </P>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Navigate to your <strong>games/TutorialBase/game/gameScripts</strong> 
+               folder and create a new .cs file named "<strong>audioDatablocks.cs</strong>". Audio descriptions 
+               and profiles can be accessed anywhere in script; however, for the sake of 
+               organization, we are creating our audio code in a separate file. First, we need 
+               to set up our audio descriptions. Add the following code to your 
+               <strong>audioDatablocks.cs</strong> file:</FONT></FONT></P>
+<BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">new AudioDescription(AudioNonLooping)</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">volume = 1.0;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">isLooping= false;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">is3D = false;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">type = $GuiAudioType;</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">};</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">new AudioDescription(AudioLooping)</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">volume = 1.0;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">isLooping= true;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">is3D = false;</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">type = $GuiAudioType;</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">This code simply sets up two new audio 
+               descriptions, one for looping sounds, and one for non-looping sounds. Next, we 
+               will need two audio profiles, one for each of the sounds we are using in this 
+               tutorial. Add this code below your two audio descriptions:</FONT></FONT></P>
+      <BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// 
+                                 --------------------------------------------------------------------</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// Background Loop.</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// 
+                                 --------------------------------------------------------------------</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">new AudioProfile(backgroundAudio)</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">{</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> filename = 
+                                 "~/data/audio/BLIP.wav";</FONT></FONT></P>
+                       <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> description = "AudioLooping";</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> preload = true;</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">};</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// 
+                                 --------------------------------------------------------------------</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// Single Blip.</FONT></FONT></P>
+                       <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">// 
+                                 --------------------------------------------------------------------</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">new AudioProfile(blipAudio)</FONT></FONT></P>
+                       <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">{</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> filename = "~/data/audio/BLIP.wav";</FONT></FONT></P>
+                       <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> description = "AudioNonLooping";</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> preload = true;</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">As you can see, each of our audio 
+               profiles have specified one of the two audio descriptions that we created 
+               earlier. They also reference the path to the sounds each will use. That should 
+               be enough code to get our audio working - make sure to exec your 
+               <strong>audioDatablocks.cs</strong> in <strong>game.cs</strong> so that T2D will run the code.</FONT></FONT></P>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Testing Our Sounds</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Now we are going to test our sound 
+               files and show you some of the ways Torque 2D can manipulate sounds. 
+               Since we defined our audio descriptions and profiles, we are given the use of a 
+               few commands that make manipulating our sound files very easy. Open up Torque 
+               2D and load your <I>TutorialBase</I> project by choosing <I>Open Project </I>from 
+               the file menu. When you get your project loaded, immediately hit the play 
+               button. NOTE - if you loaded an unsaved level, you will have to save it before 
+               you can play. </FONT></FONT>      </P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Once you are inside the game, hit the 
+               tilde (~) key to bring up your console. The first thing we are going to show 
+               you how to do is play a sound. Inside the console, enter the following line:</FONT></FONT></P>
+      <BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">alxPlay(blipAudio);</FONT></FONT></P>
+                    </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">When you hit enter, you should hear the 
+               sound play once and then stop. You will notice that we passed the 
+               <strong>alxPlay</strong> function the name of our audio profile. The 
+          <strong>alxPlay</strong> function returns a 
+               handle; however, since the sound plays once then disappears, it was not 
+               necessary to save that handle. However, that is not always the case, as we 
+               shall now demonstrate. </FONT></FONT>      </P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Next, type the following line into your 
+               console:</FONT></FONT></P>
+      <BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">$sound = alxPlay(backgroundAudio);</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">When you hit enter, you should hear the 
+               blip audio track playing. Since this audio profile uses the looping 
+               description, it should continue playing over and over. You will notice that 
+               this time around we saved our audio handle in a global variable <strong>$sound</strong>. Next, 
+               type this into the console:</FONT></FONT></P>
+<BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">alxStop($sound);</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Your sound should stop immediately. You 
+               should note that the <strong>alxStop</strong> command only accepts the sound handle created by
+          <strong>alxPlay</strong> as a parameter. In addition to stopping single sounds, there is a 
+               function that will stop all sounds currently being played. Type the following 
+               command into your console four or five times, hitting enter in between 
+               commands:</FONT></FONT></P>
+      <BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">alxPlay(backgroundAudio);</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">After you call that command 2 or 3 
+               times, you should hear something pretty horrible: multiple sound tracks playing 
+               out of sync. Type the following command into your console:</FONT></FONT></P>
+      <BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">alxStopAll();</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">This should stop all sounds being 
+               played immediately. </FONT></FONT>
+      </P>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Conclusion</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">This tutorial has stepped you through 
+               creating audio descriptions and profiles. In addition, you have been shown 
+               several of the commands you can use to manipulate sounds in your scene. For 
+               further information, please refer to the <I>T2D Reference </I>document that is 
+               included with Torque 2D. </FONT></FONT>
+      </P>
+      <DIV TYPE="FOOTER">
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

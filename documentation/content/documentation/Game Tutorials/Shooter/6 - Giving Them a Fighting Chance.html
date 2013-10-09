@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 39;
+   parent.leftFrame.expandToItem('tree2', 'doc39');
+   var element = parent.leftFrame.document.getElementById('doc39');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252"><title>Torque 2D &ndash; Shooter Tutorial Part 6</title> 
+<meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+<meta name="AUTHOR" content="User"> <meta name="CREATED" content="20050225;10000000"> <meta name="CHANGEDBY" content="Matt"> <meta name="CHANGED" content="20060731;17111600"> <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+-->
+</style></head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" link="#0000ff" style="width: 700px; padding: 10px;">
+<div type="HEADER"> <p class="western" style="margin-bottom: 0.73in; font-style: normal;" align="center">
+Torque 2D &ndash; Shooter Tutorial &ndash; Part 6</b></font></font></p>
+</div><p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font face="Arial, sans-serif"><font style="font-size: 16pt;" size="4"><b>6.
+Giving Them a Fighting Chance</b></font></font></p>
+<H2 CLASS="western"><b>6.1 Return Fire</b></H2>
+<p>After
+a few minutes of blasting helpless enemy ships with your missiles
+&ndash;
+you may get bored with what's going on. After all, you are
+invincible, there is nothing that can hurt you...yet.</font></font></p>
+<p>This
+section deals with adding collision to the player and giving the
+enemies weapons. </font></font>
+</p><br><p>First,
+let's enable the player to collide with the other objects in the scene.
+You will do this very similarly to
+how you gave your enemies collision. Draw
+a collision polygon around the player ship that roughly outlines it.
+You might be tempted to follow its contours exactly, but that's not
+necessary (or possible - because the ship is concave).&nbsp; </p><p style="margin-top: 0.08in;"><img src="images/ShooterFigure6-1-2b.jpg" name="graphics68" align="left" border="0"><br clear="left"><font size="1"><i><b>Figure
+6.1.2b</b></i></p>
+<br><p>Now
+that you have your collision polygon created, we need to set its
+parameters in the Collision rollout of the edit tab. </font></font>
+</p><p>You
+should set its collision parameters to mirror those you set for the
+enemy <i>(as shown in Figure 6.1.3)</i>.</font></font></p>
+<p style="margin-top: 0.08in;"><img src="images/ShooterFigure6-1-3b.jpg" name="graphics2" align="left" border="0"><br clear="left">
+<font size="1"><i><b>Figure 6.1.3b</b></i></font></p>
+<br><br><p>Once
+you have your collision set, click on your enemy ship and go into
+their dynamic fields rollout of the edit tab. Once there you should
+give them a variable of missileSpeed and set its value to whatever
+you want, I set mine to -500 <i>(as shown in Figure 6.1.4)</i>.</font></font></p>
+<p style="margin-top: 0.08in;"><img src="images/ShooterFigure6-1-4.jpg" name="graphics3" align="left" border="0"><br clear="left"><font size="1"><i><b>Figure 6.1.4</b></i></font></p>
+<br clear="left"><p>When
+you have your enemy's dynamic fields set up &ndash; it is time to
+code once again. Save your progress and close out of the editor.
+After you have closed out T2D, browse out to your
+yourProjectName/gameScripts folder and open your enemy.cs file. At
+the bottom of the file, add this function:</font></font></p>
+<br>
+
+<pre class = "code">function enemyShip::fireMissile(%this)
+{
+   %this.enemyMissile = new t2dStaticSprite()
+   {
+
+      scenegraph = %this.scenegraph;
+      class = enemyMissile;
+      missileSpeed = %this.missileSpeed;
+      enemy = %this;
+   };
+
+   %this.enemyMissile.fire();
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.1.1</b></i></font></font></p>
+<br><p>This
+function is almost exactly the same as the one we put on our player
+in the last section. It does the same thing as the player's function
+as well, creates the missile and calls a fire function on the missile
+itself. Now that you have created the enemy's fireMissile function,
+you need to specify where exactly it will be called. For the purposes
+of this game, I decided that it should be called when the enemy
+spawns. So, find your enemyShip::spawn() function and add this line
+of code to the bottom of it:</font></font></p>
+<br>
+
+<pre class = "code">function enemyShip::spawn(%this)
+{
+   %this.setLinearVelocityX(getRandom(%this.minSpeed, %this.maxSpeed));
+   %this.setPositionY(getRandom(%this.minY, %this.maxY));
+   %this.setPositionX(%this.startX); 
+   <b>%this.fireMissile();</b>
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.1.2</b></i></font></font></p>
+<br><p>So,
+in a nutshell, whenever a ship spawns it is going to fire a missile. </font></font>
+</p><br><p>After
+you have this code in your enemy.cs file we will need to create
+another file for the enemy's missile. </font></font>
+</p><br><p>In
+your yourProjectName/gameScripts folder, create a new .cs file named
+enemyMissile.cs. Inside this file you need to add the following
+functions &ndash; again almost exactly the same as the
+playerMissile
+file:</font></font></p>
+<br>
+
+<pre class = "code">function enemyMissile::fire(%this)
+{
+   %this.setWorldLimit( kill, getWords(%this.enemy.getWorldLimit(), 1, 4) );
+   %this.setLinearVelocityX(%this.missileSpeed);
+   %this.setPosition(%this.enemy.getPosition());
+   %this.setImageMap(enemyMissileImageMap);
+   %this.setSize(12, 2);
+   %this.setCollisionActive( true, true );
+   %this.setCollisionPhysics(false, false);
+   %this.setCollisionCallback(true);
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.1.3</b></i></font></font></p>
+<br><p>The
+first function is the fire function that was called in the enemy.cs
+file. This function does the mostly the same thing as the
+playerMissile, but here the world limit the enemy ships are using is
+fine for the missiles, so instead of setting it manually, we just
+directly copy their world limit.</font></font></p>
+<br><p>After
+that function, paste in this code:</font></font></p>
+
+<pre class = "code">function enemyMissile::onCollision( %srcObj, %dstObj, %srcRef, %dstRef, %time, 
+    %normal, %contactCount, %contacts )
+{
+   if(%dstObj.class $= "playerShip")
+   {
+      %srcObj.explode(); 
+      %dstObj.explode();
+   }
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.1.4</b></i></font></font></p>
+<br><p>This
+is exactly the same as the other onCollision function, the only
+thing that's different is the class it is checking for on collision.
+The final function we will need is as follows:</font></font></p>
+<br>
+
+<pre class = "code">function enemyMissile::explode(%this)
+{
+   %this.safeDelete();
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.1.5</b></i></font></font></p>
+<br><p>This
+function deletes the missile when called. </font></font>
+</p><br><p>After
+you get that last function in, save the file and close it. After you
+have closed your enemyMissile.cs open up your player.cs in the
+yourProjectName/gameScripts folder. </font></font>
+<H2 CLASS="western">6.2 Death and Rebirth</H2>
+<br><p>Inside
+your player.cs file you need to tell your player how to respond to
+being shot with a missile. This is going to be different than the
+enemy since the player can do different things than the enemy. First
+and foremost, we are going to add a variable that is going to store
+whether or not our player is dead. So, in the onLevelLoaded function
+at the top of the player.cs file, add this line of code:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::onLevelLoaded(%this, %scenegraph)
+{
+   //set the player's ship name to the instance
+   $pShip = %this;
+
+
+   moveMap.bindCmd(keyboard, "w", "pShipUp();", "pShipUpStop();");
+   moveMap.bindCmd(keyboard, "s", "pShipDown();", "pShipDownStop();");
+   moveMap.bindCmd(keyboard, "a", "pShipLeft();", "pShipLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "pShipRight();", "pShipRightStop();");
+
+
+   <b>%this.isDead = false;</b>
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.1</b></i></font></font></p>
+<br><p>This
+line of code initializes to false, since of course the player is not
+dead when the game starts.</font></font></p>
+<p><br>Next
+we will need to modify our createMissile function for the player,
+since we do not want them to fire if they have been killed.</font></font></p>
+<br><p>Here
+is the old function:</font></font></p>
+
+<pre class = "code">function playerShip::createMissile(%this)
+{
+   %this.playerMissile = new t2dStaticSprite()
+   {
+      scenegraph = %this.scenegraph;
+      class = playerMissile;
+      missileSpeed=%this.missileSpeed;
+      player = %this;
+   };
+   %this.playerMissile.fire();
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.2</b></i></font></font></p>
+<br><p class="western" style="margin-bottom: 0in; page-break-before: always;" align="justify"><font face="Arial, sans-serif"><font size="2">And
+here is the new
+function (the new additions have been bolded)</font></font></p>
+
+<pre class = "code">function playerShip::createMissile(%this)
+{
+   <b>if(!%this.isDead)
+   {</b>
+      %this.playerMissile = new t2dStaticSprite()
+      {
+         scenegraph = %this.scenegraph;
+         class = playerMissile;
+         missileSpeed=%this.missileSpeed;
+         player = %this;
+      };
+
+      %this.playerMissile.fire();
+   <b>}</b>
+}
+</pre>
+
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.3</b></i></font></font></p>
+<p>What
+these changes actually do is check to see if the player is dead
+before creating the missile. If the player is dead, this function
+does nothing. Next, we need to handle the player's response to
+collision with the following function:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::onCollision( %srcObj, %dstObj, %srcRef, %dstRef, %time, 
+    %normal, %contactCount, %contacts )
+{
+   if(%this.isDead)
+      return;
+
+   if(%dstObj.class $= "enemyShip")
+   {
+      %srcObj.explode(); 
+      %dstObj.explode();
+   }
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.4</b></i></font></font></p>
+<p>This
+function is very similar to the other onCollision functions we have
+written so far. It looks for the enemy ship and destroys them both if
+they collide. The only difference is that if isDead is true (it is set to true when the ship explodes) it won't keep checking for
+collision. This stops the player from blowing up even though he has been
+blown up. </font></font>
+</p><br><table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="100%"> <col width="256*">
+<thead> <tr> <td bgcolor="#00ff00" valign="top" width="100%"> <p class="western" align="center"><font face="Arial, sans-serif"><font size="2"><b>***NOTE***</b></font></font></p>
+<p class="western" style="" align="left"><font face="Arial, sans-serif"><font size="2">You may
+have noticed that we never added an onCollision function to the
+enemy.cs file. This is because both the playerShip and the
+playerMissile are set up to check for collision with the enemyShip
+&ndash; so all of the collision is taken care of on those objects.</font></font></p>
+</td> </tr> </thead></table><br>
+<p>Next
+we need to create the explode() function referenced above:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::explode(%this)
+{
+   %this.isDead = true;
+   %this.setEnabled(false);
+   %this.schedule(2000, "spawn");
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.5</b></i></font></font></p>
+<br><p>What
+this function does is set isDead to true(meaning the player will not
+be able to shoot any longer). Then, it sets the player's visibility
+(setEnable) to false. The last line of code in this function sets a
+schedule that says basically that in 2000 milliseconds (2 seconds) it
+will run a function named spawn. Add the spawn function to the end of
+your file:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::spawn(%this)
+{
+   %this.isDead = false;
+   %this.setPosition(%this.startX, %this.startY);
+   %this.setEnabled(true);
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.6</b></i></font></font></p>
+<br><p>This
+function sets isDead to false (so the player can shoot again). It
+also sets the player's position to variables startX and startY
+&ndash;
+two variables we will set next. Finally, it makes the player visible
+again. Now we need to create the startX and startY variables. </font></font>
+</p><br><p>Go
+back to the top of your player.cs file and find the onLevelLoaded
+function &ndash; thus far it should look like this:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::onLevelLoaded(%this, %scenegraph)
+{
+   //set the player's ship name to the instance
+   $pShip = %this;
+
+   %this.isDead = false;
+
+   //These commands bind our keys to our functions
+   moveMap.bindCmd(keyboard, "w", "pShipUp();", "pShipUpStop();");
+   moveMap.bindCmd(keyboard, "s", "pShipDown();", "pShipDownStop();");
+   moveMap.bindCmd(keyboard, "a", "pShipLeft();", "pShipLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "pShipRight();", "pShipRightStop();");
+   moveMap.bindCmd(keyboard, "space", "$pShip.createMissile();", "");
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.7</b></i></font></font></p>
+<br><p>Right
+below our isDead declaration, add this code:</font></font></p>
+<br>
+
+<pre class = "code">   //save the players starting position
+   %this.startX = %this.getPositionX();
+   %this.startY = %this.getPositionY();
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.8</b></i></font></font></p>
+<br><p>You
+might recognize this from our enemy.cs file. What this code does is
+save whatever position the player is in when the game starts and
+saves it in two variables &ndash; startX and startY. This allows
+the
+user to choose where the player spawns at when they die.</font></font></p>
+<br><br><p>So,
+after editing the onLevelLoaded function, it should now look like
+this:</font></font></p>
+<br>
+
+<pre class = "code">function playerShip::onLevelLoaded(%this, %scenegraph)
+{
+   //set the player's ship name to the instance
+   $pShip = %this;
+
+
+   %this.isDead = false;
+
+
+   //save the players starting position
+   %this.startX = %this.getPositionX();
+   %this.startY = %this.getPositionY();
+
+
+   //These commands bind our keys to our functions
+   moveMap.bindCmd(keyboard, "w", "pShipUp();", "pShipUpStop();");
+   moveMap.bindCmd(keyboard, "s", "pShipDown();", "pShipDownStop();");
+   moveMap.bindCmd(keyboard, "a", "pShipLeft();", "pShipLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "pShipRight();", "pShipRightStop();");
+   moveMap.bindCmd(keyboard, "space", "$pShip.createMissile();", "");
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.9</b></i></font></font></p>
+<br><p>Finally,
+as with all other new script files, you need to add the enemyMissile
+script to your exec statements in the game.cs file. When everything
+is said and done, your exec statements should look similar to this:</font></font></p>
+<br>
+
+<pre class = "code">   exec("./player.cs"); 
+   exec("./enemy.cs");
+   exec("./playerMissile.cs");
+   exec("./enemyMissile.cs");
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 6.2.10</b></i></font></font></p>
+<br> <p style="margin-top: 0.08in;"><img src="images/ShooterFigure6-2-1.png" name="graphics65" align="left" border="0"><br clear="left"><font size="1"><i><b>Figure
+6.2.1</b></i></font></p>
+<br clear="left"><font size="2"><font face="Arial, sans-serif">Once
+you have all of this code in, we are ready to test it out! Save
+everything and reload your T2D project. Once you are in, you should
+fly around and make sure all of your collision is working properly.
+Test it out and enjoy <i>(as shown in Figure 6.2.1)</i>!</font></font>
+<p></p><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

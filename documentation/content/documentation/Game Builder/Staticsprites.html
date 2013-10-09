@@ -1,0 +1,131 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 9;
+   parent.leftFrame.expandToItem('tree2', 'doc9');
+   var element = parent.leftFrame.document.getElementById('doc9');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Static Sprites</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Static sprites (t2dStaticSprite) represent the bulk of objects that 
+                  you will most likely place in your Scenes. A static sprite object is a 
+                  single, non-animating image, used for anything from background detail to
+                  collectible objects to giant missiles fired from a tank. This is a 
+                  quick reference for a static sprite. To view a short tutorial, 
+                    <a href="../Interface%20Tutorials/Feature/Static%20Sprites.html">click 
+                  here</a>. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>Creating a static sprite object requires that you already have set up
+                  an imagemap in your Project. Once you have done that, you will have a 
+                  collection of static sprites under the Create tab.<br /><br>
+                  <img alt="File:Aquarium_StaticSpriteList.png" src="images/Aquarium_StaticSpriteList.png" border="0" height="194" width="563" /><br />
+                  <br />
+                  These static sprites can easily be added to your scene by clicking on 
+                  one, then dragging and dropping it into your Scene. Once you have 
+                  dropped it, click on the Edit Tab to adjust its Properties.<br /><br>
+                  <img alt="File:Aquarium_StaticSprite_Properties.png" src="images/Aquarium_StaticSprite_Properties.png" border="0" height="152" width="697" /> </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <ul>
+                  <li> <b>Image Map</b> - The image to display on this sprite. </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Source Rect</b> - Enable using the SourceRect rendering on this sprite. </li>
+                </ul>
+                <ul>
+                  <li> <b>Source Rect</b> - Defines the source rect in four components (topLeft, topRight, width, height) ie: 10 10 100 100 </li>
+                </ul>
+                <ul>
+                  <li> <b>Frame</b> - The image map frame to display. (This property 
+                    is only available if the static sprite placed from the Create Tab has 
+                    more than 1 Sprite within it.) </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>   new t2dStaticSprite() {
+      imageMap = "rocksnearImageMap";
+      frame = "0";
+      mUseSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      size = "480.000 320.000";
+      Layer = "3";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+         mountID = "2";
+   };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Static sprite objects are the single most-used object in Torque 2D. 
+                  Having a solid understanding of them is important, and thanks to having 
+                  read this Quick Reference guide, you should now have a decent idea of 
+                  how they function, and how to create them. To view a short tutorial, 
+                    <a href="../Interface%20Tutorials/Feature/Static%20Sprites.html">click 
+                  here</a>.</p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

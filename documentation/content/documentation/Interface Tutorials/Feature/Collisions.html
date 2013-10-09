@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 54;
+   parent.leftFrame.expandToItem('tree2', 'doc54');
+   var element = parent.leftFrame.document.getElementById('doc54');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <title>Torque 2D - Collisions Tutorial</title>
+      <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+      <meta content="OpenOffice.org 2.0  (Win32)" name="GENERATOR">
+      <meta content="User" name="AUTHOR">
+      <meta content="20050723;15050000" name="CREATED">
+      <meta content="Matt" name="CHANGEDBY">
+      <meta content="20060731;17350600" name="CHANGED">
+      <meta content="" name="SDFOOTNOTE" ;="" p="">
+      <meta content="ARABIC" name="SDENDNOTE">
+      <style> 
+      <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	-->
+      </style>
+   </head>
+   <BODY id = "BODYID" onLoad = "initComponent()"  dir="ltr" lang="en-US" link="#0000ff" text="#000000" style="width: 700px; padding: 10px;">
+      <div type="HEADER">
+         <p class="western" style="MARGIN-BOTTOM: 0.73in" align="center"><font face="Arial, sans-serif"><font style="FONT-SIZE: 16pt" size="4"><b>Torque 
+                     2D - Collisions Tutorial</b></font></font></p>
+      </div>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Introduction</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in" align="justify"><font face="Arial, sans-serif"><font size="3">In 
+               this tutorial, you'll learn how to set up collisions and collision detection in 
+               Torque 2D (T2D). You'll need to use the collision detection system 
+               any time you want to check if one of your game objects hits another. This can 
+               be used for all sorts of things, from making balls bounce, to making missiles 
+               explode, to opening doors when the player reaches them. </font></font>
+      </p>
+      <p class="western" style="MARGIN-BOTTOM: 0in" align="justify"><font face="Arial, sans-serif"><font size="3"><br>
+            </font>To prepare for this tutorial, run Torque 2D and load the <i>TutorialBase</i>
+            project (if it's not already loaded) by choosing <i>Open Project...</i><span style="FONT-STYLE: normal"> from the 
+file menu and selecting </span><i>games/TutorialBase/project.t2dProj</i><span style="FONT-STYLE: normal">. Next, create a new scene by 
+selecting </span><i>New Scene</i><span style="FONT-STYLE: normal"> from the file menu. Finally, 
+choose </span><i>Save As </i>
+            <span style="FONT-STYLE: normal">from the file menu to save this 
+new scene. Also, be sure to save your scene with the name 
+"CollisionTutorial".</span></font></p>
+<br>
+      <p class="western" style="MARGIN-BOTTOM: 0in" align="justify"><font face="Arial, sans-serif"><span style="FONT-STYLE: normal">Now that we've got a blank 
+slate, it's time to bring some objects into the scene so we can make them 
+collide. Select the </span><i>Create</i><span style="FONT-STYLE: normal"> tab in the Scene Editor and 
+open the </span><i>Static Sprites </i>
+            <span style="FONT-STYLE: normal">section. Drag an&nbsp;asteroid 
+and a block (from the <em>tileMapImageMap</em>) 
+</span>&nbsp;into the scene as shown below.<span style="FONT-STYLE: normal"></span></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+      </p>
+      <p style="MARGIN-TOP: 0.08in"><img src="images/CollisionsFigure1.png" 
+              name="graphics4" align="left" border="0" width="700"><br clear="left">
+      <br clear="left">
+      <br>
+      <p></p>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif">Finally, 
+            we're going give the asteroid some gravity so later we can make it collide with 
+            the other objects. To do this, select the asteroid by clicking on it, then 
+            choose the <i>Edit</i> tab on the right side of the Scene Editor. Scroll down 
+            until you see the <i>Physics</i> section, then expand it by clicking on the 
+            arrow. In order to make the asteroid fall downward, change the <i>Constant Force Y</i>
+            property to "40" and press <i>Enter</i>. Save your scene as 
+            "CollisionTutorial" and preview the scene by pressing the <i>Play Scene</i> button 
+            in the toolbar. For now, the asteroid just falls down over the crate. We're 
+            going to just set up a few basic kinds of collision in the upcoming sections.</font></p>
+<br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Activating 
+         Collision Detection</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3">Select 
+               the asteroid sprite in the <i>Scene View</i> and open the <i>Collision</i> section 
+               in the <i>Edit</i> tab. All the collision properties that we are going to use 
+               are in this section. For now, just turn on the asteroid's collision detection 
+               by selecting <i>Send Collision</i> and <i>Receive Collision</i>. Next, select 
+               the crate and check only Receive<i> Collision</i>. Save 
+               the scene and press <i>Play Scene</i> to watch the action.</font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><img alt="Frame2" src="images/CollisionsFigure2.png" name="Frame2"><br clear="left">
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><img alt="Frame8" src="images/CollisionsFigure2b.png" name="Frame8"><br clear="left">
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3">Okay, 
+               admittedly that wasn't much in the way of action; the asteroid just stops when 
+               it hits the crate. However, the main thing to note is that they <u>are</u><span style="TEXT-DECORATION: none"> reacting to each 
+other</span>. Let's see what other effects we can set up for collisions...</font></font></p>
+      <br>
+      <br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal"
+         align="justify">Response Modes</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3">Now 
+               that the block and the asteroids respond to each other, we can play with some 
+               of our other options. The <i>Response Mode</i> dropdown contains the possible 
+               responses that objects can have to collisions. Select the asteroid and take a 
+               look at the <i>Response Mode </i>options. Notice that we were using <i>CLAMP</i>. 
+               Here is a brief description of the possibilities:</font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3"><b>BOUNCE:</b><span> A simple, pong-style bouncing 
+effect.</span></font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3"><b>CLAMP:
+               </b>
+               <span>The colliding object slides along the surface it hits. This 
+is good for surfaces that the player moves along.</span></font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3"><b>STICKY:</b><span> The colliding object completely 
+stops.</span></font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3"><b>KILL:</b><span> The colliding object is 
+deleted.</span></font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3"><b>RIGID:</b><span> The colliding object will react using built-in rigid body physics<span style="TEXT-DECORATION: none">.</span></span></font></font></p>
+<br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font face="Arial, sans-serif"><font size="3">Let's 
+               create examples for a few of our response options. Change the crate's response 
+               mode to <i>KILL</i> and preview the scene. Now it disappears when 
+               the asteroid hits it. Now, change the asteroid's response mode to <i>BOUNCE</i> 
+               and preview again. The crate still disappears, only this time, the asteroid 
+               bounces. Make sure to set the crate back to <i>CLAMP</i> when you're done.</font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><img alt="Frame3" src="images/CollisionsFigure3.png" name="Frame3"><br clear="left">
+      <br>
+      <br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal"
+         align="justify">Displaying Collision Bounds</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3"><span>Deselect all the objects on the screen by clicking on a 
+blank area in the <i>Scene View</i>. In the <i>Edit</i> tab, you'll now see the <i>Debug Rendering </i>section. Open it and select <i>
+                     Collision Bounds</i> <i> as shown below.</i> </span></font></font></p>
+      <br>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">
+      </p>
+      <p style="MARGIN-TOP: 0.08in"><img src="images/CollisionsFigure4.png" name="graphics1" align="left" border="0"><br clear="left">
+      <br clear="left">
+      <br>
+      <p></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">You can now see the 
+               collision bounds (in green) for all the objects on the screen. Specifically, 
+               'collision bounds' are the shapes that Torque uses to check if an object 
+               collides with another object. Notice that currently they are all squares. 
+               Thankfully, there is an easy way to make our objects collide more 
+               realistically: custom collision polygons!</font></font></p>
+      <br>
+      <br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Polygon Collision Detection</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">We'll set up the 
+               asteroid to use polygon collision. What we want to do is change its 'collision 
+               polygon'. An object's collision polygon is the shape that is used to determine 
+               if it collided with something. Select the asteroid. Notice that in the <i>Edit </i>
+               tab the <i>Detection Mode</i> for it is already set to <i>POLYGON</i>. Move 
+               your mouse over the&nbsp;asteroid's sprite in the <i>Scene View</i>, and click 
+               on the far left widget that appears above it - <i>Edit this object's collision 
+                  polygon as shown below</i>. From here, you will want to use the collision editor to modify your scene object's collision polygon. <a class = "componentNoJSLink" href = "../../../Component Tutorials/WYSIWYG Editing/Collision Polygons.html">If you're unsure on how to do this click here.</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('WYSIWYG Editing/Collision Polygons', '0', 'If you\'re unsure on how to do this click here.')"><u>If you're unsure on how to do this click here.</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span></font></font></p>
+<br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><img alt="Frame5" src="images/CollisionsFigure5.png" name="Frame5" align="bottom"><br clear="left">
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">For game purposes, something similar to what you see below
+                will work fine:</font></font></p>
+<br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><img alt="Frame6" src="images/CollisionsFigure6.png" name="Frame6" align="bottom"><br clear="left">
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Now if you place your box slightly to the left of the the 
+               asteroid as shown below, it should bounce off at an angle when 
+               you run the game.</font></font></p>
+<br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><img alt="Frame4" src="images/CollisionsFigure7.png" name="Frame4" align="bottom"><br clear="left">
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Finally, if you want to 
+               give the asteroid some space to bounce around, you can copy and paste more 
+               blocks and even stretch and rotate them to make an environment for the asteroid 
+               to bounce in as shown below. To change scale and rotation, 
+               modify the the <i>Size</i> and <i>Rotation</i> values under the Edit tab with 
+               the object selected.</font></font></p>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/CollisionsFigure8.png" name="graphics8" align="left" border="0" height="299"
+                  width="380"><br clear="left">
+         </span><br clear="left">
+         <br>
+      </P>
+      </p>
+      <P></P>
+      <p></p>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Collision Layers And Collision Groups</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Usually, you don't want 
+               every object in your game colliding with every other object. For instance, you 
+               probably don't want a player's ship to collide with its own missiles, and 
+               likewise you might not want objects in the foreground to collide with objects 
+               in the background. That's what the <i>Collision Layers</i> and <i>Collision Groups </i>
+               properties are for. </font></font>
+      </p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">As far as collisions 
+               go,<i> Collision Layers</i> and <i>Collision Groups </i>operate in a very 
+               similar way. They work together to determine which objects can collide with 
+               each other. By default, an object collides with objects in all layers and in 
+               all groups. By default, all objects start on layer zero and in group zero. To 
+               see <i>Collision Layers</i> and <i>Collision Groups </i>in action, we're going 
+               to make the&nbsp;asteroid <u>not</u> collide with objects in layer 1 or objects 
+               in group 2. Select the&nbsp;asteroid then, in the <i>Edit</i> tab, click the <i>1</i>
+               button in its <i>Collision Layers</i> property to turn it off and then click on 
+               the <i>2</i> in its <i>Collision Groups</i>.</font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><img alt="Frame9" src="images/CollisionsFigure9.gif" name="Frame9" align="bottom"></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Now, select the block 
+               object and go to the <i>Scene Object</i> section in the <i>Edit </i>tab. In 
+               there, change the <i>Layer </i>to "1". Now it is on layer one, and 
+               the&nbsp;asteroid will <u>not</u> collide with objects on layer one. The last 
+               thing we have to do is make&nbsp;a block&nbsp;not collide with objects on layer 
+               zero. Go to&nbsp;a block's <i>Collision</i> properties and click off the <i>0 </i>
+               in <i>Collision Layers</i>. Press <i>Play Scene</i> to see the&nbsp;asteroid 
+               and the block <u>not</u> collide. </font></font>
+      </p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">To see <i>Collision Groups</i>
+               in action, change another block's group to "2" in <i>Scene Object </i>properties 
+               and turn off the <i>0</i> in its <i>Collision Groups</i>. Notice that when one 
+               object touches a second object, the second object must be in the correct layer <u>and</u>
+               group to cause a collision... just one or the other isn't enough. </font></font>
+      </p>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial"></FONT>&nbsp;</P>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Collision and Physics Messages</H3><br>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">The four check boxes at 
+               the top of an object's collision properties, <i>Send/Receive Collisions</i> and <i>
+                  Send/Receive Physics</i> define the object's participation in the collision 
+               system. </font></font>
+      </p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Using these properties 
+               individually (for example, turning <i>Send</i> on but leaving <i>Receive</i> off) 
+               can have some unpredictable effects. Often it will be necessary for you to 
+               experiment to get these settings right. Here's a basic explanation... </font>
+         </font>
+      </p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Objects that have "send 
+               collision" active can be thought of as active colliders while objects that have 
+               "receive collision" active can be thought of as passive colliders. A collision 
+               will only be detected between objects if one of the objects is an active 
+               collider and the other is a passive collider. Keep in mind that an object can 
+               both send and receive collisions.</font></font></p>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">Send and receive 
+               physics are treated slightly differently. Send physics dictates whether or not 
+               the object's default physics response will be used when it is sending the 
+               collision. Receive physics dictates whether or not the object's default physics 
+               response will be used when it is receiving the collision.</font></font></p>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><FONT face="Arial"></FONT>&nbsp;</P>
+      <br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify">Conclusion</H3>
+      <br>
+      <p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none"
+         align="justify"><font face="Arial, sans-serif"><font size="3">This tutorial has 
+               covered some of the basics of collisions in T2D. Collisions can still be quite 
+               complicated; you will probably have a fair amount of experimenting to do in 
+               order to set them up properly in your game. Generally, a completed game will do 
+               a lot of collision handling in script. The features here are good for setting 
+               up prototypes and can often be used in your finished product; however, you will 
+               almost certainly have to handle some part of your collisions outside the Scene Editor.</font></font></p>
+      <div type="FOOTER">
+      </div>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

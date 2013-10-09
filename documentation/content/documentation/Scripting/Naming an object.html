@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 349;
+   parent.leftFrame.expandToItem('tree2', 'doc349');
+   var element = parent.leftFrame.document.getElementById('doc349');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+
+  
+  
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+
+
+
+  
+  
+  
+  
+  <title>Setting an Object's Name</title>
+  <meta content="Tom Eastman" name="author">
+
+
+  
+  
+  <meta content="Short explanation of how to set a name" name="description">
+</head>
+
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Naming Objects</strong></font></font></font></p>
+
+<font size="2"><big>To change or set an object's name from the
+Level Builder, select the object.<br />
+    <br />
+    <table>
+        <tr>
+            <td style="width: 204px">
+                Now, go to the Edit Tab<span style="font-size: 10pt"> <i>(as
+shown in Figure
+1.1.1)</i>.</span>
+<br>
+            </td>
+            <td style="width: 100px">
+
+
+
+<img style="border: 0px solid ; width: 195px; height: 54px; float: left;" alt="The Edit Tab" title="The Edit Tab" src="images/SettingTheClass_02.jpg" name="graphics3"><br clear="left">
+
+
+
+<font size="1"><i><b>Figure 1.1.1</b></i></font>
+            </td>
+        </tr>
+    </table>
+</big> </font>
+<br>
+    <table>
+        <tr>
+            <td style="width: 258px">
+                Next,
+open the Scripting Section and type a name into
+the Name field (I called this object 'pTank') <em>(as shown in Figure 1.1.2).</em>
+            </td>
+            <td style="width: 100px">
+
+
+
+<br>
+
+
+
+<img style="border: 0px solid ; width: 336px; height: 190px; float: left;" alt="Scripting Tab, setting name" src="images/SettingObjectNames_01.jpg" name="graphics2"><br clear="left">
+
+
+
+<font size="2"><i><b><font size="1">Figure
+1.1.2</font></b> </i></font>
+<br>
+            </td>
+        </tr>
+    </table>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<font face="Arial, sans-serif"><font size="2"><br>
+
+
+
+<br>
+
+
+<span style="font-weight: bold;">Brief Explanation of the Name field:<br>
+
+
+<br>
+
+
+</span><span style="font-size: 12pt; font-family: Times New Roman">Once an object is named, it can be accesed anywhere in script by it's name. </span>
+    <br>
+
+
+
+<pre class="code">
+function up()
+{
+   pTank.setLinearVelocity(0,-10);
+}</pre>
+<br />
+    <span style="font-size: 12pt; font-family: Times New Roman">
+
+The name of the object simply resolves into the ObjectID given by the
+engine, but it's still a very easy way to reference common objects in your
+game, like a player.<br>
+    </span>
+
+
+ </font></font>
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

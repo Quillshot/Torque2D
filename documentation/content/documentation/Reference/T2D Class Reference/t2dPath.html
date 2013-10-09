@@ -1,0 +1,1192 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 309;
+   parent.leftFrame.expandToItem('tree2', 'doc309');
+   var element = parent.leftFrame.document.getElementById('doc309');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>t2dPath</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">t2dPath</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+t2dSceneObject
+</li>
+</ul>
+
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">addNode(%position,%location,%rotation,%weight)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">attachObject(%obj,%speed,%dir,%start,%end,%pathMode,%loops,%sendToStart)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">clear()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">detachObject(%object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAttachedObject(S32 index)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the object at the specified index. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAttachedObjectCount()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the number of objects attached to the path. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getEndNode(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFollowMode(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLoops(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMoveForward(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getNode(Int index)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the nodes position, rotation, and weight. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getNodeCount()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getOrient(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPathType()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the interpolation type. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRotationOffset(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSpeed(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getStartNode(object)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeNode(%index)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setEndNode(object, node)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setFollowMode(object, pathMode)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLoops(object, loops)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMoveForward(object, forward)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setOrient(object, orient)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPathType()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the interpolation type for the path. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRotationOffset(object, offset)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSpeed(object, speed)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setStartNode(object, node)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+<h2 class = "variablesHead">Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">pathModeEnum</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">pathType</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoMassInertia</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoMountRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">BlendColor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> ColorF
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">BlendingEnabled</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionActiveReceive</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionActiveSend</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCallback</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCircleScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCircleSuperscribed</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionDetectionMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionGroups</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionLayers</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionMaxIterations</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPhysicsReceive</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPhysicsSend</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPolyList</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> point2FList
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPolyScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionResponseMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">config</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ConstantForce</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ConstantForceGravitic</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">damping</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Density</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">DstBlendFactor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Enabled</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">FlipX</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">FlipY</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ForceScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ForwardOnly</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Friction</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">GraphGroup</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Immovable</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Inertia</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Layer</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Lifetime</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">LinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">LinkPoints</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> point2FList
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Mass</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MaxAngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MaxLinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinAngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinLinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountForce</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountInheritAttributes</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountOffset</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountOwned</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountTrackRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Paused</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Position</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Restitution</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Rotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">scenegraph</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">size</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">SortPoint</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">SrcBlendFactor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">useMouseEvents</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Visible</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitCallback</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMax</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMin</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

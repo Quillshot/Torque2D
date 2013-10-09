@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 24;
+   parent.leftFrame.expandToItem('tree2', 'doc24');
+   var element = parent.leftFrame.document.getElementById('doc24');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Fish Demo Tutorial Part 9</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="AUTHOR" CONTENT="User">
+      <META NAME="CREATED" CONTENT="20050225;10000000">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060728;13581000">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+                     2D - Fish Demo Tutorial - Part 9</B></FONT></FONT></P>
+      </DIV>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>9. 
+                  Adding a Scrolling Wave</B></FONT></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify">&nbsp;</P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><H3><STRONG><FONT face="Arial">9.1 <FONT SIZE="3"><I>Adding our wave</I></FONT></FONT></STRONG></H3></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We now have multiple fish swimming 
+               around. We can also add new fish with all of the proper settings by utilizing 
+               our config datablock. Now we can proceed to add polish to our fish demo. We can 
+               add an extra visual aspect, in the form of a scrolling wave, to make our demo 
+               look much better. You may have seen the wave image in either your <I>Static 
+                  Sprites</I> object library or your <I>Scrollers</I> object library. We can 
+               add it, set its alpha level to make it more transparent, and then give it a 
+               scroll speed so it makes our water look like it's waving.</FONT></FONT></P>
+      <br>
+      
+      <table width = 95%>
+      <tr>
+      <td>  
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-1.jpg" NAME="graphics1" ALIGN="left"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.1</B></I></FONT></P>
+      </td><td width = "25">
+      </td><td>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Find your <I>Scroller</I> object 
+               library. The fourth scroller should be your wave image <I>(as shown in Figure 
+                  9.1.1)</I>. Drag and drop the wave scroller into the center of your level <I>(as 
+                  shown in Figure 9.1.2)</I>. Resize the wave scroller to extend just beyond 
+               the left and right horizontal limits of the level, as well as making it a bit 
+               taller than it is by default. <I>(as shown in Figure 9.1.3)</I>.</FONT></FONT></P>
+      </tr><tr>
+      <td>
+           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-2.gif"
+                  NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.2</B></I></FONT></P>
+            </td><td width = "25">
+      </td><td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-3.gif"
+                  NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.3</B></I></FONT></P>
+      </td>
+      </tr>
+      </table>
+
+      <BR>
+     
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our wave added, it's a 
+               bit too visible. We want our wave to be more transparent, so it's much more of 
+               a subtle effect. To lower its visibility click the <I>Edit</I> tab. Then click 
+               the <I>Blending</I> label to expand the blending options <I>(as shown in Figure 
+                  9.1.4)</I>. Here we can change multiple things that will effect either our 
+               object's color, blending process, or its alpha layer (transparency). To lower 
+               the transparency change the value in the Alpha box to around 150 <I>(as shown in 
+                  Figure 9.1.5)</I>. Now your wave image should look much more transparent.</FONT></FONT></P>
+         <table>
+         <tr>
+         <td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-4.jpg" NAME="graphics4" ALIGN="left"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.4</B></I></FONT></P>
+         </td><td width = "25">
+         </td><td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-5.jpg" NAME="graphics5" ALIGN="left" WIDTH="213" HEIGHT="96"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.5</B></I></FONT></P>
+         </td>
+         </tr>   
+         </table>
+         <br>
+
+        <FONT FACE="Arial, sans-serif"><FONT SIZE="2">With our wave image's 
+               transparency set, we can now make it scroll. This will complete the wave 
+               illusion and effect. To do this click the <I>Scroller</I> label in the edit 
+               panel to expand it, and set its <I>Scroll Speed X</I> to &quot;3&quot; and press enter <I>(as 
+                  shown in Figure 9.1.6)</I>. Now your wave should scroll properly!</FONT></FONT>
+
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure9-1-6.jpg" NAME="graphics6" ALIGN="left" WIDTH="237" HEIGHT="216"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 9.1.6</B></I></FONT></P>
+      <br>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

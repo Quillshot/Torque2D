@@ -1,0 +1,409 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 56;
+   parent.leftFrame.expandToItem('tree2', 'doc56');
+   var element = parent.leftFrame.document.getElementById('doc56');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<TITLE>Torque 2D - Mounting Tutorial</TITLE>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050225;10000000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;17461200">
+	<STYLE> 
+	<!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--> 
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="FONT-SIZE: 16pt"><B>Torque
+	2D - Mounting Tutorial</B></FONT></FONT></P>
+</DIV>
+<H3 class=western style="MARGIN-BOTTOM: 0in" align=justify>Introduction</H3>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>In
+this document, you will learn how to mount objects to each other via
+the Scene Editor. This tutorial covers all the basics of mounting
+and is intended for complete beginners to T2D. Have fun!</FONT></FONT></P>
+<BR>
+<H3 class=western style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" 
+align=justify>New Assets</H3>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Before we continue, we are going to need some additional images and particles. If you have not already done so in a past tutorial, <a class = "componentNoJSLink" href = "../../../Component Tutorials/Adding Assets/Using the Particles Resource.html">click here for instructions on adding the additional assets.</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('Adding Assets/Using the Particles Resource', '0', 'click here for instructions on adding the additional assets.')"><u>click here for instructions on adding the additional assets.</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span></FONT></FONT></P>
+
+<BR>
+
+<H3 class=western style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" 
+align=left>Opening a Project</H3>
+
+<BR>
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>To begin open T2D and load the "TutorialBase" project.</FONT></FONT>
+
+<br>
+<br>
+<table>
+<tr>
+<td>
+	<IMG SRC="images/MountingFigure1a.png" NAME="graphics20" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	1</B></I></FONT>
+</td>
+</tr>
+</table>
+
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+you should see an empty screen with the default T2D loaded content as
+shown below:</FONT></FONT></P>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in">	<P STYLE="MARGIN-TOP: 0.08in">
+    <IMG SRC="images/MountingFigure2.png" NAME="graphics23" ALIGN=left BORDER=0 
+        width="700"><BR CLEAR=left></I></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+scene view background colors might change in the tutorials' figures
+to provide optimal contrast. You can configure the color to your
+liking as well under <B>Edit &gt; Preferences... </B><SPAN >in
+the  Scene Editor tab.</SPAN> With that out of the way, <SPAN >l</SPAN>et's
+create a simple example! </FONT></FONT></P>
+<BR><BR>
+<H3 class=western style="MARGIN-BOTTOM: 0in" align=justify>Make it Rain</H3>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>From
+the static sprites rollout, drag the <B>cloudsImageMap</B>  
+&nbsp;into the scene view and inside the thick dark blue-lined rectangle
+overlayed on the grid. This rectangle is called the camera view as shown below.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify margin-top: 0.08in?><IMG SRC="images/MountingFigure3.png" NAME="graphics11" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Increase
+the size of the image slightly. After that, scroll down in the Create
+Tab to the particle effects rollout. Find the <B>rain.eff</B> effect
+and drag that into the scene view as well. Increase the horizontal
+size of the rain so it matches the length of the large cloud. In the
+quick access button list  that appears above a selected object when
+the mouse is over it, find the mount button as shown below. </FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure4.png" NAME="graphics12" ALIGN=left BORDER=0><BR CLEAR=left>
+	<FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR><BR><BR>
+<P></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>After
+you click the button, the particle effect's midpoint is now attached
+to the cursor. Left click on the lower portion of the cloud to
+complete the mounting operation as shown below.</FONT></FONT></P>
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">	
+      <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure5.png" NAME="graphics13" ALIGN=left WIDTH=285 HEIGHT=212 BORDER=0><BR CLEAR=left><FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>If you wish to check if
+the particle effect is truly mounted, select the cloud. In the quick
+edit tab, press the &quot;Edit this objects link points&quot;
+button. You should now see a small
+block with the number 0 where you originally clicked to mount the
+particle effect. </FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure6.png" NAME="graphics7" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1></FONT></P>
+<BR CLEAR=left>
+<P></P>
+
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure7.png" width="367" height="207"><BR CLEAR=left>
+	  <FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+<P CLASS="western" ALIGN=left STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Click save in the Linkpoint Editor to continue.</FONT></FONT></P>
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure8.png" NAME="graphics9" ALIGN=left BORDER=0><BR CLEAR=left>
+<BR CLEAR=left><BR>
+<P></P>
+<BR>
+
+
+<BR>
+
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now drag the cloud over
+to the top right corner of the camera view. As you can see, the rain
+followed as well. Click on the Edit Tab and find the Physics rollout.
+When you've found it, change the Velocity in X to -10.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure9.png" NAME="graphics18" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Save your scene with whatever name you wish. <a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Saving a Level.html">If you do not know how to save your scene, click here.</a><a id = "componentLink1" class = "componentLink" onClick = "loadComponent('Levels/Saving a Level', '1', 'If you do not know how to save your scene, click here.')"><u>If you do not know how to save your scene, click here.</u></a><span class = "componentBox" ID = "componentTag1" style="overflow:hidden;display:none;"></span> <br>
+<br>
+Now press
+the play button in the toolbar <a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Playing a Level.html">(click here if you do not know where the play button is)</a><a id = "componentLink2" class = "componentLink" onClick = "loadComponent('Levels/Playing a Level', '2', '(click here if you do not know where the play button is)')"><u>(click here if you do not know where the play button is)</u></a><span class = "componentBox" ID = "componentTag2" style="overflow:hidden;display:none;"></span>. The cloud and rain, which is mounted
+to the cloud, are moving across the screen! With object mounting it
+is easy to have multiple, now connected objects share similar
+properties, like velocity values as shown below.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/MountingFigure10.png" NAME="graphics19" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1></FONT></P>
+<BR CLEAR=left><BR>
+<P></P>
+
+<BR>
+<H3 class=western style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always" 
+align=justify>The Next Scene</H3>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Good job, we have the
+basics now covered. Ready to learn some more advanced mounting
+techniques? Start off by creating a new scene. 
+
+<BR>
+
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now you have a fresh, new
+scene to work in (all within the same project of course). Scroll
+down to the rollout called Other in the Create Tab. The first object
+of the three shown is called a
+SceneObject. A t2dSceneObject is the base class from which all
+objects, like static sprites, are derived. Drag the SceneObject into
+the middle of the screen, preferably at location (0,0).</FONT></FONT></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure11.png" width="288" height="135"><BR CLEAR=left>
+<BR CLEAR=left><BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>After you have done that,
+you should see a bordered square.</FONT></FONT></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure12.png" width="191" height="208"><BR CLEAR=left>
+<BR CLEAR=left><BR>
+
+
+
+
+<BR>
+
+<H3 class=western style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always" 
+align=justify>A Different Way to Mount</H3>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The following will be a
+slightly different way to mount objects. In the
+quick access button list, select the edit link points button.</FONT></FONT></P>
+
+
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure13.png" width="186" height="195"><BR CLEAR=left>
+<BR CLEAR=left>
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure14.png" width="566" height="566"><BR CLEAR=left>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>		</FONT></FONT>
+
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>				
+    </B></I></FONT></FONT>
+</P>
+<BR>
+
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Click in the center of
+the square to add a link point. You add a link point by simply
+clicking anywhere on this object, the link point will be added
+automatically. This will be given the number 0 as seen above.
+Click on the selection tool or hit Enter to return to the Scene Editor. Now, drag the <B>particlebeam.eff</B>, found in the Particle
+Effects rollout, and place it next to your SceneObject.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure15.png" width="334" height="177"><BR CLEAR=left>
+<BR CLEAR=left><BR>
+<P></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>In the particle beam's
+quick access button list, click on the mount button. When the particle is mounted to your cursor for
+placement, notice the yellow crosshairs where we placed our link
+point in the SceneObject.</FONT></FONT></P>
+<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0in"><img src="images/MountingFigure16.png" width="191" height="213"><BR CLEAR=left>
+<FONT FACE="Times New Roman, serif">
+
+</P>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When you bring the cursor
+close to the crosshairs, it will snap to those coordinates. Click
+again with your mouse to complete the mounting operation.</FONT></FONT></P>
+
+<BR>
+<H3 class=western style="MARGIN-BOTTOM: 0in" align=justify>Working the Edit 
+Tab</H3>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's learn a bit more
+about how to modify mounted objects using the Scene Editor. Click on
+the SceneObject. If it is hard to select from the scene view, you can
+always select the object from the Project Tab, under the Object Tree.
+Once you have the SceneObject selected, click on the Edit Tab and
+open up the Mounting rollout. Inside there will be two editable
+fields.</FONT></FONT></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure17.png" width="504" height="122"><BR CLEAR=left>
+<BR CLEAR=left><BR>
+<P></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The first field,
+Rotation, will rotate <I>the mounted object or mount system</I>. <B>An
+important point</B>: the SceneObject will not be rotated, only the
+particle effect that is mounted to it.</FONT></FONT></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure18.png" width="504" height="122"><BR CLEAR=left>
+<BR CLEAR=left><BR>
+<P></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The next field, Auto
+Rotation, sets the degrees per second rotation of the particle effect. Try it out, you can see it rotate
+within the scene view. Leave it rotating for the next part.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure19.png" width="211" height="76"><BR CLEAR=left>
+<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure20.png" width="206" height="164"><BR CLEAR=left>
+<BR>
+<P></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that we have seen
+what we can edit from the SceneObject, let's look at the options in
+the Mounting rollout for the particle itself. Select the particle
+effect and go to the Edit Tab again. Under this particular Mounting
+rollout, we have a few more options.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Rotation and Auto
+Rotation</B> will not do anything if modified because these fields
+only apply to the object that we <I>mounted to</I>, not the object
+that is <I>mounted</I>. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Mount Force</B> is the
+force constantly applied to the object allowing it to 'chase' the
+specified mount point. A force of 0 indicates that the mount is rigid
+and will track the mount-point perfectly every frame.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The <B>Track Rotation</B>
+checkbox specifies that this object should always track the target's
+rotation when checked. If you uncheck this box, you can see that the
+particle effect stops rotating. Check it again and it will continue
+to rotate.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Owned By Mount</B>,
+when checked, indicates whether the object is to be owned by the
+object it's <I>mounting to</I>.  What this means is that when the
+object that we’re <I>mounting to</I> is deleted, this object is
+automatically deleted. This is extremely useful for objects that are
+<I>mounted</I> that you don’t want to explicitly track. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>If you check<B> Inherit
+Attributes</B>, this indicates whether the object inherits attributes
+from the object being <I>mounted to</I>.  At the moment, the
+following attributes are inherited: Enabled, Visible, Paused and
+Flip.</FONT></FONT></P>
+
+<BR>
+<H3 class=western style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" 
+align=justify>Conclusion</H3>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Hopefully you have a
+better understanding now of mounts and the T2D mounting system. As a
+final note for this tutorial, in our last example we rotated an
+object at the center of the square SceneObject box. This is also
+known as it's pivot point. Any mounted object, regardless of where
+the mount point is, will rotate around this pivot point. This means,
+if you mounted the particle effect towards the edge of the square and
+set it to rotate, it does not rotate around the mount point where
+you clicked, but instead around the pivot point in the center of the
+square. This is an intended feature of
+T2D and not a bug. </FONT></FONT></P>
+
+
+</SPAN><BR CLEAR=left>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><img src="images/MountingFigure21.png" width="450" height="450"><BR CLEAR=left>
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

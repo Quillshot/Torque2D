@@ -1,0 +1,201 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 19;
+   parent.leftFrame.expandToItem('tree2', 'doc19');
+   var element = parent.leftFrame.document.getElementById('doc19');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Demo Tutorial Part 4</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060728;13514300">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<p>
+   <DIV TYPE="HEADER">
+      <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+                  2D - Fish Demo Tutorial - Part 4</B></FONT></FONT></P>
+   </DIV>
+   <BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>4. 
+            Making our Fish Swim</B></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+   <H4><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>4.1 Adding our first script</B></I></FONT></FONT></H4>
+<P></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT SIZE="2">To make our fish swim we need to add some script. To do this, 
+      browse out to your project folder, wherever you created it, and then to the 
+      gameScripts folder, <I>MyFishDemo/game/gameScripts/</I>.
+      In this folder you should see a <I>game.cs</I> file. The &quot;.cs&quot; extension means 
+      it's a <I>TorqueScript</I> file.
+      Open up the file in any text editor (Windows users can right click and choose <I>Open 
+         With</I> and use Notepad or Wordpad (be sure <B><I>not</I></B> to use 
+      Microsoft Word); Mac users can control click and choose <I>Open With</I> and 
+      use TextEdit).&nbsp; 
+      You should see the following data in your <I>game.cs</I>.</FONT></P>
+<BR>
+<pre class="code">
+//---------------------------------------------------------------------------------------------
+// Torque 2D
+// Copyright (C) GarageGames.com, Inc.
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+// startGame
+// All game logic should be set up here. This will be called by the Scene Editor when you
+// select "Run Game" or by the startup process of your game to load the first scene.
+//---------------------------------------------------------------------------------------------
+function startGame(%level)
+{
+   // Set The GUI.
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+   
+   moveMap.push();
+   
+   if( isFile( %level ) || isFile( %level @ ".dso"))
+      sceneWindow2D.loadLevel(%level);
+}
+
+//---------------------------------------------------------------------------------------------
+// endGame
+// Game cleanup should be done here.
+//---------------------------------------------------------------------------------------------
+function endGame()
+{
+   sceneWindow2D.endLevel();
+   moveMap.pop();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This script file has some of the base 
+         functions that are called when we test our scene from the <I>Scene Editor</I>. 
+         When you click the <I>Play </I> button, the <I>startGame()</I> function is 
+         called. What we need is a way to integrate our object from the Scene Editor
+         with our scripts in this file. We can do this with what we call script <I>classes</I>. 
+         We create a class for our fish and then assign it to our fish object, in our 
+         level. Once our fish is in that class, it then will automatically get a 
+         specific function called whenever our fish is loaded into the level (which 
+         happens when we play our level). This function is appropriately called 
+         "onLevelLoaded". Add this function to the end of your <I>game.cs </I>file 
+         (right after the end of the endGame function).</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function FishClass::onLevelLoaded(%this, %scenegraph)
+{
+
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.1.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now as you may notice, we start with 
+         the keyword <I>function</I>, which tells <I>T2D</I> that we are beginning a 
+         function declaration. Then we follow with our class name <I>FishClass</I>. This 
+         means that this function will be attached to the <I>FishClass</I> class, and 
+         since our fish will be using the <I>FishClass</I> class, our fish will have 
+         access to this function. Then we get to the actual function name (<I>onLevelLoaded()</I>) 
+         which you might have guessed gets called when our fish gets loaded into the 
+         scene. After the function name we have two comma-separated values inside of 
+         parentheses. These are values that will be passed to this function, and which 
+         could be useful. The <I>%this</I> value represents the object that this 
+         function is being called on. That value is useful when we have multiple objects 
+         using the same class. It represents the specific <I>instance</I> of the class 
+         calling this function. The <I>%scenegraph</I> value is useful as well, since it 
+         represents our scene object. Everything in our scene is inside of the <I>scenegraph</I>
+         object. Here is a breakdown of what our function script means.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <IMG SRC="images/FishDemoTutorial4TextBox1.gif" ALIGN="left"> <IMG SRC="images/FishDemoTutorial4TextBox2.gif" ALIGN="left">
+   <IMG SRC="images/FishDemoTutorial4TextBox3.gif" ALIGN="left"> <IMG SRC="images/FishDemoTutorial4TextBox4.gif" ALIGN="left">
+   <IMG SRC="images/FishDemoTutorial4TextBox5.gif" ALIGN="left"><BR>
+   <BR>
+</P>
+<pre class="code">
+<FONT COLOR="#000080">function</FONT><FONT COLOR="#b80047"> FishClass</FONT>::<FONT COLOR="#008000">onLevelLoaded</FONT>(<FONT COLOR="#000000">%this</FONT>, <FONT COLOR="#0000ff">%scenegraph</FONT>)
+{
+
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">In this <I>onLevelLoaded()</I> function 
+         we're going to get our fish to start moving. To do this, we can place a call to 
+         set its velocity along the X axis. So make your <I>onLevelLoaded()</I> function 
+         look like this.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function FishClass::onLevelLoaded(%this, %scenegraph)
+{
+   %this.setLinearVelocityX(20);
+}
+</pre>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.1.2</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Be sure to save your game.cs script 
+         file. Now our final step is to set our fish's class in our scene. That way this 
+         script is triggered upon loading.</FONT></FONT>
+   <BR>
+   <BR>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Setting our fish's class</B></I></FONT></FONT>
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Set&nbsp;the fish's class to 
+         "FishClass".
+      </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we should be able to test our 
+         scene. Save the scene.
+        &nbsp; Then 
+         Play the scene.
+         </FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">After pressing the play button you 
+         should see your fish go between the rock layers <I>(as shown in Figure 4.2.5), and </I>
+         swim off of the right side of the screen. </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure4-2-5.gif" NAME="graphics5" ALIGN="left" BORDER="0" width="414"
+      height="155"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 4.2.5</B></I></FONT></P>
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

@@ -1,0 +1,290 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 340;
+   parent.leftFrame.expandToItem('tree2', 'doc340');
+   var element = parent.leftFrame.document.getElementById('doc340');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>Video</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">Video</h8>
+<span class = "classDescription">
+<span class = "descriptionTitleText">Description:</span> Video control functions. 
+</span>
+
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">getDesktopResolution()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the width, height, and bitdepth of the screen. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getDisplayDeviceList()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRes()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the width, height, and bitdepth of the screen. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getResolutionList()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getVideoDriverInfo()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isDeviceFullScreenOnly(string deviceName)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isFullScreen()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Is the game running full-screen? 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">minimizeWindow()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Minimize the game window 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">nextResolution()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Switch to next resolution. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">prevResolution()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Switch to previous resolution. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">restoreWindow()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Restore the game window 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDisplayDevice(string deviceName, int width, int height=NULL, int bpp=NULL, bool fullScreen=NULL)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Attempt to set the screen mode using as much information as is provided. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRes(int width, int height, int bpp=NULL)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setScreenMode(int width, int height, int bpp, bool fullScreen)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setVerticalSync(bool f)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">switchBitDepth()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Switch between 16 or 32 bits. Only works in full screen. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">toggleFullScreen()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">videoSetGammaCorrection()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> setGammaCorrection(gamma); 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

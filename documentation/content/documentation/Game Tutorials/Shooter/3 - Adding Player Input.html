@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<tooltip><HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 36;
+   parent.leftFrame.expandToItem('tree2', 'doc36');
+   var element = parent.leftFrame.document.getElementById('doc36');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Shooter Tutorial Part 3</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;16590300">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">Keyboard Input</tooltip><minVersion>1.1</minVersion>
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in; FONT-STYLE: normal">
+      <FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 17pt"><B>Torque 
+      2D - Shooter Tutorial - Part 3</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>3. Adding 
+            Player Input</B></FONT></FONT></P>
+<BR>
+<H2 CLASS="western">3.1 Class Setup</H2>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Good, we now have our sky set up, as 
+         well as our player's ship in the level. However, there isn't anything for a 
+         player to do in the game so far. This section of the tutorial deals with adding 
+         player input into the game. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">First, we will give the player's ship 
+         the ability to move around the game world. To refer to our ship in code, we 
+         need to give it a name and a class. To do that, we need to select our ship and 
+         go into the Edit tab. Once we are in our edit tab we need to collapse the Scene 
+         Object rollout and expand the Scripting rollout <I>(as shown in Figure 3.1.1)</I>.
+      </FONT></FONT>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-1-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.1.1</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">You will notice that there are only six 
+         options in this rollout. For right now, we are only going to use the first two: 
+         Name and Class. The name of an object is what you will call it when you program 
+         in Torque Script. The class is basically the group your object belongs to. 
+         Every object with the same class will be able to do the same things. So, in the 
+         Name and Class options, you will need to type in a name for your ship and a 
+         class for your ship. If you are unfamiliar with programming, I suggest that you 
+         name your ship and class the same as myself so that the code we will be using 
+         later won't have to be changed to fit your ship. For my project, I named my 
+         ship &quot;pShip&quot; and my class &quot;playerShip&quot; <I>(as shown in Figure 3.1.2)</I>. </FONT>
+   </FONT>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-1-2.jpg" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.1.2</B></I></FONT></P>
+<P STYLE="MARGIN-TOP: 0.08in">&nbsp;</P>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2"><FONT FACE="Arial, sans-serif">Now that 
+         you have set up your ship to have a name and a class, you can direct what your 
+         ship can do with code. To start with, we are going to give our player the 
+         ability to move their ship around the screen. To do that, we need to save our 
+         level, exit out, and do a little coding in a text editor or equivalent program. </FONT>
+      Before we exit we want to make sure we save out our level properly, so that 
+      when we load up T2D again we have our ship already placed and with its class 
+      already set. </FONT></FONT>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="left" STYLE="MARGIN-BOTTOM: 0in"><FONT SIZE="2">Save your 
+      level with whatever name you want.
+      Once you have your level saved correctly, you can safely exit T2D and get ready 
+      to do some scripting.</FONT>
+   <br>
+   <br>
+   <br>
+</P>
+<H2 CLASS="western">3.2 Scripting Movement</H2>
+<BR>
+<TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+   <COLGROUP>
+      <COL WIDTH="256">
+         <THEAD>
+            <TR>
+               <TD WIDTH="100%" VALIGN="top" BGCOLOR="#00ff00">
+                  <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>***Note***</B></FONT></FONT></P>
+                  <P CLASS="western" ALIGN="left"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">If you do 
+                           not have a TorqueScript editor such as Torsion or TorqueDev, you can easily 
+                           edit TorqueScript in a simple text editor such as Notepad. You should never 
+                           edit code in a program such as Microsoft Word ©.
+                           </FONT></FONT>
+                  </P>
+               </TD>
+            </TR>
+         </THEAD>
+</TABLE>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Browse out to your 
+         &quot;games/yourProjectName/gameScripts&quot; folder. This is where your game scripts 
+         should be located. Since we haven't created any scripts for our game yet, we 
+         should only see a &quot;game.cs&quot; file (.cs is the Torque Script file extension). 
+         This folder is where we will create all of our additional script files that 
+         make up our game. Create a text file in this folder and name it &quot;player.cs&quot;. Be 
+         sure that when you create your file you add that .cs extension so T2D will 
+         recognize it as a script file. Now you can open your newly created &quot;player.cs&quot; 
+         in any text editing program (Windows users can right click and choose &quot;Open 
+         With&quot; and use notepad or wordpad, Mac users can control click and choose &quot;Open 
+         With&quot; and use TextEdit). If you remember we set our ship's class to 
+         &quot;playerShip&quot; so we are going to add the following function to our player.cs:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function playerShip::onLevelLoaded(%this, %scenegraph)
+{
+   //set the player's ship name to the instance
+   $pShip = %this;
+
+
+   moveMap.bindCmd(keyboard, "w", "pShipUp();", "pShipUpStop();");
+   moveMap.bindCmd(keyboard, "s", "pShipDown();", "pShipDownStop();");
+   moveMap.bindCmd(keyboard, "a", "pShipLeft();", "pShipLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "pShipRight();", "pShipRightStop();");
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 3.2.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">This 
+         function does two things. First, it sets up our script so that when you see 
+         %this in code, it refers to our player ship in our level. Secondly, it binds 
+         the &quot;w&quot;, &quot;a&quot;, &quot;s&quot;, and &quot;d&quot; keys to some movement functions that we haven't 
+         created yet, one function when the player presses down on the key, another when 
+         they let up on the key. Let's create our movement functions right now. </FONT>
+   </FONT>
+</P>
+<BR>
+<BR>
+<TABLE WIDTH="577" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+   <COLGROUP>
+      <COL WIDTH="567">
+         <THEAD>
+            <TR>
+               <TD WIDTH="567" VALIGN="top" BGCOLOR="#00ff00">
+                  <P CLASS="western" ALIGN="center" STYLE="BACKGROUND: #00ff00"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>***Note***</B></FONT></FONT></P>
+                  <P CLASS="western" ALIGN="left" STYLE="BACKGROUND: #00ff00">
+                     <FONT FACE="Arial, sans-serif"><FONT SIZE="2">If you are editing script in a text 
+                           editor such as notepad, it is good to note that when you save your file to make 
+                           sure that you are saving it as a .cs file. Oftentimes you can accidentally save 
+                           a file as scriptFile.cs.txt - meaning that it is a text file. Make sure that 
+                           your text editor recognizes your script files as such, or else they won't work 
+                           when you try to run them. </FONT></FONT>
+                  </P>
+               </TD>
+            </TR>
+         </THEAD>
+</TABLE>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Add 
+         this code right below the onLevelLoaded function.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function pShipUp()
+{
+   $pShip.moveUp = true;
+   $pShip.updateMovement();
+}
+
+
+function pShipDown()
+{
+   $pShip.moveDown = true;
+   $pShip.updateMovement();
+}
+
+
+function pShipLeft()
+{
+   $pShip.moveLeft = true;
+   $pShip.updateMovement();
+}
+
+
+function pShipRight()
+{
+   $pShip.moveRight = true;
+   $pShip.updateMovement();
+}
+
+
+function pShipLeftStop()
+{
+   $pShip.moveLeft = false;
+   $pShip.updateMovement();
+}
+
+
+function pShipRightStop()
+{
+   $pShip.moveRight = false;
+   $pShip.updateMovement();
+}
+
+
+function pShipUpStop()
+{
+   $pShip.moveUp = false;
+   $pShip.updateMovement();
+}
+
+
+function pShipDownStop()
+{
+   $pShip.moveDown = false;
+   $pShip.updateMovement();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 3.2.2</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">These 
+         functions handle movement for the ship. Basically whenever your player presses 
+         a key, it accesses the appropriate movement function, sets a movement variable 
+         to &quot;true&quot;, and accesses a new function called updateMovement(), which doesn't 
+         exist yet. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">The 
+         updateMovement() function should go right after your onLevelLoaded function but 
+         before your 8 movement functions:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function playerShip::updateMovement(%this)
+{
+   if(%this.moveLeft)
+   {
+      %this.setLinearVelocityX( -$pShip.hSpeed );
+   }
+
+
+   if(%this.moveRight)
+   {
+      %this.setLinearVelocityX( $pShip.hSpeed );
+   }
+   if(%this.moveUp)
+   {
+      %this.setLinearVelocityY( -$pShip.vSpeed );
+   }
+   if(%this.moveDown)
+   {
+      %this.setLinearVelocityY( $pShip.vSpeed );
+   }
+   if(!%this.moveLeft &amp;&amp; !%this.moveRight)
+   {
+      %this.setLinearVelocityX( 0 );
+   }
+   if(!%this.moveUp &amp;&amp; !%this.moveDown)
+   {
+      %this.setLinearVelocityY( 0 );
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 3.2.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This update movement function is what 
+         makes the whole thing work. What it basically does is read the input given by 
+         any of the movement functions and decides which direction and speed to move the 
+         player. It also waits until a key is released and then stops the ship. </FONT>
+   </FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our code completely 
+         written, we need to tell the engine to run player.cs when it runs the game. To 
+         do this, exec player.cs from game.cs by adding the line below to your 
+         startGame() function.&nbsp;
+         </FONT></FONT></P>
+<BR>
+<pre class="code">
+exec("./player.cs");
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 3.2.4</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This line of code basically tells your 
+         game to run whatever is in your player.cs file when the game starts. Now I want 
+         to draw your attention to these lines of code that we wrote in our 
+         updateMovement function in our player.cs file :</FONT></FONT></P>
+<BR>
+<pre class="code">
+%this.setLinearVelocityX( $pShip.hSpeed );
+%this.setLinearVelocityY( -$pShip.vSpeed );
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 3.2.5</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">You will notice that we are setting our 
+         velocity to hSpeed and vSpeed, two variables that don't exist yet. We need to 
+         create these variables for our ship before our ship will move around. Luckily, 
+         the Level Builder has an easy way to add variables to an object.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">First, you will need to open up your 
+         project in the Level Builder again and select your ship. Once you have your 
+         ship selected you need to go back into the edit tab and find the Dynamic Fields 
+         rollout at the bottom of the list <I>(as shown in Figure 3.2.1)</I>. <I><B>Note: </B>
+            You may need to resize your right panel, by dragging outwards, to see the plus 
+            button.</I></FONT></FONT></P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-2-1.jpg" NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.2.1</B></I></FONT></P>
+<BR CLEAR="left">
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">You will notice that the Dynamic Fields 
+      rollout only has two things to do, add a field name, and a value for that 
+      field. With this option, you can add any variables to any object and set their 
+      value. This is useful because when you are testing gameplay, it is a lot easier 
+      to tweak with values found in the Level Builder than to search through pages of 
+      code trying to find where you used your variables. For our ship, we will be add 
+      hSpeed with a value of 100 and vSpeed with a value of 80.<I>(as shown in Figure 
+         3.2.3)</I>.&nbsp;</FONT></FONT>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-2-3.jpg" NAME="graphics6" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.2.3</B></I></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">You 
+         will notice that when you create a variable you can no longer affect its name. 
+         However, you can still affect the value of that variable, which is why it is 
+         useful. </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now 
+         that we have our ship's code ready, it is time to Play it!&nbsp;</FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Once you are inside your game, you 
+         should be moving around smoothly! If you aren't moving like you are supposed to 
+         be, make sure that your code matches mine and that your variables are named 
+         correctly. When you get your ship working, you may want to tweak your speeds to 
+         get something you are happy with, thanks to them being dynamic fields, they can 
+         be easily changed in the Level Builder. </FONT></FONT>
+</P>
+<BR>
+<H2 CLASS="western">3.3 Setting Some Limits</H2>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">If 
+         you play around for a minute, you may notice that you can fly right off the 
+         map! This could very easily ruin gameplay since the player may lose their ship 
+         off the edge of the screen and not know where it is - or cheat and fly above 
+         the enemies. This is an easy fix, you simply have to adjust the world limits 
+         for this object. Make the world limits just inside the camera view </FONT></FONT>
+   <FONT SIZE="2"><I>(as shown in Figure 3.3.3)</I>.&nbsp;</FONT>
+</P>
+<BR>
+<table>
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"></P>
+      </td>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-3-3.jpg" NAME="graphics9" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 3.3.3</B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">When you have your world limit for you 
+      ship sized , we need to tell your ship how they need to react to the world 
+      limit. Click the selection tool to exit your world limit mode. Click on your 
+      ship to select it and go into the edit tab. Once you are there, find the World 
+      Limits rollout <I>(as shown in Figure 3.3.4)</I>.</FONT></FONT>
+<BR>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-3-4.jpg" NAME="graphics10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.3.4</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT SIZE="2"><FONT FACE="Arial, sans-serif">In 
+         this rollout we can tell our objects how they should react when colliding with 
+         the world limit box we just set up. Presently mine was set to OFF, however, 
+         since I want the ship to be bound by the limit, I need to change my Limit Mode 
+         to CLAMP <I>(as shown in Figure 3.3.5)</I>. What CLAMP means is that it will 
+         simply stop me when I hit the side. If you want to see what the other Limit 
+         Modes do, simply select them and test them. Though some effects are interesting 
+         to say the least, you will quickly understand why we chose CLAMP. Now that we 
+         have our player in the game, we should give him some opponents. </FONT></FONT>
+   <BR>
+   <BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure3-3-5.jpg" NAME="graphics11" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 3.3.5</B></I></FONT></P>
+<br>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>

@@ -1,0 +1,587 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 29;
+   parent.leftFrame.expandToItem('tree2', 'doc29');
+   var element = parent.leftFrame.document.getElementById('doc29');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D- Fish Game Tutorial Part 4</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;11520200">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Game Tutorial - Part 4</B></FONT></FONT></P>
+</DIV>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>4. 
+            Adjusting Movement</B></FONT></FONT></P>
+<H3>
+   <BR>
+   4.1 Making our fish face the proper direction
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">One of the initial problems you have 
+         probably noticed, is that when we move our fish left and right it still faces 
+         the same direction. Fixing this is quite simple, and will require only a couple 
+         of lines of script. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Browse out to your <I>MyFishGame/gameScripts</I>
+         folder to find the <I>player.cs</I> script we created in part 2. Open <I>player.cs</I>
+         in any unformatted text editor or your favorite Script Editor (Notepad or 
+         TextEdit works just fine). We want to alter the facing of the fish object when 
+         we move left and right. Start by locating the <I>fishPlayerLeft()</I> function. 
+         It should look like this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerLeft()
+{
+   $FishPlayer.setLinearVelocityX( -30 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.1.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">To handle issues like this, T2D has 
+         a nice set of methods called <I>setFlip</I>. These methods flip the image in 
+         either the X and/or Y direction by passing it either a &quot;true&quot; or &quot;false&quot; value. 
+         If you pass it false, then it disables the flip and restores the image to it's 
+         default direction. If you pass it true, then it flips the image in whichever 
+         direction you specify (by calling <I>setFlipX(true/false)</I> or <I>setFlipY(true/false)</I>). 
+         When we move right we want the fish to be facing its default direction, so we 
+         can call the flip function with &quot;false&quot; to ensure it is flipped back to its 
+         default direction. Replace the <I>fishPlayerLeft()</I> function with this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerLeft()
+{
+   $FishPlayer.setFlipX(true);
+   $FishPlayer.setLinearVelocityX( -30 );
+}
+
+
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.1.2</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">As 
+         you can see, we set its <I>flipX</I> to &quot;true&quot;, so that it will face the 
+         flipped direction of left when we move left. This means that we need to add a <I>setFlipX(false)</I>
+         to the function called when we move right. So replace your <I>fishPlayerRight()</I>
+         function with this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerRight()
+{
+   $FishPlayer.setFlipX(false);
+   $FishPlayer.setLinearVelocityX( 30 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.1.3</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<FONT SIZE="2"><FONT FACE="Arial, sans-serif">Now, when we move left or right our 
+      fish should be facing the appropriate direction. Be sure to save your script 
+      file, then fire up T2D and play the level to test it. Press the <I>d</I> 
+      key to move right, and our fish should now face the proper direction. Press <I>a</I>
+      to move left, and our fish should be flipped back to its default direction, 
+      facing left. </FONT></FONT>
+<H3>
+   <BR>
+   <BR>
+   <BR>
+   4.2 Cleaning up movement integration
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now is a good time to clean up some of 
+         our movement integration since we are already working on movement script. The 
+         main thing that will make our game easier to tweak, is making our fish's speed 
+         configurable in the <I>Level Builder</I>. There are two steps in this process. 
+         First, we must replace all of our calls that set the velocity. Instead of 
+         setting a hard coded number, we need to reference a value stored on the fish 
+         object. Second, we need to set the speed on the object in the <I>Level Builder</I>.
+      </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">If you look at our four move functions, 
+         you will see that when moving horizontally we set the speed to either 30 or 
+         -30, and when moving vertically we set the speed to half that at 15 and -15. So 
+         instead of calling the velocity functions with those values, let's create two 
+         new values that reside on the object. Start by replacing your <I>fishPlayerLeft()</I>
+         function with this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerLeft()
+{
+   $FishPlayer.setFlipX(true);
+   $FishPlayer.setLinearVelocityX( -$FishPlayer.hSpeed );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.2.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, we replaced the hard 
+         coded call that set the velocity to a &quot;30&quot; speed value, with the reference 
+         &quot;$FishPlayer.hSpeed&quot;. This is a reference to the horizontal speed we will store 
+         on the fish object. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Repeat this step to replace your right, 
+         up, and down movement functions with the following.</FONT></FONT></P>
+<pre class="code">
+function fishPlayerUp()
+{
+   $FishPlayer.setLinearVelocityY( -$FishPlayer.vSpeed );
+}
+
+
+function fishPlayerDown()
+{
+   $FishPlayer.setLinearVelocityY( $FishPlayer.vSpeed );
+}
+
+
+function fishPlayerRight()
+{
+   $FishPlayer.setFlipX(false);
+   $FishPlayer.setLinearVelocityX( $FishPlayer.hSpeed );
+}
+
+</pre>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 4.2.2</B></I></FONT></FONT>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, we reference a <I>hSpeed</I>
+         and <I>vSpeed</I> value on the fish object itself. Note that we still keep the 
+         negative sign to invert the speed for moving in the opposite directions. </FONT>
+   </FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT SIZE="2"><FONT FACE="Arial, sans-serif">Our final step is to create the <I>hSpeed</I>
+         and <I>vSpeed</I> variables, and to set their values in the Level Builder. This 
+         is extremely easy and will only take a few clicks. Open up your <I>T2D,</I> and 
+         you should be presented with your level. Now select your fish and add 'hSpeed' 
+         as a dynamic field with a value of 30. Next, add 'vSpeed' as a dynamic field 
+         with a value of 15. <i>(as shown in Figure 4.2.5).</i>&nbsp;</FONT></FONT>
+   <BR>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure4-2-5.jpg" NAME="graphics6" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 4.2.5</B></I></FONT></P>
+<H3>
+   <BR>
+   <BR>
+   4.3 Adding a movement boost
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our fish moving 
+         properly, as well as moving off of values set on the fish object let's add a 
+         movement boost to our fish. When we press a certain key, let's increase our 
+         fish's speed three-fold. To do this, we are going to repeat the same process of 
+         adding our movement keys. We need to add a <I>bind</I> script line to bind our 
+         key to the boost function. Then we need to add the function that gets called 
+         when we press and release the key, which will toggle the speed on and off 
+         between three times normal and the normal amount. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Browse to your <I>MyFishGame/gameScripts</I>
+         folder again and open up your <I>player.cs</I> script file. Right now the first 
+         function in this file (the <I>onLevelLoaded()</I> function) should look like 
+         this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function PlayerFish::onLevelLoaded(%this, %scenegraph)
+{
+   $FishPlayer = %this;
+
+
+   moveMap.bindCmd(keyboard, "w", "fishPlayerUp();", "fishPlayerUpStop();");
+   moveMap.bindCmd(keyboard, "s", "fishPlayerDown();", "fishPlayerDownStop();");
+   moveMap.bindCmd(keyboard, "a", "fishPlayerLeft();", "fishPlayerLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "fishPlayerRight();", "fishPlayerRightStop();");
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.3.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We need to add another <I>moveMap.bindCmd()</I>
+         function call to the end. Add this line of script after the last <I>moveMap.bindCmd()</I>
+         call and before the ending curly brace (<I>}</I>).</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+moveMap.bindCmd(keyboard, "space", "fishPlayerBoost();", "fishPlayerBoostStop();");
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.3.2</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This is set up the same way the 
+         previous binds were set up. We are binding the keyboard &quot;space&quot; key (space bar) 
+         to call <I>fishPlayerBoost()</I> when pressed, and <I>fishPlayerBoostStop()</I> 
+         when released. Now, let's create the functions called fishPlayerBoost(), and 
+         fishPlayerBoostStop(). First, add the boost function to the end of the file, as 
+         shown here.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerBoost()
+{
+   %flipX = $FishPlayer.getFlipX();
+
+
+   if(!%flipX)
+   {
+      %hSpeed = $FishPlayer.hSpeed * 3;
+   } else
+   {
+      %hSpeed = -$FishPlayer.hSpeed * 3;
+   }
+
+
+   $FishPlayer.setLinearVelocityX(%hSpeed);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.3.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We do a couple of things in this 
+         function. First, we grab the <I>flipX</I> of our fish player. This is how we 
+         determine which direction the player is facing. If its facing right, then the <I>flipX</I>
+         will be false. If it is facing left, then the <I>flipX</I> will be true. If we 
+         are facing right, we store an <I>%hSpeed</I> (remember that the % means this is 
+         a local variable and will be destroyed at the end of the function) of three 
+         times the value. If we are facing left, then we store a speed at negative three 
+         times the value. Then we set the x velocity according to the value. This way 
+         when you press down on the space bar, your fish should zip at three times the 
+         speed in the direction your facing. Next we have our stop function.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerBoostStop()
+{
+   $FishPlayer.setLinearVelocityX(0);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.3.4</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">All this does is set the fish's linear 
+         velocity x to zero. That way when we release the boost key, the velocity of the 
+         fish is canceled and it will stop in its tracks. This gives you a balance to 
+         the extra speed the boost gives; whenever you release it you will be halted. </FONT>
+   </FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now fire up T2D and play your 
+         level. Move around a little and then try pressing the space bar. Your fish 
+         should speed off with a quick boost (try not to run him too far off the 
+         screen). Then let go and your fish will stop! We now have a boost feature in 
+         our game.</FONT></FONT></P>
+<H3>
+   <BR>
+   <BR>
+   4.4 Fixing our move key functions
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">You may notice a couple of more issues. 
+         One is that the fish can go as far off screen as it wants. This could 
+         potentially be very bad. There is also a bit of quirkiness with pressing the 
+         movement keys. If you hold down <I>a</I> to move left, then also hold down <I>d</I>
+         to move right, and let go of even one of the keys, all movement stops. Even if 
+         you are still holding down the other key. We can fix this by slightly 
+         restructuring the way our keys work. Right now the response makes sense, since 
+         when we let go of a movement key it zeros out the velocity in the appropriate 
+         direction, whether or not we are holding down another movement key. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">The first step is to make a single 
+         update function for our <I>PlayerFish</I>. This function will check four 
+         different values - one for each move direction - and if a single one is true, 
+         it will set the appropriate velocity. This way we only need one check to see if 
+         either move left or move right is true, and if not, to then zero out the 
+         velocity. This will stop it from zeroing out at every key release. Add this 
+         function to your <I>player.cs</I> after your first (<I>onLevelLoaded()</I>) 
+         function.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function PlayerFish::updateMovement(%this)
+{
+   if(%this.moveLeft)
+   {
+      $FishPlayer.setFlipX(true);
+      $FishPlayer.setLinearVelocityX( -$FishPlayer.hSpeed );
+   }
+   
+   if(%this.moveRight)
+   {
+      $FishPlayer.setFlipX(false);
+      $FishPlayer.setLinearVelocityX( $FishPlayer.hSpeed );
+   }
+
+   if(%this.moveUp)
+   {
+      %this.setLinearVelocityY( -$FishPlayer.vSpeed );
+   }
+
+
+   if(%this.moveDown)
+   {
+      %this.setLinearVelocityY( $FishPlayer.vSpeed );
+   }
+
+
+   if(!%this.moveLeft &amp;&amp; !%this.moveRight)
+   {
+      %this.setLinearVelocityX( 0 );
+   }
+
+
+   if(!%this.moveUp &amp;&amp; !%this.moveDown)
+   {
+      %this.setLinearVelocityY( 0 );
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.4.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This function does a few things, so 
+         let's look at it piece by piece. First we have:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::updateMovement(%this)
+{
+   if(%this.moveLeft)
+   {
+      $FishPlayer.setFlipX(false);
+      $FishPlayer.setLinearVelocityX( -$FishPlayer.hSpeed );
+   }
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.4.2</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">What this does is check if our fish has 
+         a value <I>moveLeft</I> set to true. If so, it then does our flip operation 
+         (just like it did in our move left function), and then sets the appropriate 
+         velocity. As you can see, the next three checks are the same, except they are 
+         each for a different direction. The code in each of these checks is the same 
+         code as in our move functions.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Next we get to the last two checks of 
+         this function:</FONT></FONT></P>
+<BR>
+<pre class="code">
+if(!%this.moveLeft &amp;&amp; !%this.moveRight)
+{
+   %this.setLinearVelocityX( 0 );
+}
+
+
+if(!%this.moveUp &amp;&amp; !%this.moveDown)
+{
+   %this.setLinearVelocityY( 0 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.4.3</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Here we first check to see if both move 
+         left and move right are false. If so, we set the velocity in the X direction to 
+         0. We then do the same check for both up and down. Now that we have this 
+         function added we need to change both our move functions (called when a key is 
+         pressed) and our stop move functions (called when a key is released). Replace 
+         those functions with these (a big code snippet).</FONT></FONT></P>
+<BR>
+<pre class="code">
+function fishPlayerUp()
+{
+   $FishPlayer.moveUp = true;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerDown()
+{
+   $FishPlayer.moveDown = true;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerLeft()
+{
+   $FishPlayer.moveLeft = true;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerRight()
+{
+   $FishPlayer.moveRight = true;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerUpStop()
+{
+   $FishPlayer.moveUp = false;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerDownStop()
+{
+   $FishPlayer.moveDown = false;
+   $FishPlayer.updateMovement();
+}
+
+function fishPlayerLeftStop()
+{
+   $FishPlayer.moveLeft = false;
+   $FishPlayer.updateMovement();
+}
+
+
+function fishPlayerRightStop()
+{
+   $FishPlayer.moveRight = false;
+   $FishPlayer.updateMovement();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 4.4.4</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">You may notice a pattern in all of 
+         these functions. In the move call we set the proper direction value (such as <I>$FishPlayer.moveLeft</I>) 
+         to &quot;true&quot; and call the update. Also in the stop call we set the same value to 
+         &quot;false&quot; and call the update. That way all movement settings are handled by the 
+         update function, while these key press events simply set values and call it. 
+         This will help keep our keys from canceling each other out. Time to test it. Be 
+         sure to save your script file and then open up T2D. Play the level and 
+         try moving your fish around. You'll notice it has much smoother movement now!</FONT></FONT></P>
+<H3>
+   <BR>
+   <BR>
+   <BR>
+   4.5 Giving our fish a world limit
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final issue is that our fish can go 
+         far beyond the view of our level. Since our level is small, and limited to just 
+         the camera size, we don't want the player to do that. We may want the fish to 
+         be able to go somewhat off the screen, but we want to prevent it from going too 
+         far. T2D makes this a very easy thing, since every object can have a <I>World 
+            Limit</I>. This world limit can be defined in the <I>Level Builder,</I> and 
+         we can specify a few different responses when the object hits it. Some of the 
+         most useful ones can be <I>CLAMP</I>, <I>BOUNCE</I>, and <I>KILL</I>. <I>CLAMP</I>
+         will prevent it from moving outside the world limit. So basically you can think 
+         of it as a world bounds for the object. The <I>BOUNCE</I> response will cause 
+         the object to bounce off of the world limit, and <I>KILL</I> will delete the 
+         object. In our case we just want <I>CLAMP,</I> so the player cannot move far 
+         beyond our view.</FONT></FONT></P>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Open up T2D and you should see 
+      your level with your fish in the center. Changes the fish's world limits so the 
+      fish can't move below the ground or off the screen <I>(as shown in Figure 4.5.1)</I>.</FONT></FONT>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure4-5-4.jpg" NAME="graphics10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 4.5.1</B></I></FONT></P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have applied the world 
+      limit we need to set the world limit mode, or nothing special will happen. 
+      Click the <I>Edit</I> tab (make sure our fish is still selected). In our 
+      properties look for the <I>World Limits</I> section. Click the text to expand 
+      the options <I>(as shown in Figure 4.5.2)</I>. As you can see it defaults to 
+      &quot;OFF&quot; so simply click the dropdown and select &quot;CLAMP&quot; <I>(as shown in Figure 
+         4.5.3)</I>. Now our fish should respond properly to the borders. Time to 
+      test it! Be sure to save your level then hit the play button. Try to move your 
+      fish to the rightmost border, where it would previously go off screen. Now it 
+      gets stopped properly. Our movement is now pretty well cleaned up, time to move 
+      on to some gameplay action in part 5.</FONT></FONT>
+<BR>
+<BR>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure4-5-6.jpg" NAME="graphics12" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 4.5.2</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure4-5-7.jpg" NAME="graphics13" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 4.5.3</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><BR CLEAR="left">
+            &nbsp;</P>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<BR>
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

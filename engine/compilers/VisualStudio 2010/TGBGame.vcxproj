@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C02AD961-3D27-475C-91AE-BF1C720F031E}</ProjectGuid>
+    <RootNamespace>TGBGame</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../../tgb/gameData/T2DProject/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../../tgb/gameData/T2DProject/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../../Link/VC2010.$(Configuration).$(PlatformName)/$(ProjectName)/</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)_DEBUG</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <TypeLibraryName>$(OutDir)Juggernaught SDK.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP4 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>/lib/SDL/include;../../Lib/directx8;../../Lib/zlib;../../Lib/lungif;../../Lib/lpng;../../Lib/ljpeg;../../Lib/openal/win32;../../Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_PLAYER;TORQUE_DEBUG;UNICODE;TORQUE_DEBUG_GUARD;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>COMCTL32.LIB;COMDLG32.LIB;USER32.LIB;ADVAPI32.LIB;GDI32.LIB;WINMM.LIB;WSOCK32.LIB;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../tgb/gameData/T2DProject/TGBGame_DEBUG.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../Lib/SDL/win32;../../Lib/unicode;../../lib/directx8;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;LIBCD;LIBCMTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)TGBGame.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Manifest>
+      <AdditionalManifestFiles>DeclareDPIAware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <TypeLibraryName>$(OutDir)Juggernaught SDK.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/MP4 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MinSpace</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>/lib/SDL/include;../../Lib/directx8;../../Lib/zlib;../../Lib/lungif;../../Lib/lpng;../../Lib/ljpeg;../../Lib/openal/win32;../../Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TORQUE_PLAYER;UNICODE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AssemblerListingLocation>$(OutDir)</AssemblerListingLocation>
+      <ProgramDataBaseFileName>$(OutDir)TGBGame.pdb</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level1</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>COMCTL32.LIB;COMDLG32.LIB;USER32.LIB;ADVAPI32.LIB;GDI32.LIB;WINMM.LIB;WSOCK32.LIB;vfw32.lib;Imm32.lib;unicows.lib;shell32.lib;shlwapi.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>../../../tgb/gameData/T2DProject/TGBGame.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>../../Lib/SDL/win32;../../Lib/unicode;../../lib/directx8;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBC;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)TGBGame.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Manifest>
+      <AdditionalManifestFiles>DeclareDPIAware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="T2D SDK.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\core\networkProcessList.cc" />
+    <ClCompile Include="..\..\source\game\defaultGame.cc" />
+    <ClCompile Include="..\..\source\game\gameInterface.cc" />
+    <ClCompile Include="..\..\source\platformWin32\nativeDialogs\win32FileDialog.cc" />
+    <ClCompile Include="..\..\source\platform\nativeDialogs\fileDialog.cc" />
+    <ClCompile Include="..\..\source\platform\platformFont.cc" />
+    <ClCompile Include="..\..\source\platform\platformNetwork.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dActiveTile.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dAnimatedSprite.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dAnimationController.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dBaseDatablock.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dChunkedImageDatablock.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dChunkedSprite.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dGraphField.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dImageMapDatablock.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dParticleEffect.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dParticleEmitter.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dPath.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dPhysics.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dQuadBatch.cpp" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneContainer.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneGraph.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneObject.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneObjectGroup.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneObjectSet.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dSceneWindow.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dScroller.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dShape3D.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dShapeVector.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dStaticSprite.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dTextObject.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dTileMap.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dTrigger.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dUtility.cc" />
+    <ClCompile Include="..\..\source\T2D\t2dVector.cc" />
+    <ClCompile Include="..\..\source\T2D\activeTiles\t2dGunTurret.cc" />
+    <ClCompile Include="..\..\source\T2D\activeTiles\t2dTestTile.cc" />
+    <ClCompile Include="..\..\source\T2D\astar\pathGrid2d.cc" />
+    <ClCompile Include="..\..\source\audio\audio.cc" />
+    <ClCompile Include="..\..\source\audio\audioBuffer.cc" />
+    <ClCompile Include="..\..\source\audio\audioDataBlock.cc" />
+    <ClCompile Include="..\..\source\audio\audioFunctions.cc" />
+    <ClCompile Include="..\..\source\audio\audioStreamSourceFactory.cc" />
+    <ClCompile Include="..\..\source\audio\oggMixedStreamSource.cc" />
+    <ClCompile Include="..\..\source\audio\vorbisStreamSource.cc" />
+    <ClCompile Include="..\..\source\audio\wavStreamSource.cc" />
+    <ClCompile Include="..\..\source\component\componentInterface.cpp" />
+    <ClCompile Include="..\..\source\component\dynamicConsoleMethodComponent.cpp" />
+    <ClCompile Include="..\..\source\component\moreAdvancedComponent.cpp" />
+    <ClCompile Include="..\..\source\component\simComponent.cpp" />
+    <ClCompile Include="..\..\source\component\simpleComponent.cpp" />
+    <ClCompile Include="..\..\source\component\behaviors\behaviorComponent.cpp" />
+    <ClCompile Include="..\..\source\component\behaviors\behaviorInstance.cpp" />
+    <ClCompile Include="..\..\source\component\behaviors\behaviorTemplate.cpp" />
+    <ClCompile Include="..\..\source\console\astAlloc.cc" />
+    <ClCompile Include="..\..\source\console\astNodes.cc" />
+    <ClCompile Include="..\..\source\console\cmdgram.cc" />
+    <ClCompile Include="..\..\source\console\CMDscan.cc" />
+    <ClCompile Include="..\..\source\console\codeBlock.cc" />
+    <ClCompile Include="..\..\source\console\compiledEval.cc" />
+    <ClCompile Include="..\..\source\console\compiler.cc" />
+    <ClCompile Include="..\..\source\console\console.cc" />
+    <ClCompile Include="..\..\source\console\consoleDoc.cc" />
+    <ClCompile Include="..\..\source\console\consoleFunctions.cc" />
+    <ClCompile Include="..\..\source\console\consoleInternal.cc" />
+    <ClCompile Include="..\..\source\console\consoleLogger.cc" />
+    <ClCompile Include="..\..\source\console\consoleObject.cc" />
+    <ClCompile Include="..\..\source\console\consoleParser.cc" />
+    <ClCompile Include="..\..\source\console\consoleTypes.cc" />
+    <ClCompile Include="..\..\source\console\dynamicTypes.cc" />
+    <ClCompile Include="..\..\source\console\fileSystemFunctions.cpp" />
+    <ClCompile Include="..\..\source\console\scriptFilename.cpp" />
+    <ClCompile Include="..\..\source\console\scriptObjects.cc" />
+    <ClCompile Include="..\..\source\console\simBase.cc" />
+    <ClCompile Include="..\..\source\console\simDictionary.cc" />
+    <ClCompile Include="..\..\source\console\simManager.cc" />
+    <ClCompile Include="..\..\source\console\simSerialize.cpp" />
+    <ClCompile Include="..\..\source\console\simSet.cc" />
+    <ClCompile Include="..\..\source\console\stringStack.cc" />
+    <ClCompile Include="..\..\source\console\telnetConsole.cc" />
+    <ClCompile Include="..\..\source\console\telnetDebugger.cc" />
+    <ClCompile Include="..\..\source\console\typeValidators.cc" />
+    <ClCompile Include="..\..\source\core\bitRender.cc" />
+    <ClCompile Include="..\..\source\core\bitStream.cc" />
+    <ClCompile Include="..\..\source\core\bitTables.cc" />
+    <ClCompile Include="..\..\source\core\chunkFile.cc" />
+    <ClCompile Include="..\..\source\core\crc.cc" />
+    <ClCompile Include="..\..\source\core\dataChunker.cc" />
+    <ClCompile Include="..\..\source\core\dnet.cc" />
+    <ClCompile Include="..\..\source\core\fileObject.cc" />
+    <ClCompile Include="..\..\source\core\fileStream.cc" />
+    <ClCompile Include="..\..\source\core\fileStreamObject.cc" />
+    <ClCompile Include="..\..\source\core\filterStream.cc" />
+    <ClCompile Include="..\..\source\core\findMatch.cc" />
+    <ClCompile Include="..\..\source\core\frameAllocator.cc" />
+    <ClCompile Include="..\..\source\core\hashFunction.cc" />
+    <ClCompile Include="..\..\source\core\idGenerator.cc" />
+    <ClCompile Include="..\..\source\core\iTickable.cc" />
+    <ClCompile Include="..\..\source\core\memStream.cc" />
+    <ClCompile Include="..\..\source\core\nStream.cc" />
+    <ClCompile Include="..\..\source\core\nTypes.cc" />
+    <ClCompile Include="..\..\source\core\resDictionary.cc" />
+    <ClCompile Include="..\..\source\core\resizeStream.cc" />
+    <ClCompile Include="..\..\source\core\resManager.cc" />
+    <ClCompile Include="..\..\source\core\streamObject.cc" />
+    <ClCompile Include="..\..\source\core\stringBuffer.cc" />
+    <ClCompile Include="..\..\source\core\stringTable.cc" />
+    <ClCompile Include="..\..\source\core\tagDictionary.cc" />
+    <ClCompile Include="..\..\source\core\tDictionary.cpp" />
+    <ClCompile Include="..\..\source\core\theoraPlayer.cc" />
+    <ClCompile Include="..\..\source\core\tokenizer.cc" />
+    <ClCompile Include="..\..\source\core\tVector.cc" />
+    <ClCompile Include="..\..\source\core\unicode.cc" />
+    <ClCompile Include="..\..\source\core\zipCryptStream.cc" />
+    <ClCompile Include="..\..\source\core\zipObject.cc" />
+    <ClCompile Include="..\..\source\core\zipSubStream.cc" />
+    <ClCompile Include="..\..\source\core\zip\centralDir.cc" />
+    <ClCompile Include="..\..\source\core\zip\compressor.cc" />
+    <ClCompile Include="..\..\source\core\zip\extraField.cc" />
+    <ClCompile Include="..\..\source\core\zip\fileHeader.cc" />
+    <ClCompile Include="..\..\source\core\zip\zipArchive.cc" />
+    <ClCompile Include="..\..\source\core\zip\zipTempStream.cc" />
+    <ClCompile Include="..\..\source\core\zip\compressors\deflate.cc" />
+    <ClCompile Include="..\..\source\core\zip\compressors\stored.cc" />
+    <ClCompile Include="..\..\source\core\zip\unitTests\zipTestMisc.cc" />
+    <ClCompile Include="..\..\source\core\zip\unitTests\zipTestRead.cc" />
+    <ClCompile Include="..\..\source\core\zip\unitTests\zipTestWrite.cc" />
+    <ClCompile Include="..\..\source\dgl\bitmapBm8.cc" />
+    <ClCompile Include="..\..\source\dgl\bitmapBmp.cc" />
+    <ClCompile Include="..\..\source\dgl\bitmapGif.cc" />
+    <ClCompile Include="..\..\source\dgl\bitmapJpeg.cc" />
+    <ClCompile Include="..\..\source\dgl\bitmapPng.cc" />
+    <ClCompile Include="..\..\source\dgl\dgl.cc" />
+    <ClCompile Include="..\..\source\dgl\dglMatrix.cc" />
+    <ClCompile Include="..\..\source\dgl\gBitmap.cc" />
+    <ClCompile Include="..\..\source\dgl\gDynamicTexture.cc" />
+    <ClCompile Include="..\..\source\dgl\gFont.cc" />
+    <ClCompile Include="..\..\source\dgl\gPalette.cc" />
+    <ClCompile Include="..\..\source\dgl\gTexManager.cc" />
+    <ClCompile Include="..\..\source\dgl\gVectorField.cc" />
+    <ClCompile Include="..\..\source\dgl\lensFlare.cc" />
+    <ClCompile Include="..\..\source\dgl\materialList.cc" />
+    <ClCompile Include="..\..\source\dgl\materialPropertyMap.cc" />
+    <ClCompile Include="..\..\source\dgl\splineUtil.cc" />
+    <ClCompile Include="..\..\source\game\banList.cc" />
+    <ClCompile Include="..\..\source\game\gameConnection.cc" />
+    <ClCompile Include="..\..\source\game\version.cc" />
+    <ClCompile Include="..\..\source\game\net\httpObject.cc" />
+    <ClCompile Include="..\..\source\game\net\net.cc" />
+    <ClCompile Include="..\..\source\game\net\netTest.cc" />
+    <ClCompile Include="..\..\source\game\net\serverQuery.cc" />
+    <ClCompile Include="..\..\source\game\net\tcpObject.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiBitmapButtonCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiBorderButton.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiButtonBaseCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiButtonCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiCheckBoxCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiIconButtonCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiRadioCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\buttons\guiToolboxButtonCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiAutoScrollCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiCtrlArrayCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiDragAndDropCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiDynamicCtrlArrayCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiFormCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiFrameCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiPaneCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiRolloutCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiScrollCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiStackCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiTabBookCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\containers\guiWindowCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiBackgroundCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiBitmapBorderCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiBitmapCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiColorPicker.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiConsole.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiConsoleEditCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiConsoleTextCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiDirectoryFileListCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiDirectoryTreeCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiListBoxCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiMLTextCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiMLTextEditCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiPopUpCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiPopUpCtrlEx.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiSliderCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTabPageCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTextCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTextEditCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTextEditSliderCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTextListCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\controls\guiTreeViewCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiArrayCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiCanvas.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiControl.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiDefaultControlRender.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiScriptNotifyControl.cc" />
+    <ClCompile Include="..\..\source\gui\core\guiTypes.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiControlListPopup.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiDebugger.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiEditCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiFilterCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiGraphCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiImageList.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiInspector.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiInspectorTypes.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiMenuBar.cc" />
+    <ClCompile Include="..\..\source\gui\editor\guiSeparatorCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\game\guiAviBitmapCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\game\guiChunkedBitmapCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\game\guiFadeinBitmapCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\game\guiMessageVectorCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\game\guiProgressCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\shiny\guiEffectCanvas.cc" />
+    <ClCompile Include="..\..\source\gui\shiny\guiTheoraCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\shiny\guiTickCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\utility\guiBubbleTextCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\utility\guiInputCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\utility\guiMouseEventCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\utility\guiTransitionCtrl.cc" />
+    <ClCompile Include="..\..\source\gui\utility\messageVector.cc" />
+    <ClCompile Include="..\..\source\i18n\i18n.cc" />
+    <ClCompile Include="..\..\source\i18n\lang.cc" />
+    <ClCompile Include="..\..\source\math\mathTypes.cc" />
+    <ClCompile Include="..\..\source\math\mathUtils.cc" />
+    <ClCompile Include="..\..\source\math\mBox.cc" />
+    <ClCompile Include="..\..\source\math\mConsoleFunctions.cc" />
+    <ClCompile Include="..\..\source\math\mMath_C.cc" />
+    <ClCompile Include="..\..\source\math\mMathAltivec.cc" />
+    <ClCompile Include="..\..\source\math\mMathAMD.cc" />
+    <ClCompile Include="..\..\source\math\mMathFn.cc" />
+    <ClCompile Include="..\..\source\math\mMathSSE.cc" />
+    <ClCompile Include="..\..\source\math\mMatrix.cc" />
+    <ClCompile Include="..\..\source\math\mPlaneTransformer.cc" />
+    <ClCompile Include="..\..\source\math\mQuadPatch.cc" />
+    <ClCompile Include="..\..\source\math\mQuat.cc" />
+    <ClCompile Include="..\..\source\math\mRandom.cc" />
+    <ClCompile Include="..\..\source\math\mSolver.cc" />
+    <ClCompile Include="..\..\source\math\mSplinePatch.cc" />
+    <ClCompile Include="..\..\source\persistence\SimXMLDocument.cpp" />
+    <ClCompile Include="..\..\source\persistence\tinystr.cc" />
+    <ClCompile Include="..\..\source\persistence\tinyxml.cc" />
+    <ClCompile Include="..\..\source\persistence\tinyxmlerror.cc" />
+    <ClCompile Include="..\..\source\persistence\tinyxmlparser.cc" />
+    <ClCompile Include="..\..\source\platform\CursorManager.cc" />
+    <ClCompile Include="..\..\source\platform\platform.cc" />
+    <ClCompile Include="..\..\source\platform\platformAssert.cc" />
+    <ClCompile Include="..\..\source\platform\platformCPU.cc" />
+    <ClCompile Include="..\..\source\platform\platformFileIO.cc" />
+    <ClCompile Include="..\..\source\platform\platformMemory.cc" />
+    <ClCompile Include="..\..\source\platform\platformRedBook.cc" />
+    <ClCompile Include="..\..\source\platform\platformString.cc" />
+    <ClCompile Include="..\..\source\platform\platformVideo.cc" />
+    <ClCompile Include="..\..\source\platform\profiler.cc" />
+    <ClCompile Include="..\..\source\platform\menus\popupMenu.cc" />
+    <ClCompile Include="..\..\source\platform\nativeDialogs\msgBox.cpp" />
+    <ClCompile Include="..\..\source\platformWin32\cardProfile.cpp" />
+    <ClCompile Include="..\..\source\platformWin32\winAsmBlit.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winConsole.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winCPUInfo.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winD3DVideo.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winDInputDevice.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winDirectInput.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winExec.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winFileio.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winFont.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winGL.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winGLSpecial.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winInput.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winMath.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winMath_ASM.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winMemory.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winNet.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winOGLVideo.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winOpenAL.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winProcessControl.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winRedbook.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winSemaphore.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winStrings.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winTime.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winTLS.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winUser.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winV2Video.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winVFS.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winVideo.cc" />
+    <ClCompile Include="..\..\source\platformWin32\winWindow.cc" />
+    <ClCompile Include="..\..\source\platformWin32\menus\popupMenuWin32.cc" />
+    <ClCompile Include="..\..\source\platformWin32\nativeDialogs\win32DirectoryResolver.cpp" />
+    <ClCompile Include="..\..\source\platformWin32\nativeDialogs\win32MsgBox.cpp" />
+    <ClCompile Include="..\..\source\platformWin32\threads\mutex.cc" />
+    <ClCompile Include="..\..\source\platformWin32\threads\thread.cc" />
+    <ClCompile Include="..\..\source\sim\actionMap.cc" />
+    <ClCompile Include="..\..\source\sim\connectionStringTable.cc" />
+    <ClCompile Include="..\..\source\sim\netConnection.cc" />
+    <ClCompile Include="..\..\source\sim\netDownload.cc" />
+    <ClCompile Include="..\..\source\sim\netEvent.cc" />
+    <ClCompile Include="..\..\source\sim\netGhost.cc" />
+    <ClCompile Include="..\..\source\sim\netInterface.cc" />
+    <ClCompile Include="..\..\source\sim\netObject.cc" />
+    <ClCompile Include="..\..\source\sim\netStringTable.cc" />
+    <ClCompile Include="..\..\source\ts\tsAnimate.cc" />
+    <ClCompile Include="..\..\source\ts\tsDecal.cc" />
+    <ClCompile Include="..\..\source\ts\tsDump.cc" />
+    <ClCompile Include="..\..\source\ts\tsIntegerSet.cc" />
+    <ClCompile Include="..\..\source\ts\tsLastDetail.cc" />
+    <ClCompile Include="..\..\source\ts\tsMaterialList.cc" />
+    <ClCompile Include="..\..\source\ts\tsMesh.cc" />
+    <ClCompile Include="..\..\source\ts\tsPartInstance.cc" />
+    <ClCompile Include="..\..\source\ts\tsShape.cc" />
+    <ClCompile Include="..\..\source\ts\tsShapeAlloc.cc" />
+    <ClCompile Include="..\..\source\ts\tsShapeConstruct.cc" />
+    <ClCompile Include="..\..\source\ts\tsShapeInstance.cc" />
+    <ClCompile Include="..\..\source\ts\tsShapeOldRead.cc" />
+    <ClCompile Include="..\..\source\ts\tsSortedMesh.cc" />
+    <ClCompile Include="..\..\source\ts\tsThread.cc" />
+    <ClCompile Include="..\..\source\ts\tsTransform.cc" />
+    <ClCompile Include="..\..\source\unit\consoleTest.cpp" />
+    <ClCompile Include="..\..\source\unit\memoryTester.cpp" />
+    <ClCompile Include="..\..\source\unit\test.cpp" />
+    <ClCompile Include="..\..\source\unit\unitTestComponentInterface.cpp" />
+    <ClCompile Include="..\..\source\unit\tests\testBehaviorComponent.cpp" />
+    <ClCompile Include="..\..\source\unit\tests\testComponents.cpp" />
+    <ClCompile Include="..\..\source\unit\tests\testVector.cpp" />
+    <ClCompile Include="..\..\source\util\rectClipper.cpp" />
+    <ClCompile Include="..\..\source\util\stringUnit.cpp" />
+    <ClCompile Include="..\..\source\util\triBoxCheck.cpp" />
+    <ClCompile Include="..\..\source\util\undo.cc" />
+    <ClCompile Include="..\..\source\util\messaging\dispatcher.cc" />
+    <ClCompile Include="..\..\source\util\messaging\eventManager.cc" />
+    <ClCompile Include="..\..\source\util\messaging\message.cc" />
+    <ClCompile Include="..\..\source\util\messaging\messageForwarder.cc" />
+    <ClCompile Include="..\..\source\util\messaging\scriptMsgListener.cc" />
+    <ClCompile Include="..\..\source\libogg\src\bitwise.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libogg\src\framing.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\apiwrapper.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\bitpack.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\cpu.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\decapiwrapper.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\decinfo.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\decode.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\dequant.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\fragment.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\huffdec.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\idct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\info.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\internal.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\x86_vc\mmxfrag.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\x86_vc\mmxidct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\x86_vc\mmxloopfilter.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\x86_vc\mmxstate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\quant.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\state.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libtheora\lib\dec\x86_vc\x86state.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\analysis.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\bitrate.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\block.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\codebook.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\envelope.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\floor0.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\floor1.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\lookup.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\lpc.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\lsp.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\mapping0.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\mdct.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\psy.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\registry.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\res0.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\sharedbook.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\smallft.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\synthesis.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\vorbisenc.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\vorbisfile.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\vorbisinfo.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\source\libvorbis\lib\window.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\source\core\networkProcessList.h" />
+    <ClInclude Include="..\..\source\game\defaultGame.h" />
+    <ClInclude Include="..\..\source\game\gameInterface.h" />
+    <ClInclude Include="..\..\source\game\gameInterface_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\platformWin32\winWindow.h" />
+    <ClInclude Include="..\..\source\platform\eaxtypes.h" />
+    <ClInclude Include="..\..\source\platform\nativeDialogs\fileDialog_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\platform\platformCPU.h" />
+    <ClInclude Include="..\..\source\platform\platformEndian.h" />
+    <ClInclude Include="..\..\source\platform\platformFileIO.h" />
+    <ClInclude Include="..\..\source\platform\platformInput_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\platform\platformMath.h" />
+    <ClInclude Include="..\..\source\platform\platformMemory.h" />
+    <ClInclude Include="..\..\source\platform\platformNetwork.h" />
+    <ClInclude Include="..\..\source\platform\platformString.h" />
+    <ClInclude Include="..\..\source\platform\platformTimeManager.h" />
+    <ClInclude Include="..\..\source\platform\platform_ScriptBinding.h" />
+    <ClInclude Include="..\..\source\T2D\t2dActiveTile.h" />
+    <ClInclude Include="..\..\source\T2D\t2dAnimatedSprite.h" />
+    <ClInclude Include="..\..\source\T2D\t2dAnimationController.h" />
+    <ClInclude Include="..\..\source\T2D\t2dBaseDatablock.h" />
+    <ClInclude Include="..\..\source\T2D\t2dChunkedImageDatablock.h" />
+    <ClInclude Include="..\..\source\T2D\t2dChunkedSprite.h" />
+    <ClInclude Include="..\..\source\T2D\t2dGraphField.h" />
+    <ClInclude Include="..\..\source\T2D\t2dImageMapDatablock.h" />
+    <ClInclude Include="..\..\source\T2D\t2dMatrix.h" />
+    <ClInclude Include="..\..\source\T2D\t2dParticleEffect.h" />
+    <ClInclude Include="..\..\source\T2D\t2dParticleEmitter.h" />
+    <ClInclude Include="..\..\source\T2D\t2dPath.h" />
+    <ClInclude Include="..\..\source\T2D\t2dPhysics.h" />
+    <ClInclude Include="..\..\source\T2D\t2dQuadBatch.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneContainer.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneGraph.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneObject.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneObjectGroup.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneObjectSet.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSceneWindow.h" />
+    <ClInclude Include="..\..\source\T2D\t2dScroller.h" />
+    <ClInclude Include="..\..\source\T2D\t2dSerialise.h" />
+    <ClInclude Include="..\..\source\T2D\t2dShape3D.h" />
+    <ClInclude Include="..\..\source\T2D\t2dShapeVector.h" />
+    <ClInclude Include="..\..\source\T2D\t2dStaticSprite.h" />
+    <ClInclude Include="..\..\source\T2D\t2dTextObject.h" />
+    <ClInclude Include="..\..\source\T2D\t2dTileMap.h" />
+    <ClInclude Include="..\..\source\T2D\t2dTrigger.h" />
+    <ClInclude Include="..\..\source\T2D\t2dUtility.h" />
+    <ClInclude Include="..\..\source\T2D\t2dVector.h" />
+    <ClInclude Include="..\..\source\T2D\activeTiles\t2dGunTurret.h" />
+    <ClInclude Include="..\..\source\T2D\activeTiles\t2dTestTile.h" />
+    <ClInclude Include="..\..\source\T2D\astar\pathClasses.h" />
+    <ClInclude Include="..\..\source\T2D\astar\pathGrid2d.h" />
+    <ClInclude Include="..\..\source\T2D\astar\pathUtilities.h" />
+    <ClInclude Include="..\..\source\T2D\astar\tVectorExtension.h" />
+    <ClInclude Include="..\..\source\audio\audio.h" />
+    <ClInclude Include="..\..\source\audio\audioBuffer.h" />
+    <ClInclude Include="..\..\source\audio\audioDataBlock.h" />
+    <ClInclude Include="..\..\source\audio\audioStreamSource.h" />
+    <ClInclude Include="..\..\source\audio\audioStreamSourceFactory.h" />
+    <ClInclude Include="..\..\source\audio\oggMixedStreamSource.h" />
+    <ClInclude Include="..\..\source\audio\vorbisStreamSource.h" />
+    <ClInclude Include="..\..\source\audio\wavStreamSource.h" />
+    <ClInclude Include="..\..\source\component\componentInterface.h" />
+    <ClInclude Include="..\..\source\component\dynamicConsoleMethodComponent.h" />
+    <ClInclude Include="..\..\source\component\moreAdvancedComponent.h" />
+    <ClInclude Include="..\..\source\component\simComponent.h" />
+    <ClInclude Include="..\..\source\component\simpleComponent.h" />
+    <ClInclude Include="..\..\source\component\behaviors\behaviorComponent.h" />
+    <ClInclude Include="..\..\source\component\behaviors\behaviorInstance.h" />
+    <ClInclude Include="..\..\source\component\behaviors\behaviorTemplate.h" />
+    <ClInclude Include="..\..\source\console\ast.h" />
+    <ClInclude Include="..\..\source\console\cmdgram.h" />
+    <ClInclude Include="..\..\source\console\codeBlock.h" />
+    <ClInclude Include="..\..\source\console\compiler.h" />
+    <ClInclude Include="..\..\source\console\console.h" />
+    <ClInclude Include="..\..\source\console\consoleDoc.h" />
+    <ClInclude Include="..\..\source\console\consoleInternal.h" />
+    <ClInclude Include="..\..\source\console\consoleLogger.h" />
+    <ClInclude Include="..\..\source\console\consoleObject.h" />
+    <ClInclude Include="..\..\source\console\consoleParser.h" />
+    <ClInclude Include="..\..\source\console\consoleTypes.h" />
+    <ClInclude Include="..\..\source\console\dynamicTypes.h" />
+    <ClInclude Include="..\..\source\console\scriptFilename.h" />
+    <ClInclude Include="..\..\source\console\scriptObjects.h" />
+    <ClInclude Include="..\..\source\console\simBase.h" />
+    <ClInclude Include="..\..\source\console\simDictionary.h" />
+    <ClInclude Include="..\..\source\console\simSet.h" />
+    <ClInclude Include="..\..\source\console\stringStack.h" />
+    <ClInclude Include="..\..\source\console\telnetConsole.h" />
+    <ClInclude Include="..\..\source\console\telnetDebugger.h" />
+    <ClInclude Include="..\..\source\console\typeValidators.h" />
+    <ClInclude Include="..\..\source\core\bitMatrix.h" />
+    <ClInclude Include="..\..\source\core\bitRender.h" />
+    <ClInclude Include="..\..\source\core\bitSet.h" />
+    <ClInclude Include="..\..\source\core\bitStream.h" />
+    <ClInclude Include="..\..\source\core\bitTables.h" />
+    <ClInclude Include="..\..\source\core\bitVector.h" />
+    <ClInclude Include="..\..\source\core\bitVectorW.h" />
+    <ClInclude Include="..\..\source\core\chunkFile.h" />
+    <ClInclude Include="..\..\source\core\color.h" />
+    <ClInclude Include="..\..\source\core\coreRes.h" />
+    <ClInclude Include="..\..\source\core\crc.h" />
+    <ClInclude Include="..\..\source\core\crctab.h" />
+    <ClInclude Include="..\..\source\core\dataChunker.h" />
+    <ClInclude Include="..\..\source\core\dnet.h" />
+    <ClInclude Include="..\..\source\core\fileObject.h" />
+    <ClInclude Include="..\..\source\core\fileStream.h" />
+    <ClInclude Include="..\..\source\core\fileStreamObject.h" />
+    <ClInclude Include="..\..\source\core\filterStream.h" />
+    <ClInclude Include="..\..\source\core\findMatch.h" />
+    <ClInclude Include="..\..\source\core\frameAllocator.h" />
+    <ClInclude Include="..\..\source\core\hashFunction.h" />
+    <ClInclude Include="..\..\source\core\idGenerator.h" />
+    <ClInclude Include="..\..\source\core\iTickable.h" />
+    <ClInclude Include="..\..\source\core\llist.h" />
+    <ClInclude Include="..\..\source\core\memstream.h" />
+    <ClInclude Include="..\..\source\core\polyList.h" />
+    <ClInclude Include="..\..\source\core\realComp.h" />
+    <ClInclude Include="..\..\source\core\resizeStream.h" />
+    <ClInclude Include="..\..\source\core\resManager.h" />
+    <ClInclude Include="..\..\source\core\stream.h" />
+    <ClInclude Include="..\..\source\core\streamObject.h" />
+    <ClInclude Include="..\..\source\core\stringBuffer.h" />
+    <ClInclude Include="..\..\source\core\stringTable.h" />
+    <ClInclude Include="..\..\source\core\tagDictionary.h" />
+    <ClInclude Include="..\..\source\core\tAlgorithm.h" />
+    <ClInclude Include="..\..\source\core\tDictionary.h" />
+    <ClInclude Include="..\..\source\core\theoraPlayer.h" />
+    <ClInclude Include="..\..\source\core\tokenizer.h" />
+    <ClInclude Include="..\..\source\core\torqueConfig.h" />
+    <ClInclude Include="..\..\source\core\tSimpleHashTable.h" />
+    <ClInclude Include="..\..\source\core\tSparseArray.h" />
+    <ClInclude Include="..\..\source\core\tVector.h" />
+    <ClInclude Include="..\..\source\core\unicode.h" />
+    <ClInclude Include="..\..\source\core\zipCryptStream.h" />
+    <ClInclude Include="..\..\source\core\zipObject.h" />
+    <ClInclude Include="..\..\source\core\zipSubStream.h" />
+    <ClInclude Include="..\..\source\core\zip\centralDir.h" />
+    <ClInclude Include="..\..\source\core\zip\compressor.h" />
+    <ClInclude Include="..\..\source\core\zip\extraField.h" />
+    <ClInclude Include="..\..\source\core\zip\fileHeader.h" />
+    <ClInclude Include="..\..\source\core\zip\zipArchive.h" />
+    <ClInclude Include="..\..\source\core\zip\zipStatFilter.h" />
+    <ClInclude Include="..\..\source\core\zip\zipTempStream.h" />
+    <ClInclude Include="..\..\source\core\zip\unitTests\zipTest.h" />
+    <ClInclude Include="..\..\source\dgl\dgl.h" />
+    <ClInclude Include="..\..\source\dgl\gBitmap.h" />
+    <ClInclude Include="..\..\source\dgl\gChunkedTexManager.h" />
+    <ClInclude Include="..\..\source\dgl\gDynamicTexture.h" />
+    <ClInclude Include="..\..\source\dgl\gFont.h" />
+    <ClInclude Include="..\..\source\dgl\gPalette.h" />
+    <ClInclude Include="..\..\source\dgl\gTexManager.h" />
+    <ClInclude Include="..\..\source\dgl\gVectorField.h" />
+    <ClInclude Include="..\..\source\dgl\lensFlare.h" />
+    <ClInclude Include="..\..\source\dgl\materialList.h" />
+    <ClInclude Include="..\..\source\dgl\materialPropertyMap.h" />
+    <ClInclude Include="..\..\source\dgl\splineUtil.h" />
+    <ClInclude Include="..\..\source\game\auth.h" />
+    <ClInclude Include="..\..\source\game\banList.h" />
+    <ClInclude Include="..\..\source\game\gameConnection.h" />
+    <ClInclude Include="..\..\source\game\resource.h" />
+    <ClInclude Include="..\..\source\game\version.h" />
+    <ClInclude Include="..\..\source\game\net\httpObject.h" />
+    <ClInclude Include="..\..\source\game\net\serverQuery.h" />
+    <ClInclude Include="..\..\source\game\net\tcpObject.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiBitmapButtonCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiButtonBaseCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiButtonCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiCheckBoxCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiIconButtonCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiRadioCtrl.h" />
+    <ClInclude Include="..\..\source\gui\buttons\guiToolboxButtonCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiAutoScrollCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiCtrlArrayCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiDragAndDropCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiDynamicCtrlArrayCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiFormCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiFrameCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiPaneCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiRolloutCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiScrollCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiStackCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiTabBookCtrl.h" />
+    <ClInclude Include="..\..\source\gui\containers\guiWindowCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiBackgroundCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiBitmapCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiColorPicker.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiConsole.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiConsoleEditCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiConsoleTextCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiDirectoryFileListCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiDirectoryTreeCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiListBoxCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiMLTextCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiMLTextEditCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiPopUpCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiPopUpCtrlEx.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiSliderCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTabPageCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTextCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTextEditCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTextEditSliderCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTextListCtrl.h" />
+    <ClInclude Include="..\..\source\gui\controls\guiTreeViewCtrl.h" />
+    <ClInclude Include="..\..\source\gui\core\guiArrayCtrl.h" />
+    <ClInclude Include="..\..\source\gui\core\guiCanvas.h" />
+    <ClInclude Include="..\..\source\gui\core\guiControl.h" />
+    <ClInclude Include="..\..\source\gui\core\guiDefaultControlRender.h" />
+    <ClInclude Include="..\..\source\gui\core\guiScriptNotifyControl.h" />
+    <ClInclude Include="..\..\source\gui\core\guiTypes.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiDebugger.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiEditCtrl.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiFilterCtrl.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiGraphCtrl.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiImageList.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiInspector.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiInspectorTypes.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiMenuBar.h" />
+    <ClInclude Include="..\..\source\gui\editor\guiSeparatorCtrl.h" />
+    <ClInclude Include="..\..\source\gui\game\guiAviBitmapCtrl.h" />
+    <ClInclude Include="..\..\source\gui\game\guiMessageVectorCtrl.h" />
+    <ClInclude Include="..\..\source\gui\game\guiProgressCtrl.h" />
+    <ClInclude Include="..\..\source\gui\shiny\guiEffectCanvas.h" />
+    <ClInclude Include="..\..\source\gui\shiny\guiTheoraCtrl.h" />
+    <ClInclude Include="..\..\source\gui\shiny\guiTickCtrl.h" />
+    <ClInclude Include="..\..\source\gui\utility\guiBubbleTextCtrl.h" />
+    <ClInclude Include="..\..\source\gui\utility\guiInputCtrl.h" />
+    <ClInclude Include="..\..\source\gui\utility\guiMouseEventCtrl.h" />
+    <ClInclude Include="..\..\source\gui\utility\guiTransitionCtrl.h" />
+    <ClInclude Include="..\..\source\gui\utility\messageVector.h" />
+    <ClInclude Include="..\..\source\i18n\i18n.h" />
+    <ClInclude Include="..\..\source\i18n\lang.h" />
+    <ClInclude Include="..\..\source\math\mathIO.h" />
+    <ClInclude Include="..\..\source\math\mathTypes.h" />
+    <ClInclude Include="..\..\source\math\mathUtils.h" />
+    <ClInclude Include="..\..\source\math\mBox.h" />
+    <ClInclude Include="..\..\source\math\mConstants.h" />
+    <ClInclude Include="..\..\source\math\mMath.h" />
+    <ClInclude Include="..\..\source\math\mMathFn.h" />
+    <ClInclude Include="..\..\source\math\mMatrix.h" />
+    <ClInclude Include="..\..\source\math\mPlane.h" />
+    <ClInclude Include="..\..\source\math\mPlaneTransformer.h" />
+    <ClInclude Include="..\..\source\math\mPoint.h" />
+    <ClInclude Include="..\..\source\math\mQuadPatch.h" />
+    <ClInclude Include="..\..\source\math\mQuat.h" />
+    <ClInclude Include="..\..\source\math\mRandom.h" />
+    <ClInclude Include="..\..\source\math\mRect.h" />
+    <ClInclude Include="..\..\source\math\mSphere.h" />
+    <ClInclude Include="..\..\source\math\mSplinePatch.h" />
+    <ClInclude Include="..\..\source\math\mTrig.h" />
+    <ClInclude Include="..\..\source\persistence\SimXMLDocument.h" />
+    <ClInclude Include="..\..\source\persistence\tinystr.h" />
+    <ClInclude Include="..\..\source\persistence\tinyxml.h" />
+    <ClInclude Include="..\..\source\platform\3Dfx.h" />
+    <ClInclude Include="..\..\source\platform\event.h" />
+    <ClInclude Include="..\..\source\platform\GLCoreFunc.h" />
+    <ClInclude Include="..\..\source\platform\GLExtFunc.h" />
+    <ClInclude Include="..\..\source\platform\GLUFunc.h" />
+    <ClInclude Include="..\..\source\platform\platform.h" />
+    <ClInclude Include="..\..\source\platform\platformAL.h" />
+    <ClInclude Include="..\..\source\platform\platformAssert.h" />
+    <ClInclude Include="..\..\source\platform\platformAudio.h" />
+    <ClInclude Include="..\..\source\platform\platformFont.h" />
+    <ClInclude Include="..\..\source\platform\platformGL.h" />
+    <ClInclude Include="..\..\source\platform\platformInput.h" />
+    <ClInclude Include="..\..\source\platform\platformRedBook.h" />
+    <ClInclude Include="..\..\source\platform\platformSemaphore.h" />
+    <ClInclude Include="..\..\source\platform\platformTLS.h" />
+    <ClInclude Include="..\..\source\platform\platformVFS.h" />
+    <ClInclude Include="..\..\source\platform\platformVideo.h" />
+    <ClInclude Include="..\..\source\platform\profiler.h" />
+    <ClInclude Include="..\..\source\platform\types.codewarrior.h" />
+    <ClInclude Include="..\..\source\platform\types.gcc.h" />
+    <ClInclude Include="..\..\source\platform\types.h" />
+    <ClInclude Include="..\..\source\platform\types.posix.h" />
+    <ClInclude Include="..\..\source\platform\types.ppc.h" />
+    <ClInclude Include="..\..\source\platform\types.visualc.h" />
+    <ClInclude Include="..\..\source\platform\types.win32.h" />
+    <ClInclude Include="..\..\source\platform\typesLinux.h" />
+    <ClInclude Include="..\..\source\platform\typesPPC.h" />
+    <ClInclude Include="..\..\source\platform\typesWin32.h" />
+    <ClInclude Include="..\..\source\platform\typesX86UNIX.h" />
+    <ClInclude Include="..\..\source\platform\menus\popupMenu.h" />
+    <ClInclude Include="..\..\source\platform\nativeDialogs\fileDialog.h" />
+    <ClInclude Include="..\..\source\platform\nativeDialogs\msgBox.h" />
+    <ClInclude Include="..\..\source\platform\threads\mutex.h" />
+    <ClInclude Include="..\..\source\platform\threads\semaphore.h" />
+    <ClInclude Include="..\..\source\platform\threads\thread.h" />
+    <ClInclude Include="..\..\source\platformWin32\gl_types.h" />
+    <ClInclude Include="..\..\source\platformWin32\GLWinExtFunc.h" />
+    <ClInclude Include="..\..\source\platformWin32\GLWinFunc.h" />
+    <ClInclude Include="..\..\source\platformWin32\platformGL.h" />
+    <ClInclude Include="..\..\source\platformWin32\platformWin32.h" />
+    <ClInclude Include="..\..\source\platformWin32\VFSRes.h" />
+    <ClInclude Include="..\..\source\platformWin32\win32NPatch.h" />
+    <ClInclude Include="..\..\source\platformWin32\win_common_prefix.h" />
+    <ClInclude Include="..\..\source\platformWin32\win_debug_prefix.h" />
+    <ClInclude Include="..\..\source\platformWin32\win_release_prefix.h" />
+    <ClInclude Include="..\..\source\platformWin32\winConsole.h" />
+    <ClInclude Include="..\..\source\platformWin32\winD3DVideo.h" />
+    <ClInclude Include="..\..\source\platformWin32\winDInputDevice.h" />
+    <ClInclude Include="..\..\source\platformWin32\winDirectInput.h" />
+    <ClInclude Include="..\..\source\platformWin32\winFont.h" />
+    <ClInclude Include="..\..\source\platformWin32\winOGLVideo.h" />
+    <ClInclude Include="..\..\source\platformWin32\winV2Video.h" />
+    <ClInclude Include="..\..\source\platformWin32\winVideo.h" />
+    <ClInclude Include="..\..\source\platformWin32\nativeDialogs\win32DirectoryResolver.h" />
+    <ClInclude Include="..\..\source\sim\actionMap.h" />
+    <ClInclude Include="..\..\source\sim\connectionStringTable.h" />
+    <ClInclude Include="..\..\source\sim\netConnection.h" />
+    <ClInclude Include="..\..\source\sim\netInterface.h" />
+    <ClInclude Include="..\..\source\sim\netObject.h" />
+    <ClInclude Include="..\..\source\sim\netStringTable.h" />
+    <ClInclude Include="..\..\source\ts\tsDecal.h" />
+    <ClInclude Include="..\..\source\ts\tsIntegerSet.h" />
+    <ClInclude Include="..\..\source\ts\tsLastDetail.h" />
+    <ClInclude Include="..\..\source\ts\tsMesh.h" />
+    <ClInclude Include="..\..\source\ts\tsPartInstance.h" />
+    <ClInclude Include="..\..\source\ts\tsShape.h" />
+    <ClInclude Include="..\..\source\ts\tsShapeAlloc.h" />
+    <ClInclude Include="..\..\source\ts\tsShapeConstruct.h" />
+    <ClInclude Include="..\..\source\ts\tsShapeInstance.h" />
+    <ClInclude Include="..\..\source\ts\tsSortedMesh.h" />
+    <ClInclude Include="..\..\source\ts\tsTransform.h" />
+    <ClInclude Include="..\..\source\unit\memoryTester.h" />
+    <ClInclude Include="..\..\source\unit\test.h" />
+    <ClInclude Include="..\..\source\unit\unitTestComponentInterface.h" />
+    <ClInclude Include="..\..\source\util\fourcc.h" />
+    <ClInclude Include="..\..\source\util\rectClipper.h" />
+    <ClInclude Include="..\..\source\util\safeDelete.h" />
+    <ClInclude Include="..\..\source\util\stringUnit.h" />
+    <ClInclude Include="..\..\source\util\triBoxCheck.h" />
+    <ClInclude Include="..\..\source\util\undo.h" />
+    <ClInclude Include="..\..\source\util\messaging\dispatcher.h" />
+    <ClInclude Include="..\..\source\util\messaging\eventManager.h" />
+    <ClInclude Include="..\..\source\util\messaging\message.h" />
+    <ClInclude Include="..\..\source\util\messaging\messageForwarder.h" />
+    <ClInclude Include="..\..\source\util\messaging\scriptMsgListener.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\source\math\mMath_ASM.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\source\math\mMathAMD_ASM.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\source\math\mMathSSE_ASM.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\source\platform\platformCPUInfo.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(SolutionDir)..\..\Bin\nasm\nasmw.exe" -f win32 "%(FullPath)" -o "$(IntDir)%(Filename).obj"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="glu2d3d.vcxproj">
+      <Project>{f324eeec-ee85-4c83-84f6-46d839126511}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="ljpeg.vcxproj">
+      <Project>{0b07ba94-aa53-4fd4-adb4-79ec2da53b36}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="lpng.vcxproj">
+      <Project>{af1179e3-a838-46a3-a427-1e62aa4c52f4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="lungif.vcxproj">
+      <Project>{f30ca825-eb5e-4f62-bbc9-ea761f0ee68b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="opengl2d3d.vcxproj">
+      <Project>{3a012e6a-334f-4415-8bd7-1cca08ca7127}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="zlib.vcxproj">
+      <Project>{86cb2525-0cf3-40d3-bf42-a0a95035ee8c}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

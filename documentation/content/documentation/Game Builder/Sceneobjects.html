@@ -1,0 +1,428 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 7;
+   parent.leftFrame.expandToItem('tree2', 'doc7');
+   var element = parent.leftFrame.document.getElementById('doc7');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Scene Objects</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Behaviors"><span class="tocnumber">3.1</span> <span class="toctext">Behaviors</span></a></li>
+                              <li class="toclevel-2"><a href="#Scene_Object"><span class="tocnumber">3.2</span> <span class="toctext">Scene Object</span></a></li>
+                              <li class="toclevel-2"><a href="#Align"><span class="tocnumber">3.3</span> <span class="toctext">Align</span></a></li>
+                              <li class="toclevel-2"><a href="#Scripting"><span class="tocnumber">3.4</span> <span class="toctext">Scripting</span></a></li>
+                              <li class="toclevel-2"><a href="#Collision"><span class="tocnumber">3.5</span> <span class="toctext">Collision</span></a></li>
+                              <li class="toclevel-2"><a href="#Physics"><span class="tocnumber">3.6</span> <span class="toctext">Physics</span></a></li>				  
+							  <li class="toclevel-2"><a href="#Mounting"><span class="tocnumber">3.7</span> <span class="toctext">Mounting</span></a></li>
+                              <li class="toclevel-2"><a href="#World_Limits"><span class="tocnumber">3.8</span> <span class="toctext">World Limits</span></a></li>
+                              <li class="toclevel-2"><a href="#Blending"><span class="tocnumber">3.9</span> <span class="toctext">Blending</span></a></li>
+                              <li class="toclevel-2"><a href="#Dynamic_Fields"><span class="tocnumber">3.10</span> <span class="toctext">Dynamic Fields</span></a></li>
+                            </ul>
+							
+							
+                          </li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>A t2dSceneObject is the base of all other objects in Torque 2D. 
+                  Static sprites, animated sprites, scrollers, etc, all derive from this 
+                  base. What this means is that every object you add to your scene will 
+                  have a shared set of properties. This doc covers the common properties. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>Any object created within the Torque 2D editor is derived from a 
+                  t2dSceneObject. If you wish to create a blank scene object, navigate to 
+                  the <em>Create</em> panel. Find the <em>Scene Object</em> object in the <em>Other</em> panel. </p>
+                <p><br />
+                  <img alt="Image:sceneobjecticon.png" src="images/sceneobjecticon.png" /> </p>
+                <p><br />
+                  Drag and drop this into the scene where you want it to exist. Once the 
+                  scene object has been placed, it can be resized like any other object 
+                  within the Scene View. </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p>The following properties can be modified from the editor on every object in the level. </p>
+                <a name="Behaviors" id="Behaviors"></a>
+                <br><h3> <span class="mw-headline"> Behaviors </span></h3>
+                <p><img alt="File:behaviors.png" src="images/behaviors.png" /><br />
+                </p>
+                <p>Behaviors are pieces of code that give a particular object a 
+                  specific... well, behavior! Whether you want to turn a certain object 
+                  into an enemy, make it move back and forth, move to wherever the player 
+                  touches the screen or more - Behaviors allow you to very quickly add 
+                  code to an object without need to do a lot of extra work. </p>
+                <p><br />
+                  To select one of your behaviors, choose it from the Drop Down List and 
+                  press the green plus button. Your project must have behaviors associated
+                  with it for this list to have anything in it. </p>
+                <a name="Scene_Object" id="Scene_Object"></a>
+                <br><h3> <span class="mw-headline"> Scene Object </span></h3>
+                <p><img alt="sceneobject.png" src="images/sceneobject.png" /> </p>
+                <ul>
+                  <li> <b>Position</b>
+                    <ul>
+                      <li> <b>X</b> - The position of this object upon the X axis in the scene. </li>
+                      <li> <b>Y</b> - The position of this object upon the X axis in the scene. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Size</b>
+                    <ul>
+                      <li> <b>Width</b> - The width of this object. </li>
+                      <li> <b>Height</b> - The height of this object. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Rotation</b> - The rotation of this object, in degrees. </li>
+                </ul>
+                <ul>
+                  <li> <b>Auto Rotation</b> - The speed that this object will 
+                    automatically rotate when loaded into the scene. Positive will rotate 
+                    clockwise, negative will rotate counter clockwise. </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Horizontal</b> - If true, the object will be flipped horizontally. </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Vertical</b> - If true, the object will be flipped vertically. </li>
+                </ul>
+                <ul>
+                  <li> <b>Sort Point</b>
+                    <ul>
+                      <li> <b>X</b> - The X position, relative to the object, that the Sort Point is located. </li>
+                      <li> <b>Y</b> - The Y position, relative to the object, that the Sort Point is located. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Layer</b> - Which depth layer that this object will exist upon. </li>
+                </ul>
+                <ul>
+                  <li> <b>Group</b> - Which object group that this object will be in. </li>
+                </ul>
+                <ul>
+                  <li> <b>Back/Forward</b> - Moves the object backwards and forwards 
+                    within the layer it is in. Use this if you have multiple objects in the 
+                    same layer and need to adjust their sorting. </li>
+                </ul>
+				<ul>
+                  <li> <b>Visible</b> - If true, the object is visible in the scene. If false, the object will not render. </li>
+                </ul>
+                <ul>
+                  <li> <b>Lifetime</b> - How long this object will exist. </li>
+                </ul>
+                
+                <a name="Align" id="Align"></a>
+                <br><h3> <span class="mw-headline"> Align </span></h3>
+                <p><img alt="File: align.png" src="images/align.png" /> </p>
+                <p>Modify how this object is aligned with the camera view. </p>
+                <ul>
+                  <li> <img alt="File:AlignPanel_0.png" src="images/AlignPanel_0.png" /> - Align to the left. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_1.png" src="images/Align_1.png"  /> - Align to the horizontal center. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_2.png" src="images/Align_2.png"  /> - Align to the right. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_3.png" src="images/Align_3.png"  /> - Align to the top. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_4.png" src="images/Align_4.png"  /> - Align the to vertical center. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_5.png" src="images/Align_5.png"  /> - Align to the bottom. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_6.png" src="images/Align_6.png"  /> - Match horizontal size to horizontal viewport size. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_7.png" src="images/Align_7.png" /> - Match vertical size to vertical viewport size. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_8.png" src="images/Align_8.png"  /> - Match size of object to the viewport size. </li>
+                </ul>
+                <a name="Scripting" id="Scripting"></a>
+                <br><h3> <span class="mw-headline"> Scripting </span></h3>
+                <p><img alt="File:RainyDay_ScriptingPanel.png" 
+                        src="images/RainyDay_ScriptingPanel.png" border="0" /> </p>
+                <ul>
+                  <li> <b>Persist</b> - Set this object to persist across all levels. </li>
+                </ul>
+                <ul>
+                  <li> <b>Config Datablock</b> - The configuration datablock to associate this sceneobject with. </li>
+                </ul>
+                <ul>
+                  <li> <b>Name</b> - Name the object for referencing in script. </li>
+                </ul>
+                <ul>
+                  <li> <b>Class</b> - Link this object to a Class. </li>
+                </ul>
+                <ul>
+                  <li> <b>Super Class</b> - Link this object to a Parent Class. </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Mouse Events</b> - Enable mouse callbacks on the object. </li>
+                </ul>
+                                  <h3><strong>Collision</strong></h3>
+                <p>
+                    <img alt="" class="style1" src="images/CollisionRollout.png" dir="ltr" /></p>
+                <ul>
+                    <li><strong>Send Collision</strong> - This object sends collision events.</li>
+                    <li><strong>Receive Collision</strong> - This object receives collision events.</li>
+                    <li><strong>Send Physics</strong> - This object sends physics events.</li>
+                    <li><strong>Receive Physics</strong> - This object receives physics events.</li>
+                    <li><strong>Callback</strong> - This object handles collision events in script 
+                        callback functions.&nbsp; If you wish to do more than the simple Collision 
+                        Response defined below you must check this box.</li>
+                    <li><strong>Detection Mode</strong> - This selects which mode you wish to use to 
+                        detect collisions.
+                        <ul>
+                            <li><strong>FULL</strong> - This uses the entire sprite boundary to detect 
+                                collisions.&nbsp; Ok for rectangular objects.</li>
+                            <li><strong>CIRCLE</strong> - This uses a circle that fits the widest dimension of 
+                                your sprite to detect collisions.</li>
+                            <li><strong>POLYGON</strong> - (Default) This uses the collision polygon defined for 
+                                the sprite.&nbsp; You can edit this polygon by selecting &quot;<em>Edit this object&#39;s 
+                                collision polygon</em>&quot; from the object&#39;s Selection Editor Toolbar.</li>
+                            <li><strong>CUSTOM</strong> - This is for generating custom C++ collision response 
+                                calls and is an advanced feature.</li>
+                        </ul>
+                        </li>
+                    <li><strong>Collision</strong> <strong>Response</strong> - 
+                        This selects the physical behaviour you wish your objects to have when they 
+                        collide.
+                        <ul>
+                            <li><strong>CLAMP</strong> - The object will stop when it collides with another 
+                                object.</li>
+                            <li><strong>BOUNCE</strong> - (Default) The object will bounce off of the other 
+                                object in a collision.</li>
+                            <li><strong>STICKY</strong> - The object will stick to the collision target.</li>
+                            <li><strong>KILL</strong> - The object will be destroyed on collision.</li>
+                            <li><strong>RIGID</strong> - The object&#39;s behavior is calculated using basic rigid 
+                                body physics.</li>
+                        </ul>
+                        </li>
+                    <li><strong>Collision Layers</strong> - This determines which scene layers to use 
+                        when detecting collisions.&nbsp; All are selected by default.</li>
+                    <li><strong>Collision Groups</strong> - This determines which Scene Object groups to 
+                        use when detecting collisions.&nbsp; All are selected by default.</li>
+                </ul>
+                <p>&nbsp;</p>
+                  <h3><strong>Physics</strong></h3>
+                  <p>
+                      <img alt="" class="style2" src="images/PhysicsRollout.png" /></p>
+                  <ul>
+                    <li><strong>Velocity</strong> - The speed in units per second that the object is 
+                        moving in the <strong>X</strong> and <strong>Y</strong> directions.&nbsp; 
+                        Positive values are to the right and down, respectively, while negative values 
+                        are to the left and up, respectively.&nbsp; <strong>Min</strong> and <strong>Max</strong> 
+                        values determine the minimum and maximum speeds for your object.</li>
+                      <li><strong>Angular Velocity</strong> - </li>
+                      <li><strong>Immovable</strong> - This object cannot be moved by physics events.</li>
+                      <li><strong>Forward Only </strong>- Allows the object to only move in its forward 
+                          direction.</li>
+                      <li><strong>Constant Force</strong> - Applies a steady force in the desired amount 
+                          in the <strong>X</strong> and <strong>Y</strong> directions.&nbsp; Could be used 
+                          to simulate wind force, etc.</li>
+                      <li><strong>Gravitic</strong> - This object has a steady downward force applied to 
+                          it, as if it were affected by gravity.</li>
+                      <li><strong>Force Scale</strong> - Scales the magnitude of all forces applied to the 
+                          object.</li>
+                      <li><strong>Calculate Mass and Inertia</strong> - Uses the object&#39;s defined 
+                          attributes below for determining physics reactions in a more realistic fashion.</li>
+                        <ul>
+                            <li><strong>Mass</strong> - The object&#39;s mass.</li>
+                            <li><strong>Inertia</strong> - The object&#39;s inertial moment.</li>
+                            <li><strong>Density</strong> - The object&#39;s density.</li>
+                            <li><strong>Damping</strong> - Damping force applied to motion.</li>
+                            <li><strong>Friction</strong> - Friction when moving against other objects.</li>
+                            <li><strong>Restitution</strong> - Value used to decide when the object has come to 
+                                rest.</li>
+                        </ul>
+                        </li>
+                  </ul>
+                <a name="Mounting" id="Mounting"></a>
+                <br><h3> <span class="mw-headline"> Mounting </span></h3>
+                <p><img alt="File:mounting.png" src="images/mounting.png" /> </p>
+                <ul>
+                  <li> <b>Rotation</b> - Mount Rotation </li>
+                </ul>
+                <ul>
+                  <li> <b>Auto Rotation</b> - Automatic Mount Rotation </li>
+                </ul>
+                <a name="World_Limits" id="World_Limits"></a>
+                <br><h3> <span class="mw-headline"> World Limits </span></h3>
+                <p><img alt="File:RainyDay_WorldLimits.png" src="images/RainyDay_WorldLimits.png" /> </p>
+                <ul>
+                  <li> <b>Limit Mode</b> - The selected Limit Mode affects what occurs when the object touches the edges of the bounds of the World Limits.
+                    <ul>
+                      <li> <b>Off</b> - The world limits are not even tested by the object. </li>
+                      <li> <b>Null</b> - The world limits are tested, but no action is 
+                        taken when the object reaches the limits; it just continues on its way. 
+                        This mode is used in combination with the Callback checkbox to script 
+                        your own responses to reaching the world limits. </li>
+                      <li> <b>Clamp</b> - The object slides along the world limits and will not move past them. </li>
+                      <li> <b>Bounce</b> - The object bounces off the world limits in a simple, pong-like way and doesn't include spin. </li>
+                      <li> <b>Sticky</b> - The object stops all movement when it touches the world limits. </li>
+                      <li> <b>Kill</b> - The object deletes itself when it touches the world limits. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Min Bounds</b> - The minimum X and Y position of the bounds 
+                    for the World Limit. This can be edited here, however is also modified 
+                    by using the visual World Limit Editor. </li>
+                </ul>
+                <ul>
+                  <li> <b>Max Bounds</b> - The maximum X and Y position of the bounds 
+                    for the World Limit. This can be edited here, however is also modified 
+                    by using the visual World Limit Editor. </li>
+                </ul>
+                <ul>
+                  <li> <b>Callback</b> - If true, will cause a script-response to 
+                    occur when the World Limits are reached. In your script, the callback 
+                    for this object should look like this to function: </li>
+                </ul>
+                <pre>function myObject::onWorldLimit(%this, %mode, %limit)
+{ 
+   // %mode will be one of the following strings:
+   // off, null, bounce, clamp, sticky, kill
+
+   // %limit will be one of the following strings:
+   //  top, bottom, left, right 
+}
+</pre>
+               
+                <a name="Blending" id="Blending"></a>
+                <br><h3> <span class="mw-headline"> Blending </span></h3>
+                <ul>
+                  <li> <b>Enabled</b> - Enable blending for this object </li>
+                </ul>
+                <br>
+                <p><img alt="File:blending.png" src="images/blending.png"  /> </p>
+                <ul>
+                  <li> <b>Source Factor</b> - Source blend factor for this object.  These represent constants in the format (R, G, B, A).</li>
+                    <ul>
+                      <li> <b>ZERO</b> - The blend factor is (0, 0, 0, 0). </li>
+                      <li> <b>ONE</b> - The blend factor is (1, 1, 1, 1). </li>
+                      <li> <b>DST_COLOR</b> - The blend factor is (R, G, B, A) of the destination pixel applied as alpha to each channel. </li>
+                      <li> <b>ONE_MINUS_DST_COLOR</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the destination pixel applied as alpha to each channel. </li>
+                      <li> <b>SRC_ALPHA</b> - The blend factor is (A, A, A, A) of the source pixel alpha channel. </li>
+                      <li> <b>ONE_MINUS_SRC_ALPHA</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel. </li>
+                      <li> <b>DST_ALPHA</b> - The blend factor is (A, A, A, A) of the destination pixel alpha channel. </li>
+                      <li> <b>ONE_MINUS_DST_ALPHA</b> - The blend factor is (1 - A, 1 - A, 1 - A, 1 - A) of the destination pixel alpha channel. </li>
+                      <li> <b>SRC_ALPHA_SATURATE</b> - The blend factor is (f, f, f, 1) where f = min(Asource, 1 - Adestination). </li>
+                    </ul>
+                  
+                </ul>
+                <ul>
+                  <li> <b>Destination Blend Factor</b> - Destination blend factor for this object.  These represent constants in the format (R, G, B, A).</li>
+                    <ul>
+                      <li> <b>ZERO</b> - The blend factor is (0, 0, 0, 0). </li>
+                      <li> <b>ONE</b> - The blend factor is (1, 1, 1, 1). </li>
+                      <li> <b>SRC_COLOR</b> - The blend factor is (R, G, B, A) of the source pixel applied as alpha to each channel. </li>
+                      <li> <b>ONE_MINUS_SRC_COLOR</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel. </li>
+                      <li> <b>SRC_ALPHA</b> - The blend factor is (A, A, A, A) of the source pixel alpha channel. </li>
+                      <li> <b>ONE_MINUS_SRC_ALPHA</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel. </li>
+                      <li> <b>DST_ALPHA</b> - The blend factor is (A, A, A, A) of the destination pixel alpha channel. </li>
+                      <li> <b>ONE_MINUS_DST_ALPHA</b> - The blend factor is (1 - A, 1 - A, 1 - A, 1 - A) of the destination pixel alpha channel. </li>
+                    </ul>
+                  
+                </ul>
+                <ul>
+                  <li> <b>Blend Color</b>
+                    <ul>
+                      <li> <b>Red</b> - Red Blending Value </li>
+                      <li> <b>Green</b> - Green Blending Value </li>
+                      <li> <b>Blue</b> - Blue Blending Value </li>
+                      <li> <b>Alpha</b> - Alpha (Transparency) Blending Value </li>
+                    </ul>
+                  </li>
+                </ul>
+                <br>
+                <a name="Dynamic_Fields" id="Dynamic_Fields"></a>
+                <br><h3> <span class="mw-headline"> Dynamic Fields </span></h3>
+                <p><img alt="File:RainyDay_DynamicFieldsPanel.png" src="images/RainyDay_DynamicFieldsPanel.png" border="0" height="78" width="244" /> </p>
+                <p><br />
+                  Each entry specifies another Dynamic Field for the object. Their 
+                  functionality should be defined in the scripts that utilize the object. </p>
+                <b>Script Representation</b>
+                <pre>new t2dSceneObject() {
+   canSaveDynamicFields = "1";
+   Position = "128.769 -110.190";
+   size = "128.000 128.000";
+   CollisionMaxIterations = "3";
+   AlphaTestValue = "-1";
+   mountID = "13";
+};
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>All objects in Torque 2D derive from the t2dSceneObject class, allowing for powerful, object-oriented system design. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

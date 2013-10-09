@@ -1,0 +1,695 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 3;
+   parent.leftFrame.expandToItem('tree2', 'doc3');
+   var element = parent.leftFrame.document.getElementById('doc3');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Editor Interface</title>
+    <style type="text/css">
+        .style1
+        {
+            width: 313px;
+            height: 488px;
+        }
+        .style2
+        {
+            width: 264px;
+            height: 558px;
+        }
+    </style>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Interface"><span class="tocnumber">2</span> <span class="toctext">Interface</span></a></li>
+                          <li class="toclevel-1"><a href="#File_Menu"><span class="tocnumber">3</span> <span class="toctext">File Menu</span></a></li>
+                          <li class="toclevel-1"><a href="#Toolbar"><span class="tocnumber">4</span> <span class="toctext">Toolbar</span></a></li>
+                          <li class="toclevel-1"><a href="#Project_tab_info"><span class="tocnumber">5</span> <span class="toctext">Project tab info</span></a></li>
+                          <li class="toclevel-1"><a href="#Edit_Tab"><span class="tocnumber">6</span> <span class="toctext">Edit Tab</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Common_Object_Properties"><span class="tocnumber">6.1</span> <span class="toctext">Common Object Properties</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Editor_input_bindings_.28mouse.2C_keyboard.2C_shortcuts.29"><span class="tocnumber">7</span> <span class="toctext">Editor input bindings (mouse, keyboard, shortcuts)</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">8</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>In this section, you will learn about the primary interface of 
+                  Torque 2D and what all its bells and whistles do. Torque 2D's primary 
+                  scene editor interface consists of many powerful tools and features to 
+                  help you make your next game a reality. When you first open the 
+                  Torque 2D editor, you will see your project and its assets loaded into 
+                  the different tool windows. For the purpose of this documentation, we 
+                  will be using the example "RainyDay", which you can build by following <a href="../Game%20Tutorials/Behaviors/Rainy%20Day.html">this 
+                    tutorial</a>. </p>
+                <p><br />
+                  RainyDay example project, compiled and running. </p>
+                <p><img alt="File:RainyDay_Running.jpg" src="images/RainyDay_Running.jpg" border="0" height="316" width="478" /> </p>
+                <a name="Interface" id="Interface"></a>
+                <br><h2> <span class="mw-headline"> Interface </span></h2>
+                <p>Upon opening the RainyDay project in Torque 2D, your screen will look something like this: </p><br>
+                <p><img alt="File:RainyDay_InEditor.jpg" src="images/RainyDay_InEditor.jpg" border="0" height="472" width="809" /> </p>
+                <p><br />
+                  <b>Scene View</b> The Scene View is where the bulk of your work will be done. This is a 
+                  WYSIWYG representation of your game's scene. The following commands and 
+                  hot-keys function in the Scene View: </p>
+                <p><br />
+                  <b>Move Camera</b>: Hold Right Mouse Button and Drag Mouse<br />
+                </p>
+                <p><br />
+                  <b>Zoom Camera</b>: Scroll Wheel </p>
+                <p><br />
+                  <b>Group Select:</b> Hold Left Mouse Button and Drag Mouse </p>
+                <p><img alt="File:RainyDay_GroupSelect.png" src="images/RainyDay_GroupSelect.png" border="0" height="299" width="518" /> </p>
+                <p><br />
+                  <b>Resize Object</b>: Click the object, then drag the Blue handles on its sides.<br />
+                  <img alt="File:RainyDay_ResizeObj.png" src="images/RainyDay_ResizeObj.png" border="0" height="281" width="299" /> </p>
+                <p><br />
+                  <b>Modify Object Properties</b>: Click the object, then move the mouse cursor near the top to display its Edit Buttons. <br />
+                </p>
+                <p><img alt="File:RainyDay_ObjProperties.png" src="images/RainyDay_ObjProperties.png" border="0" height="193" width="306" /> </p>
+                <p><br />
+                  <b>Modify Object Scripting Properties:</b> Click the object, then click on the 'Edit' tab in the right most menu.<br />
+                </p>
+                <p><img alt="File:RainyDay_ClickEditTab.png" src="images/RainyDay_ClickEditTab.png" border="0" height="179" width="622" /> </p>
+                <a name="File_Menu" id="File_Menu"></a>
+                <br><h2> <span class="mw-headline"> File Menu </span></h2>
+                <p><img alt="File:RainyDay_FileMenu.png" src="images/RainyDay_FileMenu.png" 
+                        border="0" /> </p>
+                <p>File Menu allows you to: </p>
+                <p>Create, save, open, and close Scenes and Projects; </p><br>
+                <p><br />
+                  <img alt="File:RainyDay_EditMenu.png" src="images/RainyDay_EditMenu.png" 
+                        border="0" /> </p>
+                <p>Edit Menu allows you to: </p>
+                <ul>
+                  <li> Control editor actions such as undo and redo; </li>
+                </ul>
+                <ul>
+                  <li> Cut, copy, paste, and delete objects you have selected; </li>
+                </ul>
+                <ul>
+                  <li> Move selected object to the layer the furthest away from the camera, or the closest layer. </li>
+                </ul>
+                <ul>
+                  <li> Access the editor Preferences. </li>
+                </ul><br>
+                <p><br />
+                  <img alt="File:RainyDay_Projectmenu.png" src="images/RainyDay_Projectmenu.png" 
+                        border="0" /> </p>
+                <p>Project Menu allows you to: </p>
+                <ul>
+                  <li> Return to the project loading screen </li>
+                </ul>
+                <ul>
+                  <li> Run the game </li>
+                </ul>
+                <ul>
+                  <li> Access the GUI editor </li>
+                </ul>
+                <ul>
+                  <li> Import Imagemaps into your project </li>
+                </ul>
+                <ul>
+                  <li> Build sprite animations </li>
+                </ul>
+                <ul>
+                  <li> Reload Object Libraries </li>
+                </ul>
+                <ul>
+                  <li> Update images to the latest stored on your drive </li>
+                </ul><br>
+                <p><br />
+                  <img alt="File:RainyDay_ViewMenu.png" src="images/RainyDay_ViewMenu.png" 
+                        border="0" /> </p>
+                <p>View Menu allows you to: </p>
+                <ul>
+                  <li> Jump to the start position of the game's camera, or its Home </li>
+                </ul>
+                <ul>
+                  <li> Orient the camera to fit all objects in the scene within the Scene View </li>
+                </ul>
+                <ul>
+                  <li> Orient the camera to fit all selected objects in the scene within the Scene View </li>
+                </ul>
+                <ul>
+                  <li> Quickly adjust the zoom of the camera to 25%, 50%, 100%, 200% or 400% </li>
+                </ul><br>
+                <p><br />
+                  <img alt="File:RainyDay_HelpMenu.png" src="images/RainyDay_HelpMenu.png" 
+                        border="0" /> </p>
+                <p>Help Menu allows you to: </p>
+                <ul>
+                  <li> Access the Torque 2D Documentation </li>
+                </ul>
+                <ul>
+                  <li> Review and edit the Keyboard Shortcuts for the Torque 2D editor </li>
+                </ul>
+                <ul>
+                  <li> Access the Torque 2D Community in your Web Browser (Your browser will automatically open) </li>
+                </ul>
+                <ul>
+                  <li> Read the development credits and see the engine and editor versions, along with any Addons you currently have installed </li>
+                </ul>
+                <a name="Toolbar" id="Toolbar"></a>
+                <br><h2> <span class="mw-headline"> Toolbar </span></h2>
+                <p>The toolbar provides a series of icons that represent various editor 
+                  actions. The following descriptions are in order of left to right: </p>
+                <p><img alt="File:RainyDay_Rollovers_Assembled.png" 
+                        src="images/RainyDay_Rollovers_Assembled.png" border="0" height="56" 
+                        width="700" /> </p>
+                <p><br />
+                  Create a New Scene </p>
+                <p>Open an Existing Scene </p>
+                <p>Save Changes to Current Scene </p>
+                <p>Edit level datablocks in Visual Studio 2005 </p>
+				<p>Edit level datablocks in Visual Studio 2008 </p>
+                <p>Move Selection to Clipboard </p>
+                <p>Copy Selection to Clipboard </p>
+                <p>Paste Objects in Clipboard </p>
+                <p>Undo Last Change </p>
+                <p>Redo Last Change </p>
+                <p>Move Selection Up one Layer </p>
+                <p>Move Selection Down one Layer </p>
+                <p>Play Game </p>
+                <p>Selection Tool </p>
+                <p>Text Edit Tool </p>
+                <p>Camera Tool </p>
+                <p>Full Box Selection - When active, requires an entire object to be in the selection range. </p>
+                <p>Snap to Grid </p>
+                <a name="Project_tab_info" id="Project_tab_info"></a>
+                <br><h2> <span class="mw-headline"> Project tab info </span></h2>
+                <p>The Project Tab is broken into 5 sections. We'll discuss each individually. </p>
+                <p><img alt="File:RainyDay_ProjectTab.png" src="images/RainyDay_ProjectTab.png" 
+                        border="0" /> </p>
+                <p><br />
+                  <b>Project Manager</b><br />
+                  <img alt="File:RainyDay_ProjectTab_ProjectManager.png" 
+                        src="images/RainyDay_ProjectTab_ProjectManager.png" border="0" /> </p>
+                <ul>
+                  <li> Reload Project - Reloads the current project, refreshing all scripts and images </li>
+                </ul>
+                <ul>
+                  <li> Open Project Folder - Opens the project folder in the Finder </li>
+                </ul>
+                <ul>
+                  <li> Open VS2008 Project - Open's the project in Visual Studio 2008 </li>
+
+                  <li> Open VS2005 Project - Open's the project in Visual Studio 2005 </li>
+                    <li> Open XCode Project - Open's the OSX project in Xcode </li>
+
+                </ul>
+                  <p><br />
+                  <b>Object Tree</b><br />
+                  <img alt="File:RainyDay_ProjectTab_ObjectTree.png" 
+                          src="images/RainyDay_ProjectTab_ObjectTree.png" border="0" /> </p>
+                <ul>
+                  <li> Tree-based representation of all objects in the current scene, organized in their appropriate hierarchy </li>
+                </ul>
+                <p><br />
+                  <b>Undo History</b><br />
+                  <img alt="File:RainyDay_ProjectTab_UndoHistory.png" 
+                        src="images/RainyDay_ProjectTab_UndoHistory.png" border="0" /> </p>
+                <ul>
+                  <li> History of recent actions performed in the editor. Double-click on an entry to rewind the editor back to that point </li>
+                </ul>
+                <a name="Edit_Tab" id="Edit_Tab"></a>
+                <br><h2> <span class="mw-headline"> Edit Tab </span></h2>
+                <p>All object editing happens in the Edit Tab. This section of the 
+                  editor display all the properties for an object. Specialized objects, 
+                  like static sprites or scrollers, have their own unique properties 
+                  (typically displayed at the top of the Edit Tab). However, all objects 
+                  share the same set of common properties. </p>
+                <a name="Common_Object_Properties" id="Common_Object_Properties"></a>
+                <h3><br> <span class="mw-headline"> Common Object Properties </span></h3>
+                <p>Because every object in your scene is essentially a t2dSceneObject, 
+                  all objects share certain common properties. This section lists out 
+                  common properties that every object has. </p>
+                <p><br />
+                  <b>Behaviors</b> </p>
+                <p><img alt="File:Aquarium_BehaviorsPanel_NoneAdded.png" 
+                        src="images/Aquarium_BehaviorsPanel_NoneAdded.png" border="0" /><br />
+                </p>
+                <p>Behaviors are pieces of code that give a particular object a 
+                  specific... well, behavior! Whether you want to turn a certain object 
+                  into an enemy, make it move back and forth, move to wherever the player 
+                  touches the screen or more - Behaviors allow you to very quickly add 
+                  code to an object without need to do a lot of extra work. </p>
+                <p><br />
+                  To select one of your behaviors, choose it from the Drop Down List and 
+                  press the green plus button. Your project must have behaviors associated
+                  with it for this list to have anything in it. </p>
+                  <p>&nbsp;</p>
+                  <p><b>Scene Object</b> </p>
+                <p><img alt="File:RainyDay_SceneObject_Panel.png" 
+                        src="images/RainyDay_SceneObject_Panel.png" border="0" /> </p>
+                <ul>
+                  <li> <b>Position</b>
+                    <ul>
+                      <li> <b>X</b> - The position of this object upon the X axis in the scene </li>
+                      <li> <b>Y</b> - The position of this object upon the X axis in the scene.</li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Size</b>
+                    <ul>
+                      <li> <b>Width</b> - The width of this object </li>
+                      <li> <b>Height</b> - The height of this object </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Rotation</b> - The rotation of this object, in degrees </li>
+                </ul>
+                <ul>
+                  <li> <b>Auto Rotation</b> - The speed that this object will 
+                    automatically rotate when loaded into the scene. Positive will rotate 
+                    clockwise, negative will rotate counter clockwise </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Horizontal</b> - If true, the object will be flipped horizontally </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Vertical</b> - If true, the object will be flipped vertically </li>
+                </ul>
+                <ul>
+                  <li> <b>Sort Point</b>
+                    <ul>
+                      <li> <b>X</b> - The X position, relative to the object, that the Sort Point is located </li>
+                      <li> <b>Y</b> - The Y position, relative to the object, that the Sort Point is located </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Layer</b> - Which depth layer that this object will exist upon </li>
+                </ul>
+                <ul>
+                  <li> <b>Group</b> - Which object group that this object will be in </li>
+                </ul>
+                <ul>
+                  <li> <b>Back/Forward</b> - Moves the object backwards and forwards 
+                    within the layer it is in. Use this if you have multiple objects in the 
+                    same layer and need to adjust their sorting </li>
+                </ul>
+                <ul>
+                  <li> <b>Lifetime</b> - How long this object will exist </li>
+                </ul>
+                <ul>
+                  <li> <b>Visible</b> - If true, the object is visible in the scene. If false, the object will not render </li>
+                </ul>
+                <p><br />
+                  <b>Align</b> </p>
+                <p><img alt="File:RainyDay_AlignPanel.png" src="images/RainyDay_AlignPanel.png" border="0" height="159" width="236" /> </p>
+                <p>Modify how this object is aligned with the camera view. </p>
+                <ul>
+                  <li> <img alt="File:AlignPanel_0.png" src="images/AlignPanel_0.png" border="0" height="31" width="31" /> - Align to the left </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_1.png" src="images/Align_1.png" border="0" height="31" width="31" /> - Align to the horizontal center </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_2.png" src="images/Align_2.png" border="0" height="31" width="31" /> - Align to the right </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_3.png" src="images/Align_3.png" border="0" height="31" width="31" /> - Align to the top </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_4.png" src="images/Align_4.png" border="0" height="31" width="31" /> - Align the to vertical center </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_5.png" src="images/Align_5.png" border="0" height="31" width="31" /> - Align to the bottom </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_6.png" src="images/Align_6.png" border="0" height="31" width="31" /> - Match horizontal size to horizontal viewport size </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_7.png" src="images/Align_7.png" border="0" height="31" width="31" /> - Match vertical size to vertical viewport size </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:Align_8.png" src="images/Align_8.png" border="0" height="31" width="31" /> - Match size of object to the viewport size </li>
+                </ul>
+                <p><br />
+                  <b>Scripting</b> </p>
+                <p><img alt="File:RainyDay_ScriptingPanel.png" src="images/RainyDay_ScriptingPanel.png" border="0" height="174" width="545" /> </p>
+                <ul>
+                  <li> <b>Persist</b> - Set this object to persist across all levels </li>
+                </ul>
+                <ul>
+                  <li> <b>Config Datablock</b> - The configuration datablock to associate this sceneobject with </li>
+                </ul>
+                <ul>
+                  <li> <b>Name</b> - Name the object for referencing in script </li>
+                </ul>
+                <ul>
+                  <li> <b>Class</b> - Link this object to a Class </li>
+                </ul>
+                <ul>
+                  <li> <b>Super Class</b> - Link this object to a Parent Class </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Mouse Events</b> - Enable mouse callbacks on the object </li>
+                </ul>
+
+                <p>&nbsp;</p>
+                  <p><strong>Collision</strong></p>
+                <p>
+                    <img alt="" src="images/CollisionRollout.png" /></p>
+                <ul>
+                    <li><strong>Send Collision</strong> - This object sends collision events</li>
+                    <li><strong>Receive Collision</strong> - This object receives collision events</li>
+                    <li><strong>Send Physics</strong> - This object sends physics events</li>
+                    <li><strong>Receive Physics</strong> - This object receives physics events</li>
+                    <li><strong>Callback</strong> - This object handles collision events in script 
+                        callback functions.&nbsp; If you wish to do more than the simple Collision 
+                        Response defined below you must check this box</li>
+                    <li><strong>Detection Mode</strong> - This selects which mode you wish to use to 
+                        detect collisions
+                        <ul>
+                            <li><strong>FULL</strong> - This uses the entire sprite boundary to detect 
+                                collisions.&nbsp; Ok for rectangular objects</li>
+                            <li><strong>CIRCLE</strong> - This uses a circle that fits the widest dimension of 
+                                your sprite to detect collisions</li>
+                            <li><strong>POLYGON</strong> - (Default) This uses the collision polygon defined for 
+                                the sprite.&nbsp; You can edit this polygon by selecting &quot;<em>Edit this object&#39;s 
+                                collision polygon</em>&quot; from the object&#39;s Selection Editor Toolbar</li>
+                            <li><strong>CUSTOM</strong> - This is for generating custom C++ collision response 
+                                calls and is an advanced feature</li>
+                        </ul>
+                        </li>
+                    <li><strong>Collision</strong> <strong>Response</strong> - 
+                        This selects the physical behaviour you wish your objects to have when they 
+                        collide.
+                        <ul>
+                            <li><strong>CLAMP</strong> - The object will stop when it collides with another 
+                                object</li>
+                            <li><strong>BOUNCE</strong> - (Default) The object will bounce off of the other 
+                                object in a collision</li>
+                            <li><strong>STICKY</strong> - The object will stick to the collision target</li>
+                            <li><strong>KILL</strong> - The object will be destroyed on collision</li>
+                            <li><strong>RIGID</strong> - The object&#39;s behavior is calculated using basic rigid 
+                                body physics</li>
+                        </ul>
+                        </li>
+                    <li><strong>Collision Layers</strong> - This determines which scene layers to use 
+                        when detecting collisions.&nbsp; All are selected by default</li>
+                    <li><strong>Collision Groups</strong> - This determines which Scene Object groups to 
+                        use when detecting collisions.&nbsp; All are selected by default</li>
+                </ul>
+                <p>&nbsp;</p>
+                  <p><strong>Physics</strong></p>
+                  <p>
+                      <img alt="" src="images/PhysicsRollout.png" /></p>
+                  <ul>
+                    <li><strong>Velocity</strong> - The speed in units per second that the object is 
+                        moving in the <strong>X</strong> and <strong>Y</strong> directions.&nbsp; 
+                        Positive values are to the right and down, respectively, while negative values 
+                        are to the left and up, respectively.&nbsp; <strong>Min</strong> and <strong>Max</strong> 
+                        values determine the minimum and maximum speeds for your object</li>
+                      <li><strong>Angular Velocity</strong> - </li>
+                      <li><strong>Immovable</strong> - This object cannot be moved by physics events</li>
+                      <li><strong>Forward Only </strong>- Allows the object to only move in its forward 
+                          direction</li>
+                      <li><strong>Constant Force</strong> - Applies a steady force in the desired amount 
+                          in the <strong>X</strong> and <strong>Y</strong> directions.&nbsp; Could be used 
+                          to simulate wind force, etc</li>
+                      <li><strong>Gravitic</strong> - This object has a steady downward force applied to 
+                          it, as if it were affected by gravity</li>
+                      <li><strong>Force Scale</strong> - Scales the magnitude of all forces applied to the 
+                          object</li>
+                      <li><strong>Calculate Mass and Inertia</strong> - Uses the object&#39;s defined 
+                          attributes below for determining physics reactions in a more realistic fashion</li>
+                        <ul>
+                            <li><strong>Mass</strong> - The object&#39;s mass</li>
+                            <li><strong>Inertia</strong> - The object&#39;s inertial moment</li>
+                            <li><strong>Density</strong> - The object&#39;s density</li>
+                            <li><strong>Damping</strong> - Damping force applied to motion</li>
+                            <li><strong>Friction</strong> - Friction when moving against other objects</li>
+                            <li><strong>Restitution</strong> - Value used to decide when the object has come to 
+                                rest</li>
+                        </ul>
+                        </li>
+                  </ul>
+                  <b>
+                  <br />
+                  Mounting</b> </p>
+                <p><img alt="File:RainyDay_MountingPanel.png" src="images/RainyDay_MountingPanel.png" border="0" height="83" width="199" /> </p>
+                <ul>
+                  <li> <b>Rotation</b> - Mount Rotation </li>
+                </ul>
+                <ul>
+                  <li> <b>Auto Rotation</b> - Automatic Mount Rotation </li>
+                </ul>
+                <ul>
+                  <li> <b>Mount Force</b> - (Only available when object is mounted) If
+                    this is not zero, this "tightens" or "loosens" how quickly the mounted 
+                    object follows the parent, with lower numbers resulting in the mounted 
+                    object taking longer to "catch up to" the parent </li>
+                </ul>
+                <ul>
+                  <li> <b>Track Rotation</b> - (Only available when object is mounted) If this is checked the mounted object will rotate with its parent object </li>
+                </ul>
+                <ul>
+                  <li> <b>Owned by Mount</b> - (Only available when object is mounted) Owned by Mount </li>
+                </ul>
+                <ul>
+                  <li> <b>Inherit Attributes</b> - (Only available when object is 
+                    mounted) If this is checked the mounted object will inherit the object 
+                    properties (such as visibility) of the parent object </li>
+                </ul>
+                <p><br />
+                  <b>World Limits</b> </p>
+                <p><img alt="File:RainyDay_WorldLimits.jpg" src="images/RainyDay_WorldLimits.jpg" border="0" height="212" width="578" /> </p>
+                <ul>
+                  <li> <b>Limit Mode</b> - The selected Limit Mode affects what occurs when the object touches the edges of the bounds of the World Limits.
+                    <ul>
+                      <li> <b>Off</b> - The world limits are not even tested by the object </li>
+                      <li> <b>Null</b> - The world limits are tested, but no action is 
+                        taken when the object reaches the limits; it just continues on its way. 
+                        This mode is used in combination with the Callback checkbox to script 
+                        your own responses to reaching the world limits </li>
+                      <li> <b>Clamp</b> - The object bounces off the world limits in a simple, pong-like way and doesn't include spin </li>
+                      <li> <b>Bounce</b> - The object slides along the world limits and will not move past them </li>
+                      <li> <b>Sticky</b> - The object stops all movement when it touches the world limits </li>
+                      <li> <b>Kill</b> - The object deletes itself when it touches the world limits </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p><img alt="File:RainyDay_WorldLimits_ModeDropdown.jpg" src="images/RainyDay_WorldLimits_ModeDropdown.jpg" border="0" height="129" width="517" /> </p>
+                <ul>
+                  <li> <b>Min Bounds</b> - The minimum X and Y position of the bounds 
+                    for the World Limit. This can be edited here, however is also modified 
+                    by using the visual World Limit Editor </li>
+                </ul>
+                <ul>
+                  <li> <b>Max Bounds</b> - The maximum X and Y position of the bounds 
+                    for the World Limit. This can be edited here, however is also modified 
+                    by using the visual World Limit Editor </li>
+                </ul>
+                <ul>
+                  <li> <b>Callback</b> - If true, will cause a script-response to 
+                    occur when the World Limits are reached. In your script, the callback 
+                    for this object should look like this to function: </li>
+                </ul>
+                <pre>function myObject::onWorldLimit(%this, %mode, %limit)
+{ 
+   // %mode will be one of the following strings:
+   // off, null, bounce, clamp, sticky, kill
+
+   // %limit will be one of the following strings:
+   //  top, bottom, left, right 
+}
+</pre>
+                <p><br />
+                  <b>Alpha Testing</b> </p>
+                <p><img alt="File:RainyDay_BlendingPanel.png" src="images/RainyDay_BlendingPanel.png" border="0" height="246" width="542" /> </p>
+                <ul>
+                  <li> <b>Alpha Test Value</b> - Enables alpha testing for this object if the value is between 0 - 255. Set to -1 to disable Alpha Testing </li>
+                </ul>
+                <ul>
+                  <li> <b>Blending</b>
+                    <ul>
+                      <li> <b>Enabled</b> - Enable blending for this object </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p><br />
+                  <img alt="File:RainyDay_BlendingPanel_SourceFactors.png" src="images/RainyDay_BlendingPanel_SourceFactors.png" border="0" height="169" width="513" /> </p>
+                <ul>
+                  <li> <b>Source Factor</b> - Source blend factor for this object.  These represent constants in the format (R, G, B, A).</li>
+                    <ul>
+                      <li> <b>ZERO</b> - The blend factor is (0, 0, 0, 0) </li>
+                      <li> <b>ONE</b> - The blend factor is (1, 1, 1, 1) </li>
+                      <li> <b>DST_COLOR</b> - The blend factor is (R, G, B, A) of the destination pixel applied as alpha to each channel </li>
+                      <li> <b>ONE_MINUS_DST_COLOR</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the destination pixel applied as alpha to each channel </li>
+                      <li> <b>SRC_ALPHA</b> - The blend factor is (A, A, A, A) of the source pixel alpha channel </li>
+                      <li> <b>ONE_MINUS_SRC_ALPHA</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel </li>
+                      <li> <b>DST_ALPHA</b> - The blend factor is (A, A, A, A) of the destination pixel alpha channel </li>
+                      <li> <b>ONE_MINUS_DST_ALPHA</b> - The blend factor is (1 - A, 1 - A, 1 - A, 1 - A) of the destination pixel alpha channel </li>
+                      <li> <b>SRC_ALPHA_SATURATE</b> - The blend factor is (f, f, f, 1) where f = min(Asource, 1 - Adestination) </li>
+                    </ul>
+                  
+                </ul>
+                <p><br />
+                  <img alt="File:RainyDay_BlendingPanel_DestinationFactors.png" src="images/RainyDay_BlendingPanel_DestinationFactors.png" border="0" height="155" width="517" /> </p>
+               <ul>
+                  <li> <b>Destination Blend Factor</b> - Destination blend factor for this object.  These represent constants in the format (R, G, B, A)</li>
+                    <ul>
+                      <li> <b>ZERO</b> - The blend factor is (0, 0, 0, 0) </li>
+                      <li> <b>ONE</b> - The blend factor is (1, 1, 1, 1) </li>
+                      <li> <b>SRC_COLOR</b> - The blend factor is (R, G, B, A) of the source pixel applied as alpha to each channel </li>
+                      <li> <b>ONE_MINUS_SRC_COLOR</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel </li>
+                      <li> <b>SRC_ALPHA</b> - The blend factor is (A, A, A, A) of the source pixel alpha channel </li>
+                      <li> <b>ONE_MINUS_SRC_ALPHA</b> - The blend factor is (1 - R, 1 - G, 1 - B, 1 - A) of the source pixel applied as alpha to each channel </li>
+                      <li> <b>DST_ALPHA</b> - The blend factor is (A, A, A, A) of the destination pixel alpha channel </li>
+                      <li> <b>ONE_MINUS_DST_ALPHA</b> - The blend factor is (1 - A, 1 - A, 1 - A, 1 - A) of the destination pixel alpha channel </li>
+                    </ul>
+                  
+                </ul>
+                <ul>
+                  <li> <b>Blend Color</b>
+                    <ul>
+                      <li> <b>Red</b> - Red Blending Value </li>
+                      <li> <b>Green</b> - Green Blending Value </li>
+                      <li> <b>Blue</b> - Blue Blending Value </li>
+                      <li> <b>Alpha</b> - Alpha (Transparency) Blending Value </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p><br />
+                  <b>Dynamic Fields</b> </p>
+                <p><img alt="File:RainyDay_DynamicFieldsPanel.png" src="images/RainyDay_DynamicFieldsPanel.png" border="0" height="78" width="244" /> </p>
+                <p>Each entry specifies another Dynamic Field for the object. Their 
+                  functionality should be defined in the scripts that utilize the object. </p>
+                <p><br />
+                  <b>Object Specific Object Properties</b> Some objects have different property fields than others. All Object Specific property fields are listed out in this section. </p>
+                <a name="Editor_input_bindings_.28mouse.2C_keyboard.2C_shortcuts.29" id="Editor_input_bindings_.28mouse.2C_keyboard.2C_shortcuts.29"></a>
+                <br><h2> <span class="mw-headline"> Editor input bindings (mouse, keyboard, shortcuts) </span></h2>
+                <p>The following are the default bindings for the Torque 2D editor. 
+                  These can be modified by accessing the 'Keyboard Shortcuts...' option 
+                  under the Help Menu. </p>
+                <p><img alt="File:RainyDay_Keybindings.png" src="images/RainyDay_Keybindings.png" border="0" height="318" width="503" /> </p>
+                <ul>
+                  <li> <b>lbracket</b> - Move Selection One Layer Closer to Camera </li>
+                </ul>
+                <ul>
+                  <li> <b>rbracket</b> - Move Selection One Layer Away From Camera </li>
+                </ul>
+                <ul>
+                  <li> <b>escape</b> - Activate the Selection Tool </li>
+                </ul>
+                <ul>
+                  <li> <b>E</b> - Show the Edit Panel </li>
+                </ul>
+                <ul>
+                  <li> <b>C</b> - Show the Create Panel </li>
+                </ul>
+                <ul>
+                  <li> <b>P</b> - Show the Project Panel </li>
+                </ul>
+                <ul>
+                  <li> <b>home</b> - Sets the camera to the selected device scene limits </li>
+                </ul>
+                <ul>
+                  <li> <b>end</b> - Sets the camera to show all scene contents </li>
+                </ul>
+                <ul>
+                  <li> <b>Equals</b> - Zoom the View Window In </li>
+                </ul>
+                <ul>
+                  <li> <b>Minus</b> - Zoom the View Window Out </li>
+                </ul>
+                <ul>
+                  <li> <b>left</b> - Move the View Window Left </li>
+                </ul>
+                <ul>
+                  <li> <b>right</b> - Move the View Window Right </li>
+                </ul>
+                <ul>
+                  <li> <b>up</b> - Move the View Window Up </li>
+                </ul>
+                <ul>
+                  <li> <b>down</b> - Move the View Window Down </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-Z</b> - Undo The Last Action </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-shift-Z</b> - Redo an Undone Action </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-c</b> - Copy the Selected Objects </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-x</b> - Cut the Selected Objects </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-v</b> - Paste Cute or Copied Objects </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-up</b> - Same as <b>Home</b> </li>
+                </ul>
+                <ul>
+                  <li> <b>ctrl-down</b> - Same as <b>End</b> </li>
+                </ul>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>The Torque 2D editor is intended to be entirely WYSIWYG. The way you 
+                  layout and develop a scene within the editor is the same way that the 
+                  scene will look when loaded on your target platform. Having read 
+                  through the Interface Instructions, you should now understand the basics
+                  of using the Torque 2D editor, how to operate the various menus, and in
+                  what ways you need to interface with the editor to build your game. </p></td>
+            </tr>
+          </tbody>
+        </table>
+
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

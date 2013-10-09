@@ -1,0 +1,120 @@
+//--------------------------------------------------------------------------
+// Profiles
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
+// Scripts
+//--------------------------------------------------------------------------
+
+function splashScreen::onAdd( %this ) {
+	%this.done = false;
+	%this.currentSplash = 0;
+	%this.maxSplash = 3;
+	
+	%this.splashImage[0] = expandFilename( "./GameSplash.jpg" );
+	%this.splashImage[1] = expandFilename( "./RGSplash.png" );
+	%this.splashImage[2] = expandFilename( "./GGSplash.jpg" );
+
+	%this.splashFadeInDuration[0] = 500;
+	%this.splashFadeInDuration[1] = 500;
+	%this.splashFadeInDuration[2] = 500;
+
+	%this.splashDuration[0] = 1000;
+	%this.splashDuration[1] = 2000;
+	%this.splashDuration[2] = 3000;
+
+	%this.splashFadeOutDuration[0] = 500;
+	%this.splashFadeOutDuration[1] = 500;
+	%this.splashFadeOutDuration[2] = 500;
+
+   %this.createFade();
+	error("exiting splashScreen::onAdd()");
+}
+
+function splashScreenFadeinBitmap::onWake( %this ) {
+	error("     getSimTime() == ", getSimTime() );
+	error("     %this.bitmap == ", %this.bitmap );
+	error(" %this.fadeinTime == ", %this.fadeinTime );
+	error("   %this.waitTime == ", %this.waitTime );
+	error("%this.fadeoutTime == ", %this.fadeoutTime );
+	
+	%this.lastSchedule = %this.schedule( 100, checkIsDone );
+}
+
+function splashScreenFadeinBitmap::onSleep( %this ) {
+	cancel( %this.lastSchedule );
+}
+
+function splashScreenFadeinBitmap::checkIsDone( %this ) {
+	if( %this.done ) 
+	{
+	   splashScreen.currentSplash++;
+	   
+      error(" getSimTime() == ", getSimTime() );
+      error("checkIsDone()");
+
+	   if( splashScreen.currentSplash >= splashScreen.maxSplash )
+	   {
+	      if($RG::EnableMainMenu)
+	      {
+	         error("Starting mainMenu... ");
+		      Canvas.setContent(mainMenu);
+	      }
+	      else
+	      {
+	         error("Starting game... ");
+	         startGame( $Game::CurrentScene );
+	      }
+	   }
+	   else
+	   {
+	      error("Creating next fade... ");
+	      splashScreen.createFade();         
+	   }	
+	   return;	
+	}
+	%this.lastSchedule = %this.schedule( 100, checkIsDone );
+}
+
+function splashScreenFadeinBitmap::click( %this ) {
+	%this.done  = true;
+	cancel( %this.lastSchedule );
+	%this.schedule(0,checkIsDone);
+}
+
+function splashScreen::createFade( %this )
+{
+   %lastSplash = %this.getObject(0);
+   if( isObject( %lastSplash ) ) %lastSplash.schedule(0,delete);
+   
+   %splash = new GuiFadeinBitmapCtrl(splashScreenFadeinBitmap) 
+   {
+      profile = "GuiDefaultProfile";
+      horizSizing = "width";
+      vertSizing = "height";
+      position = "0 0";
+      extent = %this.getExtent();
+      minExtent = "8 2";
+      visible = "1";
+      bitmap = %this.splashImage[%this.currentSplash];
+      wrap = "0";      
+      fadeinTime = %this.splashFadeInDuration[%this.currentSplash];
+      waitTime = %this.splashDuration[%this.currentSplash];
+      fadeoutTime = %this.splashFadeOutDuration[%this.currentSplash];
+      done = "0";
+   };
+   %this.add(%splash);     
+}
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(splashScreen) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "width";
+   vertSizing = "height";
+   position = "0 0";
+   extent = "800 600";
+   minExtent = "8 2";
+   visible = "1";
+};
+//--- OBJECT WRITE END ---
+

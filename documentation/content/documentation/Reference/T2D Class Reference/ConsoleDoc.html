@@ -1,0 +1,92 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 111;
+   parent.leftFrame.expandToItem('tree2', 'doc111');
+   var element = parent.leftFrame.document.getElementById('doc111');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>ConsoleDoc</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">ConsoleDoc</h8>
+<span class = "classDescription">
+<span class = "descriptionTitleText">Description:</span> Console self-documentation functions. These output psuedo C++ suitable for feeeding through Doxygen or another auto documentation tool. 
+</span>
+
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">dumpConsoleClasses(bool dumpScript=true, bool dumpEngine=true)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> dumps all declared console classes to the console. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">dumpScript:</span> Specifies whether or not classes defined in script should be dumped. 
+
+</span><span class = "param">
+<span class = "paramTitle">dumpEngine:</span> Specifies whether or not classes defined in the engine should be dumped. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dumpConsoleFunctions(bool dumpScript=true, bool dumpEngine=true)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dumps all declared console functions to the console. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">dumpScript:</span> Specifies whether or not functions defined in script should be dumped. 
+
+</span><span class = "param">
+<span class = "paramTitle">dumpEngine:</span> Specifies whether or not functions defined in the engine should be dumped. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

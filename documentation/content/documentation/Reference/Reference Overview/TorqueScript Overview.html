@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 89;
+   parent.leftFrame.expandToItem('tree2', 'doc89');
+   var element = parent.leftFrame.document.getElementById('doc89');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Introduction</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20051010;3530000">
+	<META NAME="CHANGED" CONTENT="20060616;11390800">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 1.1in; margin-right: 1.1in; margin-top: 0.5in; margin-bottom: 0.5in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		H3 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		H3.western { font-family: "Arial", sans-serif; so-language: en-US }
+		H3.cjk { font-family: "Lucida Sans Unicode" }
+		H3.ctl { font-family: "Tahoma"; so-language: ar-SA }
+		H5 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		H5.western { so-language: en-US }
+		H5.cjk { font-family: "Lucida Sans Unicode" }
+		H5.ctl { font-family: "Tahoma"; so-language: ar-SA }
+		PRE { direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		PRE.western { so-language: en-US }
+		PRE.ctl { so-language: ar-SA }
+		A:link { color: #0000ff }
+		code { font-family: Courier New, Monospace; font-size: 2; }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<h1><B>Torque
+	2D &ndash; TorqueScript Overview</B></h1>
+</DIV>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in; font-weight: medium">
+<FONT FACE="Arial, sans-serif">(Adapted from Edward Maurina's book,
+&quot;The Game Programmer's Guide to Torque&quot; [GPGT]. Grab the
+entire book to take your Torque knowledge to the next level.)</P>
+<H3 CLASS="western">Introduction</H3>
+<br />
+<p>This
+document offers an introduction to TorqueScript. You will not be a
+TorqueScript master after simply reading this - that takes time and
+practice. But you will walk away with a good feel for how
+TorqueScript is structured and how it works. With this knowledge in
+hand, you will be ready to take off and start learning how to best
+use the tools TorqueScript gives you to create your game.</P>
+<br />
+<H3 CLASS="western">What is Scripting?</H3>
+<br />
+<p>Scripting
+languages are programming languages designed to enable scripting.
+Scripting is the act of using preexisting (engine) components to
+accomplish new tasks. In other words, we use a scripting language to
+access features in the engine and then use those features to provide
+a game experience.</P>
+<p><BR>Generally,
+scripting languages are interpreted, not compiled (like C++ and other
+languages). This makes scripting tasks somewhat slower than compiled
+tasks, but we make this trade in order to gain flexibility and
+visibility, as well as ease of use. Because scripting languages also
+allow you to modify your program without having to recompile it, we
+are able to rapidly prototype and repair code. This speeds
+development significantly.</P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in"><FONT FACE="Arial, sans-serif">Often,
+scripting languages allow you to write code without worrying about
+nitty-gritty programming details like data types or memory
+management. This is both a boon and a bane. It is a boon in that it
+simplifies many programming tasks, but it is also a bane because it
+allows us to make mistakes that a strict compiled language and its
+compiler would find. T2D will catch and notify you of syntax errors,
+but it does not check for type mismatches or variable naming
+mistakes.</P>
+<br />
+<H3 CLASS="western">TorqueScript</H3>
+<br />
+<p>TorqueScript
+is a very powerful, flexible language with syntax similar to C++. The
+following sections will describe all of its features and provide
+examples to demonstrate its usage.</P>
+<H3 CLASS="western">Language Features</H3>
+<br />
+<UL>
+	<LI><p><B>Type-insensitive
+	</B>- In TorqueScript, variable types are converted as necessary and
+	can be used interchangeably. TorqueScript provides several basic
+	literal types, which are described later in this chapter.</P>
+	<br />
+</UL>
+<UL>
+	<LI><p><B>Case-insensitive
+	</B>- TorqueScript ignores case when interpreting variable and
+	function names.</P>
+	<br />
+</UL>
+<UL>
+	<LI><p><B>Statement
+	termination </B>- Statements are terminated with a semi-colon (;) as
+	in many modern programming languages (C++, Java, Javascript, etc). </p>
+	</P>
+	<br />
+</UL>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%">
+	<FONT FACE="Arial, sans-serif"><B>Full complement of operators </B>-
+	The complete list of TorqueScript operators is listed in the
+	TorqueScript Quick Reference. TorqueScript provides all the basic
+	operators common to most programming languages, along with a few
+	more advanced operators. </p>
+	</P>
+	<br />
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="line-height: 100%"><FONT FACE="Arial, sans-serif"><B>Full
+	complement of control structures </B>- As with any robust language,
+	TorqueScript provides the standard programming constructs:
+	if-then-else, for, while, and switch. </p>
+	</P>
+</UL>
+<UL>
+	<br />
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Functions</B>-
+	TorqueScript provides the ability to create functions with the
+	optional ability to return values. Parameters are passed by value
+	and by reference.</P>
+	<br />
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Inheritance
+	and Polymorphism </B>- TorqueScript allows you to inherit from
+	engine objects and to subsequently extend or override object
+	methods.</P>
+	<br />
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Namespaces
+	</B>- Like C++, TorqueScript supports the concept of namespaces.
+	Namespaces are used to localize names and identifiers to avoid
+	collisions. Huh? This means, for example, that you can have two
+	different functions named doIt() that exist in two separate
+	namespaces, but which are used in the same code.</P>
+	<br />
+	<LI><p><B>Compiles
+	and executes PCODE </B>- As a bit of icing on the cake, the
+	TorqueScript engine compiles scripts prior to executing them, giving
+	a speed increase as well as providing a point at which errors in
+	scripts can be reasonably found and diagnosed.</P>
+</UL>
+<br />
+<br />
+<H3 CLASS="western">Variables</H3>
+<br />
+<p>Variables
+come in two flavors in TorqueScript: local and global. Local
+variables are transient, meaning they are destroyed automatically
+when they go out of scope. And what is scope? &quot;Scope&quot; is a
+term used to refer to the block of code a variable is defined in. For
+example, if we have a function, and we declare a local variable
+inside of that function, the local variable will be destroyed as soon
+as the function is done processing. When this happens, we say the
+variable has &quot;gone out of scope&quot;. So, local variables only
+exist in their local scope- the function or code-block they are
+defined in. A piece of code inside a different function would not be
+able to see the local variable. Global variables, on the other hand,
+are permanent and exist throughout the entire program they are
+defined in. </p>
+</P>
+<br />
+<p>TorqueScript
+specifically marks local and global variables with special
+characters, so that they are easy to tell apart. The syntax is as
+follows: </p>
+</P>
+<PRE CLASS="western" STYLE="text-align: justify">
+    <p class="code">%local_var = value;</p>
+    <p class="code">$global_var = value2;</p></PRE><P CLASS="western" ALIGN=JUSTIFY>
+<FONT FACE="Arial, sans-serif">In TorqueScript, variables do not need
+to be created before you use them. If a piece of code attempts to
+evaluate the value of a variable that was not previously created,
+TorqueScript will create the variable automatically.</P>
+<br />
+<p>Variable
+names may contain any number of alpha-numeric (a..z, A..Z, 0..9)
+characters, as well as the underscore (_) character. However, the
+first character in a variable's name cannot be a number. You may end
+variable names with a number, but if you do, you must be especially
+careful with array names. For further explanation, see the section on
+arrays.</P>
+<br />
+<H3 CLASS="western">Data Types</H3>
+<br />
+<p>TorqueScript
+implicitly supports several variable data-types: numbers, strings,
+booleans, and arrays. Each type is detailed below.</P>
+<br />
+<H5 CLASS="western"><A NAME="Numbers:"></A><p>Numbers:
+</p>
+</H5>
+<PRE CLASS="western">            123     (Integer)
+            1.234   (floating point)
+            1234e-3 (scientific notation)
+            <p class="code">0xc001  (hexadecimal)</p></PRE><P CLASS="western">
+<p>Nothing mysterious here.
+TorqueScript handles your standard numeric types.</P>
+<H5 CLASS="western"><A NAME="Strings:"></A><p>Strings:
+</p>
+</H5>
+<PRE CLASS="western">            &quot;abcd&quot;      (string)
+            <p class="code">'abcd'      (tagged string)</p></PRE><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in">
+<p>Standard strings, in
+double-quotes, behave as you would expect. This is what is used in
+most cases. Strings which appear in single quotes, 'abcd', are
+treated specially by TorqueScript. These strings are called &quot;tagged
+strings&quot;, and they are special in that they contain string data,
+but also have a special numeric tag associated with them. Tagged
+strings are used for sending string data across a network. The value
+of a tagged string is only sent once, regardless of how many times
+you actually do the sending. On subsequent sends, only the tag value
+is sent. Tagged values must be de-tagged when printing.</P>
+<H5 CLASS="western"><A NAME="Booleans:"></A><p>Booleans:
+</p>
+</H5>
+<p>Like most
+programming languages, TorqueScript also supports Booleans. Boolean
+numbers have only two values - true or false. </p>
+</P>
+<PRE CLASS="western">            true    (1)
+            false   (0)</PRE><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in">
+<p>The constant &quot;true&quot;
+evaluates to the number 1 in TorqueScript, and the constant &quot;false&quot;
+evaluates to the number 0.</P>
+<H5 CLASS="western"><A NAME="Arrays:"></A><p>Arrays:
+</p>
+</H5>
+<PRE CLASS="western">           $MyArray[n]         (Single-dimension) 
+           $MyMultiArray[m,n]  (Multi-dimension)
+           $MyMultiArray[m_n]  (Multi-dimension)</PRE><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in">
+<p>TorqueScript is extremely
+flexible with arrays. Many scripting languages are more flexible with
+arrays than compiled languages like C++, but TorqueScript is even
+more flexible than most scripting languages. All this flexibility can
+get confusing, and deciphering how TorqueScript handles arrays
+sometimes trips people up. Part of this confusion comes from the
+various ways in which array variables can be accessed. For instance,
+$MyArray[1] and $MyArray1 are identical variable names. Also,
+$MyMultiArray[0,1], $MyMultiArray[0_1] and $MyMultiArray0_1 all
+reference the same variable.</P>
+<br />
+<H3 CLASS="western">Operators</H3>
+<br />
+<p>A complete listing
+of TorqueScript's operators can be found in the TorqueScript
+Reference.</P>
+<br />
+<H3 CLASS="western">Control Statements</H3>
+<br />
+<p>TorqueScript
+supports all the common control statements.</P>
+<br />
+<UL>
+	<LI><p>if-else</P>
+</UL>
+<PRE CLASS="western">           if (%val &lt; 0) 
+           {
+               %abs = -%val;
+           }
+           else 
+           {
+               %abs = %val;
+           }</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<p>The above example
+will execute the statement inside the if block if the number stored
+by %val is less than 0. Otherwise, the statement inside of the else
+block will be executed.</P>
+<br />
+<UL>
+	<LI VALUE=1><p>switch</P>
+</UL>
+<PRE CLASS="western">           switch(%val) 
+           {
+           case 1:
+               echo(&ldquo;The value is 1&rdquo;);
+
+           case 2:
+               echo(&ldquo;The value is 2&rdquo;);
+
+           default:
+               echo(&ldquo;The value is something else&rdquo;);
+           }</PRE>
+<UL>
+	<LI VALUE=1><P CLASS="western" STYLE="margin-bottom: 0.2in"><FONT FACE="Arial, sans-serif">switch$</P>
+</UL>
+<PRE CLASS="western">           switch$(%val) 
+           {
+           case &ldquo;Hello&rdquo;:
+               echo(&ldquo;The string is Hello&rdquo;);
+
+           case &ldquo;World&rdquo;:
+               echo(&ldquo;The string is World&rdquo;);
+
+           default:
+               echo(&ldquo;The string is something else&rdquo;);</PRE>
+<UL>
+	<PRE CLASS="western" STYLE="margin-bottom: 0.2in">     <p class="code">}</p></PRE>
+</UL>
+<P>The first switch statement (switch) works with numbers and the second (switch$) works with strings. Other than that their functionality is identical. A single case statement will be executed depending on the value inside the parentheses. For example, if %val is &ldquo;Hello&rdquo;, the statements after 'case &ldquo;Hello&rdquo;:' will be executed.</P>
+<UL>
+	<LI VALUE=1><P CLASS="western" STYLE="margin-bottom: 0.2in"><FONT FACE="Arial, sans-serif">for</P>
+</UL>
+<PRE CLASS="western">           for(%i = 0; %i &lt; 10; %i++) 
+           {
+               echo(%i @ &ldquo;/&rdquo; @ 10);
+           }</PRE>
+<UL>
+	<LI VALUE=1><P CLASS="western" STYLE="margin-bottom: 0.2in"><FONT FACE="Arial, sans-serif">while</P>
+</UL>
+<PRE CLASS="western">           %i = 0;
+           while (%i &lt; 10) 
+           {
+               echo(%i @ &ldquo;/&rdquo; @ 10);
+               %i++;
+           }
+</PRE>
+<p>The statements inside of a loop are executed repeatedly until an exit condition is met. In the case of a for loop, the exit condition is the second statement in the declaration. So, in the example, the loop will continue to execute until the variable %i is greater than or equal to 10. The first statement is the initialization statement and is executed once before the loop is run for the first time. The last statement is executed after each iteration of the loop prior to the exit condition test.</p>
+<p>The exit condition of the while loop is between the parentheses after the <I>while</I> keyword. The for loop and while loop above both do the exact same thing, though in most situations one of the constructs will work better than the other.</p>
+
+<h3>Functions</h3>
+<br />
+<p>Basic functions in
+TorqueScript are defined as follows:</p> 
+</P>
+<PRE CLASS="western">
+           function myFunction(%arg1, %arg2) 
+           {
+               %result = %arg1 + %arg2;
+               return %result;
+           }
+</PRE>
+<p>The above example is a simple adding function. It receives two numbers as parameters, adds them together, and returns the result. Functions can have any number of parameters and may or may not return a value.</p>
+<H3 CLASS="western">
+Objects</H3>
+<br />
+<p>In
+Torque, every item in the game world is an object, and all game world
+objects can be accessed via script. For example, t2dSceneObject,
+t2dSceneGraph, and t2dStaticSprite can all be accessed via script,
+though they are defined in C++. Objects are created with the 'new'
+keyword.</P>
+<p class="code"><PRE CLASS="western">
+           %object = new t2dSceneObject(<I>MyObject</I>)
+           {
+               Position = &ldquo;10 10&rdquo;;
+               Size = &ldquo;5 15&rdquo;;
+               Rotation = 45;
+               OtherField = 10;
+           };</PRE></p>
+<p>In this example, we are creating a t2dSceneObject, naming it &ldquo;MyObject&rdquo;, and storing a reference to the object in the variable %object. This variable can then be used to call various methods defined for the t2dSceneObject class. For example, the following will set the newly created object's position to the point (10, 20):</p>
+           <pre><p class="code">%object.setPosition(10, 20);</p></pre>
+<p>The object's name can also be used to reference the object. Assigning a name to an object is optional.</p>
+<p>The first three statements inside the object definition assign values to fields that the engine has exposed for the object. These are the object's position, size, and rotation. So, the object will be created with position (10, 10) width 5, height 15, and rotation 45. There are several other fields exposed as well. To see them all check out the T2D Reference document. The last field is a dynamic field. Dynamic fields are defined only in script and are used to store values for a specific instance of an object.</p>
+<H3 CLASS="western">
+Methods</H3>
+
+<p>In addition to
+supporting the creation of functions, TorqueScript allows you to
+define methods on object classes and namespaces.</p>
+<PRE CLASS="western">           function t2dSceneObject::move(%this, %amount) 
+           {
+               %position = %this.getPosition();
+               %newPosition = t2dVectorAdd(%position, %amount);
+               %this.setPosition(%newPosition);
+               return %newPosition;
+           }
+           </PRE>
+<p>Methods are very similar to functions. The difference is they are associated with a specific class type. The above example creates a method for t2dSceneObjects. Assuming %object is a t2dSceneObject, this method could be called like this:</p>
+           <pre><p class="code">%object.move(&ldquo;10 5&rdquo;);</p></pre>
+<p>That would move %object 10 units in the x direction and 5 units in the y direction. Inside the method definition, the %this variable is actually a reference to the object that called the method. So in this case, it is the same as %object. %this is always the first parameter in a method definition (though it doesn't necessarily have to be named %this), and is automatically passed to the method by the engine.</p>
+<H3 CLASS="western">
+Namespaces</H3>
+
+<p>Namespaces are a
+slightly advanced topic and can be confusing, but they are extremely
+useful when fully understood. First, every object belongs to a
+namespace. By default, the namespace is the name of the object's
+class. So, a t2dSceneObject is  in the namespace 't2dSceneObject'.
+Also, namespaces are inherited. A t2dStaticSprite object is in the
+namespace 't2dStaticSprite', and also in the namespace
+'t2dSceneObject' since t2dStaticSprite is derived from
+t2dSceneObject. In this way, methods can be defined for a base class
+and used by object's of a derived class. For instance, the
+setPosition method is defined for t2dSceneObject, but a
+t2dStaticSprite can use it as well.</p>
+<H3 CLASS="western">
+Conclusion</H3>
+
+<p>This was an
+extremely quick overview of the various features of TorqueScript. If
+you are new to programming, don't expect to understand everything
+that was covered right away. Programming is a confusing topic that
+takes time and experience to grasp fully. Hopefully you were able to
+learn some of the concepts involved with scripting and what it can do
+for you. The next step is to start following tutorials and practicing
+on your own. Good luck!</P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

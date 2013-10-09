@@ -1,0 +1,330 @@
+<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 42;
+   parent.leftFrame.expandToItem('tree2', 'doc42');
+   var element = parent.leftFrame.document.getElementById('doc42');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE>Torque 2D - Wack-A-Mole Tutorial Part 2</TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="CREATED" CONTENT="20060525;16445800">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;15502500">
+<STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	.style1
+    {
+        width: 406px;
+    }
+	--></STYLE>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt">Torque 
+				2D - Whack-A-Mole Tutorial Part 2</FONT></FONT></P>
+</DIV>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Part 2 - 
+				Respawning the Mole</B></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Adding respawn 
+					points</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">The next step 
+			is to let the moles respawn after it gets whacked. We do not want the mole to 
+			respawn at the same position it was when you whacked it but we do not want it 
+			to respawn at a completely random position either. So the first thing we will 
+			do is add some respawn points to our level.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT SIZE="2">We will simply use static sprites as our 
+		respawn points. We will be using the hole image, that you should see listed in 
+		your Static Sprites object library in the Create tab <I>(as shown in Figure 2.1)</I>.
+	</FONT>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure2-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+	<FONT SIZE="1"><I><B>Figure 2.1</B></I></FONT></P>
+<BR CLEAR="left">
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT SIZE="2">We will again use the class field to 
+		assign the class respawnPoint to our respawn points. But as we will probably 
+		have several respawn points per level, it would be a bit tedious to type 
+		respawnPoint over and over again. Fortunately with T2D we have an object called 
+		&quot;config datablocks&quot; that can store data that will be repeated across multiple 
+		objects. So we will use a config datablock to make our life easier. </FONT>
+</P>
+<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P><FONT SIZE="2">First, we will create a file for later.  Add the bold text to your startGame() function in game.cs:</FONT></P>
+<pre class="code">
+
+function startGame(%level)
+{
+   //exec game scripts
+   exec("./mole.cs");
+<b>exec("./respawnPoint.cs");</b>
+
+
+   // Set The GUI.
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+
+   moveMap.push();
+
+
+   // this has been added:
+   sceneWindow2D.setUseObjectMouseEvents( true );
+
+   if( isFile( %level ) || isFile( %level @ ".dso"))
+      sceneWindow2D.loadLevel(%level);
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.1</B></I></FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now look in your gameScripts folder.  You should find datablocks.cs.  Open this file and add these lines of code:</FONT></FONT></P>
+<BR>
+<pre class="code">
+datablock t2dSceneObjectDatablock( respawnPointDatablock )
+{
+   class = "respawnPoint"; // the class that will be associated with the object
+   layer = 5; // the render layer
+   size = "16 16"; // the size of the object
+};
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">This is the file where you create all of your datablocks.  Now that it has the respawnPoint datablock, let's fire up T2D and add it to our mole hills.</FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.2</B></I></FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in">
+</P>
+<TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+	<COLGROUP>
+		<COL WIDTH="242">
+			<COL WIDTH="407">
+				<THEAD>
+					<TR VALIGN="top">
+						<TD WIDTH="242">
+							<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure2-2.jpg" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+								<FONT SIZE="1"><I><B>Figure 2.2</B></I></FONT></P>
+							<BR CLEAR="left">
+							<BR>
+						</TD>
+						<TD WIDTH="407">
+							<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now after you create each mole hill, navigate to the Edit tab, open Scripting, and add the respawnPointDatablock.<I>(as shown in Figure 2.2)</I>. </FONT></FONT>
+							</P>
+							<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+							</P>
+							<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Note: If you had 
+												T2D open, you will need to restart it to get the datablock to show up.</B></I></FONT></FONT></P>
+							<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+							</P>
+							<P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">They will also automatically be placed in layer 5, behind the mole--another handy attribute.</FONT></FONT></P>
+						</TD>
+					</TR>
+				</THEAD>
+</TABLE>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that you have selected 
+		respawnPointDatablock you can place some holes in the level <I>(as shown in Figure 
+			2.3)</I>. Make sure to place holes behind the moles.&nbsp; If you have 
+		trouble exactly matching the moles' positions&nbsp;to their holes&nbsp;don't 
+		worry about it... this will be fixed automatically later:</FONT></FONT>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WackAMoleGameFigure2-3.jpg"
+		NAME="Grafik10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+	<FONT SIZE="1"><I><B>Figure 2.3</B></I></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now let's 
+			create the methods of the respawnPoint class. The following functions go in 
+			respawnPoint.cs:</FONT></FONT></P>
+<pre class="code">
+function respawnPoint::onLevelLoaded(%this, %level)
+{
+   %level.respawnPointSet.add(%this);
+}
+
+
+function respawnPoint::onLevelEnded(%this, %level)
+{
+   if( isObject( %level.respawnPointSet ) )
+      %level.respawnPointSet.remove(%this);
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.3</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">The above code 
+			explained: We need to keep track of all the respawn points, so here we create 
+			an object called a &quot;SimSet&quot;. The SimSet object allows us to add other objects 
+			to it and then access it later like a list. So we keep track of all respawn 
+			points with a SimSet (%level.respawnPointSet) that is attached to the current 
+			level. When a respawn point is created it registers itself to this SimSet.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">respawnPoint::onLevelEnded() 
+			unregisters the respawn point when it is deleted. Now we have a set of all 
+			respawn points we place in the level editor. We also have to create and destroy 
+			the respawnPointSet SimSet. We use the onLevelLoaded() and onLevelEnded() 
+			callbacks of the level itself. </FONT></FONT>
+</P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Create another 
+			script file named moleLevel.cs, exec() it in game.cs below the ones we have 
+			already done and type the following functions into it:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function moleLevel::onLevelLoaded(%this)
+{
+   %this.respawnPointSet = new SimSet();
+}
+
+
+function moleLevel::onLevelEnded(%this)
+{
+   %this.respawnPointSet.delete();
+}
+</pre>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.4</B></I></FONT></FONT>
+<table>
+	<tr>
+		<td rowspan="2">
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure2-5.jpg" NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+				<FONT SIZE="1"><I><B>Figure 2.5</B></I></FONT></P>
+		</td>
+		<td>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">We now want to 
+						set our scenegraph's class to moleLevel. To do this first re-open T2D and you 
+						should be presented with your level. Now you can click the &quot;Project&quot; tab and 
+						you should see an &quot;Object Tree View&quot;, select the scenegraph at the top of the 
+						tree <I>(as shown in Figure 2.4, don't worry if the number before &quot;scenegraph&quot; 
+							doesn't match the picture)</I>. With the scenegraph selected click the 
+						&quot;Edit&quot; tab and expand the &quot;Scene Graph Scripting&quot; section. There you can 
+						specify the name, class, and super-class of your level. Give it the class 
+						moleLevel and press enter <I>(as shown in Figure 2.5)</I>.</FONT></FONT></P>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure2-4.jpg" NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+				<FONT SIZE="1"><I><B>Figure 2.4</B></I></FONT></P>
+		</td>
+	</tr>
+</table>
+<BR>
+<BR>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Spawning a new 
+					Mole</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we 
+			have our respawn points we can get the mole to actually respawn. For this 
+			purpose we add a new function to moleLevel.cs: moleLevel::spawnMole(). This 
+			function will pick one of the respawn points randomly and spawn a new mole 
+			there:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function moleLevel::spawnMole(%this)
+{
+   // find a spawn point
+   %respawnPointIndex = getRandom( %this.respawnPointSet.getCount()-1 );
+   %respawnPoint = %this.respawnPointSet.getObject( %respawnPointIndex );
+
+   // select a color for the mole
+   %color = getRandom(2);
+   if( %color == 0 )
+      %color = "red";
+   if( %color == 1 )
+      %color = "green";
+   if( %color == 2 )
+      %color = "lilac";
+
+
+   // create a new Mole
+   %mole = new t2dAnimatedSprite()
+   {
+      sceneGraph = %this;
+      class = "mole";
+      layer = 4;
+      size = "9 16";
+   };
+
+   // play right animation according to the color
+   %mole.playAnimation("animMoleComeOut" @ %color);
+
+
+   // save the selected color as dynamic field
+   %mole.moleColor = %color;
+
+   // set the position of the mole to the position
+   // of the respawn point
+   %mole.setPosition( %respawnPoint.getPosition() );
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.5</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">And there we 
+			have a brand new mole. We just have to call this function when we want a new 
+			one. We will do this every time a mole gets whacked. Let's modify 
+			mole::onAnimationEnd() (in the mole.cs file) for this purpose (new code is 
+			bolded):</FONT></FONT></P>
+<BR>
+<pre class="code">
+function mole::onAnimationEnd(%this)
+{
+   <b>if( %this.getAnimationName() !$= ("animMoleComeOut" @ %this.moleColor) )
+   {
+      // after deleting the old mole schedule a respawn
+      // &gt;%this.sceneGraph&lt; is the level
+      %this.sceneGraph.schedule( 1500, "spawnMole");
+      </b>%this.safeDelete();<b>
+   }</b>
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 2.6</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">There is a 
+			delay between deletion of the mole and its respawning <I>(as shown in Figure 2.6)</I><SPAN STYLE="FONT-STYLE: normal">.</SPAN>
+		</FONT></FONT>
+</P>
+<BR>
+<table>
+	<tr>
+		<td class="style1">
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WackAMoleGameFigure2-6a.jpg" NAME="graphics17" ALIGN="left" BORDER="0"><BR CLEAR="left">
+				<FONT SIZE="1"><I><B>Figure 2.6a</B></I></FONT></P>
+		</td>
+        </tr><tr>
+		<td>
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WackAMoleGameFigure2-6b.jpg" NAME="graphics18" ALIGN="left" BORDER="0"><BR CLEAR="left">
+				<FONT SIZE="1"><I><B>Figure 2.6b</B></I></FONT></P>
+		</td>
+	</tr>
+</table>
+<BR>
+<DIV TYPE="FOOTER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision
+				</I></FONT><font size="1"><i><font style="FONT-SIZE: 8pt">2.1</font></i></font></FONT></P>
+</DIV>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

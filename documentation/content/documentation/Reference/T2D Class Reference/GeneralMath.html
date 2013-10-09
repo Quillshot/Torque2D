@@ -1,0 +1,344 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 129;
+   parent.leftFrame.expandToItem('tree2', 'doc129');
+   var element = parent.leftFrame.document.getElementById('doc129');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>GeneralMath</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">GeneralMath</h8>
+<span class = "classDescription">
+<span class = "descriptionTitleText">Description:</span> General math functions. Use these whenever possible, as they'll run much faster than script equivalents. 
+</span>
+
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">mAbs(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the absolute value of the argument. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mAcos(float th)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the arc-cosine of th, which is in radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mAsin(float th)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the arc-sine of th, which is in radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mAtan(float rise, float run)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the slope in radians (the arc-tangent) of a line with the given rise and run. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mCeil(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Round v up to the nearest whole number. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mClamp(float number, float min, float max)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Clamp a value between two other values. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mCos(float th)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the cosine of th, which is in radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mDegToRad(float degrees)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Convert a measure in degrees to radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mFloatLength(float v, int numDecimals)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Return a string containing v formatted with the specified number of decimal places. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mFloor(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Round v down to the nearest whole number. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mLog(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the natural logarithm of the argument. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mPow(float b, float p)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the b raised to the pth power. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mRadToDeg(float radians)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Converts a measure in radians to degrees. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mRound(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Rounds a number 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mSin(float th)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the sine of th, which is in radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mSolveCubic(float a, float b, float c, float d)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Solve a cubic equation of form a*x^3 + b*x^2 + c*x + d = 0.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mSolveQuadratic(float a, float b, float c)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Solve a quadratic equation of form a*x^2 + b*x + c = 0.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mSolveQuartic(float a, float b, float c, float d, float e)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Solve a quartic equation of form a*x^4 + b*x^3 + c*x^2 + d*x + e = 0.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mSqrt(float v)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the square root of the argument. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mTan(float th)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the tangent of th, which is in radians. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

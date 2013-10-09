@@ -1,0 +1,131 @@
+	<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 45;
+   parent.leftFrame.expandToItem('tree2', 'doc45');
+   var element = parent.leftFrame.document.getElementById('doc45');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE></TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+			<DIV TYPE="HEADER">
+				<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt">Torque 
+							2D - Whack-A-Mole Tutorial Part 5</FONT></FONT></P>
+			</DIV>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Part 5 - If I 
+							had a Hammer...</B></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Drag in your 
+								hammer</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">The last thing 
+						that is missing is the hammer. Drag the animHammerIdle animation from the 
+						Animated Sprites tab into your level. It looks just like the animHammer 
+						animation, so check the tooltip to be sure you have the right one.&nbsp;Select 
+						it and set it's Name property to moleHammer (this is found under the 
+						Edit-&gt;Scripting tab).</FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Then put the 
+						following function in moleLevel.cs:</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function SceneWindow2D::onMouseMove(%this, %mod, %worldPosition)
+{
+   moleHammer.setPosition(%worldPosition);
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 5.1</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">This will make 
+						the hammer sprite follow the mouse cursor. Let's also hide the regular cursor. 
+						Add this line to startGame() in game.cs:</FONT></FONT></P>
+			<BR>
+			<pre class="code">function startGame(%level)
+{
+   //exec game scripts
+   exec("./mole.cs");
+   exec("./molelevel.cs");
+
+
+   // Set The GUI.
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+
+   <b>// Hide the cursor
+   Canvas.hideCursor();</b>
+   
+   moveMap.push();
+
+
+   // this has been added:
+   sceneWindow2D.setUseObjectMouseEvents( true );
+
+   if( isFile( %level ) || isFile( %level @ ".dso"))
+      sceneWindow2D.loadLevel(%level);
+      
+   moleGuiGameOver.visible = 0;
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 5.2</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in">&nbsp;</P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">...and when the 
+						game ends replace your old endGame function in game.cs with this one:</FONT></FONT></P>
+			<pre class="code">
+function endGame()
+{
+   <b>Canvas.showCursor();</b>
+   sceneWindow2D.endLevel();
+   moveMap.pop();
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 5.3</B></I></FONT></FONT>
+				<BR>
+			</P>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">And lastly we 
+						want the hammer to strike if a mole is hit. Modify mole::onMouseDown():</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function mole::onMouseDown(%this, %modifier, %worldPosition, %mouseClicks)
+{
+   if(%this.getAnimationName() $= ("animMoleComeOut" @ %this.moleColor) )
+   <b>{</b>
+      %this.playAnimation( "animMoleWhacked" @ %this.moleColor );
+      <b>
+      //let the hammer strike, with animation auto-restore
+      moleHammer.playAnimation( "animHammer", true );
+   }</b>
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 5.4</B></I></FONT></FONT>
+				<BR>
+			</P>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">And now, at 
+						long last, we are finally finished! Test it out and enjoy!</FONT></FONT></P>
+			<DIV TYPE="FOOTER">
+				<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision
+							</I></FONT><font size="1"><i><font style="FONT-SIZE: 8pt">2.1</font></i></font></FONT></P>
+			</DIV>
+		<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+	</HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

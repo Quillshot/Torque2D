@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 55;
+   parent.leftFrame.expandToItem('tree2', 'doc55');
+   var element = parent.leftFrame.document.getElementById('doc55');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Config Datablocks Tutorial</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="CREATED" CONTENT="20060605;11531900">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060731;17363000">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>Torque 
+                     2D - Configuration Datablocks</B></FONT></FONT></P>
+      </DIV>
+      <H3 style="MARGIN-BOTTOM: 0in">Introduction</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">When 
+               creating a large scale project, any repetitive task you can cut out of your 
+               work flow is a good thing. Thanks to config datablocks and behaviors, the setting up of 
+               multiple similar or identical objects is very simple. Config datablocks are 
+               basically saved sets of parameters that you can apply to any object in the 
+               Level Builder. They are handy because when creating a great deal of identical 
+               objects, you only need to write their parameters once and then reference those 
+               parameters (via a config datablock) as many times as you need. This tutorial is 
+               going to go through the creation of a config datablock and show you how they 
+               can be used to make repetitive tasks much less time-consuming. </FONT></FONT>
+      </P>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in">Creating a Config Datablock</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">The first 
+               thing we are going to do is create a config datablock and then later access it 
+               using the Level Builder. We are going to create this config datablock in our 
+               <em>TutorialBase</em> project, since it is a default project all T2D owners will have access to. 
+               So, our first step is to navigate to our games/TutorialBase/game/gameScripts folder. In this 
+               folder we have a file called datablocks.cs. This file will 
+               contain our config datablock. Config datablocks can be created in any part of 
+               our code, however datablocks created in this script will automatically be loaded saving you the trouble of creating a separate file that has to be manually executed. Inside this file we are going to create a very 
+               simple config datablock that is just going to show you how they work. Add this 
+               code to your datablocks.cs file:</FONT></FONT></P>
+<BR>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">datablock 
+                                 t2dSceneObjectDatablock(TestConfig)</FONT></FONT></P>
+                        <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">{</FONT></FONT></P>
+                        <P STYLE="MARGIN-BOTTOM: 0in">
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Layer = 1;</FONT></FONT></P>
+                        <P STYLE="MARGIN-BOTTOM: 0in">
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Size = "100 100";</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">This code 
+               just specifies a config datablock with the name TestConfig that sets the 
+               object's layer to 1 and its size to 100 along both the X and Y.</FONT></FONT></P>
+	  <BR><BR>
+   <H3 style="MARGIN-BOTTOM: 0in">Testing Our Datablock</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we 
+               have our config datablock created, open up Torque 2D. Next, if your 
+               T2D project is not already open, navigate to File-&gt; Open Project and open 
+               your TutorialBase project. Once it's loaded we should begin testing of our datablock. 
+               First grab the static sprite of the GarageGames logo and drag it onto our 
+               scene. Next, we will want to assign our sprite a config datablock.</FONT></FONT></P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Config 
+               datablocks can be set in the Scripting rollout in the Edit tab of the Level 
+               Builder. </FONT></FONT>
+      </P>
+      <BR>
+      <TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="263">
+               <COL WIDTH="386">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="263">
+                           <P><IMG SRC="images/ConfigDBFigure1.png" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+                        </TD>
+                        <TD WIDTH="386">
+                           <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see to the left, when you 
+                                    expand this dropdown, we can see the datablock we created in the last step. 
+                                    Select this datablock so it appears in the window of the collapsed list.</FONT></FONT></P>
+                           <P><BR>
+                           </P>
+                           <P><BR>
+                           </P>
+                           <P><IMG SRC="images/ConfigDBFigure2.png" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+                        </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now, not every 
+               object you drag into the scene will have this config datablock assigned to it. 
+               Drag in another GarageGames logo, this time without assigning the config datablock.</FONT></FONT></P>
+<BR>
+      <TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="238">
+               <COL WIDTH="411">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="238">
+                           <P><IMG SRC="images/ConfigDBFigure3.png" NAME="graphics3" ALIGN="left"
+                                 WIDTH="218" HEIGHT="217" BORDER="0"><BR CLEAR="left">
+                        </TD>
+                        <TD WIDTH="411">
+                           <P><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><SPAN STYLE="FONT-STYLE: normal">You
+				should immediately notice the difference between your object that
+				has a config datablock assigned to it, and your object that does
+				not have one assigned to it. However, let's say that you assigned
+				an object with a datablock, but didn't want all of the parameters
+				assigned by the datablock to be applied to your object. Luckily,
+				this is no problem since the </SPAN>parameters of a config datablock can be overridden once they are 
+                                    set. So if you now manually set the object's size, it will override the config 
+                                    datablock's size.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <BR>
+      <BR>
+      <BR>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in">Conclusion</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Config 
+               datablocks are a very efficient way to assign parameters to multiple objects 
+               while only having to write them in code once. They are also flexible enough 
+               that you can override them if you need. Using config datablocks well can save 
+               you a lot of time and coding by eliminating repetition; allowing programmers to 
+               give focus to other essentials. </FONT></FONT>
+      </P>
+      <DIV TYPE="FOOTER">
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

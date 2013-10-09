@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 75;
+   parent.leftFrame.expandToItem('tree2', 'doc75');
+   var element = parent.leftFrame.document.getElementById('doc75');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  
+
+
+  <title>Torque 2D &ndash; Editing Particle Effects</title><meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060731;17161500">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+-->
+  </style></head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Particle Effect Editing</strong></font></font></font></p>
+
+<span style="font-family: Arial,sans-serif;"></span>
+<p style="margin-top: 0.08in;">
+    <table>
+        <tbody><tr>
+            <td style="width: 518px;">
+                In
+order to edit a particle effect, you must create an instance of the
+particle effect in the Scene View. To do this, drag the particle into
+the Scene View from the Particle Effect section of the Create tab. <em>(Figure 1)</em>. Notice that
+you can see the particle effects animating in the Create
+tab when you hover the mouse over them.</td>
+            <td style="width: 100px;">
+                <img style="border: 0px solid ; font-family: Times New Roman; width: 245px; height: 218px; float: left;" alt="Figure 1" src="images/Editing%20Particles%2001.jpg" name="graphics1"><br clear="left">
+
+<font size="1"><i><b>Figure 1</b></i></font></td>
+        </tr>
+    </tbody></table>
+</p>
+
+<br>
+    <span style="font-family: Times New Roman;">Once
+you've selected the particle in the Scene View, go to the Edit
+tab. Here you will see the Particle Effect rollout, which
+contains options for the overall effect (Figure 2). &nbsp;From top to bottom, these are...<table>
+            <tbody><tr>
+                <td style="width: 514px;">
+                    <br>
+
+<ul>
+
+  <li>Loading and Saving buttons - because effects are file
+based, you must save changes separately&nbsp;</li>
+
+  <li>Edit Effect Graph - lets you edit the effects time-based
+properties. &nbsp;More on graphs below...</li>
+
+  <li>Effect properties (mode and collisions)</li>
+
+  <li>Emitter management - see below</li>
+
+</ul>
+                </td>
+                <td style="width: 100px;">
+                    <img style="border: 0px solid ; font-family: Times New Roman; width: 234px; height: 227px; float: left;" alt="Figure 2" src="images/Editing%20Particles%2002.jpg" name="graphics2"><br clear="left">
+
+<font size="1"><i><b>Figure 2</b></i></font></td>
+            </tr>
+        </tbody></table>
+    </span>
+    <p>
+        &nbsp;</p>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b>
+        <table>
+            <tbody><tr>
+                <td style="width: 495px;">
+                    The main function of the particle effect object is to manage particle
+emitters, which actually generate the particles that you see on the
+screen.<br>
+                    <br>
+                    To edit a particle emitter, click on the Emitter sub-rollout in the Particle Effect <span style="font-style: italic;">(Figure 3)</span>.</td>
+                <td style="width: 100px;">
+                    <img style="border: 0px solid ; width: 218px; height: 482px; float: left;" alt="" src="images/Editing%20Particles%2003.jpg" name="graphics3"><br clear="left">
+
+<font size="1"><i><b>Figure 3</b></i></font></td>
+            </tr>
+        </tbody></table>
+    </b></i></font>
+</p>
+<br>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+    <table>
+        <tbody><tr>
+            <td style="width: 496px;">
+                As you can see, this
+rollout contains many emitter properties and also contains an Edit
+Graph button of its own. In order to edit this emitter's graph, press
+that button. You will see the emitter graph. <em>(Figure 4)</em></td>
+            <td style="width: 100px;">
+                &nbsp;<img src="images/ShooterFigure7-1-6.jpg" name="graphics4" align="left" border="0"><br clear="left" />
+
+<p><font size="1"><i><b>Figure 4</b></i></font></td></p>
+        </tr>
+    </tbody></table>
+<br>
+<p style="margin-top: 0.08in;"><font size="1"><i><b>
+        <table>
+            <tbody><tr>
+                <td style="width: 496px;">
+Below the graph you should see
+a min and max setting, and a time setting. The min and max settings
+allows users to configure the minimum and maximum values (y-axis) shown
+in the view. The time allows users to define the span of time that they
+are viewing (x-axis).<br>
+                    <br>
+                    Graph points can be moved (mouse drag), added
+(mouse click), or removed (double-click) in this graph. There are a
+number of fields that can be edited using this graph. The Current Field
+dropdown lets you choose which one you want to work with. Size X Life <span style="font-style: italic;">(Figure 5) </span>is
+a good one to start with, since its effects are obvious... it changes
+the size of your particles.<br>
+                    <br>
+                    For more information about the different
+fields, see the particle reference document.</td>
+                <td style="width: 100px;">
+                    <img style="border: 0px solid ; font-size: 12pt; font-family: Times New Roman; width: 218px; height: 434px; float: left;" alt="" src="images/Editing%20Particles%2004.jpg" name="graphics5"><br clear="left">
+
+<font size="1"><i><b>Figure 5</b></i></font></td>
+            </tr>
+        </tbody></table>
+    </b></i></font>
+</p>
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="2"><span style="font-style: italic;"><span style="font-style: italic;"></span></span><span style="font-size: 12pt; font-family: Times New Roman;">
+    </span></font></font></p>
+<br>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+    <span style="font-family: Times New Roman;">Because particle effects
+are saved separately from your overall level, when you are done editing
+an effect, go back to the Particle Effect rollout and click Save.<br>
+    </span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

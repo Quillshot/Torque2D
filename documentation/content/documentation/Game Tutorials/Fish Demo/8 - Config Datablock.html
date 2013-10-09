@@ -1,0 +1,150 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 23;
+   parent.leftFrame.expandToItem('tree2', 'doc23');
+   var element = parent.leftFrame.document.getElementById('doc23');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Demo Tutorial part 8</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060728;13563500">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Demo Tutorial - Part 8</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>8. 
+            Config Datablock</B></FONT></FONT></P>
+<P class="western" style="MARGIN-BOTTOM: 0in" align="justify">&nbsp;</P>
+<P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><H4><STRONG><FONT face="Arial">8.1
+            <FONT SIZE="3"><I>Scripting a config datablock</I></FONT></FONT></STRONG></H4>
+<P></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our fish behaving 
+         properly, we need to duplicate that fish. One way we could do that would be to 
+         drag over new animated fish and set up each of the settings we've already set. 
+         Fortunately, there is an easier way to accomplish this: we can use a <I>config 
+            datablock</I>. A config datablock is just a basic object that can hold any 
+         sort of object data. This would be object data that you want to be repeated 
+         across multiple objects. When you create an object, you can specify a config 
+         datablock, and all valid data will be used. If your object has already set a 
+         data value, which is also set on the config datablock, then your object's data 
+         will take precedence (as it should). As you can imagine this is immensely 
+         useful for assigning similar data to multiple objects. Browse out to your <I>MyFishDemo/game/gameScripts</I>
+         folder and locate a file named <STRONG>datablocks.cs</STRONG> .&nbsp;Add this 
+         config datablock to the end of your file.</FONT></FONT>
+   <BR>
+</P>
+<pre class="code">
+datablock t2dSceneObjectDatablock(FishDatablock) {
+   Class = "FishClass";
+   Layer = "16";
+   WorldLimitMode = "NULL";
+   WorldLimitMin = "-66.2102 -45";
+   WorldLimitMax = "66.1003 45";
+   WorldLimitCallback = "1";
+      minSpeed = "5";
+      maxSpeed = "25";
+};
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 8.1.1</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, we have all the 
+         important values we just set on our single fish. The two values you might not 
+         be familiar with are the WorldLimitMin and WorldLimitMax values. From -66 to 66 
+         it spans the entire space that we visually specified in the Level Builder. We 
+         have a class of <I>FishClass</I>, our layer as 16, our proper world limit mode 
+         and min and max values, and our callback option. We also have our two dynamic 
+         fields for our min and max speeds. Make sure you save your <I>datablocks.cs</I> 
+         file. </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B></B></I></FONT></FONT>
+</P>
+<br>
+<br>
+<P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><I><B><H4>8.2 
+                  Creating fish using our config datablock</H4>
+            </B></I></FONT></FONT>
+<P></P>
+<br>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our config datablock, 
+         we need to allow T2D to register it. This requires you to click the Project 
+         -&gt; Reload Project&nbsp;option. This will close and reload the current 
+         project to register our new config datablock.&nbsp; We can add in any of the 
+         fish Animated sprites of our choice and simply set the config datablock. To set 
+         the config datablock make sure the object is selected, click the EDIT tab, the 
+         Script rollout and select our FishDatablock from the config datablock dropdown.</FONT>
+   </FONT><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Drag and drop about 3 fish from 
+         your <I>Animated Sprites</I> object library into your level <EM>(as shown in 
+            Figure 8.2.1) </EM>and set their config datablocks accordingly. Save your 
+         level and then play your level. Your new fish should swim around just like the 
+         original <I>(as shown in Figure 8.2.2)</I>.</FONT></FONT>
+</P>
+<table>
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure8-2-2a.gif" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 8.2.1a</B></I></FONT></P>
+      </td>
+      <td width="25">
+      </td>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure8-2-2b.gif" NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 8.2.1b</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure8-2-3.gif" NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 8.2.2</B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<BR CLEAR="left">
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

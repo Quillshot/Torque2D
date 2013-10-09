@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 90;
+   parent.leftFrame.expandToItem('tree2', 'doc90');
+   var element = parent.leftFrame.document.getElementById('doc90');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Introduction</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20051010;3530000">
+	<META NAME="CHANGED" CONTENT="20060616;11550300">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.79in; margin-top: 0.5in; margin-bottom: 0.5in; width: 700px; }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		H3 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		H3.western { font-family: "Arial", sans-serif; so-language: en-US }
+		H3.cjk { font-family: "Lucida Sans Unicode" }
+		H3.ctl { font-family: "Tahoma"; so-language: ar-SA }
+		H5 { margin-top: 0in; margin-bottom: 0in; direction: ltr; color: #222222; text-align: left; widows: 2; orphans: 2; page-break-after: auto }
+		H5.western { font-size: 12pt; so-language: en-US }
+		H5.cjk { font-family: "Lucida Sans Unicode"; font-size: 12pt }
+		H5.ctl { font-family: "Tahoma"; font-size: 12pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0.64in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Torque
+	2D &ndash; TorqueScript Reference</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0.2in; font-weight: medium">
+<FONT FACE="Arial, sans-serif">(Adapted from Edward Maurina's book,
+&quot;The Game Programmer's Guide to Torque&quot; [GPGT]. Grab the
+entire book to take your Torque knowledge to the next level.)</FONT></P>
+<H3 CLASS="western"><FONT FACE="Arial, sans-serif">Operators</FONT></H3>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Operator</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Name</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Example</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Explanation</B></FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Variable
+			Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>global</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			is a global variable.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>%</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>local</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>%b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>%b
+			is a local variable.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Arithmetic
+			Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>*</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>multiplication</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			* $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Multiply
+			$a and $b.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>/</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>division</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			/ $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Divide
+			$a by $b.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>%</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>modulo</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			% $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Remainder
+			of $a divided by $b.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>+</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>addition</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			+ $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Add
+			$a and $b.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>-</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>subtraction</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			- $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Subtract
+			$b from $a.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>++</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>auto-increment
+			(post-fix only)</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a++</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Increment
+			$a after use. Note: ++$a is illegal.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>-
+			-</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>auto-decrement
+			(post-fix only)</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$b--</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Decrement
+			$b after use. Note: --$b is illegal.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Relations and
+			Logical Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&lt;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Less
+			than</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&lt; $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is less than $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&gt;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>More
+			than</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&gt; $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is greater than $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&lt;=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Less
+			than or Equal to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&lt;= $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is less than or equal to $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&gt;=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>More
+			than or Equal to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&gt;= $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is greater than or equal to $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>==</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Equal
+			to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			== $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is equal to $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>!=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Not
+			equal to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a&nbsp;!=
+			$b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is not equal to $b (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>!</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Logical
+			NOT</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>!$a</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a is 0 (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&amp;&amp;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Logical
+			AND</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&amp;&amp; $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $a and $b are both non-zero (0 otherwise.)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>||</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Logical
+			OR</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			|| $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if either $a or $b is non-zero (0 otherwise.) </FONT></FONT></FONT>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0 STYLE="page-break-before: always">
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Bitwise
+			Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>~</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Bitwise
+			complement</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>~$a</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>flip
+			bits 1 to 0 and 0 to 1. (i.e. ~10b == 01b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&amp;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Bitwise
+			AND</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&amp; $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>composite
+			of elements where bits in same position are 1. (i.e. 1b &amp; 1b
+			== 1b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>|</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Bitwise
+			OR</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			| $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>composite
+			of elements where bits 1 in either of the two elements. (i.e. 100b
+			&amp; 001b == 101b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>^</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Bitwise
+			XOR</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			^ $b</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>composite
+			of elements where bits in same position are opposite. (i.e. 100b &amp;
+			101b == 001b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&lt;&lt;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Left
+			Shift</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&lt;&lt; 3</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>element
+			shifted left by 3 and padded with zeros. (i.e. 11b &lt;&lt; 3d ==
+			11000b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&gt;&gt;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Right
+			Shift</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			&gt;&gt; 3</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>element
+			shifted right by 3 and padded with zeros. (i.e. 11010b &gt;&gt; 3d
+			== 00011b)</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Assignment
+			Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Assignment</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			= $b;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Assign
+			value of $b to $a.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>op=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Compound
+			Assignment</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a
+			op= $b;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Equivalent
+			to $a = $a op $b. op can be any of: * / % + - &amp; | ^ &lt;&lt;
+			&gt;&gt;</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">String
+			Operators / Constants</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>@</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>String
+			catenation</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c
+			@ $d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Concatenates
+			strings $c and $d into a single string. Numeric literals/variables
+			convert to strings.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>NL</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>New
+			Line</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c
+			NL $d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Same
+			as catenation example with new-line between $c and $d.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>TAB</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Tab
+			</FONT></FONT></FONT>
+			</P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c
+			TAB $d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Same
+			as catenation example with tab between $c and $d.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>SPC</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Space</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c
+			SPC $d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Same
+			as catenation example with space between $c and $d.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>String
+			equal to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c
+			$= $d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $c equal to $d .</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>!$=</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>String
+			not equal to</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$c&nbsp;!$=
+			$d</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1
+			if $c not equal to $d.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0 STYLE="page-break-before: always">
+	<COL WIDTH=95>
+	<COL WIDTH=129>
+	<COL WIDTH=129>
+	<COL WIDTH=294>
+	<TR>
+		<TD COLSPAN=4 WIDTH=659 BGCOLOR="#ffffff">
+			<H5 CLASS="western"><FONT FACE="Arial, sans-serif">Miscellaneous
+			Operators</FONT></H5>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>?&nbsp;:</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Conditional</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>x&nbsp;?
+			y&nbsp;: z</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Substitute
+			y if x equal to 1, else substitute z.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>[]</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Array
+			element</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$a[5]</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Sixth
+			element or array $a</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>.</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Field/Method
+			selection</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>%obj.field
+			<BR>%obj.method()</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Select
+			a console method or field</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>(
+			)</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Grouping</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>{}</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Blocking</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>,</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Listing</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>--</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>::</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Namespace</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Item::onCollision()</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+			definition of the onCollision() function is in the Item namespace.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222">&ldquo; &ldquo;</FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>String
+			constant<BR>(normal)</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Hello
+			world&rdquo;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+			is a normal string.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222">&lsquo; &lsquo;</FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>String
+			constant<BR>(tagged)</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222">&lsquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Torque
+			Rocks&rsquo;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+			is a tagged string. The value of a tagged string is sent only once
+			to a client from the server (across the network). Subsequently,
+			only the &lsquo;tag&rsquo; is sent. All clients will store the
+			string at and index identified by the &lsquo;tag&rsquo; and can
+			look up the value instead of requiring it be sent repeatedly.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>//</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Single
+			line comment</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>//
+			This is a comment</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Used
+			to comment out a single line of TS.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=95 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>/*
+			*/</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Multi-line
+			comment</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western" STYLE="margin-bottom: 0.2in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>/*This
+			is a a</FONT></FONT></FONT></P>
+			<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>multi-line</FONT></FONT></P>
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>comment*/</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=294 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Used
+			to comment out multiple consecutive lines. /* opens the comment,
+			and */ closes it.</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<H3 CLASS="western"></H3>
+<H3 CLASS="western" STYLE="page-break-before: always">Literals</H3>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Numbers</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>123</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>integer</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1.23</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>floating-point</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1.00E-003</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>scientific
+			notation</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>0xabc</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>hexadecimal</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>String</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&quot;abcd&quot;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>string</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>'abcd'</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>tagged
+			string</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>String
+			Operators</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>@</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>concatenation</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>TAB</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>tab
+			concatenation</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>SPC</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>space
+			concatenation</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>NL</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>newline
+			concatenation</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0 STYLE="page-break-before: always">
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Escape
+			Sequences</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\n</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>newline</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\r</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>carriage
+			return</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\t</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>tab</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\c0
+			.. \c9</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>colorize
+			subsequent console output</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\cr</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>reset
+			to default color</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\cp</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>push
+			color to color stack</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\co</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>pop
+			color from color stack</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\xhh</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>wo-digit
+			hex value ASCII code</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>\\</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Backslash</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 1.44in"><BR><BR>
+</P>
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>booleans</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>TRUE</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>1</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=129 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>FALSE</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>0</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 1.44in"><BR><BR>
+</P>
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=138>
+	<COL WIDTH=385>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>arrays</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=138 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$MyArray[n]</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=385 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>single-dimension</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=138 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$MyMultiArray[n,m]</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=385 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>multi-dimension</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=138 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>$MyMultiArrayn_m</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=385 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>multi-dimension</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 1.44in"><BR><BR>
+</P>
+<TABLE WIDTH=665 BORDER=1 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=128>
+	<COL WIDTH=129>
+	<COL WIDTH=394>
+	<TR>
+		<TD WIDTH=128 BGCOLOR="#999999">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>vectors</B></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=129 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&quot;1.0
+			2.0 1.0 2.0&quot;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=394 BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>4-element
+			vector</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=138 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&quot;1.0
+			2.0 1.0&quot;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=385 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>3-element vector</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=128>
+			<br />
+		</TD>
+		<TD WIDTH=138 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>&quot;1.0
+			2.0&quot;</FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=385 VALIGN=TOP BGCOLOR="#cccccc">
+			<P CLASS="western"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>2-element vector</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<H3 CLASS="western" STYLE="page-break-before: always">Keywords</H3>
+<br />
+<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 0.01in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Note:</B> Although
+keywords are not reserved, it is considered bad practice to use
+variables that have the same spelling as a keyword ( and it can break your scripts ) .</FONT></FONT></P>
+<br />
+<UL>
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>break</B><SPAN STYLE="font-weight: medium">
+	- <FONT COLOR="#222222">Use <I>break</I> to exit the innermost <I>for</I>
+	or <I>while</I> loop. <I>break</I> can also be used to exit a switch
+	or switch$ statement, though it is not necessary to use <I>break</I><SPAN STYLE="font-style: normal">
+	statements to separate </SPAN><I>case</I><SPAN STYLE="font-style: normal">
+	statements as in C/C++</SPAN>.</FONT></SPAN></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>case</B><SPAN STYLE="font-weight: medium">
+	- <FONT COLOR="#222222">Used to label cases in a <I>switch</I> or
+	<I>switch$</I> statement.</FONT></SPAN></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>continue</B><SPAN STYLE="font-weight: medium">
+	- <FONT COLOR="#222222">The <I>continue</I> keyword causes the
+	script to skip the remainder of the innermost loop in which it
+	appears and continue execution with the next iteration of the loop.</FONT></SPAN></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>default</B><SPAN STYLE="font-weight: medium">
+	- This labels the default case in a <I>switch</I> or <I>switch$</I>
+	statement. The default case is the case that is executed if no other
+	cases match the <I>switch</I>/<I>switch$</I> value.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>else</B><SPAN STYLE="font-weight: medium">
+	- The <I>else</I> keyword is used with the <I>if</I> keyword to
+	control the flow of a script. The block of code after an <I>else</I>
+	statement is executed if the <I>if</I><SPAN STYLE="font-style: normal">
+	condition evaluates to </SPAN><I>false.</I></SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>false</B><SPAN STYLE="font-weight: medium">
+	- The <I>false</I> keyword is used for boolean comparison and
+	evaluates to 0.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>for</B><SPAN STYLE="font-weight: medium">
+	- The <I>for</I> keyword starts a loop that will execute a section
+	of code multiple times until an exit condition is met.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>function</B><SPAN STYLE="font-weight: medium">
+	- The <I>function</I> keyword is used to define a new console
+	function or method.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>if</B><SPAN STYLE="font-weight: medium">
+	- The <I>if</I> keyword is used with or without the <I>else</I>
+	keyword to control the flow of a script. The block of code after an
+	<I>if</I> statement is executed if the <I>if </I><SPAN STYLE="font-style: normal">condition
+	evaluates to </SPAN><I>true</I><SPAN STYLE="font-style: normal">.</SPAN></SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>new</B><SPAN STYLE="font-weight: medium">
+	- The <I>new</I> keyword is used to create an instance of a class.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>package</B><SPAN STYLE="font-weight: medium">
+	- The <I>package</I> keyword tells the console that the subsequent
+	block of code is to be declared but not loaded. Packages provide
+	dynamic function-polymorphism in TorqueScript.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>parent</B><SPAN STYLE="font-weight: medium">
+	- The <I>Parent</I> keyword is used with the namespace operator (</SPAN><B>::</B><SPAN STYLE="font-weight: medium">)
+	to reference the previous definition of a function that has been
+	over-ridden either through inheritance or packaging.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>return</B><SPAN STYLE="font-weight: medium">
+	&ndash; The return keyword is used to return a value from a
+	function.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>switch</B><SPAN STYLE="font-weight: medium">
+	- The <I>switch</I> keyword begins a switch statement that is used
+	to control the flow of script execution. Execution will be directed
+	to the block of code after the case statement that matches the
+	switch value.</SPAN></FONT></FONT></FONT></P>
+	<br />
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>switch$</B><SPAN STYLE="font-weight: medium">
+	- The <I>switch$</I><SPAN STYLE="font-style: normal"> keyword is
+	identical to </SPAN><I>switch</I><SPAN STYLE="font-style: normal">
+	with the exception that it is used exclusively for strings.</SPAN></SPAN></FONT></FONT></FONT></P>
+	<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><FONT COLOR="#222222"><SPAN STYLE="font-style: normal"><B>true</B><SPAN STYLE="font-weight: medium">
+	- The </SPAN></SPAN><SPAN STYLE="font-weight: medium"><I>true</I><SPAN STYLE="font-style: normal">
+	keyword is used for boolean comparison and evaluates to 1.</SPAN></SPAN></FONT></FONT></FONT></P>
+	<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal">
+	<FONT COLOR="#222222"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>while</B><SPAN STYLE="font-weight: medium">
+	- The <I>while</I> keyword starts a loop that will execute a section
+	of code multiple times until an exit condition is met.</SPAN></FONT></FONT></FONT></P>
+</UL>
+<br />
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

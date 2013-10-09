@@ -1,0 +1,208 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 52;
+   parent.leftFrame.expandToItem('tree2', 'doc52');
+   var element = parent.leftFrame.document.getElementById('doc52');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="container.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<title>Torque 2D - Animated Sprites Tutorial</title>
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject  page-Torque 2D_AnimatedSprites skin-monobook" style="width: 700px; padding: 10px;">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700">
+
+				<a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline">Introduction</span></h2>
+                <p>In this tutorial, you'll learn how to set up and use animated sprites
+                  in Torque 2D. An 'animated sprite' is a two-dimensional image that has 
+                  multiple frames, like a movie. This tutorial will focus on Torque 2D features 
+                  that are unique to animated sprites. In addition to these features, 
+                  animated sprites can be manipulated in many of the same ways as static 
+                  (non-animated) sprites, which you can learn about in the Static Sprite 
+                  Tutorial. </p>
+                <p><br />
+                  To prepare for this tutorial, run Torque 2D and create a new 
+                  project. Name the new project "AnimatedSprites" and use the Empty Game project template. This 
+                  creates a new project called AnimatedSprites in the location you 
+                  chose to save it to. </p>
+                <br><br>
+                <a name="Loading_The_Image_Files" id="Loading_The_Image_Files"></a>
+                <h2> <span class="mw-headline">Loading The Image Files</span></h2>
+                <p>We'll need to add a couple of images to the AnimatedSprites project for 
+                  this tutorial. To do this we will learn a convenient way to 
+                  bring images into Torque 2D. Simply drag Figure 1 and Figure 2 from 
+                  this html document into your Torque 2D window with your new project 
+                  loaded. </p>
+                <p><br />
+                  <img alt="Image:imageMap1234.png" src="images/imageMap1234.png" border="0" height="64" width="64" /><br />
+                <p><br />
+                  <img alt="Image:FlourSack.png" src="images/FlourSack.png" border="0" height="448" width="510" /><br />
+                <p><br />
+                  This should bring them into your object library, though as full 
+                  images.These images are "CELL" images, so double click their icons
+                  in the object library and set them up according to the following instructions. </p>
+                <p><br />
+                  In the Image Builder dialog, change the Image Mode to CELL (as shown in 
+                  Figure 3). CELL mode is used for images that are evenly divided into 
+                  multiple frames. The default is four equally-sized frames, which is 
+                  correct for this image, so press Save. </p>
+                <p><br />
+                  <img alt="Image:AnimatedSpritesFigure3.png" src="images/AnimatedSpritesFigure3.png" border="0" height="400" width="698" /><br />
+                <p><br />
+                  Now it's time to adjust the FlourSack image. Double click on the 
+                  FlourSack imageMap. Choose CELL image mode. The frames don't look quite 
+                  right, so we're going to adjust the cell sizes. For starters, change the
+                  Cell Width to "85" and press Enter. </p>
+                <p><br />
+                  That looks like the right width. Let's assume that the cells are as tall
+                  as they are wide and change the Cell Height to "85" also. The result 
+                  does not look perfect. Enter "112" instead (as shown in Figure 4). It 
+                  should look a lot better. Click Save. </p>
+                <p><img alt="Image:AnimatedSpritesFigure4.png" src="images/AnimatedSpritesFigure4.png" border="0" height="397" width="702" /><br />
+                <a name="Creating_A_New_Animation" id="Creating_A_New_Animation"></a>
+                <h2> <span class="mw-headline">Creating A New Animation</span></h2>
+                <p><img alt="Image:AnimatedSpritesFigure5.png" src="images/AnimatedSpritesFigure5.png" border="0" height="178" width="750" /><br />
+                <p><br />
+                  Your sprites now appear in the Static Sprites section. To set them up 
+                  for the Animated Sprites section, we will use the Animation Builder. To 
+                  do this, click the Create a new Animation button under the Create tab 
+                  (as shown in Figure 5). In the <i>Select Material</i> dialog, select 
+                  imageMap1234ImageMap then press the <i>Select</i> button (as shown in 
+                  Figure 6). </p>
+                <p><br />
+                  <img alt="Image:AnimatedSpritesFigure6.png" src="images/AnimatedSpritesFigure6.png" border="0" height="436" width="596" /><br />
+                <p>This brings up the Animation Builder, with its default settings 
+                  selected. The biggest area of the Animation editor (center/lower left) 
+                  you can see all the available cells of the image map, which are used as 
+                  frames in your animation. </p>
+                <p><br />
+                  On the top is the Animation Storyboard where you can arrange these 
+                  cells. On the right side in the upper right you can see a preview 
+                  animation window, below that are various options and a save and cancel 
+                  button. </p><br><br>
+                <a name="The_Animation_Builder" id="The_Animation_Builder"></a>
+                <h2> <span class="mw-headline">The Animation Builder</span></h2>
+                <p>Now it's time to take a closer look at the Animation Builder 
+                  features. Let's take a look at the animation properties ... </p>
+                <ul>
+                  <li><b>Frames Per Second:</b> Number of frames you want played each 
+                    second (speed of the animation). </li>
+                </ul>
+                <ul>
+                  <li><b>Start Frame:</b> This is the frame you want the animation to 
+                    start at. </li>
+                </ul>
+                <ul>
+                  <li><b>Total Time:</b> The number of seconds in one cycle of the 
+                    animation. The frame times will be divided evenly, so, in this 
+                    animation, 4 frames in one second will result in .25 seconds per frame. </li>
+                </ul>
+                <ul>
+                  <li><b>Cycle Animation: </b>If checked itmakes the 
+                    animation start back at the beginning after completing its 
+                    cycle.If this isn't checked it means the animation will play 
+                    once, then stop on the final frame. </li>
+                </ul>
+                <ul>
+                  <li><b>Name:</b> The name of the animation. </li>
+                </ul><br><br>
+                <a name="The_Animation_Storyboard" id="The_Animation_Storyboard"></a>
+                <h2> <span class="mw-headline">The Animation Storyboard</span></h2>
+                <p>To create your own animation drag your animation frames from the 
+                  Source ImageMap section into the Animation Storyboard (or just click the
+                  green plus to add all of the frames). Let's make this one run 
+                  backwards... </p>
+                <p><br />
+                  <img alt="Image:AnimatedSpritesFigure7.png" src="images/AnimatedSpritesFigure7.png" border="0" height="405" width="564" /><br />
+                <p><br />
+                  Start by dragging the "4" image into the first frame in the storyboard. 
+                  Now continue dropping frames in... "3"... "2"... "1".You should 
+                  see the preview, in the top right, playing your animation as you build 
+                  it.Be sure to modify the Frame Per Second field if your animation 
+                  is going to fast. </p><br><br>
+                <a name="The_FlourSack_Animation" id="The_FlourSack_Animation"></a>
+                <h2> <span class="mw-headline">The FlourSack Animation</span></h2>
+                <p>Let's do one more animation as an example... one that's a little 
+                  cooler than flashing numbers. Back in the Create tab, click on Create a 
+                  new Animation and select FlourSackImageMap as the source 
+                  image.Click on the green plus (Add all the frames from the image) 
+                  button to add all of your frames. Hey, that looks pretty cool! But what 
+                  is that flash at the end of the animation? </p><br>
+                <p><img alt="Image:AnimatedSpritesFigure8.png" src="images/AnimatedSpritesFigure8.png" border="0" height="405" width="563" /><br />
+                <p><br />
+                  Go back to the storyboard and scroll down to the end. You'll see that 
+                  there is an empty frame there . This is because when you import your 
+                  image using the Image Mode Cell, it divides the image into equal frames 
+                  per row based on the frame size you specify. </p>
+                <p><br />
+                  Since this animation has an odd number of frames, when the Image Map 
+                  Builder created it, there was a blank one at the end. Drag the last frame off of 
+                    the animation list and drop it on the trash can icon to remove it from the 
+                    animation, then preview it again. Now that looks really 
+                  good! Return to the storyboard and save the animation using the default 
+                  name. </p>
+                <p><br />
+                  Back in the Scene Editor, drag the animated flour sack from the Create 
+                  tab onto the left side of the Scene View. With that animated sprite 
+                  still selected, click the Edit tab on the right side of the screen and 
+                  open up the Physics section in that tab. Type "10" into the Velocity X 
+                  property and press Enter. </p>
+                <p><br />
+                  Save your level, then press the Play Level button. You should see the 
+                  sack walking across the screen. </p>
+                <p><br />
+                  <img alt="Image:AnimatedSpritesFigure9.png" src="images/AnimatedSpritesFigure9.png" border="0" height="435" width="696" /><br />
+                <a name="In_Conclusion" id="In_Conclusion"></a>
+                <h2> <span class="mw-headline">In Conclusion</span></h2>
+                <p>We've thoroughly explored the setup of animated sprites in Torque 2D. To 
+                  further your understanding, it will be worth your while to go through 
+                  the Image Maps tutorial. That will explain how to create the celled 
+                  image maps that are used to make these frame-based sprites. </p>
+                <p><br />
+                  Now that you have the tools, the possibilities for cool and interesting 
+                  animations are pretty much limitless! Have fun with it! </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

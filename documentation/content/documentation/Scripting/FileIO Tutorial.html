@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 346;
+   parent.leftFrame.expandToItem('tree2', 'doc346');
+   var element = parent.leftFrame.document.getElementById('doc346');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - FileIO Tutorial</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="CREATED" CONTENT="20060614;15223400">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060907;12334543">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt"><B>Torque 
+                     2D - File I/O Tutorial</B></FONT></FONT></P>
+      </DIV>
+      <H3 style="MARGIN-BOTTOM: 0in">Introduction</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Torque 
+               2D (T2D) gives users the ability to easily read and write their own custom 
+               files using FileObjects. In this tutorial we will dynamically write a file 
+               through code and then read the contents of that file into our console. For more 
+               information about file IO in T2D, please refer to the <I>T2D Reference</I> document 
+               that comes with the engine.</FONT></FONT></P>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in">Writing a file</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">To begin 
+               with, we are going to <a class = "componentNoJSLink" href = "../../Component Tutorials/Scripting/Create a Script File.html">create a new .cs file</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('Scripting/Create a Script File', '0', 'create a new .cs file')"><u>create a new .cs file</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span> 
+          in our games/TutorialBase/game/gameScripts folder. Name this file &quot;<I>FileIO.cs&quot;.</I> We are creating this file using the 
+               TutorialBase project because it is a project that all Torque 2D users 
+               should have.<SPAN STYLE="FONT-STYLE: normal">
+The first thing we are going to do in our script file is create a
+simple function that will write a text document for us. At the top of
+our </SPAN><I>FileIO.cs </I>
+               <SPAN STYLE="FONT-STYLE: normal">file,
+add our first function:</SPAN></FONT></FONT></P>
+<TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">function writeFile()</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%file = new FileObject();</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">if(%file.openForWrite("~/data/test.txt"))</FONT></FONT></P>
+         <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%file.writeLine("Hello World!");</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">echo("File Written");</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">else</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">error("File is not open for writing");</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">} </FONT></FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%file.close();</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%file.delete();</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">This function is pretty 
+               straightforward: it creates a new object (%file) of the type FileObject. There are standards for file locations introduced in Windows Vista and 7. If you need to modify files in the install directory, the user has to run your game in administrator mode, which is bad. Therefore, 
+          <strong>all data is put in the %APPDATA% directory (which varies in XP, Vista, and 7)</strong>.
+
+You should use the same directory for a saved file and a loaded file as the system creates 
+          a replica of the folder structure you use when saving the file within your 
+          %APPDATA%/Independent folder in a sub-folder with your project name. From your point of view, it shouldn't matter. If you save to "game/data/saveFile.sav", you'll want to exec "game/data/saveFile.sav".&nbsp; 
+          Simply be aware that the files you write won&#39;t be located where you would 
+          logically expect if you use this feature on Windows Vista or Windows 7. <a href="http://www.GarageGames.com/community/forums/viewthread/113819">For more details, you can read through this thread in our forums</a>.
+</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Next, 
+        it checks to see if the file we are going to write to is open for writing (in 
+        this case, the file does not exist yet, so our code will create it). If the 
+        file is open for writing, it writes the line &quot;Hello World&quot; in the file. Next, 
+        we tell the code to give us a confirmation of the write in the console. If the 
+        openForWrite check failed, the console will receive an error message relating 
+        that fact to the user. The last two lines are cleanup: the code closes the file 
+        we just wrote to and deletes the file object we created at the beginning of the 
+        function since we no longer need it. </FONT></FONT>
+      </P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">We should test this code now. Make sure 
+               that you add an exec call in the game.cs file so that your new code will be 
+               loaded. Once you have your code finished, it is time to open T2D and test it. </FONT>
+         </FONT>
+      </P>
+      <BR>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Testing Our File</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Open up your copy of T2D, either by 
+               clicking on the desktop icon or finding it in the start menu. Once you have it 
+               open, we will need to open the <I>TutorialBase </I>project (if it isn't already open) by 
+               clicking on <I>Open Project </I>in the file menu. Also, we will need to <a class = "componentNoJSLink" href = "../../Component Tutorials/Levels/Making a New Level.html">create a new scene by selecting New Scene in the file menu</a><a id = "componentLink1" class = "componentLink" onClick = "loadComponent('Levels/Making a New Level', '1', 'create a new scene by selecting New Scene in the file menu')"><u>create a new scene by selecting New Scene in the file menu</u></a><span class = "componentBox" ID = "componentTag1" style="overflow:hidden;display:none;"></span>. Once your new scene 
+               is created, <a class = "componentNoJSLink" href = "../../Component Tutorials/Levels/Saving a Level.html">save it with any name</a><a id = "componentLink2" class = "componentLink" onClick = "loadComponent('Levels/Saving a Level', '2', 'save it with any name')"><u>save it with any name</u></a><span class = "componentBox" ID = "componentTag2" style="overflow:hidden;display:none;"></span>, and choose <I>Run Game </I>in the project 
+               menu. Once you are in the scene, bring up the console by hitting the tilde key 
+               (~). </FONT></FONT>
+      </P>
+<BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">We are going to quickly test the 
+               functionality of the code we just wrote. Type &quot;<I>writeFile();&quot; </I>into the 
+               console window and hit enter. At once, we should get an echo statement 
+               confirming that our file was written (figure 1).</FONT></FONT></P>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+      <P STYLE="MARGIN-TOP: 0.08in">
+          <IMG SRC="../Interface%20Tutorials/Feature/images/FileIOFigure1.jpg" 
+              NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+         <FONT SIZE="1"><I><B>Figure 1</B></I></FONT></P>
+      <BR CLEAR="left">
+      <P></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">If you did not receive the confirmation 
+               &quot;<I>File Written&quot;</I>, make sure to check your code and exec statement for 
+               accuracy. Now that we have our file written, we should go check to see where it 
+               is. According to our code, we created the file in ~/data/test.txt (the 
+          tilde followed by the slash stands for the relative path of games/TutorialBase). Navigate to that path, and 
+               you should see your newly created file sitting in your newly created files 
+               folder. Remember that under Windows Vista or Windows 7 you will find this 
+          file under your <strong>Users/YourUserName/AppData/Roaming/ Independent/YourProjectName</strong> 
+          folder.&nbsp; Open up your test.txt document and you should see the line &quot;Hello 
+               World!&quot; all alone at the top of the file (figure 2).</FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+      <P STYLE="MARGIN-TOP: 0.08in">
+          <IMG SRC="../Interface%20Tutorials/Feature/images/FileIOFigure2.jpg" 
+              NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+         <FONT SIZE="1"><I><B>Figure 2</B></I></FONT></P>
+      <BR CLEAR="left">
+      <BR>
+      <P></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Now that we have seen how the write 
+               system works, let's see how our read system works. </FONT></FONT>
+      </P>
+      <BR>
+      <P></P>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Reading in a File</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">While you have your &quot;<I>test.txt&quot; </I>file 
+               open, write a few lines into the document (figure 3).</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+      <P STYLE="MARGIN-TOP: 0.08in">
+          <IMG SRC="../Interface%20Tutorials/Feature/images/FileIOFigure3.jpg" 
+              NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+         <FONT SIZE="1"><I><B>Figure 3</B></I></FONT></P>
+      <BR CLEAR="left">
+      <BR>
+      <P></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">When you finish writing in your lines, 
+               save your file and navigate to your TutorialBase/game/gameScripts folder and access your <I>fileIO.cs
+               </I>file. Inside this file add the following function right below the one we 
+               created earlier:</FONT></FONT></P>
+<TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif">function readFile()</FONT></P>
+                        <P><FONT FACE="Arial, sans-serif">{</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%file = new FileObject();</FONT></P>
+                        <P><BR>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">if(%file.openForRead("~/data/test.txt"))</FONT></P>
+                     <P>
+                           <FONT FACE="Arial, sans-serif">{</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%x=1;</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">while(!%file.isEof())</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">{</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%line = %file.readLine();</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">echo("line" @ %x @ " = " @ %line);</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%x++;</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">}</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">}</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">else</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">{</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">error("CANNOT OPEN FOR READ");</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">} </FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%file.close();</FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif">%file.delete();</FONT></P>
+                        <P><FONT FACE="Arial, sans-serif">}</FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">This code works somewhat similar to the 
+               last function. First it creates a new FileObject. Next, it checks to see if the 
+               file we are trying to read is open for reading. If it is, we start a while loop 
+               that runs as long as it is not the end of file, assigns the current line being 
+               read to a variable %line and spits it to our console. If the file is not open 
+               for read, the console will get an error message informs the user of that. Once 
+               you have this code in, save your file and go back into T2D.</FONT></FONT></P>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">When you get back into T2D, test your 
+               scene again and open the console. When you console is open, type &quot;<I>readFile();</I>&quot; 
+               into it and hit enter. When you do, you should see the something like figure 4 
+               in your console:</FONT></FONT></P>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+      <P STYLE="MARGIN-TOP: 0.08in">
+          <IMG SRC="../Interface%20Tutorials/Feature/images/FileIOFigure4.jpg" 
+              NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+         <FONT SIZE="1"><I><B>Figure 4</B></I></FONT></P>
+      <BR CLEAR="left">
+      <BR>
+      <P></P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">As you can see, the contents that we 
+               typed into our file are spit back to us in our console. </FONT></FONT>
+      </P>
+      <BR>
+      <BR>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Conclusion</H3>
+      <BR>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">With little effort we were able to 
+               create a file on the fly and have its contents read back to us in our console. 
+               It is not hard to see the potential a system like this would have, given 
+               careful implementation. If you require a deeper understanding of the topic 
+               discussed here, please refer to the <I>T2D Reference</I> file that comes with 
+               the engine.</FONT></FONT></P>
+      <DIV TYPE="FOOTER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision 
+                     1.00</I></FONT></FONT></P>
+      </DIV>
+   <div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 50;
+   parent.leftFrame.expandToItem('tree2', 'doc50');
+   var element = parent.leftFrame.document.getElementById('doc50');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  
+
+
+  <title>Torque 2D &ndash; Camera Sizing</title><meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060728;13055200">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+H1 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US }
+H1.cjk { font-family: "Lucida Sans Unicode"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt; so-language: ar-SA }
+H2 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+H2.western { font-family: "Arial", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
+H2.cjk { font-family: "Lucida Sans Unicode"; font-size: 14pt; font-style: italic }
+H2.ctl { font-family: "Tahoma"; font-size: 14pt; so-language: ar-SA; font-style: italic }
+A:link { color: #0000ff }
+-->
+  </style></head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Camera Sizing</strong></font></font></font></p>
+
+<tooltip></tooltip><font color="#333333"><font face="Arial, sans-serif"><font size="2">
+    <table cellpadding="10" width="700">
+        <tbody><tr>
+            <td width="488">
+                <span style="font-family: Times New Roman;"><span style="color: rgb(51, 51, 51);">The
+camera is represented by a dark blue box
+that you should see in your level <i>(as shown in Figure 1)</i>.</span>
+                </span>
+            </td>
+            <td width="450">
+                <img style="border: 0px solid ; width: 396px; height: 303px; float: left;" alt="" src="images/Camera%20Sizing%2001.jpg" name="graphics23"><br clear="left">
+
+<font size="1"><i><b>Figure 1.</b></i></font></td>
+        </tr>
+        <tr>
+            <td style="height: 264px" width="488">
+                <span style="color: rgb(51, 51, 51); font-family: Times New Roman;">There
+are two ways to configure the camera size, we can click the camera
+tool icon (in the top menu bar) and visually resize it (just like the world
+limit editing tool), or we can specify the width and
+height manually as values. To set the camera to
+a specific width and height, you click the Project tab in the right
+panel and then click the &ldquo;t2dSceneGraph&rdquo; object in
+the
+Object Tree view <i>(as shown in Figure 2)</i>.</span></td>
+            <td style="height: 320px" width="226">
+                <img style="border: 0px solid ; width: 226px; height: 320px; float: left;" alt="" src="images/Camera%20Sizing%2002.jpg" name="graphics12"><br clear="left">
+
+<font size="1"><i><b>Figure 2</b></i></font></td>
+        </tr>
+        <tr>
+            <td style="height: 108px" width="488">
+                <span style="color: rgb(51, 51, 51); font-family: Times New Roman;">Now you
+have the
+&ldquo;t2dSceneGraph&rdquo; selected, click the
+&ldquo;Edit&rdquo;
+tab and then change the camera width and height to whatever you want and
+then press enter <i>(as shown in Figure 3)</i>. 
+                </span>
+            </td>
+            <td style="height: 108px" width="450">
+
+<br>
+
+<p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 283px; height: 377px; float: left;" alt="" src="images/Camera%20Sizing%2003.jpg" name="graphics13"><br clear="left">
+
+<font size="1"><i><b>Figure 3</b></i></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 108px" width="488">
+                <span style="color: rgb(51, 51, 51); font-family: Times New Roman;">You
+should see the dark blue box expand, possibly beyond your current
+view. You may need to zoom out to view our new camera size <i>(as
+shown in Figure 4)</i>. You can zoom out by either using the
+scroller if you have a scroll mouse or, if not, you can go to the
+&ldquo;View&rdquo; dropdown menu and choose an appropriate zoom
+percentage.</span></td>
+            <td style="height: 108px" width="450">
+                <img style="border: 0px solid ; width: 396px; height: 297px; float: left;" alt="" src="images/Camera%20Sizing%2004.jpg" name="graphics5"><br clear="left">
+
+<font size="1"><i><b>Figure 4</b></i></font></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 151px" width="962">
+                <span style="color: rgb(51, 51, 51); font-family: Times New Roman;">If
+you remember, the previous width and height was 100 and 75. In
+Torque 2D the actual size numbers are relative. What this
+means is you can set it to 4 and 3 if you wanted, or 4000 and 3000. We
+changed ours to 800 by 600 so we can get a better idea of our
+image and screen resolution in comparison to our images and values. T2D
+maintains its world sizing despite the screen resolution of the
+computer playing a T2D game, which,
+                    as you can imagine, is a very good
+thing. </span>
+            </td>
+        </tr>
+    </tbody></table>
+</font></font></font>
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+<font color="#333333"><font face="Arial, sans-serif"><font size="2"> </font></font></font>
+    &nbsp;</p>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

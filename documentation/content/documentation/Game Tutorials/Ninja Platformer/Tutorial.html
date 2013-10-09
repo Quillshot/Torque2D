@@ -1,0 +1,971 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 33;
+   parent.leftFrame.expandToItem('tree2', 'doc33');
+   var element = parent.leftFrame.document.getElementById('doc33');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>Mini Platformer Tutorial</title>
+    
+    <style>
+    body {
+     font-family:Verdana, Geneva, sans-serif;
+     font-size:12px;
+     width: 700px;
+    }
+    div.design {
+     background-color: #FFC;
+    }
+    div.hint {
+     margin: 10px;
+     font-style:italic;
+     margin-top: 1em; margin-bottom: 2em;
+    }
+    div.toc {
+     background-color: #EEE;
+     width: 700px;
+    }
+    div.warn {
+     background-color: #F93;
+     font-weight:bold;
+     margin-top: 1em; margin-bottom: 2em;
+    }
+    div.codesample {
+     background-color: #9FF;
+     margin: 10px;
+     margin-top: 1em; margin-bottom: 2em;
+    }
+    p { margin-top: 1em; margin-bottom: 1em; text-align: left; }
+    li { margin-top: 1em; margin-bottom: 1em; }
+    ol { margin-top: 1em; margin-bottom: 2em; }
+    ul { margin-top: 1em; margin-bottom: 2em; }
+    h1 { margin-top: 3em; margin-bottom: 1em; }
+        </style>
+</head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+    <div id="content">
+        <div id="main">
+            <div id="main-content">
+                <h1 class="firstHeading">
+                    T2D/Mini Platformer Ninja Tutorial</h1>
+                <div id="bodyContent">
+                    <table style="text-align: justify;" border="0" cellpadding="0" cellspacing="0" width="700">
+                        <tbody><tr>
+                            <td width="700">
+                                <p>
+                                    <script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+
+                                </p>
+                                
+                                <a name="Basic_Platformer_mechanics_in_100_lines_of_script_or_less"></a>
+                                <h1>
+                                    Basic Platformer mechanics in 100 lines of script or less</h1>
+                                <p>
+                                    The premise of this tutorial is to provide a quick and painless set of steps to
+                                    get basic platformer game mechanics in T2D in under 30 minutes and under 100 lines of
+                                    script.
+                                </p>
+                       
+                                <a name="Setting_up_the_Project"></a>
+                                <h1>
+                                    Setting up the Project</h1>
+                                <p>
+                                    To start, <b>open up T2D</b> (by clicking the T2D icon on your desktop). By default,
+                                    the Level Builder will start with the last project that was loaded. This makes it
+                                    really easy to pick up where you left off. If you have been playing around with
+                                    the Level Builder before reading this you will see whatever you worked on last.<br>
+                                </p>
+                                <table>
+                                    <tbody><tr>
+                                        <td>
+                                            <p>
+                                                    <img alt="Image:1-1_newProject.png" longdesc="/wiki/Image:1-1_newProject.png" src="images/1-1_newProject.png" height="274" width="177">
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p>
+                                                    <img alt="Image:1-2 newProject.png" longdesc="/wiki/Image:1-2_newProject.png" src="images/1-2_newProject.png" height="178" width="335">
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b><i>Figure 1.1</i></b></td>
+                                        <td>
+                                            <b><i>Figure 1.2</i></b></td>
+                                    </tr>
+                                </tbody></table>
+                                <br>
+                                <p>
+                                    To create a new project, <b>select New Project&#8230; from the File menu</b>. When you
+                                    do this, the New Project dialog will appear. For the purposes of this tutorial we
+                                    will <b>call this project "miniPlatformer"</b> (Figure 1.2). This will bring up
+                                    the level builder (Figure 1.3).</p>
+                                    <img alt="Image:1-3_levelBuilder.jpg" longdesc="/wiki/Image:1-3_levelBuilder.jpg" src="images/1-3_levelBuilder.jpg" height="328" width="552">
+                                    <b><i>Figure 1.3</i></b>
+
+                                    <p>Now <b>save the project</b>, this will create the projects directory structure inside
+                                    your T2D/games folder. You will be prompted to save your level even though you haven't
+                                    added anything yet. <b>Save the level as "level1.t2d"</b>(figure 1.4).</p>
+                                    
+                                        <img alt="Image:1-4 saveLevel.PNG" longdesc="/wiki/Image:1-4_saveLevel.PNG" src="images/1-4_saveLevel.PNG" height="71" width="663">
+                                    <b><i>Figure 1.4</i></b>
+                               
+                                <a name="Importing_Art"></a>
+                                <h1>
+                                    Importing Art</h1>
+                                <p>
+                                    It's time to start adding the content we will use in our platformer. Because we
+                                    are trying to keep things simple we will only add two image files to the project.
+                                    <b>Copy the following two images to your <i>~MyGames/miniPlatformer/game/data/images </i>folder</b>
+                                    (Figure 2.1) (Figure 2.2)
+                                    </p>
+                                        <img alt="image:Player.png" longdesc="/wiki/Image:Player.png" src="images/Player.png" height="512" width="512">
+                                    <p><b><i>Figure 2.1</i></b></p>
+
+                                        <img alt="Image:MiniTileMap.png" longdesc="/wiki/Image:MiniTileMap.png" src="images/MiniTileMap.png" height="256" width="256">
+                                    <p><b><i>Figure 2.2</i></b></p>
+                                    <p>
+                                    With that done we are now ready to import those images into the LevelBuilder. <b>Click
+                                        the "Add ImageMap" icon on the right sidebar</b> (Figure 2.3). You will be prompted
+                                    to pick between the two images we added to our images folder. <b>Select MiniTileMap.png
+                                        file from the list</b>. You will see a preview of it in the right panel of the
+                                    dialog (Figure 2.4). <b>Click the Select button</b> to bring up the Image Builder
+                                    dialog.</p>
+
+                                        <img alt="Image:2-3 addImageMap.png" longdesc="/wiki/Image:2-3_addImageMap.png" src="images/2-3_addImageMap.png" height="77" width="305">
+                                    <p><b><i>Figure 2.3</i></b></p>
+
+                                        <img alt="Image:2-4 imageSelect.png" longdesc="/wiki/Image:2-4_imageSelect.png" src="images/2-4_imageSelect.png" height="285" width="543">
+                                    <p><b><i>Figure 2.4</i></b></p>
+                                    <p>
+                                    On the Image Builder dialog <b>change the Image Mode to CELL</b>, you'll notice
+                                    how this nicely separates the tiles into four separate chunks (Figure 2.5). This
+                                    will be important later when we go to build our tile map.</p>
+
+                                        <img alt="Image:2-5 cell.png" longdesc="/wiki/Image:2-5_cell.png" src="images/2-5_cell.png" height="284" width="493">
+                                    <p><b><i>Figure 2.5</i></b></p>
+                                    <p>
+                                    <b>Repeat the process for Player.png</b>, adding it as a new image map and then
+                                    picking "CELL" for the Image Mode. You'll notice that things don't look exactly
+                                    right this time. It appears that there are four player images per cell. To fix that
+                                    we need to <b>edit the "Cell Width" and "Cell Height" properties so they both read "128"</b>
+                                    (Figure 2.6).</p>
+
+                                        <img alt="Image:2-6 cellSize.png" longdesc="/wiki/Image:2-6_cellSize.png" src="images/2-6_cellSize.png" height="284" width="493">
+                                    <p><b><i>Figure 2.6</i></b></p>
+                                
+                                <a name="Creating_Animation"></a>
+
+                                <h2>Creating Animation</h2>
+                                
+                                <p>
+                                    In this section we will create four animations for our player from the playerImageMap.
+                                    They are:
+                                </p>
+                                <ol>
+                                    <li>playerRun</li>
+                                    <li>playerJumpUp</li>
+                                    <li>playerJumpDown</li>
+                                    <li>playerStand</li>
+                                </ol>
+
+                                <p>Some of these animations will only have one frame, but you will see how we could
+                                easily add more. Lets start with the Run animation since it's the most interesting.
+                                Start by <b>clicking the Add Animation icon</b> (Figure 2.7). On the Select Source
+                                dialog that appears <b>choose the PlayerImageMap</b> (Figure 2.8). After that you
+                                will be presented with the animation builder dialog. Here you can drag frames from
+                                them imageMap and onto an animation time line.</p>
+
+                                    <img alt="Image:2-7 addAnim.png" longdesc="/wiki/Image:2-7_addAnim.png" src="images/2-7_addAnim.png" height="67" width="330">
+                                <p><b><i>Figure 2.7</i></b></p>
+
+                                    <img alt="Image:2-8 pickMap.png" longdesc="/wiki/Image:2-8_pickMap.png" src="images/2-8_pickMap.png" height="92" width="231">
+                                <p><b><i>Figure 2.8</i></b></p>
+
+                                <p>
+                                    <b>Drag frames 4 to 11 from the imageMap onto the animation timeline, one after the
+                                        other</b>. When you have finished you should have something that looks like
+                                    (Figure 2.9). Preview the animation to see if it seems intact and then <b>save the animation
+                                        as "playerRun"</b>.</p>
+
+                                        <img alt="Image:2-9 anim.png" longdesc="/wiki/Image:2-9_anim.png" src="images/2-9_anim.png" height="410" width="543">
+                                    <p><b><i>Figure 2.9</i></b></p>
+                                    <p>
+                                    The remaining animations are built in the same way except that they only have one
+                                    frame of animation (in your own project you could add more). The list below shows
+                                    what animations to create and what frames to assign them.
+                                </p>
+                                <ol>
+                                    <li>playerJumpDown - Frame 0</li>
+                                    <li>playerJumpUp - Frame 1</li>
+                                    <li>playerStand - Frame 2
+                                </li>
+                                </ol>
+                                <p>
+                                    <b>Create the remaining 3 single frame animations</b>. When you are done your Animated
+                                    Sprites rollout should look something like (Figure 2.10).</p>
+
+                                        <img alt="Image:2-10 sprites.png" longdesc="/wiki/Image:2-10_sprites.png" src="images/2-10_sprites.png" height="129" width="301">
+                                    <p><b><i>Figure 2.10</i></b></p>
+                                
+                                <a name="Building_a_level"></a>
+                                <h1>
+                                    Building a level</h1>
+                                <p>
+                                    Now we will build a simple tileLayer for our level. <b>Drag and drop the newLayer.lyr
+                                        object from the Tile Maps rollout and onto our scene</b>. (Figure 3.1) Once
+                                    you've placed it on the scene we'll have to customize it a little to make it work
+                                    with the rest of our art.</p>
+
+                                        <img alt="Image:3-1 tileMaps.png" longdesc="/wiki/Image:3-1_tileMaps.png" src="images/3-1_tileMaps.png" height="130" width="302">
+                                    <p><b><i>Figure 3.1</i></b></p>
+
+                                    <p>
+                                    <b>With tileLayer selected in the scene and click the Edit button on the right sidebar</b>
+                                    we want to edit the TileSize properties of the Tile Map. <b>Set the X and Y Tile Size
+                                        properties to 32</b>(Figure 3.2) this will make the tiles large enough to work
+                                    well with our player art. It's easier to resize the entire tile map then it is to
+                                    individually resize each player animation.</p>
+
+                                <table>
+                                    <tbody><tr>
+                                        <td>
+                                            <img alt="Image:3-2 tileSize.png" longdesc="/wiki/Image:3-2_tileSize.png" src="images/3-2_tileSize.png" height="437" width="304">
+                                            <p><b><i>Figure 3.2</i></b></p>
+                                        </td>
+                                        <td>
+                                            <img alt="Image:3-3 before.png" longdesc="/wiki/Image:3-3_before.png" src="images/3-3_before.png" height="194" width="191">
+                                            <p><b><i>Figure 3.3</i></b> (before)</p>
+
+                                            <img alt="Image:3-4 after.png" longdesc="/wiki/Image:3-4_after.png" src="images/3-4_after.png" height="189" width="187">
+                                            <p><b><i>Figure 3.4</i></b> (after)</p>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                <p>
+                                    (Figure 3.3) and (Figure 3.4) show the tileLayer before and after setting the Tile
+                                    Size.
+                                </p>
+                                <p>
+                                    Now we have a tile layer but it appears to be only big enough to hold one tile.
+                                    We need to resize the TileLayer to cover the screen area. <b>Using the blue control
+                                        boxes, reposition and resize the tile layer larger then our camera's view</b>.
+                                    You can use the mouse wheel to zoom the scene view in and out to get enough room
+                                    to resize the tile layer. Once your done your scene should look something like (Figure
+                                    3.5).</p>
+
+                                        <img alt="Image:3-5 resize.png" longdesc="/wiki/Image:3-5_resize.png" src="images/3-5_resize.png" height="393" width="533">
+                                    <p><b><i>Figure 3.5</i></b></p>
+                                    <p>
+                                    (Figure 3.3) and (Figure 3.4) show the tileLayer before and after setting the Tile
+                                    Size.
+                                </p>
+                                <p>
+                                    It's time to explore T2D's Tile Map editor. Hover your mouse over the tile layer
+                                    in our scene until the set of action buttons appears at it's top left corner. <b>Click
+                                        the Edit Tile Map button</b> (Figure 3.6). This will bring up the Tile Editor
+                                    in the right sidebar(Figure 3.7).
+                                </p>
+                                <p>
+                                        <img alt="Image:3-6 editMap1.png" longdesc="/wiki/Image:3-6_editMap1.png" src="images/3-6_editMap1.png" height="80" width="204">
+                                    <p><b><i>Figure 3.6</i></b></p>
+
+                                        <img alt="Image:3-7 editMap2.png" longdesc="/wiki/Image:3-7_editMap2.png" src="images/3-7_editMap2.png" height="451" width="766">
+                                    <p><b><i>Figure 3.7</i></b></p>
+                                </p>
+                                <p>
+                                    From the Image drop down <b>select MiniTileMapImageMap</b>. Notice how a small "Frames"
+                                    button appears below the image drop down showing 0 (Figure 3.8) This means that
+                                    MiniTileMapImageMap contains multiple tiles. By default the first tile in the ImageMap
+                                    is displayed on the right sidebar.
+                                    <br>
+                                    <br>
+                                        <img alt="Image:3-8 image.png" longdesc="/wiki/Image:3-8_image.png" src="images/3-8_image.png" height="94" width="311"><br>
+                                    <b><i>Figure 3.8</i></b><br>
+                                    <br>
+                                    <b>Click the "Frames" button and select a good background tile</b> (Figure 3.9),
+                                    this tile wll be behind our player as he runs around the level. We will fill the
+                                    tilemap with these background tiles and then paint our platform tiles over-top.<br>
+                                    <br>
+                                        <img alt="Image:3-9 bgTile.png" longdesc="/wiki/Image:3-9_bgTile.png" src="images/3-9_bgTile.png" height="190" width="249"><br>
+                                    <b><i>Figure 3.9</i></b><br>
+                                    <br>
+                                    <b>Now use the Flood Fill tool to fill the tile map</b>(Figure 3.10) with background
+                                    tiles. To place platform tiles we can use the paintbrush tool (Figure 3.11) to paint
+                                    individual plaform tiles onto the tilemap. The difference in our tilemap between
+                                    a platform tile and a background tile is that the player can collide with platform
+                                    tiles. <b>Select a good platform tile from the available frames and make sure "Collision"
+                                        is checked</b> (Figure 3.12) this will enable our player to walk on and collide
+                                    with these tiles.<br>
+                                    <br>
+                                </p>
+                                <table>
+                                    <tbody><tr>
+                                        <td>
+                                                <img alt="Image:3-10 flood.png" longdesc="/wiki/Image:3-10_flood.png" src="images/3-10_flood.png" height="45" width="157"></td>
+                                        <td>
+                                                <img alt="Image:3-11 paint.png" longdesc="/wiki/Image:3-11_paint.png" src="images/3-11_paint.png" height="45" width="157"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b><i>Figure 3.10</i></b> (Flood)</td>
+                                        <td>
+                                            <b><i>Figure 3.11</i></b>(Paint)</td>
+                                    </tr>
+                                </tbody></table>
+                                <br>
+                                <p>
+                                        <img alt="Image:3-12 coll.png" longdesc="/wiki/Image:3-12_coll.png" src="images/3-12_coll.png" height="216" width="159"><br>
+                                    <b><i>Figure 3.12</i></b><br>
+                                    <br>
+                                    Once you've finished you should have something that looks like (Figure 3.12). You'll
+                                    notice that the platform tiles have a green border. This means that collisions are
+                                    turned on for those tiles. Make sure all the tiles you want the player to interact
+                                    with have collisions turned on and are displayed with green borders.<br>
+                                    <br>
+                                        <img alt="Image:3-13 finished.png" longdesc="/wiki/Image:3-13_finished.png" src="images/3-13_finished.png" height="451" width="766"><br>
+                                    <b><i>Figure 3.13</i></b><br>
+                                    <br>
+                                    The last thing to be done is to enable collision events on the tile map so that
+                                    the player will respond to collisions when they occur. Expand the "Collisions" rollout
+                                    with the tile layer still selected and <b>set the collision properties to match the
+                                        figure below</b> (Figure 3.14)<br>
+                                    <br>
+                                        <img alt="Image:3-14 coll.png" longdesc="/wiki/Image:3-14_coll.png" src="images/3-14_coll.png" height="243" width="301"><br>
+                                    <b><i>Figure 3.14</i></b><br>
+                                    <br>
+                                    Now <b>save the tile layer as "layer1.lyr"</b> and you are done.<br>
+                                    <br>
+                                    <br>
+                                    <b>This Step is ENTIRELY OPTIONAL</b> it is purely a cosmetic change. Feel free
+                                    to skip to the next section <a class="external autonumber" href="http://tdn.garagegames.com/wiki/T2D/MiniPlatformerTutorial#Creating_a_Player" rel="nofollow" title="http://tdn.garagegames.com/wiki/T2D/MiniPlatformerTutorial#Creating a Player">
+                                        [1]</a>.<br>
+                                    <br>
+                                    There are times when you may not want a tiled background for your level, but instead
+                                    a static picture. T2D gives you a lot of different ways to control how you build
+                                    and display your levels. If you are unhappy with the repetative patterns in the
+                                    background tiles you could erase them and replace the background with a static image
+                                    behind our tile layer.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    To do this <b>erase the background tiles we placed before</b> and leave those tiles
+                                    transparent, as in (Figure 3.15).<br>
+                                    <br>
+                                        <img alt="Image:3-15 erase.png" longdesc="/wiki/Image:3-15_erase.png" src="images/3-15_erase.png" height="451" width="766"><br>
+                                    <b><i>Figure 3.15</i></b><br>
+                                    <br>
+                                    <b>Import the following image</b> into the project like we did with the player sprites
+                                    and tile map.<br>
+                                    <br>
+                                        <img alt="Image:Background.png" longdesc="/wiki/Image:Background.png" 
+                                        src="images/Background.png" width="700"><br>
+                                    <br>
+                                    <b>Now drag and drop the background image onto the level</b>, at first the image
+                                    will appear on top of our tile layer. To send it to the background <b>edit the background
+                                        images render level and set it to 30</b> (the render layer is visible in (Figure
+                                    3.16)). You may have to resize the image a bit to get it exactly behind the tilemap
+                                    and looking good.<br>
+                                    <br>
+                                        <img alt="Image:3-16 bg.png" longdesc="/wiki/Image:3-16_bg.png" src="images/3-16_bg.png" height="451" width="766"><br>
+                                    <b><i>Figure 3.16</i></b>
+                                </p>
+                             
+                                <a name="Creating_a_Player"></a>
+                                <h1>
+                                    Creating a Player</h1>
+                                <p>
+                                    The majority of the rest of the tutorial is going to be spent scripting the actions
+                                    that will make our platformer work. But before we do that we need to add an object
+                                    to our scene that will be the starting point for our player. From the Animated Sprites
+                                    flyout on the right sidebar <b>drag the "playerStand" animation out onto the level.</b>
+                                    Try to position it as if the player was standing on a platform tile as shown in
+                                    (Figure 4.1).<br>
+                                    <br>
+                                        <img alt="Image:4-1 player.png" longdesc="/wiki/Image:4-1_player.png" src="images/4-1_player.png" height="451" width="766"><br>
+                                    <b><i>Figure 4.1</i></b><br>
+                                    <br>
+                                    Next hit edit on the sidebar to edit some of the animations properties. We are going
+                                    to be looking at the "Scripting" rollout, we want to make this "playerStand" animation
+                                    the main object that represents our player in script. <b>Set the ClassName to "playerClass"
+                                        and the Object Name to "pGuy"</b> as show in (Figure 4.2).<br>
+                                    <br>
+                                </p>
+                                <p>
+                                        <img alt="Image:4-2 scripting.png" longdesc="/wiki/Image:4-2_scripting.png" src="images/4-2_scripting.png" height="188" width="301"><br>
+                                    <b><i>Figure 4.2</i></b><br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Now we need to turn on some collision detection on our player object, to do this
+                                    <b>edit the settings of the "Collision" rollout so that they look like the following</b>
+                                    (Figure 4.3).
+                                    <br>
+                                    <br>
+                                </p>
+                                <p>
+                                        <img alt="Image:4-3 coll.png" longdesc="/wiki/Image:4-3_coll.png" src="images/4-3_coll.png" height="242" width="302"><br>
+                                    <b><i>Figure 4.3</i></b><br>
+                                    <br>
+                                </p>
+                                <p>
+                                    With that done we are now ready to begin scripting the movement for our player object.
+                                </p>
+                               
+                                <a name="Keyboard_Input"></a>
+                                <h2>
+                                    Keyboard Input</h2>
+                                <p>
+                                    It's time to write a script that will control the actions of our player. In your
+                                    "~s/miniPlatformer/gameScripts" folder <b>create a file named player.cs</b>.
+                                    Open this file with a text editor and add the following function at the beginning
+                                    of the file.<br>
+                                    <br>
+                                </p>
+                                <pre>function playerClass::onLevelLoaded(%this, %scenegraph)
+{
+     $pGuy = %this;
+      
+      moveMap.bindCmd(keyboard, "left", "playerLeft();", "playerLeftStop();");
+      moveMap.bindCmd(keyboard, "right", "playerRight();", "playerRightStop();");
+      moveMap.bindCmd(keyboard, "space", "playerJump();", "");
+}
+</pre>
+                                <p>
+                                    The playerClass::onLevelLoaded() function is called whenever an object with a class
+                                    type of "playerClass" is loaded into the scene. If you recall when we were editing
+                                    the Scripting properties of our player we set the Class name to "playerClass". That
+                                    means when T2D loads our level with our player animation it will call this function.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    The first line of the function stores a reference to the object being loaded to
+                                    a global variable named $pGuy that we can use to reference the player in other functions.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Next you can see we are binding the left and right arrow keys as well as the spacebar,
+                                    when these keys are pressed or released they call their corresponding functions.
+                                    For example when the the left arrow key is pressed, the "playerLeft()" function
+                                    will be called, when it is released the "playerLeftStop()" function will be called.
+                                    We can use these functions to track what the player should be doing.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Let's add those key handler functions now.
+                                </p>
+                                <pre>function playerLeft()
+{
+    $pGuy.moveLeft = true;
+}
+
+function playerLeftStop()
+{
+    $pGuy.moveLeft = false;
+}
+
+function playerRight()
+{
+     $pGuy.moveRight = true;
+}
+
+function playerRightStop()
+{
+     $pGuy.moveRight = false;
+}
+
+function playerJump()
+{
+
+}
+</pre>
+                                <p>
+                                    Here we are using that $pGuy variable we initialized in the first function to store
+                                    the movement state of the player. Just by using the .moveRight and .moveLeft members
+                                    on the $pGuy object we are adding them to it's definition so that we can use them
+                                    later.<br>
+                                    <br>
+                                </p>
+                                
+                                <a name="Player_Movement"></a>
+                                <h2>
+                                    Player Movement</h2>
+                                <p>
+                                    Great! now we are tracking the keystates, but that doesn't really get us anywhere
+                                    in terms of a game. We need our player to respond to those keystates and MOVE!<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Below our key handlers in the player.cs file, lets add a movement handler function.<br>
+                                </p>
+                                <pre>function playerClass::updateMovement(%this)
+{ 
+     if(%this.moveLeft)
+     {
+            %this.setLinearVelocityX(-60);
+     }
+    
+     if(%this.moveRight)
+     {
+            %this.setLinearVelocityX(60);
+     }
+    
+     if(!%this.moveLeft &amp;&amp; !%this.moveRight)
+     {
+            %this.setLinearVelocityX(0);
+     }
+}
+</pre>
+                                <p>
+                                    You'll notice our function is named with "playerClass::" this means that this function
+                                    will work with any object who's class is "playerClass". What it does is check the
+                                    state of the moveLeft and moveRight class members and assigns a linear velocity
+                                    to the object if it finds either to be true. If neither left nor right are pressed,
+                                    we want to be sure to stop the player from moving. To do this we set the x velocity
+                                    to 0.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Previously we created a playerJump( ) function but it didn't do anything, let's
+                                    now edit that function and add the following line.
+                                </p>
+                                <pre>function playerJump()
+{
+        $pGuy.setLinearVelocityY(-225);
+}
+</pre>
+                                <p>
+                                    Now what happens is any time you press the jump button your player will be given
+                                    a Y velocity straight up, with considerable force.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Now for the final step, we want to continuously be adjusting the direction our player
+                                    is moving based on what the state of the keys are in. To do this we need to be calling
+                                    our updateMovement( ) function all the time. Add the following function to the end
+                                    of our player.cs file.
+                                </p>
+                                <pre>function t2dSceneGraph::onUpdateScene()
+{
+       $pGuy.updateMovement();
+}
+</pre>
+                                <p>
+                                    This handles the updateScene event of the t2dSceneGraph, the basic object responsible
+                                    for managing our game's appearance. Every time it updates we want our updateMovement()
+                                    method to be called so we add it here.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    We are just about ready to test our movement code for the first time, but first
+                                    we need to tell T2D to load our player.cs file when we run the game. To do that
+                                    locate the game.cs file in the same folder as your player.cs file. <b>Open the game.cs
+                                        file and add the following line at the top startGame function</b>.
+                                </p>
+                                <pre>       exec("./player.cs");
+</pre>
+                                <p>
+                                    In order for T2D to load the file the first time it will have to be restarted. Save
+                                    your work if you havn't already and <b>re-open the miniPlatformer project</b>. Once
+                                    you've done that you are ready to test your code. To try out your demo level hit
+                                    the "Play" button in T2D (Figure 5.1).<br>
+                                    <br>
+                                        <img alt="Image:5-1 play.png" longdesc="/wiki/Image:5-1_play.png" src="images/5-1_play.png" height="47" width="658"><br>
+                                    <b><i>Figure 5.1</i></b><br>
+                                    <br>
+                                </p>
+                                <p>
+                                    After playing around you'll notice some things are not quite right. The player slides
+                                    left and right, but he doesn't seem to be falling. Then if you jump he just flys
+                                    off the screen and never returns. It seems like we need to add some gravity to pull
+                                    him down to earth. Fortunately T2D has a built in physics system to handle these
+                                    kinds of things. Select your player and go to the edit tab on the side bar, <b>edit
+                                        the physics rollout settings so they look like the following</b> (Figure 5.2).<br>
+                                    <br>
+                                        <img alt="Image:5-2 grav.png" longdesc="/wiki/Image:5-2_grav.png" src="images/5-2_grav.png" height="161" width="303"><br>
+                                    <b><i>Figure 5.2</i></b>
+                                </p>
+                                <p>
+                                    You'll notice the Constant Force Y has been set to 100, this applies a 100 unit
+                                    force down on our player all the time. This acts like gravity pushing him back down
+                                    after he jumps up. It's also what pushes him down when he walks off the edge of
+                                    a platform. Force Scale just increases the affect of the gravity on the player making
+                                    the equation a little less floaty and a little more like a jump. You can play with
+                                    these until you get them how you like.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Go ahead and test the level.
+                                </p>
+                                <p>
+                                    Right off the bat you notice that your player object settles nicely onto the floor
+                                    when the level starts. Then when you jump or walk off a platform he falls back down
+                                    to earth like you would expect. But other weird things have started to happen, sometimes
+                                    it feels like the player is walking though mud and when you walk into a corner the
+                                    player bounces around oddly and can get stuck. The reason for this is that T2D has
+                                    a very sophisticated physics model, it simulates friction and all kind of other
+                                    forces that we really don't want to handle. We really want the gravity physics to
+                                    work for us when the player object is in the air, but not when it is on the ground
+                                    walking around.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    To fix this we are going to have to do a little scripting, but you'd be suprised
+                                    at how easy it is to fix.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Open up the player.cs file and go to the updateMovement function. <b>Append the following
+                                        code to the end of the updateMovement function</b>
+                                </p>
+                                <pre>    %yVelocity = $pGuy.getLinearVelocityY();
+                
+    $pGuy.setLinearVelocityY(100);
+  
+    %collision = $pGuy.castCollision(0.005);
+    $pGuy.setLinearVelocityY(%yVelocity );
+    
+    if(%collision $= "")
+    {
+        $pGuy.setConstantForceY(100);
+    }
+    else
+    {
+        $pGuy.setConstantForceY(0);
+    }   
+</pre>
+                                <p>
+                                    The first thing we do is store the players current Y velocity in a local variable
+                                    (delineated by the percent sign in front of yVelocity ), then we set the Y velocity
+                                    of the player as stright down with 100 units of speed. We do this so that we can
+                                    use the castCollision () function to check and see if we are colliding with something
+                                    directly below us. In our case the floor or a platform. castCollision takes a single
+                                    parameter that defines how far in the future to check. Because we want to use this
+                                    collision test to decide when to turn of gravity, we use a very small unit of time.
+                                    This means that castCollision will only return a collision if we are VERY close
+                                    to the ground or a platform. Once we castTheCollision we restore the previous Y
+                                    velocity of the player but store the collision results in %collision<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    If there is no collision resulting from castCollision() we know its time to turn
+                                    on gravity because there's no floor beneath our feet. To do this we set the Constant
+                                    Y force to 100. If we do find a collision, we know we are on solid ground and we
+                                    turn off gravity by setting the Constant Y force to 0.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Now go and test the level.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Perfect! well almost. You'll notice if you are pressing up against a wall when you
+                                    jump, your player still exhibits those friction like effects slowing down his jump.
+                                    This is a side effect of the physics system optimizing for performance. Sometimes
+                                    it can get a little sloppy in it's calculations and that shows up when two objects
+                                    get really close. For a lot of game system this would be a major bug, but T2D provides
+                                    an easy way for us to tell the physics on the player to be a little more careful.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Open up the player.cs file again and locate the playerClass::onLevelLoaded function.
+                                    At the end of this function <b>append the following line of code</b>.
+                                </p>
+                                <pre>     $pGuy.setCollisionMaxIterations(2);
+</pre>
+                                <p>
+                                    This tells the physics to check a little more carefully when calculating collisions
+                                    on our player. Go ahead and test the level again.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Awsome, now the guy his hopping around and there's no stickyness. Time to get the
+                                    screen to scroll with our player.<br>
+                                    <br>
+                                    (<b>Note:</b> You may notice, depending on how you built your level, that the player
+                                    sometimes gets stuck going though a narrow gap that at first appears he should fit
+                                    though. This is because the bounding box for our player is a big box. To fix this
+                                    problem you can edit the bouning box of the player and there are doc's on TDN that
+                                    tell you how to do this)<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    If you press the space bar (to jump) while you are in the air you will continue
+                                    to jump. Also, if you are running at a wall while in the air you will be able to
+                                    double jump. To change this, use the following code:
+                                </p>
+                                <pre>function playerJump()
+{
+	%yVelocity = $pGuy.getLinearVelocityY();
+	%xVelocity = $pGuy.getLinearVelocityX();
+
+	$pGuy.setLinearVelocityY(100);
+	$pGuy.setLinearVelocityX(0);
+
+  	%collision = $pGuy.castCollision(0.005);
+    
+	if(!(%collision $= ""))
+	{
+		$pGuy.setLinearVelocityY(-225);
+	}
+	else
+	{
+		$pGuy.setLinearVelocityY(%yVelocity);
+	}
+
+	$pGuy.setLinearVelocityX(%xVelocity);
+}
+</pre>
+                                <p>
+                                    Now when you press the spacebar to jump it checks to see if you have ground beneath
+                                    you before you jump.<br>
+                                    <br>
+                                </p>
+                              
+                                <a name="Scrolling_Camera"></a>
+                                <h2>
+                                    Scrolling Camera</h2>
+                                <p>
+                                    Normally a topic like this would require it's own section, so I gave it one to make
+                                    it easy to find from the table of contents. But the fact of the matter is that T2D
+                                    makes scrolling the camera really easy. All we have to do is mount the camera to
+                                    our player and that can be done with a single line of code. We'll do it in two for
+                                    clarity's sake. <b>add the following lines of code to the end of onLevelLoaded()</b>
+                                </p>
+                                <pre>   %force = 20;
+   sceneWindow2D.mount($pGuy, "0 0", %force, true);
+</pre>
+                                <p>
+                                    Here we are telling the sceneWindow2D object to mount on our player $pGuy. "0 0"
+                                    are the x and y offsets of that mount, and %force is the force that can be exerted
+                                    pulling the camera around. We set it to 20, but you could set whatever you want.
+                                    Higher numbers means the camera will follow the player around, smaller numbers mean
+                                    it will stick very rigidly to the player.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Go ahead and test the level, you should find the camera moving nicely with the player.<br>
+                                    <br>
+                                </p>
+                                
+                                <a name="Animating_the_Player"></a>
+                                <h1>
+                                    Animating the Player</h1>
+                                <p>
+                                    So now that we have all the mechanics working, it's time to make our player animate.
+                                    He looks kinda dumb running around the level in his stand frame facing right. The
+                                    first thing to do is to make sure our guy faces the direction he is moving. To do
+                                    this we will modify the playerLeft( ) and playerRight( ) functions. <b>add a call to
+                                        setFlip() in both playerLeft() and playerRight()</b>
+                                </p>
+                                <pre>function playerLeft()
+{
+    $pGuy.moveLeft = true;
+    $pGuy.setFlip(true, false);
+}
+
+function playerRight()
+{
+     $pGuy.moveRight = true;
+     $pGuy.setFlip(false, false);
+}
+</pre>
+                                <p>
+                                    setFlip flips the orientation of our player object in the X and Y directions. When
+                                    we are moving to the left we want to flip the art since all our art is facing right.
+                                    When we move to the right we want to undo that flip so we call setFlip again with
+                                    false to undo it.
+                                    <br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Test the level again to verify your changes.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    Cool, he's starting to feel a little more alive now, a little more like a game.
+                                    Lets add the run animation.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    <b>Add the following function to the player.cs file right above function t2dSceneGraph::onUpdateScene()</b>
+                                </p>
+                                <pre>function playerClass::setCurrentAnimation(%this)
+{
+    if(%this.moveLeft || %this.moveRight)
+    {
+        if(%this.getAnimationName() $= "playerRun")
+        {
+            if(%this.getIsAnimationFinished())
+            {
+                %this.playAnimation(playerRun);
+            }
+        }
+        else
+        {
+            %this.playAnimation(playerRun);
+        }
+    }   
+    else
+    {
+        %this.playAnimation(playerStand);
+    }
+}
+</pre>
+                                <p>
+                                    This function well set the active animation on our player based on the state of
+                                    the player objects moveRight and moveLeft member variables. First the function checks
+                                    to see if the player is moving right or left. If the player is moving left or right,
+                                    it checks to see if the "playerRun" animation is already playing. If the animation
+                                    is already playing it waits for it to finish before it tells it to play again. If
+                                    the player is playing some other animation then it immediately tells the run animation
+                                    to start. Finally if the player is not moving left or right, the function sets the
+                                    player to play the playerStand animation.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    We need to call this function from somewhere however, <b>locate the following line of
+                                        code in the playerClass::updateMovement function</b>
+                                </p>
+                                <pre>   %yVelocity = $pGuy.getLinearVelocityY();
+</pre>
+                                <p>
+                                    Below that line <b>add a call the playerClasses setCurrentAnimation() function</b>
+                                    by adding the following
+                                </p>
+                                <pre>    $pGuy.setCurrentAnimation();
+</pre>
+                                <p>
+                                    <br>
+                                </p>
+                                <p>
+                                    Now you can play your level and see your guy running around.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    It's really starting to look good, but the player looks a little weird running in
+                                    the air when he jumps. We'll have to add some script to display the jump animations
+                                    we've created. (even if they are just one frame each).<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    In order to add jump animations we could set a state in our startJump() function
+                                    and handle it in our set current animation, but then we would have to check the
+                                    Y velocity of the player to see if we were jumping up and down and set the proper
+                                    animation. Since the jump state is the player is represented by it's Y velocity,
+                                    lets just use that to determine what animation to show. <b>Modify the playerClass::setCurrentAnimation(
+                                        ) function to take an additional variable named %yVelocity</b>, when you are
+                                    done it should look like the following<br>
+                                    <br>
+                                </p>
+                                <pre>function playerClass::setCurrentAnimation(%this, %yVelocity)
+</pre>
+                                <p>
+                                    <br>
+                                    The setCurrentAnimation( ) function is working good for us on the ground, but we
+                                    need to have different functionality in the air. That means we should check to see
+                                    if we are in the air before we do any of the animation code for when we are on the
+                                    ground. <b>Add the following if statement to the beginning of setCurrentAnimation and
+                                        wrap the existing code in the else.</b> It should look something like this.
+                                </p>
+                                <pre>    if(%yVelocity &lt; 0 )
+    {
+    	 %this.playAnimation(playerJumpUp);
+    }
+    else
+    {
+        (the exsisting setCurrentAnimation code goes here)
+    }
+</pre>
+                                <p>
+                                    <br>
+                                    This checks to see if the Y velocity of the player is moving up (negative values
+                                    are up) and sets the player jumpUp animation. But what happens when the player is
+                                    moving down? We have another animation for that, so lets do a check and add it now.
+                                    After the if statement you just added, <b>add an else if to handle the jumpDown case</b>.
+                                    When you are done, it should look like this.
+                                </p>
+                                <pre>    if(%yVelocity &lt; 0 )
+    {
+    	 %this.playAnimation(playerJumpUp);
+    }
+    else if(%yVelocity &gt; 0 )
+    {
+    	 %this.playAnimation(playerJumpDown);
+    }
+    else
+    {
+         (the exsisting setCurrentAnimation code goes here)
+    }
+</pre>
+                                <p>
+                                    <br>
+                                    Now there are 3 states in our animation code, one for jumping up, one for when we
+                                    are falling down, and the default case for when we are running on the ground.<br>
+                                    <br>
+                                    The final step is to go back to the playerClass::updateMovement( ) function where
+                                    we call
+                                </p>
+                                <pre>$pGuy.setCurrentAnimation();
+</pre>
+                                <p>
+                                    and modify it so that we pass it the %yVelocity of the player.
+                                </p>
+                                <pre>$pGuy.setCurrentAnimation(%yVelocity);
+</pre>
+                                <p>
+                                    <br>
+                                    Now test your level, you should see the player behaving appropriately in the air.<br>
+                                    <br>
+                                    If everything is working you are done, basic platformer functionality in around
+                                    100 lines of script. This should give you a good idea of how to start making your
+                                    own platformer game using T2D.<br>
+                                    <br>
+                                </p>
+                                <p>
+                                    If you performed the optional step when creating the level your platformer should
+                                    look something like this...<br>
+                                    <br>
+                                        <img alt="Image:Finished.png" longdesc="/wiki/Image:Finished.png" 
+                                        src="images/Finished.png" width="700"><br>
+                                    <br>
+                                </p>
+                                <p>
+                                    <br>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <div class="printfooter">
+                        &nbsp;</div>
+                    <!-- end content -->
+                    <div class="visualClear">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="cleaner">
+    </div>
+    <div id="f-poweredbyico">
+        &nbsp;</div>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html>

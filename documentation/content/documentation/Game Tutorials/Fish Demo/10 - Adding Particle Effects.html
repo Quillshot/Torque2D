@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 25;
+   parent.leftFrame.expandToItem('tree2', 'doc25');
+   var element = parent.leftFrame.document.getElementById('doc25');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Fish Demo Tutorial Part 10</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="AUTHOR" CONTENT="User">
+      <META NAME="CREATED" CONTENT="20050225;10000000">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060728;14001100">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+                     2D - Fish Demo Tutorial - Part 10</B></FONT></FONT></P>
+      </DIV>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>10. 
+                  Adding Particle Effects</B></FONT></FONT></P>
+      <br>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><H4><STRONG><FONT face="Arial">10.1 <FONT SIZE="3"><I>Adding 
+                     bubble particles</I></FONT></FONT></STRONG></H4></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final step is to add a 
+               couple of particle effects. We have a bubble, and a light beam particle effect. 
+               Adding these will really enhance the look of our fish demo. In your right panel 
+               make sure that the <I>Create</I> tab is selected. Scroll down and click the <I>Particle 
+                  Effects</I> label. It's hard to tell what the two particle effects are, 
+               since neither of them are meant to be highly visible. They are fairly subtle 
+               effects. The first one is for creating new effects, the second one is the 
+               bubble effect and the third one is the light beam effect. Drag and drop the 
+               second effect, <I>oceanbubbles.eff</I> <I>(as shown in Figure 10.1.1) </I>to 
+               the lower left of your level, between two of the rocks <I>(as shown in Figure 
+                  10.1.2)</I>. </FONT></FONT>
+      <br>
+      <table>
+      <tr>
+      <td>
+           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-1-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 10.1.1</B></I></FONT></P>
+      </td><td width = "25">
+      </td><td>    
+           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-1-2.gif"
+                  NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 10.1.2</B></I></FONT></P>
+      </td>
+      </tr>
+      </table>
+         <BR>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">If you wait a moment after you drop the 
+               bubble particle effect, you will see bubbles floating upward. Drag a second 
+               bubble particle effect, and this time drop it in the bottom right of your level 
+               between some other rocks <I>(as shown in Figure 10.1.3)</I>. </FONT></FONT>
+      </P>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-1-3.gif"
+                  NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="2"><I><B><FONT SIZE="1">Figure 10.1.3</FONT></B></I></FONT></P>
+         <BR>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now save your level and click the <I>Play 
+                  Level</I> button. After a little bit of time, bubbles start to emit from the 
+               particle effects we placed! <I>(as shown in Figure 10.1.4)</I></FONT></FONT></P>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-1-4.gif"
+                  NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 10.1.4</B></I></FONT></P>
+         <BR>
+
+<P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><H4><STRONG><FONT face="Arial">10.2 <FONT SIZE="3"><I> 
+                     Adding light beam particles</I></FONT></FONT></STRONG></H4></P>
+      <FONT size="4"><I><B></B></I></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final particle effect to 
+               add, is the light beam particle effect. The light beam effect is the third 
+               particle effect in the object library. Drag and drop the light beam particle 
+               effect <I>(as shown in Figure 10.2.1)</I> into the center of your level. After 
+               a moment you should see the light beams appear. Adjust the position of the 
+               particle effect object until the light beam fits your level correctly. Press 
+               the play button and watch the light show! <I>(as shown in Figure 10.2.2)</I></FONT></FONT>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+         <BR>
+      </P>
+      <table>
+      <tr>
+      <td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-2-1.jpg" NAME="graphics5" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="2"><I><B><FONT SIZE="1">Figure 10.2.1</FONT></B> </I></FONT>
+            </P>
+      </td>
+      </tr><tr>
+      <td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure10-2-2.gif"
+                  NAME="graphics6" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 10.2.2</B></I></FONT></P>
+      </td>
+      </tr>
+      </table>
+      <BR>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

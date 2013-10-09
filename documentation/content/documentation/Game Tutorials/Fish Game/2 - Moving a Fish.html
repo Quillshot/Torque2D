@@ -1,0 +1,488 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 27;
+   parent.leftFrame.expandToItem('tree2', 'doc27');
+   var element = parent.leftFrame.document.getElementById('doc27');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Game Tutorial Part 2</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060728;15455900">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Game Tutorial - Part 2</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>2. 
+            Moving our Fish</B></FONT></FONT></P>
+<BR>
+<H3>2.1 Add our fish</H3>
+<BR>
+<FONT SIZE="2"><FONT FACE="Arial, sans-serif">Before we can move a fish, we must 
+      first have a fish. Fortunately, this is a simple step. Click and drag one of 
+      the fish animations from the "Animated Sprites" seciton of t he Object Library 
+      (as shown in Figure 2.1.1) into the center of our level..</FONT></FONT>
+<br>
+<TABLE>
+   <TR>
+      <TD>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure2-1-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 2.1.1</B></I></FONT></P>
+      </TD>
+      <TD width="25">
+      </TD>
+      <TD>
+      </TD>
+   </TR>
+</TABLE>
+<BR>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our fish in our level, 
+      our next step will be to get it moving. This requires some scripts, so we are 
+      going to link the object to script. We do this by giving our object a <I>class</I>
+      in the <I>Level Builder</I>. Change the fish's class to 'PlayerFish' <I>(as shown 
+         in Figure 2.1.2)</I>.</FONT></FONT>
+<p>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure2-1-6.jpg" NAME="graphics6" ALIGN="left" BORDER="0" width="180"
+      height="24"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 2.1.2</B></I></FONT></P>
+&nbsp;
+<p>&nbsp;<FONT FACE="Arial, sans-serif" size="2"></FONT>
+   <BR>
+   <BR>
+   <FONT FACE="Arial, sans-serif" size="2">This is all the work we can do in the <EM>Level 
+         Builder </EM>before touching a little bit of script. Because of this ability 
+      to link a class in the <I>Level Builder</I>, this next step is very easy.</FONT>
+   <BR>
+</p>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">
+         <BR>
+      </FONT></FONT>
+   <BR>
+</P>
+<H3 class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always" align="justify">2.2 
+   Saving out our level</H3>
+<P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Before 
+   we exit, we want to make sure we save our level properly. That way when we load 
+   it up, our fish is already placed with its class already set. Save the level as 
+   &quot;myFishlevel&quot;.&nbsp;
+   <BR>
+   <BR>
+   <H3>2.3 Creating our movement script file</H3>
+   <BR>
+<P></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Open the directory where 
+         you&nbsp;created your project and then open the <I>game/gameScripts</I> folder. 
+         This is where your game scripts should be located. Presently, you should only 
+         see a <I>game.cs</I> file in this location. (<I>.cs</I> is the <I>Torque Script</I>
+         file extension). In this folder we can create additional script files to build 
+         up our game; we will begin with movement. Create a text file in this folder and 
+         name it &quot;player.cs<I>&quot;</I>. Be sure you add the .cs extension so T2D will 
+         recognize it as a script file. Now you can open your newly created <I>player.cs</I>
+         in any text editing program.
+         
+         (At the least, Windows users can right-click and choose <I>Open With</I> to use 
+         either Notepad or Wordpad. Mac users can control-click and choose <I>Open With</I>
+         to use TextEdit). If you remember, we set our fish's class to <I>PlayerFish</I>. 
+         So we are going to add the following function to our <I>player.cs</I>.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::onLevelLoaded(%this, %scenegraph)
+{
+
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.3.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you may notice, we start with the 
+         keyword <I>function</I>, which tells T2D that we are beginning a 
+         function declaration. Then we follow with our class name <I>PlayerFish</I>. 
+         This attaches our function to the <I>PlayerFish</I> class. Since our fish is 
+         using the <I>PlayerFish</I> class, our fish will now have access to this 
+         function. Then we get to the actual function name (<I>onLevelLoaded</I>), which 
+         you might have guessed gets called when our fish gets loaded into the level. 
+         After the function name, we have two comma separated values inside of 
+         parenthesis. These are values that will be passed to this function, and which 
+         could be useful. The <I>%this</I> value represents the object that this 
+         function is being called on. That value is useful when we have multiple objects 
+         using the same class. It represents the specific <I>instance</I> of the class 
+         calling this function. The <I>%scenegraph</I> value is useful as well, since it 
+         represents our level object. Everything in our level is inside of the <I>scenegraph</I>
+         object. Here is a breakdown of what our function script means.</FONT></FONT></P>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <IMG SRC="images/FishGameTutorial2TextBox1.gif" ALIGN="left"> <IMG SRC="images/FishGameTutorial2TextBox2.gif" ALIGN="left">
+   <IMG SRC="images/FishGameTutorial2TextBox3.gif" ALIGN="left"> <IMG SRC="images/FishGameTutorial2TextBox4.gif" ALIGN="left">
+   <IMG SRC="images/FishGameTutorial2TextBox5.gif" ALIGN="left"><BR>
+   <BR>
+</P>
+<pre class="code">
+<FONT COLOR="#000080">function</FONT> <FONT COLOR="#b80047">PlayerFish</FONT>::<FONT COLOR="#008000">onLevelLoaded</FONT>(<FONT COLOR="#000000">%this</FONT>, <FONT COLOR="#0000ff">%scenegraph</FONT>)
+{
+
+}</pre>
+<BR>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now it's time to do something inside of 
+         the script. Since it gets called when our fish is loaded into our level, we can 
+         store this instance of our fish to be used in our key responses. Add this line 
+         in between the curly braces (<I>{ }</I>).</FONT></FONT></P>
+<BR>
+<pre class="code">
+$FishPlayer = %this;
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.3.2</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">What this does is grab the instance we 
+         are loading and store it in the <I>$FishPlayer</I> variable. In <I>Torque Script</I>
+         a &quot;$&quot; before text means it is a <I><B>global </B>variable,</I> and a &quot;%&quot; before 
+         text means it is a <I><B>local </B>variable</I>. A local variable (like <I>%this</I>) 
+         will only exist within
+         <SPAN LANG="en-US">
+the</SPAN>
+         calling function. Once the function ends, the variable gets destroyed. Think of 
+         it as a temporary variable. On the other hand, a global variable will persist 
+         outside of the function, and can be accessed in any script or anywhere in the 
+         game. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have stored the fish 
+         object, which will represent our player, we need the commands to <I>bind</I> our 
+         keys for movement. We will use the <I>w</I>, <I>s</I>, <I>a</I>, and <I>d</I> keys, 
+         so we need to make four separate script lines. Add these lines after our 
+         &quot;$FishPlayer = %this;&quot; line.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+moveMap.bindCmd(keyboard, "w", "fishPlayerUp();", "fishPlayerUpStop();");
+moveMap.bindCmd(keyboard, "s", "fishPlayerDown();", "fishPlayerDownStop();");
+moveMap.bindCmd(keyboard, "a", "fishPlayerLeft();", "fishPlayerLeftStop();");
+moveMap.bindCmd(keyboard, "d", "fishPlayerRight();", "fishPlayerRightStop();");
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.3.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">There is already an object called <I>moveMap</I>, 
+         and this object is what handles our key events when running our level. We use a 
+         function called <I>bindCmd</I> on our <I>moveMap,</I> and we pass it a few 
+         values. First, we specify that we are binding a command to our keyboard. We 
+         then specify which key we are binding. After that, we specify what function to 
+         call when the key is pressed, and our final value is what function to call when 
+         the key is released. So, for example, we bind the keyboard key <I>w</I> and 
+         when we press it <I>fishPlayerUp()</I> is called. Then, when we release the 
+         key, <I>fishPlayerUpStop()</I> is called to stop our action. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now when our fish gets loaded, it will 
+         be stored in <I>$FishPlayer</I> and the <I>w</I>, <I>s</I>, <I>a</I>, and <I>d</I>
+         keys will get bound. Next we need to create the functions that are called when 
+         we press the keys. </FONT></FONT>
+</P>
+<H3>
+   <BR>
+   <BR>
+   <BR>
+   2.4 Creating our movement functions
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We are now finished putting script 
+         lines inside of our <I>onLevelLoaded()</I> function, but we still need some 
+         others. As we create these new functions, be sure not to put one function 
+         inside another one accidentally. The following functions should be placed after 
+         the ending curly brace (<strong> } </strong>) of our <I>onLevelLoaded</I> function. </FONT>
+   </FONT>
+</P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerUp()
+{
+   $FishPlayer.setLinearVelocityY( -15 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.4.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Here is our <I>fishPlayerUp()</I> function. 
+         As you can see, we reference the fish by the stored value in <I>$FishPlayer</I> 
+         and call <I>setLinearVelocityY()</I> on it. This function will basically set 
+         its Y direction speed. Since we are setting it negative, it will go upward 
+         (because screen coordinates start at X = 0, Y = 0 at the top left corner of 
+    the screen, numbers on the Y axis get lower as you go higher up). We now need to add 
+         the next three functions for movement.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function fishPlayerDown()
+{
+   $FishPlayer.setLinearVelocityY( 15 );
+}
+
+
+function fishPlayerLeft()
+{
+   $FishPlayer.setLinearVelocityX( -30 );
+}
+
+
+function fishPlayerRight()
+{
+   $FishPlayer.setLinearVelocityX( 30 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.4.2</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">
+         <BR>
+         These functions basically do the same thing. The down function sets the Y 
+         velocity as a positive value. The left and right functions set the X velocity 
+         instead of the Y velocity, to move horizontally. We are nearly done. We now 
+         need to add the stop functions. The stop functions are very similar to our 
+         movement functions, they simply set the appropriate velocity to zero. So, add 
+         these four functions. </FONT></FONT>
+</P>
+<BR>
+<pre class="code">
+function fishPlayerUpStop()
+{
+   $FishPlayer.setLinearVelocityY( 0 );
+}
+
+
+function fishPlayerDownStop()
+{
+   $FishPlayer.setLinearVelocityY( 0 );
+}
+
+
+function fishPlayerLeftStop()
+{
+   $FishPlayer.setLinearVelocityX( 0 );
+}
+
+
+function fishPlayerRightStop()
+{
+   $FishPlayer.setLinearVelocityX( 0 );
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.4.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, the up and down 
+         functions set the Y velocity to zero and the left and right functions set the X 
+         velocity to zero. This will cause our fish to stop when the appropriate key is 
+         released.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now your <I>player.cs</I> script file 
+         should look like this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function PlayerFish::onLevelLoaded(%this, %scenegraph)
+{
+   $FishPlayer = %this;
+
+
+   moveMap.bindCmd(keyboard, "w", "fishPlayerUp();", "fishPlayerUpStop();");
+   moveMap.bindCmd(keyboard, "s", "fishPlayerDown();", "fishPlayerDownStop();");
+   moveMap.bindCmd(keyboard, "a", "fishPlayerLeft();", "fishPlayerLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "fishPlayerRight();", "fishPlayerRightStop();");
+}
+
+
+function fishPlayerUp()
+{
+   $FishPlayer.setLinearVelocityY( -15 );
+}
+
+
+function fishPlayerDown()
+{
+   $FishPlayer.setLinearVelocityY( 15 );
+}
+
+
+function fishPlayerLeft()
+{
+   $FishPlayer.setLinearVelocityX( -30 );
+}
+
+function fishPlayerRight()
+{
+   $FishPlayer.setLinearVelocityX( 30 );
+}
+
+
+function fishPlayerUpStop()
+{
+   $FishPlayer.setLinearVelocityY( 0 );
+}
+
+
+function fishPlayerDownStop()
+{
+   $FishPlayer.setLinearVelocityY( 0 );
+}
+
+
+function fishPlayerLeftStop()
+{
+   $FishPlayer.setLinearVelocityX( 0 );
+}
+
+
+function fishPlayerRightStop()
+{
+   $FishPlayer.setLinearVelocityX( 0 );
+}
+
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.4.4</B></I></FONT></FONT></P>
+<H3>
+   <BR>
+   <BR>
+   <BR>
+   2.5 Almost ready to test
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We are almost ready to test. We 
+         have one final step before we can move our fish around. The <I>player.cs</I> script 
+         file has all of the appropriate functions, but it isn't being referenced 
+         anywhere right now. Without referencing it, the program won't know to use the 
+         code inside it. T2D doesn't automatically reference every .cs file in 
+         your folders. This gives you complete control and you can choose whether or not 
+         you want a script file referenced. When T2D references a script file it 
+         will &quot;exec&quot; (short for execute) the file. So we need to add a proper <I>exec</I>
+         command to reference the <I>player.cs</I> file we created. Exec "player.cs" 
+         from "game.cs".</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+</P>
+
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">So your modified <I>game.cs</I> file 
+         should look like this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+//---------------------------------------------------------------------------------------------
+// Torque 2D
+// Copyright (C) GarageGames.com, Inc.
+//---------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------
+// startGame
+// All game logic should be set up here. This will be called by the level builder when you
+// select "Run Game" or by the startup process of your game to load the first level.
+//---------------------------------------------------------------------------------------------
+function startGame(%level)
+{
+   exec("./player.cs");
+
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+   
+   new ActionMap(moveMap);   
+   moveMap.push();
+   
+   $enableDirectInput = true;
+   activateDirectInput();
+   enableJoystick();
+   
+   sceneWindow2D.loadLevel(%level);
+}
+
+//---------------------------------------------------------------------------------------------
+// endGame
+// Game cleanup should be done here.
+//---------------------------------------------------------------------------------------------
+function endGame()
+{
+   sceneWindow2D.endLevel();
+   moveMap.pop();
+   moveMap.delete();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 2.5.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This <I>startGame()</I> function gets 
+         called when we test our level in the <I>T2D Level Builder</I>. As you can see, 
+         we now reference the <I>player.cs</I> file so when T2D runs it will 
+         include it.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+   <BR>
+   <BR>
+</P>
+<H3>2.6 Time to test it!
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now before we run T2D again we 
+         need to be sure we save our changes to these files.</FONT></FONT> <FONT FACE="Arial, sans-serif">
+      <FONT SIZE="2">Now play your level!&nbsp;</FONT></FONT></P>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">You should see all of the tool bars and <I>
+         Level Builder</I> menus disappear, leaving only our fish. Now, try pressing 
+      our movement keys (<I>a</I>, <I>s</I>, <I>w</I>, and <I>d</I>). You should see 
+      the fish being moved in the appropriate direction!</FONT></FONT>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Congratulations! You have your fish 
+         moving around based on your keys. You should be getting a beginning feel of T2D
+         scripting. When you're ready, move on to Part 3 and our Fish game takes another 
+         step.</FONT></FONT></P>
+<BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

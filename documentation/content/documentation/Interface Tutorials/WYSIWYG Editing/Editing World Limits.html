@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 76;
+   parent.leftFrame.expandToItem('tree2', 'doc76');
+   var element = parent.leftFrame.document.getElementById('doc76');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+  
+
+
+  <title>Torque 2D &ndash; World Limits Tutorial</title><meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+  <meta content="OpenOffice.org 2.0 (Win32)" name="GENERATOR">
+
+  <meta content="User" name="AUTHOR">
+
+  <meta content="20050723;15050000" name="CREATED">
+
+  <meta content="Matt" name="CHANGEDBY">
+
+  <meta content="20060801;12015100" name="CHANGED">
+
+  <meta content="" name="SDFOOTNOTE" ;="" p="">
+
+  <meta content="ARABIC" name="SDENDNOTE">
+
+  <style> 
+  <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+      .style1
+      {
+          height: 23px;
+      }
+--> 
+  </style></head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Editing World Limits</strong></font></font></font></p>
+<br>
+    <span style="font-family: Times New Roman">(covers this and more)</span><br><span style="text-decoration: none;"><span style="font-size: 12pt; font-family: Times New Roman">
+        To edit an object's world limits, first select the object and hover over it with the mouse. </span>
+    <br />
+    <table>
+        <tr>
+            <td style="width: 430px">
+                <span style="font-family: Times New Roman">
+                You'll see the widgets appear over it...
+the fourth one is Change the world limits for this object (as
+shown in Figure 1).
+                    Click it, and the view will zoom out to
+show you the current world limits of the object, which is shown as a
+gray rectangle.</span></td>
+      <td style="width: 100px">
+                <img style="width: 300px; height: 145px;" alt="Frame3" src="images/WorldlimitsFigure3.jpg" name="Frame3"><font size="1"><i><b></b></i></font><p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify">
+    <font size="1"><i><b>Figure 1</b></i></font></p>
+          </td>
+        </tr>
+    </table>
+</span>
+
+<br>
+
+Drag the sizing handles (blue squares) until the world limit covers the are you want it to. When this is
+complete, click on the Selection Tool (white arrow)
+in the toolbar, or hit Enter.
+This saves the world limits and returns you to the normal view.
+
+<br>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font face="Arial, sans-serif"><font size="4"><b><span style="font-size: 12pt; font-family: Times New Roman">
+        World
+Limit Explanation</span></b></font></font></p>
+
+<p>
+    World
+limits specify the area your object can occupy in the world. When the
+object hits its limits, it will respond according to its world limit
+response mode. Every object in your game has its own world limit
+response settings. To edit those settings, select the object and open
+the World Limits section in the Edit tab (as shown in
+    Figure 2). Assuming you haven't fiddled with this
+already, you'll just see the Limit Mode property
+set to OFF. We won't go too deeply into the Callback
+checkbox here, but suffice it to say that it is used when you want to
+script your object's limit response in an onWorldLimit()
+function.</p><br />
+    <br />
+    <table>
+        <tr>
+            <td colspan="2" class="style1">
+                <strong>
+
+World Limit Response Modes: </strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+
+
+<strong>OFF</strong>: The world
+<br />
+                <strong>NULL</strong>: The world
+limits are tested, but no action is taken when the object reaches the
+limits; it just continues on its way. This mode is used in combination
+with the Callback checkbox to script your own
+responses to reaching the world limits.
+  <br />
+                <strong>BOUNCE</strong>: The object
+bounces off the world limits in a simple, pong-like way and doesn't
+<br />
+                <strong>CLAMP</strong>: The object
+<br />
+                <strong>STICKY</strong>: The object
+<br />
+                <strong>KILL</strong>: The object
+deletes itself when it touches the world limits.            </td>
+</tr><tr>
+<td>
+                <img style="width: 507px; height: 240px;" alt="Frame5" src="images/WorldlimitsFigure5.jpg" name="Frame5"><br />
+
+<font size="1"><i><b>Figure 2</b></i></font>            </td>
+        </tr>
+    </table>
+    <p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify">
+        <font face="Arial, sans-serif"><font size="3"><span></span></font></font>
+    </p>
+
+<br>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

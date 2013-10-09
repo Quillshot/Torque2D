@@ -1,0 +1,213 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 6;
+   parent.leftFrame.expandToItem('tree2', 'doc6');
+   var element = parent.leftFrame.document.getElementById('doc6');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Polygon Editor</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                         <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creating_a_Polygon"><span class="tocnumber">2</span> <span class="toctext">Creating a Polygon</span></a></li>
+                          <li class="toclevel-1"><a href="#Polygon_Editor_Layout"><span class="tocnumber">3</span> <span class="toctext">Polygon Editor Layout</span></a></li>
+                          <li class="toclevel-1"><a href="#Coloring_the_Polygon"><span class="tocnumber">4</span> <span class="toctext">Coloring the Polygon</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">5</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">6</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Polygons in Torque 2D are excellent visual tools to do everything 
+                  from quickly prototyping the design of a level to showing interesting 
+                  visual effects. They are reminiscent of older arcade games, like 
+                  Asteroids or Battlezone. Creating them is easy through the standardized 
+                  editor used for Polygons and Collision Hulls. </p>
+                <a name="Creating_a_Polygon" id="Creating_a_Polygon"></a>
+                <br><h2> <span class="mw-headline"> Creating a Polygon </span></h2>
+                <p>The first part of using the Polygon Editor is to create a Polygon in 
+                  your Scene. Do this by selecting the Create Tab. At the bottom find the 
+                  Polygon Button. </p>
+                <p><br />
+                  <img alt="File:PolygonButton.png" src="images/PolygonButton.png" border="0" height="81" width="60" /> </p>
+                <p><br />
+                  Click on this button, then drag and drop a Polygon into your Scene. You 
+                  now have an empty ShapeVector Object, which is your Polygon. It is now 
+                  ready to have its lines and colors assigned. </p>
+                <p><br />
+                  <img alt="File:PolygonBlank.png" src="images/PolygonBlank.png" border="0" height="398" width="401" /> </p>
+                <p><br />
+                  To open the Polygon Editor, select the Polygon object in your Scene, 
+                  then move the cursor near the top so the Edit Buttons appear. Click on 
+                  the button labeled 'Edit This Polygon'. </p>
+                <p><br />
+                  <img alt="File:EditPolygon.png" src="images/EditPolygon.png" border="0" height="407" width="404" /> </p>
+                <a name="Polygon_Editor_Layout" id="Polygon_Editor_Layout"></a>
+                <br><h2> <span class="mw-headline"> Polygon Editor Layout </span></h2>
+                <ul>
+                  <li> <b>Main Window</b> </li>
+                </ul>
+                <p><br />
+                  <img alt="File:PolygonEditorMainWindo.png" src="images/PolygonEditorMainWindo.png" border="0" height="458" width="458" /> </p>
+                <p><br />
+                  This is where the visual editing of polygons is performed. Click 
+                  anywhere within this window to create a new Point. The default polygon 
+                  that will display will be a rectangle in the size of the Object that it 
+                  originates from. All points of a Polygon must exist within this area - 
+                  you will not be able to place or drag any points outside of this. </p>
+                <ul>
+                  <li> <b>Point List</b> </li>
+                </ul>
+                <p>The Point List displays the relative positioning of each point within
+                  the Main Window. Points can have their locations edited by typing in 
+                  the X and Y text fields, and the point can be removed entirely by 
+                  pressing the X button to the right of each Point List entry. </p>
+                <p><br />
+                  At the bottom of the Point List is a New field, which allows adding of a
+                  Point at a specific relative X and Y location on the Polygon. </p>
+                <p><br />
+                  <img alt="File:PolygonEditorPointList.png" src="images/PolygonEditorPointList.png" border="0" height="457" width="310" /> </p>
+                <ul>
+                  <li> <b>Polygon Editor Options</b> </li>
+                </ul>
+                <p><br />
+                  <img alt="File:RainyDay_PolygonEditor_Options.png" src="images/RainyDay_PolygonEditor_Options.png" border="0" height="52" width="767" /> </p>
+                <ul>
+                  <li> <b>Show Convex Hull</b> - Displays the Convex Hull of the Polygon. </li>
+                </ul>
+                <ul>
+                  <li> <b>Show Convex Violations</b> - Displays the points causing the Polygon to be concave as red, </li>
+                </ul>
+                <ul>
+                  <li> <b>New Points Between Neighbors</b> - Creates new points on a vector between existing points. </li>
+                </ul>
+                <ul>
+                  <li> <b>New Points At End</b> - Creates new points by creating lines between neighboring points to the location clicked. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:RainyDay_PolygonEditor_ReplacePointsBTN.png" src="images/RainyDay_PolygonEditor_ReplacePointsBTN.png" border="0" height="31" width="58" /> - Cleanup a polygon with concave points by removing the offending points. </li>
+                </ul>
+                <ul>
+                  <li> <b>Square Aspect Ratio</b> - Displays the contents of the Main Window as a square filling the full window. </li>
+                </ul>
+                <ul>
+                  <li> <b>Scene Aspect Ratio</b> - Displays the contents of the Main Window showing the proper sizing represented within the Scene. </li>
+                </ul>
+                <ul>
+                  <li> <b>Display Scene Background</b> - Display the contents of the Scene behind the object whose Polygon is being edited. </li>
+                </ul>
+                <ul>
+                  <li> <img alt="File:RainyDay_PolygonEditor_ArrowButtons.png" src="images/RainyDay_PolygonEditor_ArrowButtons.png" border="0" height="27" width="55" /> - Undo Last Action / Redo Last Action </li>
+                </ul>
+                <a name="Coloring_the_Polygon" id="Coloring_the_Polygon"></a>
+                <br><h2> <span class="mw-headline"> Coloring the Polygon </span></h2>
+                <p>Initially, the polygon will be just a set of white lines. </p>
+                <p><br />
+                  <img alt="File:PolygonWhiteLines.png" src="images/PolygonWhiteLines.png" border="0" height="401" width="382" /> </p>
+                <p><br />
+                  To edit these colors, click on the Polygon Object in the Scene, then click the Edit tab. You will now see the ShapeVector Panel. </p>
+                <p><br />
+                  <img alt="File:RainyDay_ShapeVectorPanel.png‎" src="images/RainyDay_ShapeVectorPanel.png" border="0" height="358" width="557" /> </p>
+                <ul>
+                  <li> <b>Line Color</b> - This sets the color of the line surrounding the Polygon object.
+                    <ul>
+                      <li> <b>Red</b> - Red Value </li>
+                      <li> <b>Green</b> - Green Value </li>
+                      <li> <b>Blue</b> - Blue Value </li>
+                      <li> <b>Alpha</b> - Alpha (Transparency) Value </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Fill Color</b> - This sets the color of the area inside the Polygon object.
+                    <ul>
+                      <li> <b>Red</b> - Red Value </li>
+                      <li> <b>Green</b> - Green Value </li>
+                      <li> <b>Blue</b> - Blue Value </li>
+                      <li> <b>Alpha</b> - Alpha (Transparency) Value </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Convex Hull as Collision Polygon</b> - Pressing this 
+                    button will set the collision hull of this object to also be the shape 
+                    of the Polygon, providing the ShapeVector is convex. Concave polygons 
+                    cannot be used to detect collisions. </li>
+                </ul>
+                <p><br />
+                  The surrounding line and internal fill can have any color combination you desire. </p>
+                <p><img alt="File:PolygonFIlled.png" src="images/PolygonFIlled.png" border="0" height="389" width="407" /> </p>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <p>When you add a shape vector your scene and save, the following is added to the level file: </p>
+                <pre>   new t2dShapeVector() {
+      canSaveDynamicFields = "1";
+      Position = "-269.954 -216.576";
+      size = "247.287 226.848";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+      PolyList = "-0.894 -0.359 -0.501 -0.905 0.378 -0.819 0.678 -0.476 0.638 0.096 0.319 &quot; @
+                &quot;0.219 0.083 0.343 -0.157 0.600 -0.231 0.969 -0.692 0.771 -0.845 0.294";
+      LineColor = "0.192157 0.941177 0 1";
+      fillColor = "0.780392 0 0 1";
+      FillMode = "1";
+   };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>After reading this document, you should now understand how to operate the Polygon Editor in the Torque 2D editor. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

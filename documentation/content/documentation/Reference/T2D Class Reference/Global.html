@@ -1,0 +1,1290 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 132;
+   parent.leftFrame.expandToItem('tree2', 'doc132');
+   var element = parent.leftFrame.document.getElementById('doc132');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>Global</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">Global</h8>
+
+
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">activateKeyboard()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addCardProfile(string vendor, string renderer, bool safeMode, bool lockArray, bool subImage, bool fogTexture, bool noEnvColor, bool clipHigh, bool deleteContext, bool texCompressbool interiorLock, bool skipFirstFog, bool only16, bool noArraysAlpha, string proFile)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Register a card profile with the card profile manager.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addMaterialMapping(string matName,...)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set up a material mapping. See  for details. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addOSCardProfile(string vendor, string renderer, bool allowOpenGL, bool allowD3D, bool preferOpenGL)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Register with the profile manager what rendering mode is preferred with the specified card. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addResPath(path,[ignoreZips=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a path to the resource manager 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">backtrace()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Print the call stack. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">clearTextureHolds()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">collapseFilename(string filename)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">createCanvas(string windowTitle)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Create the game window/canvas, with the specified window title. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">createEffectCanvas(string windowTitle)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Create the game window/canvas, with the specified window title. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dbgDisconnect()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Forcibly disconnects any attached script debugging client. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dbgIsConnected()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns true if a script debugging client is connected else return false. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dbgSetParameters(int port, string password, bool waitForClient)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Open a debug server port on the specified port, requiring the specified password, and optionally waiting for the debug client to connect. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">deactivateKeyboard()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">deleteDataBlocks()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Delete all the datablocks we've downloaded. This is usually done in preparation of downloading a new set of datablocks, such as occurs on a mission change, but it's also good post-mission cleanup. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">disableJoystick()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">disableMouse()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dispatchMessage(queueName, event, data)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dispatchMessageObject(queueName, message)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">displayHelp()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">DNetSetLogging(bool enabled)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dumpFontCacheStatus()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Return a full description of all cached fonts, along with info on the codepoints each contains. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dumpResourceStats()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dump information about resources. Debug only! 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dumpTextureStats()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dump texture manager statistics. Debug only! 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">duplicateCachedFont(oldFontName, oldFontSize, newFontName)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> -Copy the specified old font to a new name. The new copy will not have a platform font backing it, and so will never have characters added to it. But this is useful for making copies of fonts to add postprocessing effects to via exportCachedFont. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">echoInputState()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enableJoystick()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enableMouse()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enableWinConsole(bool)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enumerateConsoleClasses(<"base class">)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enumerateFonts()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Retrieves a list of all fonts on the system. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">expandFilename(string filename)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">expandOldFilename(string filename)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">exportCachedFont(fontName, size, fileName, padding, kerning)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Export specified font to the specified filename as a PNG. The image can then be processed in Photoshop or another tool and reimported using importCachedFont. Characters in the font areexported as one long strip. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">flushTextureCache()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Flush the texture cache. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBoxCenter(Box b)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the center point of a box. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCoreLangTable()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getJoystickAxes(instance)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMaxFrameAllocation()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getT2DDatablockSet()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Retrieves the datablock-set for T2D. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getTemporaryDirectory()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getTemporaryFileName()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getUserDataDirectory()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getUserHomeDirectory()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">GLEnableLogging(bool)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">GLEnableMetrics(bool)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">GLEnableOutline(bool)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">gotoWebPage(address)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Open a URL in the user's favorite web browser. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">importCachedFont(fontName, size, fileName, padding, kerning)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Import an image strip from exportCachedFont. Call with the same parameters you called exportCachedFont. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">initDisplayDeviceInfo()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">inputPopCursor()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">inputPushCursor(cursor shape name)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isJoystickDetected()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isKoreanBuild()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isQueueRegistered(queueName)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isScriptPathExpando(string expando)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">isUsingVFS()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadChunkFile(Filename file)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Read a chunk hierarchy from a file. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadKeybindings()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadObject(filename)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadPath()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mathInit(...)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Install the math library with specified extensions.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">messageBox(title, message[, buttons[, icon]])</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">msg(NetConnection id, string message)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Send a  message to the specified connection. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onExit()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onStart()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">parseArgs()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">png2jpg(pngName,[quality=0-100])</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">populateAllFontCacheRange(rangeStart, rangeEnd)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Populate the font cache for all fonts with Unicode code points in the specified range. Note we only support BMP-0, so code points range from 0 to 65535. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">populateAllFontCacheString(string)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Populate the font cache for all fonts with characters from the specified string. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">populateFontCacheRange(faceName, size, rangeStart, rangeEnd)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Populate the font cache for the specified font with Unicode code points in the specified range. Note we only support BMP-0, so code points range from 0 to 65535. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">populateFontCacheString(faceName, size, string)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Populate the font cache for the specified font with characters from the specified string. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">purgeResources()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Purge resources from the resource manager. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">quit()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> End execution of Torque. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">quitWithErrorMessage(msg)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Quit, showing the provided error message. This is equivalent to an AssertISV. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">recompileAllImageMaps()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Recompiles all image map datablocks 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">registerMessageListener(queueName, listener)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">registerMessageQueue(queueName)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">registerPreferencesManager(SimObjectID)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> register the script created Preferences Manager with C++ code. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeResPath(pathExpression)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Remove a path from the resource manager. Path is an expression as in 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeScriptPathExpando(string expando)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">saveChunkFile(SimChunk chunk, Filename file)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Write a chunk hierarchy to a file. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">saveObject(object, filename)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCanvasTitle(string windowTitle)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCoreLangTable(LangTable)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDefaultSceneObjectDatablock()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setScriptPathExpando(string expando, string path[, bool toolsOnly])</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">shellExecute(executable,[args],[directory])</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">StripMLControlChars(string val)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Strip TorqueML control characters from the specified string, returning a 'clean' version. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">telnetSetParameters(int port, string consolePass, string listenPass)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Initialize and open the telnet console.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">unitTest_runTests([searchString])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> run unit tests, or just the tests that prefix match against the searchString. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">unregisterMessageListener(queueName, listener)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">unregisterMessageQueue(queueName)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">writeFontCache()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> force all cached fonts toserialize themselves to the cache. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

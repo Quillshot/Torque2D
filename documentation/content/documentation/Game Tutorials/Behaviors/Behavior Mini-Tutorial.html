@@ -1,0 +1,106 @@
+<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 13;
+   parent.leftFrame.expandToItem('tree2', 'doc13');
+   var element = parent.leftFrame.document.getElementById('doc13');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE>Behavior Playground Tutorial: Flee Mouse</TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="CREATED" CONTENT="20060525;16445800">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;14154000">
+<STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	--></STYLE>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt">Torque 
+				2D - Behavior Playground Tutorial: Flee Mouse</FONT></FONT></P>
+</DIV>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">In this 
+			tutorial, you will learn the basics of adding a behavior to
+			objects using T2D's Scene Editor. This
+			tutorial requires no scripting, just the Scene Editor. When
+			you are done with this tutorial, you will have a sprite that
+			flees from the mouse.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Getting Started: A New Scene</B></FONT></FONT></P>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>First, open the Behavior Playground project.  A scene full of objects will greet you, but don't worry!  We're creating a new scene in which to work.
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors1.jpg" NAME="image1" BORDER="0"><BR CLEAR="left"><FONT SIZE="1"><I><B>Figure 1</B></I></FONT></P></FONT>
+<BR>
+
+</font>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT SIZE="2" face="Arial, sans-serif">Create a new scene. You should now have an empty scene.  Save it and name it "FollowMouseTutorial" and then on to the next step!</FONT></P>
+
+</font></p>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors2.jpg" NAME="image3" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 2</B></I></FONT></FONT></P>
+
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Adding a Sprite</B></FONT></FONT></P>
+<BR>
+
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Navigate to your "Create" tab.  Many sprites should
+			already be loaded and ready to use.  Pick one and drag it onto the empty scene.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors3.jpg" NAME="image3" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 3</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Adding a Behavior</B></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Select your sprite and open the "Edit" tab.  There are
+			many attributes that you can set on this object, but right now we are most concerned with behaviors.
+			Open the "Behaviors" menu:</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors4.jpg" NAME="image4" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 4</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">There is a green button and a dropdown menu.  Open the
+			dropdown menu; this is a list of all the behaviors that you can add to objects in this project.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors5.jpg" NAME="image5" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 5</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Under the
+			"Input" subcategory you will see the Flee Mouse behavior.  Select it, then click the green button to add
+			it to the sprite.  You can also delete this behavior from the sprite by clicking the red button.
+			You'll notice two options for this behavior: Impulse and Damping (See Figure 6).  You can experiment
+			with changing these values later.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors6.jpg" NAME="image6" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 6</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now run your game.
+ When you move
+			the cursor close to the sprite, it should start to move away from you!</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/behaviors7.jpg" NAME="image7" BORDER="0"><BR CLEAR="left"></P><FONT SIZE="1"><I><B>Figure 7</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Onward!</B></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that you know how to add behaviors to objects,
+			try changing the impulse and damp values, then reloading the game to see how the sprite's behavior
+			changes.  You can also try adding different behaviors to sprites.  When you're ready, you may want to jump into scripting a
+			game that uses behaviors, such as the Fish Game Tutorial.  Have fun!</FONT></FONT></P>
+</DIV></FONT> <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s)  - 1.1.4.</i></font>

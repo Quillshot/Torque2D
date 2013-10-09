@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 343;
+   parent.leftFrame.expandToItem('tree2', 'doc343');
+   var element = parent.leftFrame.document.getElementById('doc343');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Executing Scripts</title>
+
+
+  <meta content="Tom Eastman" name="author">
+
+  <meta content="Short explanation of exec" name="description">
+
+</head>
+
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Basic Debugging</strong></font></font></font></p>
+
+When trying to figure out why your scripts aren't doing exactly
+    what you intended them to do, there is one simple thing to try first: echo().<br />
+    <br />
+    Echo can be used to print a string to the console while the game is running. This
+    can be used to check if methods are being called or if the values of a variable
+    are what you expect.<br />
+    <br />
+    To access the console, press ~ in the top left of your keyboard inside your game
+    or the editor. There will be lots of stuff there
+- the console reports
+    errors with the loading or running of T2D or your game. Press ~ again to close the
+    console. The console's text will also be saved in your console.log file in your
+    install directory. This is invaluable if your game crashes because the log will
+    usually have saved some information about what caused the crash.<br />
+    <br />
+    To echo out a value, simply create a string with the values you want inside. For example:<br />
+    <br />
+
+<pre class = "code">echo("The %this object is " @ %this);
+</pre>
+
+<br>
+You can do more elaborate debugging in an advanced script editor like Torsion or CodeWeaver.&nbsp;
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

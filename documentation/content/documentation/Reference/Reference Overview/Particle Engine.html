@@ -1,0 +1,2475 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 87;
+   parent.leftFrame.expandToItem('tree2', 'doc87');
+   var element = parent.leftFrame.document.getElementById('doc87');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Hierarchy</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20050419;14060000">
+	<META NAME="CHANGED" CONTENT="20060614;11591100">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.79in; margin-top: 0.49in; margin-bottom: 0.49in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Torque
+	2D &ndash; Particle Engine</B></FONT></FONT></P>
+	<P STYLE="margin-bottom: 0.26in"><BR>
+	</P>
+</DIV>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Hierarchy</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+Torque 2D (T2D) particle-engine is essentially split-up
+into two components.  These are the &ldquo;effect&rdquo;
+(t2dParticleEffect) and the &ldquo;emitter&rdquo;
+(t2dParticleEmitter).  An emitter is an object that actual emits
+particles in a configurable manner.  An unlimited quantity of
+emitters can be created within an effect.  An effect is essentially a
+container of emitters.  Emitters cannot &lsquo;see&rsquo; each other
+and therefore cannot alter each others properties.  An effect <B>can</B>
+alter emitters&rsquo; properties by scaling them as a group.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+a practical example, let&rsquo;s assume we want to create a
+fire-effect.  We want the effect to have three components: smoke,
+flames and sparks.  The good thing is that the effect allows you to
+create these three separate components and keep them all together,
+handling them as a single object but still allowing individual
+emitters to be configured.  We can go ahead and create three
+emitters, each of which generate a component of the fire-effect:
+smoke, flames and sparks.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+we want to tweak an aspect of the smoke, we can go into the effect
+and look at the smoke-emitter we created and tweak its configuration.
+ What if we want to increase the particle-sizes for all emitters in
+the effect, not just a single one; how do we do this?   It&rsquo;s
+actually really easy!  We can do this because almost every
+configurable parameter in an emitter is duplicated in the container
+effect.  How does this help us?  Quite simply, the effect parameters
+scale all emitter parameters contained within it.  This means that if
+we set the particle-size to x2, all particles in all the emitters
+become twice the size.  This is a means to make effect-wide changes
+instantly.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+a note: not all parameters in the effect scale the emitters.  The
+effect can directly control other emission properties if the
+respective emitters allow this.  See below for more details.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+hierarchy for the fire-effect described above is shown below:-</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Particle%20Engine_html_1dc4a478.png" NAME="graphics1" ALIGN=BOTTOM WIDTH=284 HEIGHT=295 BORDER=0></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>particle-engine
+hierarchy</B></I></FONT></FONT></P>
+<br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Fields</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>An
+effect or an emitter can be controlled via its fields.  These fields
+are split-up into two groups.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+first group contains fields that simply contain values that are
+on/off, or have one or two values for things such as size etc.  These
+values cannot be defined to change over time although they can be
+changed in script dynamically.  These fields do things such as
+setting an emitter into &ldquo;single-particle&rdquo; mode or forcing
+the emitter to &ldquo;track rotation&rdquo; etc.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+second group, and the more powerful, contains fields which are called
+graph-fields.  A graph-field is one which allows its values to be
+defined to vary over time, automatically in real-time.  This is done
+by using a method called key-framing (a term used in animation). 
+Each graph allows you to add <B>keys</B> to it.  Each key is
+comprised of a time and a value.  Entering multiple keys at various
+times/values will configure the field to change its output value over
+a period of time.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+is illustrated below:</FONT></FONT></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Particle%20Engine_html_m1ddb9758.png" NAME="graphics2" ALIGN=BOTTOM WIDTH=576 HEIGHT=288 BORDER=0></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>graph-field
+visualisation</B></I></FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">As
+you can see, the above graph-field has <B>4</B> keys defined. 
+Assuming the time is in seconds, we can see that the field's value
+will change from 0 to 50 over a period of 1 second.  If this field
+controlled the particle-size, then the particles would rapidly grow
+as it aged towards 1 second.  </FONT></FONT>
+</P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+particle-engine automatically linearly interpolates between the
+values.  When the particle aged beyond 1 second, it would maintain
+its previous key-value, which in this case is 50; visualizing this,
+it would be a horizontal line on the above graph extending right from
+the fourth key.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>It
+is important to note that key-times always progress in forward-time. 
+That means that all key-times must be ahead of the previous one and
+no two keys can contain the same time although they can contain any
+valid value and repeat that value in multiple keys.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><B>Timelines</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Each
+graph-field is comprised of keys which are specified against a
+time-line, but what is this timeline?  The answer depends on whether
+you&rsquo;re discussing the effect or the emitter.  The quick answer
+is that timelines come in two varieties.  The first timeline is
+associated with the age of the effect (playing time) and the second
+timeline is associated with particle-age.  These two timelines differ
+slightly in their definition of time though.  Effect-age is specified
+in <B>absolute-time</B> (in seconds) since the effect started playing
+whereas particle-age is specified in <B>normalized-time</B> (see
+below for more discussion on this).</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Before
+I discuss any more details, you should try to remember that the
+graph-fields are all suffixed in such a way as to describe what type
+of timeline they refer to.  These are:-</FONT></FONT></P>
+<br />
+<CENTER>
+	<TABLE WIDTH=515 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=163>
+		<COL WIDTH=205>
+		<COL WIDTH=102>
+		<TR VALIGN=TOP>
+			<TD WIDTH=163 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=RIGHT><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Graph-Field
+				Type Suffix</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=205 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Timeline
+				Description</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=102 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Used
+				In</B></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=163 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=RIGHT><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">xxx_Scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=205 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Effect-Age
+				Timeline (<I>Emitter Value-Scaling)</I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=102 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Effect
+				Only</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=163 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=RIGHT><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">xxx_Base</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=205 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Effect-Age
+				Timeline (<I>Base-Value)</I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=102 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Emitter
+				Only</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=163 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=RIGHT><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">xxx_Var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=205 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Effect-Age
+				Timeline (<I>Variation-Value)</I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=102 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Emitter
+				Only</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=163 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=RIGHT><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">xxx_Life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=205 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Particle-Age
+				Timeline (<I>Value-Scaling Over-life)</I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=102 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Emitter
+				Only</FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay,
+so that all sounds quite complicated but in fact, it&rsquo;s rather
+simple.  From now on, we&rsquo;ll use the same colouring as above to
+indicate a field in the <SPAN STYLE="background: #f0f0f0">effect</SPAN>
+or <SPAN STYLE="background: #f0f0f0">emitter</SPAN>.  As an example
+and using the above graph, assume it is a graph-field in the <B>effect</B>
+and assume the value is a particle-scaling factor for all particles. 
+What we would have defined then is the following:-</FONT></FONT></P>
+<br />
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Scale when effect has
+	been playing for 0.0 seconds is 0.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Scale when effect has
+	been playing for 0.5 seconds is 5</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Scale when effect has
+	been playing for 0.9 seconds is 20</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Scale when effect has
+	been playing for 1.0 seconds is 50</FONT></FONT></P>
+</UL>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+is pretty simple indeed and very powerful.  Again, note that the
+key-times here are related to the time from when you start the effect
+playing and is <B>absolute-time</B>.  If you restart the effect, the
+time is also reset and therefore the values picked from the graph
+change.  As mentioned above; if the effect time goes beyond the
+defined keys in any graph-field then the value will stay at the last
+defined key, in this case 50.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let
+us now discuss the emitter.  The emitters are a little more complex
+because they contain graph-fields for both types of timelines but are
+easily identified by the prefix as described above.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Emitters
+contain <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+fields which work on a different time-line than the one described
+above as the time is <B>not absolute time</B> but is <B>normalized-time</B>.
+ What this means is that 0 is the start of particle-life, 0.5 is
+halfway through the particle-life and 1 is equal to the end of the
+particle-life.  You cannot use time outside of the range 0 to 1. 
+This may seem a little strange but the lifetime of particles can be
+configured separately and using normalized-time means that changing
+the absolute particle lifetime wouldn&rsquo;t result in having to
+change all the key-times.  A major advantage!</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Again,
+using the above graph as an example, assume it is a graph-field in
+the emitter and assume the value is an absolute particle-size.  What
+we would have defined then is the following:-</FONT></FONT></P>
+<br />
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Size when particle
+	starts (0.0) would be 0</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Size when particle is
+	halfway through its lifetime (0.5) would be 5</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Size when particle is
+	9/10ths through its lifetime (0.9) would be 20</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Size when particle dies
+	(1.0) would be 50</FONT></FONT></P>
+</UL>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Note
+that the above doesn&rsquo;t describe how long the particle lives,
+just its size over its lifetime.  All these fields are easy to
+identify: they are suffixed with <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+as described above.</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><B>Graph-Field Types</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+described above, there are four types of graph-fields, one of which
+is exclusive to the effect.  Let&rsquo;s start focusing on a real
+field within the particle-engine as an example of how these different
+field-types work.  For this example, we&rsquo;ll use the &ldquo;speed&rdquo;
+field which has all four types of graph-fields, three in the emitter
+and one in the effect.  These are:</FONT></FONT></P>
+<br />
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>speed_base&rdquo;
+	(effect-age timeline) in the Emitter.</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>speed_var&rdquo;
+	(effect-age timeline)  in the Emitter.</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>speed_life&rdquo;
+	(particle-age timeline)  in the Emitter.</FONT></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0in; background: #f0f0f0">
+	&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2>speed_scale&rdquo;
+	(effect-age timeline)  in the Effect.</FONT></FONT></P>
+</UL>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">As
+indicated above, the first three types of fields for speed are all in
+the emitter.  These are <SPAN STYLE="background: #f0f0f0">&ldquo;base&rdquo;</SPAN>,
+<SPAN STYLE="background: #f0f0f0">&ldquo;var&rdquo;</SPAN> and
+<SPAN STYLE="background: #f0f0f0">&ldquo;life&rdquo;</SPAN>.  Let&rsquo;s
+examine each of these in turn.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><SPAN STYLE="background: #f0f0f0">&ldquo;<FONT SIZE=2><FONT FACE="Arial, sans-serif"><B>_base&rdquo;</B></SPAN>
+is a field which is used as a base-value.  In this case, it would
+define the base-speed for a particle in world-units/sec.  This value
+(as indicated above) is an effect-age timeline so this field defines
+the base-speed for particles (as they are emitted) as the effect
+ages.  Note that this <B>does not</B> change the base-speed of
+particles <B>after</B> they have been emitted, only as they are
+emitted (created).</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><SPAN STYLE="background: #f0f0f0">&ldquo;<FONT SIZE=2><FONT FACE="Arial, sans-serif"><B>_var&rdquo;</B></SPAN>
+is a field which is used as a variation on the <SPAN STYLE="background: #f0f0f0">&ldquo;base&rdquo;</SPAN>
+value.  In this case, it would define a variance around the
+base-speed.  The term variance means that a random value of the range
+specified would be used.  This value is not directly added to the
+base but sits &lsquo;around&rsquo; the base.  A variance of 10 would
+produce a value in the range -5 to +5.  This value (as indicated
+above) is an effect-age timeline so this field defines the variation
+on the base-speed for particles (as they are emitted) as the effect
+ages.  Note that this <B>does not</B> change the base-speed of
+particles <B>after</B> they have been emitted, only as they are
+emitted (created).</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><SPAN STYLE="background: #f0f0f0">&ldquo;<FONT SIZE=2><FONT FACE="Arial, sans-serif"><B>_life&rdquo;</B></SPAN>
+is a field which is used to scale the resultant value of <SPAN STYLE="background: #f0f0f0">&ldquo;base&rdquo;</SPAN>
++ <SPAN STYLE="background: #f0f0f0">&ldquo;variation&rdquo;</SPAN> in
+realtime, during the lifetime of the particle.  In this case, it
+would scale the speed.  This value (as indicated above) is a
+particle-age timeline so this field defines the speed-scaling for
+particles as the particles age.  Again note that this <B>does</B>
+change the size of particles <B>after</B> they have been emitted. 
+Zero on the timeline here indicates the time when the particle is
+emitted (created) and one being its death.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><SPAN STYLE="background: #f0f0f0">&ldquo;<FONT SIZE=2><FONT FACE="Arial, sans-serif"><B>_scale&rdquo;</B></SPAN>
+is a field which only exists in the effect and is used to scale the
+<SPAN STYLE="background: #f0f0f0">&ldquo;base&rdquo;</SPAN> + <SPAN STYLE="background: #f0f0f0">&ldquo;var&rdquo;</SPAN>
+used when particles are created.  Note that this affects <B>all</B>
+emitters in the effect!<B>  </B>This value (as indicated above) is an
+effect-age timeline so this field defines the scaling for speed for
+particles (as they are emitted) as the effect ages.  Again note that
+this affects speed values for <B>all emitters</B> in the effect. 
+Note that this <B>does not</B> change the base-speed of particles
+<B>after</B> they have been emitted, only as they are emitted
+(created).</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">So
+as you can see, there are two areas that these fields apply to.  The
+first is the value used when the particle is emitted (created) and
+the second being the scaling applied during the lifetime of the
+particle.  We&rsquo;ll continue to discuss the <SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN>
+field in the effect but I will emphasize that it is only typically
+used for performing effect-wide scaling.  Most effects would be
+created without using these fields.  They can be exceptionally handy
+when you want to use a base effect and want different scaled versions
+or perhaps you want to render it in a different resolution
+camera-view and you need to scale the effect up/down.  Either way, it
+isn&rsquo;t typically used when creating particle-effects from
+scratch.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">So
+choosing a value when a particle is emitted uses <SPAN STYLE="background: #f0f0f0">&ldquo;_base&rdquo;</SPAN>,
+<SPAN STYLE="background: #f0f0f0">&ldquo;_var&rdquo;</SPAN> and
+<SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN> and
+because these fields are all related, they all use the same timeline
+which is the effect's age.  Scaling a value during a particle's
+lifetime uses <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+and uses the particle's age.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+formula for calculating the value used when a particle is emitted
+(created) is as follows:</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif"><I>Value</I>
+= (<SPAN STYLE="background: #f0f0f0"><B>Base</B></SPAN> ~ <SPAN STYLE="background: #f0f0f0"><B>Variation</B></SPAN>)
+* <SPAN STYLE="background: #f0f0f0"><B>Scale</B></SPAN>.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Assuming
+that at the current effects-age, the base is 10, the variation is 6
+and the scale is 2, we would calculate the value as:</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">(<SPAN STYLE="background: #f0f0f0">10
+</SPAN>+ (<SPAN STYLE="background: #f0f0f0">-3 to +3</SPAN>)) * <SPAN STYLE="background: #f0f0f0">2</SPAN>
+which ranges from (<SPAN STYLE="background: #f0f0f0">10</SPAN>-<SPAN STYLE="background: #f0f0f0">3</SPAN>)*<SPAN STYLE="background: #f0f0f0">2</SPAN>
+to (<SPAN STYLE="background: #f0f0f0">10</SPAN>+<SPAN STYLE="background: #f0f0f0">3</SPAN>)*<SPAN STYLE="background: #f0f0f0">2</SPAN>
+= 14 to 26.</FONT></FONT></P>
+<br />
+<P CLASS="western" STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Here&rsquo;s
+an example (excluding <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>)
+of particles being emitted:</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Particle%20Engine_html_248d8290.png" NAME="graphics3" ALIGN=BOTTOM WIDTH=576 HEIGHT=288 BORDER=0></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+we can see here, as the effect ages to 5 seconds old, the value
+(let&rsquo;s assume in this case its speed) increases.  Not only does
+it increase but there is a range of increasing values marked by the
+light-blue band.  This band is created because of the variation field
+which adds a level of randomness to the value.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Taking
+the value at time 5.0, the value range is calculated as: </FONT></FONT>
+</P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif"><SPAN STYLE="background: #f0f0f0">20</SPAN>
++ variance of <SPAN STYLE="background: #f0f0f0">5</SPAN> (-2.5 to
++2.5) = 17.5 to 22.5</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+range is then scaled by <SPAN STYLE="background: #f0f0f0">2</SPAN> to
+give a range of 35 to 45.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Now
+when doing this, you&rsquo;re not interested in the math so much as
+the way the effect looks so here&rsquo;s the way to use the fields. 
+Set the <SPAN STYLE="background: #f0f0f0">&ldquo;_base&rdquo;</SPAN>
+value to the mid-point that you want the value to be.  If you want a
+variance (randomness to the base), use the <SPAN STYLE="background: #f0f0f0">&ldquo;_var&rdquo;</SPAN>
+field.  Quite often, you&rsquo;ll not even use the <SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN>
+field as this is in the effect and applies to all emitters (see note
+above).</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><B>What is &ldquo;_life&rdquo;?</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay,
+so we understand that our &ldquo;bread and butter&rdquo; fields are
+just <SPAN STYLE="background: #f0f0f0">&ldquo;_base&rdquo;</SPAN> and
+<SPAN STYLE="background: #f0f0f0">&ldquo;_var&rdquo;</SPAN> and maybe
+<SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN> in the
+effect (for more advanced work) but what is <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>?
+ <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN> is an
+extremely important graph-field that differs from the others.  Now
+that you&rsquo;ve got your particles being created correctly, you
+probably want them to change whilst they are alive (during their
+lifetime).  This is where the <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+field comes in.  As discussed before, the timeline for these fields
+is based upon particle-age and ranges from 0 to 1.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+<SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN> fields
+is really simple to understand as it simply scales the value over the
+particles-life, identical to the <SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN>
+field with the difference being that the <SPAN STYLE="background: #f0f0f0">&ldquo;_scale&rdquo;</SPAN>
+field is in the effect and globally scales all emitter fields and
+also uses the effects-age, rather than the particles&rsquo;.  <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+changes only the single emitter value it&rsquo;s in.</FONT></FONT></P>
+<br />
+<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Functionality</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay,
+now that we know that in an emitter we&rsquo;ve got <SPAN STYLE="background: #f0f0f0">&ldquo;_base&rdquo;</SPAN>
+and <SPAN STYLE="background: #f0f0f0">&ldquo;_var&rdquo;</SPAN> to
+choose an emission-time value and <SPAN STYLE="background: #f0f0f0">&ldquo;_life&rdquo;</SPAN>
+to change the value over the particles-life, as well as the ability
+to go to the effect and scale the value for all emitters, let&rsquo;s
+move onto describing what the fields do, irrespective of how you can
+define keys.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here
+are the graph-fields within the emitter&hellip;</FONT></FONT></P>
+<br />
+<CENTER>
+	<TABLE WIDTH=658 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=73>
+		<COL WIDTH=118>
+		<COL WIDTH=423>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Graph-Field</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Field-Types
+				in Emitter</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Description</B></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">particlelife</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">How
+				long the particle lives in seconds.  This defines the time-time
+				that &ldquo;_life&rdquo; works against.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">quantity</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Quantity
+				of particles emitted each second.  This value should be kept as
+				small as possible to reduce the performance overhead of the
+				particle-effect.  It is typically more efficient to produce
+				&lsquo;bigger&rsquo; particles than it is to produce more
+				particles when trying to &ldquo;fatten-up&rdquo; the effect.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">sizex</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var / life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">X
+				component of size (If &ldquo;<I>fixedaspect</I>&rdquo; (See
+				below) is used then this controls Y component as well).  All
+				sizes are in world-units.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">sizey</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var / life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Y
+				component of size (If &ldquo;<I>fixedaspect</I>&rdquo; (See
+				below) is used then this is ignored).</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">speed</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var / life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Speed
+				here scales the particles velocity.  A speed of one therefore
+				produces no change.  It is very important to understand that
+				speed alone doesn&rsquo;t produce any movement; the particle must
+				have an initial velocity for speed to be useful.  Initial
+				velocity comes from &ldquo;<I>emissionforce</I>&rdquo; and
+				&ldquo;<I>fixedforce</I>&rdquo; (see below).</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">spin</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var / life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Spin
+				is simply rotation and is specified in degree/sec.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">fixedforce</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the magnitude of a fixed, constant force (angle specified
+				elsewhere) applied to the particles.  This can be used to
+				simulate gravity or wind effects.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">randommotion</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var / life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the magnitude of random motion applied to particles.  The
+				magnitude is a variance in world-units.  The random motion is
+				omni-directional and is added to the particles position after its
+				velocity calculation meaning that it doesn&rsquo;t change the
+				particles actual velocity so if it is reduced, the particles
+				velocity stays the same.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionforce</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the particles initial velocity when emitted.  This can be changed
+				with &ldquo;speed&rdquo;.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionangle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the base-angle that the particles will be emitted at (in
+				degrees).</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionarc</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Controls
+				the arc around the chosen &ldquo;<I>emissionangle</I>&rdquo; (in
+				degrees).</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">red</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the red-channel for the particle-colour.  If the particle texture
+				is white, this controls how much red is applied to the particle.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">green</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the green-channel for the particle-colour.  If the particle
+				texture is white, this controls how much green is applied to the
+				particle.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">blue</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the blue-channel for the particle-colour.  If the particle
+				texture is white, this controls how much blue is applied to the
+				particle.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">visibility</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">life</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=423 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				the alpha-channel for the particle-colour.  This essentially
+				controls how transparent the particle is and scales the
+				particle-texture itself.  A value of 0 makes the particle
+				completely transparent whereas a value of 1 makes the particle
+				opaque.  Note that if the particle-texture already has an
+				alpha-channel and is already transparent, then a value of 1 will
+				make its transparency the same as the original texture. 
+				Essentially, the alpha value here is multiplied by any
+				alpha-channel in the texture.</FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Coloured-regions
+only used to separate field-groups</B></I></FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">That&rsquo;s
+it!  After all that discussion, we&rsquo;ve only got a handful of
+actual fields but each allows very precise control over how the
+values change over time. Also note that there are additional fields
+in the emitter that are not graph-fields but set other options. 
+Things such as setting an <SPAN STYLE="background: #f0f0f0">&ldquo;<I>imageMap</I>&rdquo;</SPAN>
+or turning <SPAN STYLE="background: #f0f0f0">&ldquo;<I>fixed-aspect</I>&rdquo;</SPAN>
+on or off.  These will be detailed later.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Well that&rsquo;s the
+emitter, so what about the effect itself.  Don&rsquo;t forget that
+<SPAN STYLE="background: #f0f0f0">&ldquo;scale&rdquo;</SPAN> fields
+will scale <B>all emitters</B> in the effect.  Anyway, here&rsquo;s
+the list of fields&hellip;</FONT></FONT></P>
+<br />
+<CENTER>
+	<TABLE WIDTH=664 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=73>
+		<COL WIDTH=118>
+		<COL WIDTH=430>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Graph-Field</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Field-Types
+				in Effect</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Description</B></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">particlelife</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">quantity</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">sizex</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">sizey</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">speed</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">spin</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">fixedforce</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">randommotion</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">visibility</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">scale</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionforce</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionangle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=73 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">emissionarc</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=118 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">base
+				/ var</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=430 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">See
+				Emitter for description.</FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+&ldquo;odd&rdquo; ones here are the &ldquo;emissionXXX&rdquo; fields.
+ These <B>don&rsquo;t</B> scale all the emitters, they do something
+else that can be very useful.  There is an option in the emitter
+(&ldquo;<I>effectemission</I>&rdquo; &ndash; see below) that tells
+the emitter to ignore its own &ldquo;emissionXXX&rdquo; fields and
+use the ones in the effect.  This means that individual emitters can
+choose to either have their own unique emission properties or use the
+parent-effect emission properties.  An example of this being used
+would be if you have several emitters that all emit in the same way
+but a couple of them need to do something specific.  This allows you
+to change all the common emissions at the effect-level but customize
+individual ones per emitter.  The default is to use the effects
+emission so you&rsquo;ll want to turn this off if you need to
+configure the emitter so that it has its own emission controls (see
+below).</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Using
+Graphs</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we&rsquo;ve seen a complete breakdown of what graphs are we can
+begin to look at the methods involved to modify their content.  Note
+that this applies equally to effects as it does individual emitters
+as both objects contain these graph-fields and use the same methods
+to modify their content.  Anyway, here&rsquo;s a list of the
+functions available to modify a graph:</FONT></FONT></P>
+<br />
+<CENTER>
+	<TABLE WIDTH=648 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=112>
+		<COL WIDTH=506>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 BGCOLOR="#c0c0c0">
+				<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+				Function</B></FONT></FONT></P>
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>(Ref.
+				Doc)</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Description</B></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">selectGraph()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Before
+				you can begin to edit any graph-field, you must select it.  If
+				you select a graph-field, it will <B>stay selected</B> for the
+				effect/emitter until another is selected.  When you have selected
+				a graph-field, all the following functions (see below) work on
+				it.  This is convienient and removes the need to specify the
+				field in all the functions below.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">addDataKey()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Adds
+				a data-key to the graph.  A data-key is comprised of a time and
+				value combination.  If a key at the same time already exists, it
+				is overwritten with the new key.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">removeDataKey()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Removes
+				a data-key from the graph.  Note that you <B>cannot</B> remove
+				the data-key at time-zero!  Note that data-keys are referenced by
+				their key-index, not time or value.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setDataKeyValue()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Changes
+				the value of an existing data-key.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">clearDataKeys()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Removes
+				all data-keys, leaving a data-key at time-zero with the
+				graph-fields default value.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setTimeRepeat()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option allows you to change the time-scaling for retrieving
+				values from the graph.  If data-keys are defined up to 10 seconds
+				and the time-repeat is set to x2 then the final key will be
+				reached in 5 seconds scene-time.  The reason this function is
+				called &ldquo;repeat&rdquo; rather than &ldquo;scale&rdquo; is
+				because it is primarily used on &ldquo;life&rdquo; fields. 
+				Setting &ldquo;x2&rdquo; on these fields effectively repeats the
+				fields twice during the lifetime of a particle whereas non &ldquo;life&rdquo;
+				fields don-repeat.  If a particle had its red-channel set to ramp
+				from 0 to 1 during its life and &ldquo;x4&rdquo; was set for
+				repeat, the particle would ramp from 0 to 1, 4 times during its
+				life.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setValueScale()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				options sets a scale for all values retrieved from the graph. 
+				This is a convenient way to scale all the values coming from a
+				graph without the need to change existing key values.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getDataKey()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Retrieves
+				a data-key time/value combination.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getDataKeyCount()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Retrieves
+				a count of data-keys.  This can be used to enumerate the list of
+				data-keys in conbination with &ldquo;<I>getDataKey()</I>&rdquo;
+				above.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getMinValue()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Each
+				graph-field sets bounds on the minimum value that can be used in
+				any key.  This is fixed by the system to a valid value.  You can
+				retrieve the minimum value using this function.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getMaxValue()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Each
+				graph-field sets bounds on the maximum value that can be used in
+				any key.  This is fixed by the system to a valid value.  You can
+				retrieve the maximum value using this function.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getMinTime()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Each
+				graph-field sets bounds on the minimum time that can be used in
+				any key.  This is fixed by the system to a valid value.  You can
+				retrieve the minimum time using this function.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getMaxValue()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Each
+				graph-field sets bounds on the maximum time that can be used in
+				any key.  This is fixed by the system to a valid value.  You can
+				retrieve the maximum time using this function.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getGraphValue()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">This
+				function allows you to retrieve a calculated value from the graph
+				at a specified time along the graph.  You should specify a time
+				within the range of &ldquo;<I>getMinTime()</I>&rdquo; and
+				&ldquo;<I>getMaxTime()</I>&rdquo; (see above).  This isn&rsquo;t
+				used by the particle-system but can be useful for debugging
+				purposes or other general use.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">getTimeRepeat()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Retrieves
+				the time-repeat setting (see &ldquo;<I>setTimeRepeat()</I>&rdquo;
+				above)</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=112 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">GetValueScale()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=506 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Retrieves
+				the value-scale setting (see &ldquo;<I>setValueScale()</I>&rdquo;
+				above)</FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><B>Grunt Work&hellip;</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>I
+can hear you say, &ldquo;That&rsquo;s great but how to I actually use
+these methods to manipulate keys in script?&rdquo;  No problem, let&rsquo;s
+work through a few examples of doing just that.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let&rsquo;s
+assume we have the &ldquo;fire effect&rdquo; (described earlier) and
+that we want to create four keys at times, &ldquo;0.0&rdquo;, &ldquo;0.5&rdquo;,
+&ldquo;0.9&rdquo; and &ldquo;1.0&rdquo; in the &ldquo;speed_life&rdquo;
+graph-field of the &ldquo;sparks&rdquo; emitter.  That sound like
+it&rsquo;s going to be quite complicated but it actually isn&rsquo;t
+so let&rsquo;s just show the whole thing and then go through it piece
+by piece:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Create a blank effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect
+			= new t2dParticleEffect() { scenegraph = mySceneGraph; };</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Load our fire-effect from disk.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.loadEffect(
+			&ldquo;fire.eff&rdquo; );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Find the &ldquo;sparks&rdquo; Emitter.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter
+			= %effect.findEmitterObject( &ldquo;sparks&rdquo; );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Select the &ldquo;speed_life&rdquo; graph-field.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.selectGraph(
+			&ldquo;speed_life&rdquo; );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Clear any existing Keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.clearDataKeys();</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Add our keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.0, 0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.5, 5 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.9, 20 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			1.0, 50 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+first two commands are pretty simple; we create a blank
+particle-effect and then load-up our pre-baked &ldquo;fire&rdquo;
+effect.  Next we use the &ldquo;<I>findEmitterObject()</I>&rdquo; to
+get hold of the emitter we&rsquo;re interested in, in this case the
+&ldquo;sparks&rdquo; emitter.  Note that we could&rsquo;ve selected
+the emitter by its index (if it didn&rsquo;t have a name) using
+&ldquo;<I>getEmitterObject()</I>&rdquo; but this can change if the
+emitter order changes so it&rsquo;s always preferable to access
+emitters by name.  The emitters in this example effect are &ldquo;smoke&rdquo;
+(index#0), &ldquo;flames&rdquo; (index#1) and &ldquo;sparks&rdquo;
+(index#2) so we could&rsquo;ve easily used:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">&hellip;</FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Get the &ldquo;sparks&rdquo; Emitter by index.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter
+			= %effect.getEmitterObject( 2 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">&hellip;</FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Anyway,
+let&rsquo;s move onto the interesting part of this example which is
+actually selecting and changing a graph-field.  We start this process
+by &lsquo;selecting&rsquo; a graph-field using &ldquo;<I>selectGraph()</I>&rdquo;
+ This may seem a little strange but it actually saves lots of work! 
+By selecting a particular graph-field, you&rsquo;re telling T2D that
+when you use a command that affects graph-fields in <B>this emitter</B>,
+it applies to the one you selected.  T2D will use this graph-field
+until you change it so you only need to select it once.  This saves
+you from having to specify which graph-field you are configuring in
+each command.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>With
+the graph-field selected, we act a little cautiously by clearing any
+existing keys in the graph-field.  What this actually does needs a
+little explaining though.  The first thing to explain is that T2D
+ensures that all graph-fields are always valid.  To do this, T2D
+enforces the rule that there must always be a key at time &ldquo;0.0&rdquo;
+and that all values for keys must be within the allowed range for the
+graph-field in question.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">With
+that knowledge, it should be obvious that when you use
+&ldquo;<I>clearDataKeys()</I>&rdquo;, T2D does indeed clear any
+data-keys in the graph-field but it always automatically adds a
+data-key at time &ldquo;0.0&rdquo; that contains the default value
+for the graph-field in question (as defined in the reference
+documentation).</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The good thing here is
+that you don&rsquo;t have to constantly check if a data-key already
+exists at the time you want to add a key. T2D will simply overwrite
+the key if it exists, so if we were to use the following code&hellip;</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Add our keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 1 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 2 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 3 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 4 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.8, 5 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&hellip;
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>which repeatedly adds a
+key at time &ldquo;0.8&rdquo;, it would result in the value &ldquo;5&rdquo;
+defined at time &ldquo;0.8&rdquo;.  This simple feature means that
+you can just add a data-key to time &ldquo;0.0&rdquo;, knowing it
+already exists.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Anyway,
+back to our example; now that we&rsquo;ve &lsquo;cleared&rsquo; the
+graph-field, we can proceed to add four keys to it with:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Add our keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.0, 0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.5, 5 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.9, 20 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			1.0, 50 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Well
+that was too easy so let&rsquo;s manipulate these keys a little so we
+can see how it&rsquo;s done.  What we want to do now is remove the
+final key at time &ldquo;1.0&rdquo; and change the value at time
+&ldquo;0.9&rdquo; to &ldquo;30&rdquo;.  We do this by extending the
+original code with:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Remove the final key.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.removeDataKey(
+			3 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Change the key at time &ldquo;0.9&rdquo;.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.setDataKeyValue(
+			2, 30 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">As
+you can see, we use the &ldquo;<I>removeDataKey()</I>&rdquo; method
+but what is that curious value of &ldquo;3&rdquo;?  It&rsquo;s
+actually the key-index, identical to the indexes that can be used for
+addressing emitters.  The keys we&rsquo;ve got are &ldquo;0.0&rdquo;
+(index#0), &ldquo;0.5&rdquo; (index#1), &ldquo;0.9&rdquo; (index#2)
+and &ldquo;1.0&rdquo; (index#3) so we want to remove index#3.  This
+may seem a little strange but you can use the methods &ldquo;<I>getDataKey()</I>&rdquo;
+and &ldquo;<I>getDataKeyCount()</I>&rdquo; to step through the keys
+for any graph-field.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Now
+that we&rsquo;ve removed the final key, we want to simply set the key
+at time &ldquo;0.9&rdquo;.  In this case, we used the method
+&ldquo;<I>setDataKeyValue()</I>&rdquo; to directly change the value
+of a key.  Again, we&rsquo;re using the key-index notation to address
+a key.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Let&rsquo;s
+elaborate a little on the use of a key-index as it may seem a little
+complicated.  In the above example, we use the method
+&ldquo;<I>setDataKeyValue()</I>&rdquo; but we could&rsquo;ve equally
+specified the change using the time &ldquo;0.9&rdquo; like so:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Change the key at time &ldquo;0.9&rdquo;.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.addDataKey(
+			0.9, 30 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+would&rsquo;ve made much more sense as we know that adding a key,
+where a key already exists, just overwrites that key and we also knew
+the time we wanted to change, but what if we didn&rsquo;t know the
+time and we wanted to go through all the keys and set them to a
+specific range of values?</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let&rsquo;s
+do just that:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Get Key-Count.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyCount
+			= emitter.getKeyCount();</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Step through all keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>for
+			( %n = 0; %n &lt; %keyCount(); %n++ )</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>{</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Get &lsquo;old&rsquo; Key using its index.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%oldKey
+			= %emitter.getDataKey( %n );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Change Key to some arbitrary value.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%emitter.setDataKeyValue(
+			%n, %n*10 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Get &lsquo;new&rsquo; Key using its index.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%newKey
+			= %emitter.getDataKey( %n );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Dump to Console.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>echo(
+			&ldquo;Key-change from&ldquo; SPC %oldKey SPC &ldquo;to&rdquo; SPC
+			%newKey );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>}</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">As
+you can see, we start by getting the count for the number of keys in
+our currently selected graph-field.  We can then step through the
+keys and use &ldquo;<I>setDataKeyValue()</I>&rdquo; to change each. 
+In the example we use &ldquo;<I>getDataKey()</I>&rdquo; to retrieve
+the key both before and after we change the value.  We can then dump
+the details of the key-value changes to the console.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>You
+don&rsquo;t always have to enumerate the list to find key-indices
+though; T2D returns you the index to a key when you add it like so:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Add our keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime10
+			= %emitter.addDataKey( 10.0, 0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime20
+			= %emitter.addDataKey( 20.0, 5 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime30
+			= %emitter.addDataKey( 30.0, 20 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime40
+			= %emitter.addDataKey( 40.0, 50 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Dump to Console.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>echo(
+			%keyTime10 SPC %keyTime20 SPC %keyTime30 SPC %keyTime40 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Outputs...</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>0
+			1 2 3&rdquo;</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Note
+that the key-indices are time-ordered.  It&rsquo;s also interesting
+to note that you don&rsquo;t have to add keys in any specific
+timewise order either, so let&rsquo;s do the above but in reverse
+order:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Add our keys.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime40
+			= %emitter.addDataKey( 40.0, 50 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime30
+			= %emitter.addDataKey( 30.0, 20 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime20
+			= %emitter.addDataKey( 20.0, 5 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%keyTime10
+			= %emitter.addDataKey( 10.0, 0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Dump to Console.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>echo(
+			%keyTime10 SPC %keyTime20 SPC %keyTime30 SPC %keyTime40 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Still Outputs...</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>0
+			1 2 3&rdquo;</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>You
+should note that you can change all effect/emitter fields whilst the
+effect is playing, there are no restrictions.  Leave an effect
+playing and tweak anything you want!  Well that pretty much covers
+most of the basic things you&rsquo;ll want to do with graph-fields. 
+There is, of course, much more functionality but we&rsquo;ll let you
+discover that for yourself.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Enough
+Graphs Already!</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we&rsquo;ve discussed the graph-fields, we just need to discuss
+the other options available to the emitters.  These are generally
+simple options to control emission or provide supplementary
+parameters to the graph-fields above.  These are:</FONT></FONT></P>
+<br />
+<CENTER>
+	<TABLE WIDTH=646 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=62>
+		<COL WIDTH=113>
+		<COL WIDTH=427>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Emitter
+				Option</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#c0c0c0">
+				<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+				Function</B></FONT></FONT></P>
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>(Ref.
+				Doc)</B></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#c0c0c0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Description</B></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Name</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setEmitterName()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">Sets
+				the emitters name.  This is one method of retrieving the emitter
+				from the effect in addition to retrieving via the emitters index.
+				(See &ldquo;<I>findEmitterObject()</I>&rdquo; in ref. doc).  Note
+				that is it not neccesary for the emitters to have names, they are
+				a convienience only.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Type</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setEmitterType()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">There
+				are four emitter types which control the region at which
+				particles are created.  Note that currently the area, which the
+				types are based upon, uses the &ldquo;effects&rdquo; size e.g.
+				&ldquo;t2dParticleEffect::setSize()&rdquo;.  These types are:-</FONT></FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>Point</I>&rdquo;
+				&ndash; Point at the effects center.</FONT></FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>LineX</I>&rdquo;
+				&ndash; Line defined across effects X-axis.  Y position is
+				effects center.</FONT></FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>LineY</I>&rdquo;
+				&ndash; Line defined across effects Y-axis.  X position is
+				effects center.</FONT></FONT></P>
+				<P CLASS="western">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>Area</I>&rdquo;
+				&ndash; Whole area of effects size.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Visible</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setVisible()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Controls
+				whether the emitter is showing particles.</FONT></FONT></P>
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><B>NOTE:-</B>
+				Unlike other T2D objects, making an emitter invisible, destroys
+				any existing particles and stops the emitter from creating any
+				more.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Orientation</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setParticleOrientation()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">There
+				are three orientation types which control the orientation of
+				particles when they are created and/or during their lifetime. 
+				Each option has further parameters which can be setting using
+				other calls, detailed below.  These orientation types are:-</FONT></FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>Aligned</I>&rdquo;
+				&ndash; Particles have their &ldquo;up&rdquo; direction aligned
+				to the initial particle direction.  Other options are
+				&ldquo;alignangle&rdquo; and &ldquo;keepaligned&rdquo;.</FONT></FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>Fixed</I>&rdquo;
+				&ndash; Particles are aligned to a fixed angle.  The fixed angle
+				is specified using &ldquo;fixedangle&rdquo;.</FONT></FONT></P>
+				<P CLASS="western">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>Random</I>&rdquo;
+				&ndash; Particles are aligned to a random angle.  This random
+				angle is specified using &ldquo;randomangle&rdquo; and
+				&ldquo;randomarc&rdquo;.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">alignangle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setAlignAngleOffset()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;orientation&rdquo; mode is set to
+				&ldquo;aligned&rdquo;.</I>  It allows a fixed-angle offset to be
+				added to the alignment function.  Because the align-mode
+				orientates the particles such that the initial &ldquo;up&rdquo;
+				direction is facing the direction of particle travel and that the
+				particle-texture used may be orientated in a different direction,
+				you may wish to rotate the particle by a fixed-offset.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">keepaligned</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setAlignKeepAligned()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;orientation&rdquo; mode is set to
+				&ldquo;aligned&rdquo;.</I>  It forces the particle to stay
+				aligned to its current direction during its lifetime.  This will
+				override any other settings such as &ldquo;spin&rdquo;. Adding
+				random-motion can cause the direction to change, this will keep
+				the particle aligned to that new direction.  In &ldquo;aligned&rdquo;
+				mode, with this option off, the alignment applied when the
+				particle is created.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">fixedangle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setFixedAngleOffset()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;orientation&rdquo; mode is set to
+				&ldquo;fixed&rdquo;.</I>  It indicates an angle for initially
+				orientating the particle.  Unless &ldquo;spin&rdquo; is used, the
+				particle will stay orientated in this direction.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">randomangle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setRandomAngleOffset()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;orientation&rdquo; mode is set to
+				&ldquo;random&rdquo;.</I>  It indicates a fixed angle which the
+				&ldquo;randomarc&rdquo; will be based-upon.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">randomarc</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setRandomArc()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;orientation&rdquo; mode is set to
+				&ldquo;random&rdquo;.</I>  It indicates a random arc-range around
+				the &ldquo;randomangle&rdquo;.  This works identically to the
+				idea of &ldquo;base&rdquo; and &ldquo;var&rdquo; with
+				&ldquo;randomangle&rdquo; being the &ldquo;base&rdquo; and
+				&ldquo;randomarc&rdquo; being the &ldquo;var&rdquo;.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">imagemap</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setImageMap()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				specifies the imagemap/frame used for the emitter particles. 
+				This will disable the &ldquo;animationname&rdquo; option.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">animationname</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setAnimationName()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				specifies the animation used for the emitter particles.  This
+				will disable the &ldquo;imagemap&rdquo; option.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">fixedaspect</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setFixedAspect()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option controls how the graph-fields &ldquo;sizex&rdquo; and
+				&ldquo;sizey&rdquo; (see above) are used.  If this option is
+				active, the &ldquo;sizex&rdquo; graph-field is used for both the
+				X and Y axis (&ldquo;sizey&rdquo; being ignored), essentially
+				forcing fixed-aspect sized particles.  With this option disabled,
+				&ldquo;sizex&rdquo; and &ldquo;sizey&rdquo; act independantly
+				allowing non-fixed aspect sized particles.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">pivotpoint</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setPivotPoint()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				sets the pivot-point used to orientate the particle, particularly
+				useful when the particle is spinning.  The offset is from the
+				top-left of the texture.  &ldquo;0.5 0.5&rdquo; is the center of
+				the particle, &ldquo;1 1&rdquo; is the bottom-right.  Values
+				greater than 1 can be used to create interesting rotational
+				dynamics for particles, especially when they move.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">useBlending</FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">srcBlend</FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">dstBlend</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setBlending()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option controls the blending mode.  When blending is active, the
+				source/destination blending factors are used for all particles
+				generated by this emitter.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">intenseparticles</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setIntenseParticles()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option overrides the blending mode (see &quot;setBlending()&quot;
+				above).  When active, the particles will render such that their
+				intensity accumulates to white.  This can produce a &ldquo;bright&rdquo;
+				or &ldquo;warm&rdquo; glow effects.  Note that particles rendered
+				in this mode cannot be seen on a white background.  Technically,
+				this option activates blending and uses blending factors of
+				&quot;src=SRC_ALPHA&quot; and &quot;dst=ONE&quot; so it's just a
+				shortcut to a common blending option; obviously the same can be
+				achieved by using the standard blending control.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">singleparticle</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setSingleParticle()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option forces the emitter to only create a single particle.  The
+				particle is always created as a &ldquo;point&rdquo; type. has a
+				speed of zero (doesn&rsquo;t move) and lives infinitely (until
+				the effect is stopped).  This can be useful when you want to
+				create a single static effect using a single particle.  Good for
+				adding corona/glows to effects.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">fixedforce</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setFixedForceAngle()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				options controls the angle used for the graph-field &ldquo;fixedforce&rdquo;
+				(see above) that provides the ability to apply a constant force
+				to particles.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">attachposition</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setAttachPositionToEmitter()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option attaches any particles to the emitter position (which is
+				fixed at the effects position).  Typically, if an emitter is
+				moving, particles created move independantly.  When this option
+				is active, they move relative to the emitter.  Note that this
+				doesn&rsquo;t affect the particles &ldquo;orientation&rdquo;.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">attachrotation</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setAttachRotationToEmitter()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif"><I>This
+				option is used when the &ldquo;attachposition&rdquo; mode is
+				active.</I>  Typically, particles rotate relative to the world
+				such that zero is &ldquo;up&rdquo;.  When this option is active,
+				the particles additionally rotate around the emitter.  Note that
+				this doesn&rsquo;t affect the particles &ldquo;orientation&rdquo;.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 bgcolor="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">rotateEmission</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setLinkEmissionRotation()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 bgcolor="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				option will rotate the emission direction (see &ldquo;emissionangle&rdquo;
+				and &ldquo;emissionarc&rdquo;) to that of the effect.  Unlike
+				&ldquo;attachrotation&rdquo; that depends on also using
+				&ldquo;attachposition&rdquo;, this only rotates the emission and
+				not the whole particle-system (all particles that are active). 
+				Therefore, only the emission direction is rotated.  With this
+				option active, rotating the effect results in a relative emission
+				rotation as well.  Note that all rotations are cummulative; using
+				&ldquo;attachrotation&rdquo; and &ldquo;rotateemission&rdquo;
+				results in the rotations being used together).</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">effectemission</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setUseEffectEmission()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+				options controls whether the &ldquo;emissionXXX&rdquo;
+				graph-fields are used from the emitter or the effect.  This is
+				described above in the effects-fields.</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=62 BGCOLOR="#f0f0f0">
+				<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">firstinfrontorder</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=113 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">setFirstInFrontOrder()</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=427 BGCOLOR="#f0f0f0">
+				<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">This
+				option controls the rendering order for particles.  With this
+				option active, the first particles to be created are in-front. 
+				Another way of saying the same thing is that with this option
+				active, the oldest particles are in-front with newer particles
+				appearing behind the older ones.  With this option inactive, the
+				reverse is true.  Note that this option is only really useful
+				when particles are <B>not transparent</B> but completely opaque. 
+				Also, there is no performance penalty for either option e.g. no
+				particle sorting is taking place.</FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Global
+Tweaking&hellip;</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that you've seen all the functionality that's available from
+configuring the graphs, it's time to mention one last thing that you
+may find useful.  It's a simple thing to get lots of effects and
+therefore particles up and running but one thing that you'll come
+across is the ability to bring your computer to its knees by having
+too many particles active.  Worse, you may need to tweak the number
+of particles up or down dependent upon the computer your game is
+running on!</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see from above, you can scale each effect's &ldquo;quantity_scale&rdquo;
+graph to achieve this but if you've got lots of effects, it can be
+awkward to do this.  To enable you to make global changes to the
+number of particles created, T2D provides the following preference:</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=3>$pref::T2D::particleEngineQuantityScale&rdquo;</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This variable will scale
+the number of particles created by effects.  A value of &ldquo;0.5&rdquo;
+will half the number of particles created.  The default is &ldquo;1.0&rdquo;
+which doesn't change the quantity of particles created.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Collisions&hellip;</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>A feature that is most
+definitely advanced is the ability for particles to collide with
+objects in the scene.  The following description assumes that you
+already know how to set up collision-detection on scene-objects.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Assuming you have already
+set up the effect-object to collide with objects in the scene, all
+you need to do to get the actual particles to collide rather than the
+effect-object is to issue the following command:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Turn-Off &ldquo;Effect&rdquo; Collisions and use &ldquo;Particle&rdquo;
+			collisions instead.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			NOTE:- This option is &ldquo;true&rdquo; by default which causes
+			the &ldquo;effect&rdquo; to collide.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.setEffectCollisionStatus(false);</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>After turning
+effect-based collisions off using the above command, all
+collision-detection will be particle-based.  The result here would be
+that particle-effect objects <B>will not</B> collide with anything
+but their particles will.  So how do you configure what objects these
+particles collide with?  Easy, you've already done it: simply use the
+standard collision-methods against the &ldquo;effect&rdquo; object. 
+In other words, the effect collision-settings are used to determine
+what its particles collide with.  This method removes the need to
+have an alternate set of collision calls specifically for particles.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that you know how to
+activate particle-based collisions as opposed to effect-based
+collisions, there are a number of key differences that you should be
+aware of.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Only a specific set of
+collision-responses are available. If any unsupported collision modes
+are selected, no collision-response will occur but a
+collision-callback will still happen.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Only the following
+collision responses are available:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Clamp</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Bounce</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Sticky</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Kill</FONT></FONT></P>
+</UL>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Finally, when a collision
+occurs the following script will be called:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			&ldquo;Particle&rdquo; collisions Callback.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			NOTE:- The standard &ldquo;onCollision()&rdquo; callback isn't
+			processed!</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>function
+			onParticleCollision( %this )</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>{</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>}</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>As you can see, the
+callback is not the standard callback of &ldquo;onCollision()&rdquo;.
+ You'll also note that the only detailed provided is the
+effect-object itself.  No hit-object, collision-normal or time is
+provided.  The reason for this is because particle collision
+quantities can be huge and providing all this information in a single
+callback or indeed producing a callback for each and every particle
+that collides would soon bring any system to its knees!</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Keep in mind that
+particle-collisions are currently meant for looks only and are not
+meant to provide detailed collision feedback.  The above
+collision-callback is provided to at least provide a signal as to
+whether a collision occurred which could be used to manipulate the
+effect somehow.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2; page-break-before: always">
+<BR>
+</P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Back
+to basics&hellip;</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+document has taken you on a grand tour of the T2D particle-engine and
+as you can see, there&rsquo;s a wealth of configurable parameters but
+in the end, most of this editing will be done in the particle-editor.
+ Most of the time you&rsquo;ll only do basic things when actually
+&lsquo;using&rsquo; a particle-effect in your application so let&rsquo;s
+spend a little time giving that kind of basic functionality some
+attention.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+stages of using a particle-effect are roughly split-up into four
+sections; create, load, play and stop.  Let&rsquo;s do the first two
+together as they&rsquo;re so easy to decribe:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"> 
+</P>
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Create a blank effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect
+			= new t2dParticleEffect() { scenegraph = mySceneGraph; };</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Load our fire-effect from disk.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.loadEffect(
+			&ldquo;fire.eff&rdquo; );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">As
+you can see, it&rsquo;s pretty simple to get to this point.  The
+&ldquo;<I>loadEffect()</I>&rdquo; method will load a complete
+particle-effect from disk and get it ready to go.  These disk effects
+are typically saved using the particle-editor but can equally come
+from &lsquo;manually&rsquo; created effects using &ldquo;<I>saveEffect()</I>&rdquo;.
+ You could, for instance, load an effect created with the
+particle-editor, tweak some settings in script and then save the
+effect, perhaps with a different name, back to disk, it&rsquo;s
+totally up to you.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we&rsquo;ve got a particle-effect object, all we really want to
+do with it is to play the effect.  We do this with the following:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Play our effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.playEffect()</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>That&rsquo;s
+it!  You should note that it is at this point when the timelines for
+graph-fields start.  Next we want to stop the effect.  We do this
+will the following:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Stop our effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.stopEffect()</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Again,
+that&rsquo;s it.  This is too easy so let&rsquo;s discuss some of the
+finer-points of handling particle-effect objects.  The first thing to
+note is that the effect-object is like any other T2D object in that
+when you&rsquo;ve finally finished with it, you should &ldquo;<I>safeDelete()</I>&rdquo;
+it (see reference documentation).  The method &ldquo;<I>stopEffect()</I>&rdquo;
+tells the effect to stop creating particles, it doesn&rsquo;t destroy
+the effect.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The stopping of effects
+raises an interesting dilemma.  When we stop the particle-effect,
+what do we do with the particles that are still alive?  Do we remove
+them?  Do we wait for them to die naturally?  If we remove them
+immediately, we&rsquo;ll see particles simply disappear which looks
+unnatural.  We&rsquo;d want them to die naturally but we don&rsquo;t
+know how long to wait; help!!  The good news is that T2D allows you
+to choose and will handle it for you!  </FONT></FONT>
+</P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+&ldquo;<I>stopEffect()</I>&rdquo; has two optional parameters that
+allow finer control of this situation like so:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Stop our effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.stopEffect(
+			true, true )</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see, we&rsquo;ve got two flags to choose from.  The two flags
+are called &ldquo;WaitForParticles?&rdquo; and &ldquo;KillEffect?&rdquo;
+respectively.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+&ldquo;WaitForParticles?&rdquo; is true, the effect will immediately
+stop emitting particles but will wait for any existing particles to
+die naturally before finally signaling the effect as stopped.  This
+is extremely handy and the most typically used configuration.  When
+this is false, particles will be removed immediately.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+&ldquo;KillEffect?&rdquo; is true, the effect will automatically be
+deleted when the effect stops.  If you are &lsquo;waiting for
+particles&rsquo;, the effect will be deleted when all particles have
+died naturally.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So
+our call above would result in any particles currently active, when
+we stop the effect, to die naturally, immediately followed by the
+effect being destroyed.  This is neat housekeeping as you can stop
+and forget the effect.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">There
+is an additional option in the &ldquo;<I>playEffect()</I>&rdquo;
+method called &ldquo;ResetParticles?&rdquo;.  This is very handy if
+you stop an effect and then proceed to play it again.  In this
+situation, you may want any existing particles to be either cleared
+or allowed to die naturally as we did with the &ldquo;<I>stopEffect()</I>&rdquo;
+method.  The difference here is that the effect will immediately
+start playing, creating new particles, whilst the older particles
+continue their life as normal.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+can be handy for &ldquo;thruster&rdquo; effects that are turned
+on/off.  You would do this by starting/stopping the effect, maybe as
+the player hits the &lsquo;thrust&rsquo; key.  In this case, you&rsquo;d
+typically want the effect to leave any existing particles alone so
+you&rsquo;d use:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Play our effect.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.playEffect(
+			false )</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"> <FONT FACE="Arial, sans-serif"><FONT SIZE=2>Note
+that the default is to clear particles when playing an effect.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Another
+option that is very handy in controlling the life of an effect and
+its particles is &ldquo;<I>setEffectLifeMode()</I>&rdquo;.  All
+life-modes, with the exception of &ldquo;kill&rdquo; mode, can be
+configured in the particle-editor but it is very handy to understand
+exactly how it works.  There are four &lsquo;life-modes&rsquo; that
+an effect can use, these are &ldquo;INFINITE&rdquo;, &ldquo;CYCLE&rdquo;,
+&ldquo;KILL&rdquo; and &ldquo;STOP&rdquo;.  Here are some examples:</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Set-up some life-modes.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect1.setEffectLifeMode(
+			INFINITE );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect2.setEffectLifeMode(
+			CYCLE, 5.0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect3.setEffectLifeMode(
+			KILL, 5.0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect4.setEffectLifeMode(
+			STOP, 5.0 );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>All
+modes control what happens to the effect after a period of time. 
+&ldquo;INFINITE&rdquo; states that the effect will continue to play
+forever.  &ldquo;CYCLE&rdquo; will cause the effect to restart
+continuously, forever, in this case every 5 seconds.  &ldquo;KILL&rdquo;
+will cause the effect to be destroyed, in this case, after 5 seconds.
+ &ldquo;STOP&rdquo; will cause the effect to simply stop, in this
+case, after 5 seconds.  All times are from the point when the effect
+is first started.  Note that the &ldquo;CYCLE&rdquo;, &ldquo;KILL&rdquo;
+and &ldquo;STOP&rdquo; modes all wait for particles to die naturally
+(see above).</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; page-break-before: always">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Although
+not strictly needed, it is interesting to note how each emitter
+controls the &ldquo;area&rdquo; in which it creates particles.  Each
+emitter has a method &ldquo;<I>setEmitterType()</I>&rdquo;.  The
+description for this method can be found above (and in the reference
+documentation) but it is not immediately obvious how the physical
+area is defined.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let&rsquo;s
+apply the following method to our effect (assume all emitters have
+type set to &ldquo;area&rdquo;):</FONT></FONT></P>
+<br />
+<TABLE WIDTH=661 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=645>
+	<TR>
+		<TD WIDTH=645 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#008000"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">//
+			Set our effect size.</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><B>%effect.setSize(
+			&ldquo;200 150&rdquo; );</B></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Setting
+the &lsquo;size&rsquo; of an effect probably won&rsquo;t do what you
+may first expect.  Because effects don&rsquo;t actually render
+anything, its &lsquo;size&rsquo; doesn&rsquo;t seem to control
+anything; it certainly doesn&rsquo;t change the size of particles,
+there are graph-fields for those settings.  So what does it do? 
+Well, it&rsquo;s actually quite simple to understand.  The &lsquo;size&rsquo;
+of an effect is used by all its emitters.  When you set an emitter to
+&ldquo;area&rdquo;, &ldquo;linex, or &ldquo;liney&rdquo;, the
+physical area uses the parent effects&rsquo; size.  It essentially
+sets the physical region that defines the &ldquo;area&rdquo; or
+&ldquo;linex/y&rdquo;.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+method above would set an area of &ldquo;200 x 150&rdquo; in the
+world.  If the emitter was set to &ldquo;area&rdquo;, the particles
+would be created within an area of &ldquo;200 x 150&rdquo; at the
+effect's current position.  If the emitter was set to &ldquo;linex&rdquo;,
+the particles would be created along a line, centered on the effects
+current position, from -100 to +100 in the X-axis and 0 in the
+Y-axis.  The &ldquo;liney&rdquo; type is identical to &ldquo;linex&rdquo;
+but along the y-axis.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>And
+finally&hellip;</B></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So
+we&rsquo;ve taken the grand-tour of the T2D particle-engine and you
+may be thinking that we&rsquo;ve covered pretty much everything but
+that isn&rsquo;t the case.  There is so much more to discover but
+thankfully, it&rsquo;s all creative discovery because with all these
+configurable parameters at your disposal, you should be able to
+generate some completely amazing effects.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">If
+you come up with some great effects and you don&rsquo;t mind sharing
+then be sure to post them as a resource, maybe even a
+particle-effects pack.  You never know, we may even include them in
+the SDK and make you famous.</FONT></FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Good
+luck and enjoy the T2D particle engine.</FONT></FONT></P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

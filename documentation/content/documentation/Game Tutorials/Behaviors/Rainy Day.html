@@ -1,0 +1,411 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 15;
+   parent.leftFrame.expandToItem('tree2', 'doc15');
+   var element = parent.leftFrame.document.getElementById('doc15');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>T2D Rainy Day Behavior Tutorial</title>
+</head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+<font size=5><span style=FONT-WEIGHT:bold><h8>Rainy Day</h8></span></font>
+<p>In this tutorial we'll learn how to use particle effects and the T2DTrigger object to make a game in which rain will make plants grow.</p>
+<h3>1. Getting started</h3>
+<p>Start Torque 2D and create a new project  -- Call it RainyDayTutorial. </p>
+<h3>2. A little background information</h3>
+<p>Drag this image from your browser onto T2D:</p>
+<table width="100" border="1" align="center" cellpadding="1" cellspacing="1">
+  <caption>
+    background.png
+  </caption>
+  <tr>
+    <td><div align="center"><img src="images/Rainy Day/background.png" alt="background.png" width="256" height="192" /></div></td>
+  </tr>
+</table>
+<p>From the Create pane in T2D, drag the backgroundMaterial you just added into the Scene View area, to create a static sprite that we can use as the background of our scene. Go to the Edit pane, and enter 0 for both Position X and Position Y -- this will center the sprite in the scene. For 
+    <em>Width</em> enter 100, and for <em>Height</em> enter 75. This will make the sprite exactly match the viewable area of the default camera, so the image will completely fill up the background of the scene. </p>
+<p>For <em>Layer</em>, enter 31. Higher layers are further &quot;back&quot; in the scene, so we want our background to be very far back.</p>
+<p>When we dragged the image onto T2D, it updated the project file to include the image. Since we updated the project file and the scene, we need to save it. From the menu, choose File -&gt; Save and replace 
+    <em>Untitlted.t2d</em> with <em>Rainy Day Level.t2d</em> and click <strong>OK</strong>. </p>
+<p>Let's see our background in action by choosing <strong>Project -&gt; Run Game</strong> from the menu! 
+    It's a static background and as a result there's not a lot of action to see. Let's fix that.</p>
+<h3 align="center"><img src="images/Rainy Day/step2Screenshot.jpg" width="700" height="543" /></h3>
+<h3>3. Flower power</h3>
+<p>Drag this image onto T2D:</p>
+<table border="1" align="center" cellpadding="1" cellspacing="1">
+  <caption>
+    plant.png
+  </caption>
+  <tr>
+    <td><div align="center"><img src="images/Rainy Day/plant.png" alt="plant.png" 
+            width="700" height="384" /></div></td>
+  </tr>
+</table>
+<p><img src="images/Rainy Day/imageBuilder.jpg" alt="Image Builder" width="700" 
+        height="436" /></p>
+        <p>This image is actually multiple frames of an animation. Let's tell T2D about how the image should be broken up into frames. Go to the Create pane, and the Materials rollout. Double-click the Plant, to bring up the Image Builder window. From the Image Mode pulldown menu select &quot;Cell&quot;. Then in Cell Count X enter 6, and in Cell Count Y enter 3. Now you should see the image broken up into the individual frames. Click the Save button to save these changes.</p>
+<p><img src="images/Rainy Day/createANewAnimation.jpg" alt="Create a new Animation" width="199" height="116" align="left" />Now that we have the image broken up into frames, let's string those frames together into an animation. Click the &quot;Create a new Animation&quot; button. Choose plantMaterial, and click the Select button. This brings up the Animation Builder window. Click the little green &quot;Add all frames from the image&quot; button -- this will add the frames in order to the animation sequence. The default speed is pretty fast for these particular frames, so for Frames Per Second enter 5. Also, this animation doesn't make sense when it cycles from the last frame to the first, so clear the checkmark out of the Cycle Animation checkbox. Click the Save button to save this animation. Now you have a new Animation in the Animations rollout.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p><p></p><p><img src="images/Rainy Day/animationBuilder.jpg" 
+        alt="Animation Builder" width="700" align="middle" /></p>
+<p>Let's put a flower into the scene.  From the Create pane, from the <em>Animations</em> rollout, drag the
+    <em>plantAnimation</em> into the scene somewhere onto the grassy hill.<strong> </strong>Go to the 
+    <em>Edit</em> pane. In the <em>Scene Object</em> rollout, set the <em>Width</em> and <em>Height</em> 16, to shrink it down to a more reasonable size. Then go to the 
+    <em>Collision</em> rollout and make sure the <em>Send Collision</em> and <em>Receive Collision</em> boxes are 
+    <strong>checked</strong> and the <em>Send</em> and <em>Receive Physics</em> boxes are <strong>unchecked</strong>. </p>
+<p><img src="images/Rainy Day/placeAnimation.jpg" alt="Create template" 
+        width="700" /></p>
+<p>On the menu, select <strong>File -&gt; Save</strong>. Then select <strong>Project -&gt; Run Game</strong>. Now we've got some action -- flower dying action! Kind of a downer, huh? Maybe we'll find a silver lining if we add a cloud.</p>
+<p>&nbsp;</p>
+<p align="center"><img src="images/Rainy Day/step3Screenshot.jpg" width="700" height="543" /></p>
+<h3>4. Into every life a little rain must fall</h3>
+<p>Drag this image onto T2D:</p>
+<table border="1" align="center" cellpadding="1" cellspacing="1">
+  <caption>
+    cloud.png
+  </caption>
+  <tr>
+    <td><div align="center"><img src="images/Rainy Day/cloud.png" alt="cloud.png" width="384" height="201" /></div></td>
+  </tr>
+</table>
+<p>Drag the Cloud from the <em>Create</em> pane into the middle of the scene. Click the &quot;<em>Edit this objects linkpoints</em>&quot; 
+    button on the Selection Editor Toolbar. Create a linkpoint in the middle of the main mass of the cloud by left-clicking,  hit the <em>Esc</em> key to exit out of  linkpoint editing mode when you're done creating the linkpoint. Creating a linkpoint will let us mount things onto the cloud. </p>
+<p><img src="images/Rainy Day/quickEdit.jpg" alt="Quick-Edit buttons" width="186" height="85" /></p>
+<p><img src="images/Rainy Day/creatLinkpoint.jpg" alt="Create a linkpoint" width="400" height="308" /></p>
+
+<p>What would we want to mount to the cloud? How about a particle effect that creates raindrops! Drag this image onto T2D:</p>
+
+<table width="32" border="1" align="center" cellpadding="1" cellspacing="1">
+<caption>
+    raindrop.png
+  </caption>
+  <tr>
+    <td><div align="center"><img src="images/Rainy Day/raindrop.png" alt="raindrop.png" width="32" height="32" /></div></td>
+  </tr>
+</table>
+<p>Now, from the Create pane, from the <em>Particle Effects</em> rollout, drag a<em> New Particle Effect</em> into the scene. Go to the 
+    <em>Edit</em> pane. Expand out the &quot;<em>Emitter - Untitled Emitter</em>&quot; rollout. This will let us control aspects of what particles are emitted by the particle effect. Set 
+    <em>Image</em> to <strong>raindropImageMap</strong> so we can start emitting some raindrops. Finally 
+    <strong>uncheck</strong> the <em>Use Effect Emission</em> checkbox. Now let's start changing some parameters of the particles themselves. Click the 
+    <em>Edit Emitter Graph</em> button.</p>
+<p><img src="images/Rainy Day/editEmitterGraph.jpg" 
+        alt="Edit the particle effect's emitter graph" width="700"/></p>
+<p>In the select box, choose <em>Emission Arc Base</em>. This controls how the particles spread out. By default its set to 360, so particles spread out in every direction. Drag the dot down to 0.000 0.000. This will cause the particles to be issued in only a single direction.</p>
+<p>Now choose<em> Emission Angle Base</em>. Drag the dot to about 0.000 180.000, so the drops are created heading down instead of up.</p>
+<p>Select <em>Particle Life Base</em>, and drag the dot to the top of the graph to set it to 0.000 10.000. This will keep the particles &quot;alive&quot; for 10 seconds from when they are created.</p>
+<p>Select <em>Size X Base</em>. Drag the dot to about 0.000 11.013 -- this will make the drops look more like actual rain.</p>
+<p>Select <em>Speed Base</em>, and drag the dot to about 0.000 12.658. This will speed the drops up a bit.</p>
+<p>Click the Close button.</p>
+<p><img src="images/Rainy Day/closeParticleEffectEditor.jpg" 
+        alt="Finish Editing Particle Effect Emitter Graph" width="700"/></p>
+<p><img src="images/Rainy Day/Mounting.png" alt="Mounting Quick-Edit" align="right" /> Finally set 
+    <em>Type</em> to <strong>LINEX</strong> so that the particles are created along a horizontal line instead of at a single point.  Now that we have the particle effect creating drops, let's attach it to the cloud so the drops look like they're falling from the cloud. Click the &quot;<em>Mount this object to another object</em>&quot; quick-edit button, and then click on the yellow cross on the cloud that represents the linkpoint we created there earlier. Now the particle effect is connected to the cloud, but the drops are being created in front of it, which looks a little funky. Go to the 
+    <em>Edit</em> pane, and the <em>Scene Object</em> rollout, and set the <em>Layer</em> to 5. This will put the drops behind the cloud, so they'll look like they're falling out of the bottom.</p>
+<p>Now let's let the player move the cloud, too. To do this we will need to write a behavior that we attach to our cloud. Open up your favorite text editor (Torsion works best, but Notepad works just fine) and enter the following code:</p>
+<pre class="code">	if (!isObject(MovementBehavior))
+  	{
+  		%template = new BehaviorTemplate(MovementBehavior);
+  
+  		%template.friendlyName = "Movement Behavior";
+  		%template.behaviorType = "Movement Styles";
+  		%template.description  = "Shooter style movement control";
+  
+	  	%template.addBehaviorField(upKey, 
+            "Key to bind to upward movement", keybind, "keyboard up");
+  		%template.addBehaviorField(downKey, 
+            "Key to bind to downward movement", keybind, "keyboard down");
+	  	%template.addBehaviorField(leftKey, 
+            "Key to bind to left movement", keybind, "keyboard left");
+  		%template.addBehaviorField(rightKey, 
+            "Key to bind to right movement", keybind, "keyboard right");
+  
+	  	%template.addBehaviorField(verticalSpeed, 
+            "Speed when moving vertically", float, 20.0);
+  		%template.addBehaviorField(horizontalSpeed, 
+            "Speed when moving horizontally", float, 20.0);
+  	}
+</pre>
+<p>The first part of the behavior checks to make sure a behavior doesn't already exist named &quot;Movement Behavior&quot;.  From there we give it a friendly name or the name that it is called in T2D, a behavior type which will allow us to categorize our behaviors inside T2D to find things easier, and a description.  The Behavior Fields expose certain things to the editor so that we can edit our game from T2D instead of having to go back to code all the time. Go back to your script and add the following code: </p>
+<pre class="code">	function MovementBehavior::onBehaviorAdd(%this)
+  	{
+	  	if (!isObject(moveMap))
+  		return;
+  
+	  	// bind our keys to the keyboard
+  		moveMap.bindObj(getWord(%this.upKey, 0), 
+            getWord(%this.upKey, 1), "moveUp", %this);
+	  	moveMap.bindObj(getWord(%this.downKey, 0), 
+            getWord(%this.downKey, 1), "moveDown", %this);
+  		moveMap.bindObj(getWord(%this.leftKey, 0), 
+            getWord(%this.leftKey, 1), "moveLeft", %this);
+	  	moveMap.bindObj(getWord(%this.rightKey, 0), 
+            getWord(%this.rightKey, 1), "moveRight", %this);
+  
+  		// set the default values to 0
+	  	%this.up = 0;
+  		%this.down = 0;
+	  	%this.left = 0;
+	  	%this.right = 0;
+  	}
+  
+ 	function MovementBehavior::onBehaviorRemove(%this)
+  	{
+  		if (!isObject(moveMap))
+  		return;
+  		%this.owner.disableUpdateCallback();
+  
+  		// remove the keybinds
+  		moveMap.unbindObj(getWord(%this.upKey, 0), 
+            getWord(%this.upKey, 1), %this);
+		moveMap.unbindObj(getWord(%this.downKey, 0), 
+            getWord(%this.downKey, 1), %this);
+		moveMap.unbindObj(getWord(%this.leftKey, 0), 
+            getWord(%this.leftKey, 1), %this);
+  		moveMap.unbindObj(getWord(%this.rightKey, 0), 
+            getWord(%this.rightKey, 1), %this);
+  
+  		%this.up = 0;
+  		%this.down = 0;
+  		%this.left = 0;
+  		%this.right = 0;
+  	}
+  
+  	function MovementBehavior::updateMovement(%this)
+  	{
+		// make the player move
+  		%this.owner.setLinearVelocityX((%this.right - %this.left) 
+            * %this.horizontalSpeed);
+  		%this.owner.setLinearVelocityY((%this.down - %this.up) 
+            * %this.verticalSpeed);
+  	}
+  
+  	function MovementBehavior::moveUp(%this, %val)
+  	{
+  		%this.up = %val;
+  		%this.updateMovement();
+  	}
+  
+  	function MovementBehavior::moveDown(%this, %val)
+  	{
+  		%this.down = %val;
+  		%this.updateMovement();
+  	}
+  
+  	function MovementBehavior::moveLeft(%this, %val)
+  	{<br />
+  		%this.left = %val;<br />
+  		%this.updateMovement();
+  	}
+  
+  	function MovementBehavior::moveRight(%this, %val)
+  	{
+  		%this.right = %val;
+  		%this.updateMovement();
+  	}
+  </pre>
+  </p>
+  From the menu, select <strong>File -&gt; Save</strong>. Save your file in the <em>Behavior</em> folder of your game project which can be found under 
+    <em>My Documents/MyGames/Rainy Day Tutorial/Game/Behaviors</em> and name the file 
+    <em>MovementBehavior.cs</em> (don't forget to add the extention .cs).  Go back to T2D and from the menu 
+    select <strong>Project -&gt; Reload Project</strong>, T2D should prompt you to save the project and the particle effect we created. Save both and name the particle effect 
+    <em>Rain</em>. Every time you create a new behavior you have to reload T2D so it can recognize the new behavior.  Now let's add our newly created behavior to our cloud. Select the cloud sprite, and go to the Edit pane.  In the 
+    <em>Behaviors</em> rollout, select <em>Movement Behavior</em> in the select box and click the green &quot;<strong>+</strong>&quot; button to add it. The Movement Behavior moves whatever object it is attached to based on the keys selected in the drop down menus in T2D (default is the arrow keys). </p>
+  <p><img src="images/Rainy Day/addMovementComponent.jpg" 
+          alt="Add a MovementBehavior to the cloud" width="700"/></p>
+<p>From the menu, select <strong>File -&gt; Save</strong>. Next use the menu to 
+    select <strong>Project -&gt; Run Game</strong>. Now you can move the cloud around, and watch the drops fall! But the rain isn't helping the flowers. That's because particle effects are just fancy graphical effects -- there's no game object interaction there. In order to make the rain have a game effect, we'll need to write some custom game code.</p>
+<p align="center"><img src="images/Rainy Day/step4Screenshot.jpg" width="700" height="544" /></p>
+<h3>5. This plant is operating within acceptable parameters</h3>
+<p>We need to create another behavior so that the flowers can react to being watered. Go back to your script editor, use the menu to 
+    select <strong>File -&gt; New</strong> to create a new script file.</p>
+<p>Like before we are going to create the template of our behavior, add this code to declare some variables:</p>
+<pre class="code">	if (!isObject(PlantGrowthBehavior))
+	{
+		%template = new BehaviorTemplate(PlantGrowthBehavior);
+   
+   		%template.friendlyName = "Plant Growth Behavior";
+	    	%template.behaviorType = "Management";
+   		%template.description  = "Controls the growth of the plants";
+   
+   		%template.addBehaviorField(Moisture, "", float, 10.0);
+   		%template.addBehaviorField(minMoisture, 
+            "The lowest amount of moisture for the plant", float, 0.0);
+   		%template.addBehaviorField(maxMoisture, 
+            "The largest amount of moisture for the plant", float, 10.0);
+   		%template.addBehaviorField(LowMoistureThreshold, 
+            "The threshold that causes it to start growing or dying", float, 5.0);
+   		%template.addBehaviorField(DryRate, 
+            "How fast it loses moisture", float, 0.05);
+   		%template.addBehaviorField(WateringRate, 
+            "How fast it gains moisture", float, 0.05);
+	}</pre>
+<p>This creates a new behavior and several variables that we can access from inside T2D. Use the menu to 
+    select <strong>File -> Save</strong> save it to the same folder as the MovementBehavior and name it 
+    <em>PlantGrowthBehavior.cs</em>.  Go back into T2D and from the menu do Project -> Reload Project and click yes to save the project. This updates T2D so we can access our newly created behavior. Select your flower and go to the Edit pane. In the Behaviors rollout, select Plant Growth Behavior in the select box and click the green "+" button to add it.</p>
+
+<p>Scroll down and you'll see a rollout for the component you created. It has editable fields for all of the public properties you set up, and the default values you set are in there. Exposing tweak able values on your components to T2D like this can be very useful in the game design process, since it let's you do it in T2D, where you do other design related tasks like placing objects. Let's get some practice tweaking values in T2D by setting WateringRate to 0.1. Afterwards, save your changes by using the menu to do File -&gt; Save Scene.</p>
+<p><img src="images/Rainy Day/step5Screenshot.jpg" alt="Tweak the parameter" 
+        width="700"/></p>
+<h3>6. It's a matter of life and death</h3>
+<p>Well, we've got some variables and tunable parameters now, but we're not actually doing anything with them. Let's do something with them. Go back to your script editor and the PlantGrowthBehavior, and right after the section where we define our behavior, add this code:</p>
+<pre class="code">
+	function PlantGrowthBehavior::onAddtoScene(%this)
+	{
+      	%this.dieAnim = %this.owner.getAnimation();
+
+      	%j = 0;
+      	for (%i = getWordCount(%this.dieAnim.animationFrames) - 1; %i >= 0; %i--)
+      	{
+        	%growAnim = setWord(%growAnim, %j, 
+                getWord(%this.dieAnim.animationFrames, %i));
+         	%j++;
+      	}
+      	%this.growAnim = new t2dAnimationDatablock() 
+      	{
+         	animationCycle = %this.dieAnim.animationCycle;
+         	animationFrames = %growAnim;
+         	animationTime = %this.dieAnim.animationTime;
+         	imageMap = %this.dieAnim.imageMap;
+         	randomStart = %this.dieAnim.randomStart;
+         	startFrame = %this.dieAnim.startFrame;
+      	};
+   		%this.owner.enableUpdateCallback();
+	}</pre>
+<p>The first line, allows us to store the animation from the object onto the behavior as %this.dieAnim, the animation we'll play to make the plant die, since that's the animation we've got. We want to create another animation that makes the plant grow, basically just the same animation played in reverse. That's what the next few lines of code do -- they create a copy of the animation, and reverse it's frames. Lastly, we register with the engine to call the UpdateCallback method every tick of the engine (roughly 30 times per second).</p>
+<p>Now that we have the two different animations, let's create a way to switch between them. Right below the &quot;onAddtoScene&quot; method, create the following method:</p>
+<pre class="code">	function PlantGrowthBehavior::runAnimation(%this, %direction)
+	{
+      	if (%direction < 0.0)
+   		{
+      		if (%this.owner.getAnimation() != %this.growAnim)
+      		{
+         		%frame = (getWordCount(%this.growAnim.AnimationFrames) - 1) 
+                    - %this.owner.getAnimationFrame();
+         		%this.owner.PlayAnimation(%this.growAnim);
+         		%this.owner.setAnimationFrame(%frame);
+      		}
+   		} else
+   		{
+      		if (%this.owner.getAnimation() != %this.dieAnim)
+      		{
+         		%frame = (getWordCount(%this.dieAnim.AnimationFrames) - 1) 
+                    - %this.owner.getAnimationFrame();
+         		%this.owner.PlayAnimation(%this.dieAnim);
+         		%this.owner.setAnimationFrame(%frame);
+      		}
+   		}     
+	}
+</pre>
+<p>This code decides which animation to run, and also accounts for the situation where the animation might be reversed while it's still running, and sets the current frame to be the corresponding frame in the opposite animation (e.g. one quarter dead is the same as three quarters alive), so there's a smooth transition between them.</p>
+<p>Let's make use of that method. Right after the &quot;<em>runAnimation</em>&quot; region, add this code:</p>
+
+<pre class="code">	function PlantGrowthBehavior::onUpdate(%this)
+	{
+   		if (%this.moisture < %this.lowMoistureThreshold)
+   		{
+      		// dying -- run animation forwards.
+      		%this.RunAnimation(1.0);
+   		} else
+   		{
+      		// growing -- run animation backwards.
+      		%this.RunAnimation(-1.0);
+   		}
+   
+   		// modify amount of moisture based on whether we're being watered or not
+   		if (%this.watering)
+      		%this.moisture += %this.wateringRate;
+   		else
+      		%this.moisture -= %this.dryRate;
+   
+   		// clamp moisture amounts.
+   		if (%this.moisture < %this.minMoisture)
+      		%this.moisture = %this.minMoisture;
+   		if (%this.moisture > %this.maxMoisture)
+      		%this.moisture = %this.maxMoisture;
+      
+	}
+</pre>
+<p>&nbsp;</p>
+<p>This simply compares the current &quot;moisture level&quot; to the threshold, and makes the plant die if it doesn't have enough moisture, and grow if it does. It then uses the %this.watering variable to determine if we should increase the moisture, or dry out. Let's create some method that will let us set that %this.watering variable. Right after the &quot;onUpdate&quot; region, add these methods:</p>
+<pre class="code">	function PlantGrowthBehavior::startWatering(%this)
+	{
+   		%this.watering = true;
+	}
+
+	function PlantGrowthBehavior::endWatering(%this)
+	{
+   		%this.watering = false;
+	}
+&nbsp;</pre>
+<p>Why define these methods this way? Because defining them this way will let us use them with a 
+    <em>T2DTriggerObject</em>. But before we can set that up, we need to create a behavior to call on these methods when the &quot;Trigger&quot; events occur. Save your behavior then go to your script editor and use the menu to 
+    select <strong>File -&gt; New</strong> and enter the following code:</p>
+<pre class="code">
+	if (!isObject(WateringBehavior))
+	{
+   		%template = new BehaviorTemplate(WateringBehavior);
+   
+   		%template.friendlyName = "Watering Behavior";
+   		%template.behaviorType = "Trigger";
+   		%template.description  = "Defines when to begin watering";
+	}
+
+	function WateringBehavior::onEnter(%this, %object)
+	{
+   		%object.startWatering();
+	}
+
+	function WateringBehavior::onLeave(%this, %object)
+	{
+   		%object.endWatering();
+	}      
+</pre>
+<p>This behavior will call the watering methods we created in the other behavior. Now use the menu to 
+    select <strong>File -&gt; Save As</strong> and name it <em>WateringBehavior</em>.cs. 
+    As before, we need to update our project so that T2D knows about our new 
+    behavior. Go to T2D and use the menu to select <strong>Project -&gt; Reload Project</strong>. </p>
+<p>The particle effect was a graphical thing that had no effect on the game objects. Now let's do the opposite and create a game object that has an effect on other game objects, but isn't shown graphically. When we put the two together, we'll have a complete solution. From the 
+    <em>Create</em> pane, from the <em>Other</em> rollout, drag a new <em>Trigger</em> into the scene.</p>
+<p>With the new trigger object selected, click the &quot;<em>Mount this object to another object&quot;</em> button 
+    on the Selection Editor Toolbar. Click on the yellow cross in the middle of the cloud. Once the object is mounted, resize it by grabbing the blue dot on the bottom-middle of the bounding box, and stretch the object so the height expands quite a way outside the visible camera area.</p>
+<p><strong><img src="images/Rainy Day/resizeBlankObject.jpg" 
+        alt="Resize the trigger object after it is mounted" width="700"/></strong></p>
+<p>With the Trigger Object selected go to the <em>Edit</em> pane, and to the <em>Behaviors</em> rollout. Select 
+    <em>Watering Behavior</em> and click the green &quot;<strong>+</strong>&quot; button. The Watering Behavior lets us define methods for what happens when objects enter or leave the region of the object they're attached to. Scroll up to the 
+    <em>Trigger</em> rollout, and make sure the <em>Enter</em> and <em>Leave Callback</em> boxes are checked </p>
+<p><img src="images/Rainy Day/triggerComponent.jpg" 
+        alt="Set the OnEnter and OnLeave properties" width="700"/></p>
+<p>Now, when plant enters the region of this object (because the cloud moves it over top of it) the plant starts growing, and when it leaves the region (because the cloud moves it away) they'll being to die. Use the menu to 
+    select <strong>File -&gt; Save</strong>. Then use the menu to select <strong>Project -&gt; Run Game</strong>. The flower should grow when you hover over it and die when you move away.</p>
+<p align="center"><img src="images/Rainy Day/singleflower.jpg" width="700"/></p>
+<p> Having just one flower isn't very exciting so lets create a bunch more.  Select the Plant in our scene and go the menu to 
+    select <strong>Edit -&gt; Copy</strong> then go back to the menu and select
+    <strong>Edit -&gt; Paste</strong>.  This will create a copy of our flower right on top of the old one so move it somewhere else on the grassy hill.  Do this several times so that we have multiple flowers around the scene.  Its best to do your copying when an object is at a final state so you don't have to adjust several different objects.  Now use the menu to 
+    select <strong>File -&gt; Save</strong> and then <strong>Project -&gt; Run Game</strong>. Now the plants respond to the rain!</p>
+<p align="center"><img src="images/Rainy Day/step6Screenshot.jpg" width="700" height="543" /></p>
+<p>&nbsp;</p>
+<h3>Conclusion</h3>
+<p>Thank you for following along with this tutorial.  We hope we were able to show you some new ways to use the Behavior mechanism in conjunction with the objects in your game to help you speed your development process.</p>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s)  - 1.1.4.</i></font>

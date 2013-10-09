@@ -1,0 +1,633 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 49;
+   parent.leftFrame.expandToItem('tree2', 'doc49');
+   var element = parent.leftFrame.document.getElementById('doc49');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Additional Particles Resource</title>
+
+
+  <meta content="Michael Perry" name="author">
+
+  <meta content="Adding Particles Resource From Past T2D Releases" name="description">
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" alink="#000099" link="#000099" vlink="#990099">
+
+<font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong><br>
+
+</strong></font></font></font><br>
+
+<table style="text-align: left; width: 700px;" border="0" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td><span style="font-weight: bold;">New Assets</span><br>
+
+      <br>
+
+A few of the tutorials in the 
+          documentation instruct you to use images and particle effects you may not have. Most likely, you are being asked to use assets that have been deprecated in this version of T2D, but the tutorials have not been updated yet. <BR><BR>This mostly occurs in the TutorialBase project, so use the following instructions to get those effects and images in your local TutorialBase.<br>
+<br>
+
+<a href="./newParticles.zip">Click here to download a zip file</a> containing the additional effects. Inside the zip file, you will find a folder called <em>images</em> and a script file called <em>resourceDatabase.cs</em>. The folder contains all the base images used to create the additional imageMaps and particle effecst you are missing. <BR><BR>The script contains the datablocks used to build the images within your game. The script is actually the same resourceDatabase.cs found in the stock TutorialBase base project, but I've added additional datablocks to make sure of the new imageMaps and particle effects.<BR>
+<BR><BR>
+<strong>Automatic Merging</strong> <BR>
+<BR>
+If you have not made any changes to your TutorialBase project, or any other project that uses the starterArt resource, then you can simply drag and drop the images folder and resourceDatabase.cs script. <BR><BR><BR>
+<span style="font-weight: bold;">Manual Merge</span><br><br>
+With these files, you can either perform a manual merge or simply copy the files over your existing ones. If you are trying to add these resources to a project other than <em>TutorialBase</em>, or you've modified <em>TutorialBase</em> to contain new imageMaps, you should perform a manual merge. Here are the following steps you should follow to perform a manual merge:<BR>
+<br>
+
+      <ol>
+        <li>Open up the zip file.</li>
+        <li>Copy the images from the zip file to your TutorialBase\resources\starterArt\images folder. Make sure you do not copy over any images you already have that share the same name.</li>
+        <li>Open resourceDatbase.cs found in TutorialBase\resources\starterArt with your text editor of choice</li>
+        <li>Copy the code found below these instructions, then paste it at the bottom of your script file just before the final }; bracket.</li>
+        <li>Save your script file run your project to make sure the images show up.</li>
+        
+      </ol>
+</td>
+      <BR><BR>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<pre class="code">
+
+new t2dImageMapDatablock(particles1ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles1";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles2ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles2";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "128";
+      cellHeight = "128";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles3ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles3";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "128";
+      cellHeight = "128";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles4ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles4";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles5ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles5";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles6ImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/particles6";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(raindropImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/raindrop";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "32";
+      cellHeight = "32";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(lightningImageMap)
+   {
+	   imageName = "./images/lightning";
+	   imageMode = cell;
+	   cellWidth = 64;
+	   cellHeight = 128;		
+   };
+
+   new t2dAnimationDatablock(lightningAnimation)
+   {
+      imageMap = lightningImageMap;
+      animationFrames = "0 1 2 3 1 2 3";
+      animationTime = 0.3;
+      animationCycle = true;
+      randomStart = true;
+   };
+   new t2dImageMapDatablock(bagPuffImageMap)
+   {
+	   imageMode = full;
+	   imageName = "./images/puffs/bag_puff";
+	   filterPad = false;
+   };
+
+   new t2dImageMapDatablock(bagPuff2ImageMap)
+   {
+	   imageMode = full;
+	   imageName = "./images/puffs/bag_puff2";
+	   filterPad = false;
+   };
+   new t2dImageMapDatablock(font1ImageMap) {
+      imageName = "./images/font1.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "16";
+      cellHeight = "16";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(ggLogoImageMap) {
+      imageName = "./images/gglogo.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(ringImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/ring.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(shipImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/ship.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(flamesImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/flames.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "32";
+      cellHeight = "32";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dAnimationDatablock(flamesAnimation) {
+      canSaveDynamicFields = "1";
+      imageMap = "flamesImageMap";
+      animationFrames = "0 1 2 3";
+      animationTime = "0.3";
+      animationCycle = "1";
+      randomStart = "1";
+      startFrame = "0";
+   };
+   new t2dAnimationDatablock(matrixAnimation) {
+      canSaveDynamicFields = "1";
+      imageMap = "font1ImageMap";
+      animationTime = "10";
+      animationCycle = "1";
+      randomStart = "1";
+      startFrame = "0";
+   };
+   new t2dImageMapDatablock(beamImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/beam.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(strikeImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/strike.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(smokeImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/smoke.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(emberImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/ember.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(dustImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/dust.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(exhaustImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/exhaust.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(shotImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/shot.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particle_block_glowImageMap) {
+      imageName = "./images/particle_block_glow.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles_arcImageMap) {
+      imageName = "./images/particles_arc.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "2";
+      cellCountY = "2";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles_glowImageMap) {
+      imageName = "./images/particles_glow.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "2";
+      cellCountY = "2";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(particles_spiralImageMap) {
+      imageName = "./images/particles_spiral.png";
+      imageMode = "CELL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "2";
+      cellCountY = "2";
+      cellWidth = "64";
+      cellHeight = "64";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dImageMapDatablock(tracksImageMap) {
+      imageName = "./images/tracks.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+   new t2dAnimationDatablock(particles_arcAnimation) {
+      imageMap = "particles_arcImageMap";
+      animationFrames = "0 1 2 3";
+      animationTime = "0.4";
+      animationCycle = "1";
+      randomStart = "0";
+      startFrame = "0";
+   };
+   new t2dImageMapDatablock(puzzlesymbol_crossImageMap) {
+      canSaveDynamicFields = "1";
+      imageName = "./images/symbol_cross";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "0";
+      preferPerf = "0";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+   };
+</pre>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1.4 - 1.1.4.</i></font>

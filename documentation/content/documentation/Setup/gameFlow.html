@@ -1,0 +1,117 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 355;
+   parent.leftFrame.expandToItem('tree2', 'doc355');
+   var element = parent.leftFrame.document.getElementById('doc355');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Game Flow</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque2D_Setup skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#The_File_Hierarchy"><span class="tocnumber">2</span> <span class="toctext">The File Hierarchy</span></a></li>
+                          <li class="toclevel-1"><a href="#Starting_the_Game"><span class="tocnumber">3</span> <span class="toctext">Starting the Game</span></a></li>
+                          <li class="toclevel-1"><a href="#Managing_Game_Processes"><span class="tocnumber">4</span> <span class="toctext">Managing Game Processes</span></a></li>
+                          <li class="toclevel-1"><a href="#Shutting_Down_the_Game"><span class="tocnumber">5</span> <span class="toctext">Shutting Down the Game</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">6</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>All Torque2D projects have a standard game flow that exists from the moment the game is loaded until the game is shut down. </p>
+                <a name="The_File_Hierarchy" id="The_File_Hierarchy"></a>
+                <br><h2> <span class="mw-headline"> The File Hierarchy </span></h2>
+                <p>This image represents the hierarchy for the script files that we will
+                  be discussing in this reference manual. Please refer to it whenever a 
+                  file location id mentioned. </p>
+                <p><img alt="File:HierarchyImage.png" src="images/HierarchyImage.png" border="0" height="476" width="296" /> </p>
+                <a name="Starting_the_Game" id="Starting_the_Game"></a>
+                <br><h2> <span class="mw-headline"> Starting the Game </span></h2>
+                <p>When the system first loads the game, the main.cs located in the <b>/ProjectFiles/common</b> folder is run. This file contains the function to run when the game is first loaded - using the <b>onStart();</b> function, and the function to run when the game is finished shutting down - using the <b>onExit();</b> function. Once the Main.cs file has finished loading into memory, the <b>onStart();</b> will be automatically called, at the very bottom of the script file. </p>
+                <p><br />
+                  When the <b>onStart();</b> is run, it will execute the various game loading scripts, including: </p>
+                <ul>
+                  <li> <b>/scripts/game.cs</b> - The launching point for the TorqueScript code unique to your game. </li>
+                </ul>
+                <ul>
+                  <li> <b>/scripts/system/system.cs</b> - The launching point for the TorqueScript code that manages file loading and system actions, unique for your game. </li>
+                </ul>
+                <p><br />
+                  When this loading has been completed, the function <b>initalizeGame();</b> will be called. This function is defined in <b>/scripts/game.cs</b>. </p>
+                <p><br />
+                  The <b>initalizeGame();</b> function will call the <b>startGame();</b> function. This function accepts the global variable <b>$Game::DefaultScene</b>, which is the default .t2d file to load when the game is first launched. </p>
+                <p><br />
+                  The value of the global variable <b>$Game::DefaultScene</b> is defined in <b>/scripts/system/defaultPrefs.cs</b> near the top of the file. The default level that is loaded is <b>data/levels/emptyLevel.t2d</b>, however this can be changed to whatever the first level file you need to load for your game might be. </p>
+                <p><br />
+                  The <b>startGame();</b> function is located just below the <b>initalizeGame();</b> function in <b>/scripts/game.cs</b>. </p>
+                <p><br />
+                  At this point the first level will have loaded and your game has begun! </p>
+                <a name="Managing_Game_Processes" id="Managing_Game_Processes"></a>
+                <br><h2> <span class="mw-headline"> Managing Game Processes </span></h2>
+                <p>Torque2D games, on the TorqueScript level, do not contain a Main 
+                  loop like the C++ engine-level contains. To put it simply, the engine 
+                  waits to receive commands from the Script level, and then runs them. 
+                  Thanks to this you do not need to manage a constant logic loop or cycle 
+                  of any kind. Just setup your code and the objects in your game world, 
+                  and they will react appropriately when they are toggled, used or 
+                  manipulated by the user. </p>
+                <a name="Shutting_Down_the_Game" id="Shutting_Down_the_Game"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Torque2D projects all have a standard game flow. This game flow is 
+                  clean and easy to work with, and does not require a Main logic loop to 
+                  be constantly maintained - actions simply need to be performed to occur. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

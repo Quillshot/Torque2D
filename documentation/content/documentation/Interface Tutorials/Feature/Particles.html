@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 57;
+   parent.leftFrame.expandToItem('tree2', 'doc57');
+   var element = parent.leftFrame.document.getElementById('doc57');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<TITLE>Torque 2D - Particles Tutorial</TITLE>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050723;15050000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060801;11433000">
+	<META NAME="SDFOOTNOTE" CONTENT ; ; ; ;P>
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE> 
+	<!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--> 
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="FONT-SIZE: 16pt"><B>Torque
+	2D - Particles Tutorial</B></FONT></FONT></P>
+</DIV>
+<H2>Introduction</H2>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>In
+this tutorial, you'll learn how to create particle effects in Torque
+2D (T2D).  Particle effects are commonly used for things
+like explosions, rain, smoke, and lots of other cool special effects.
+With practice, you'll be able to use the T2D particle builder to
+create some really amazing visual effects.  To be exact, a 'particle
+effect' is a group of similar graphics that combine to make an
+interesting visual effect.  Particle effects are generated
+automatically by a set of parameters that can be edited in Torque
+2D. They also move automatically according to a similar set
+of parameters. One example of a particle effect is a cloud of smoke
+that is made of a bunch of small smoke-puff graphics that move around
+in a cluster.  Another example would be rain, which might be made of
+a bunch of raindrops that move from the top of the screen to the
+bottom.</FONT></FONT></P>
+<h2>Preparation</h2>
+</FONT>
+<p CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>To
+prepare for this tutorial, you need to have additional particles and assets currently not in the T2D install. Next, run Torque 2D and load the <I>TutorialBase</I>
+project (if it's not already loaded) by choosing <I>Open Project...</I><SPAN STYLE="FONT-STYLE: normal">
+from the file menu and selecting </SPAN><I>games/TutorialBase/project.t2dProj</I><SPAN STYLE="FONT-STYLE: normal">.
+ Then, create a new scene. Finally, save this new scene  as "ParticleTutorial".</SPAN></FONT><BR></p>
+<H2>Creating A New Particle Effect</H2>
+    <P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+        <FONT SIZE=3 face="Arial, sans-serif">The Torque 2D
+particle system is extremely versatile and includes a multitude of
+features. This allows you to create, effectively, an infinite number
+of cool effects.  When dealing with something that has this many
+options, it's usually good to have an idea of what you want to create
+before you start working.  For this tutorial, we'll be making a
+simple explosion that consists of fire shooting out in all directions
+with a puff of smoke in the center.</FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>To see some examples of
+particle effects, open the <I>Particle Effect </I>section in the
+<I>Create Tab</I>.  In there, you'll see many examples.  When you
+hover over them with the mouse, you can see them animate.  These
+particle effects can be dragged into the <I>Scene View</I> if you
+want to see them in action.  When you are done viewing them, you can
+select them by clicking on the center of the effect and pressing the
+<I>Delete</I> key.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ParticleFigure1.png" 
+            NAME="graphics1" ALIGN=left BORDER=0 width="700"><BR CLEAR=left>
+<BR CLEAR=left><FONT FACE="Arial, sans-serif"><FONT SIZE=3>To
+start working on our new effect, drag the first entry, <I>newEffect.eff</I>,
+onto the <I>Scene View</I>.  It starts out emitting a &quot;Test
+Texture&quot; graphic by default. In order to start editing its
+properties, go to the <I>Edit </I>tab and open the <I>Particle Effect</I>
+section. Note that if you click on the graph icon on the left of this
+section's label, it will open the graph editor rather than the
+<I>Particle Effect</I> section itself.  Also, in order to get a good
+view of the <I>Edit</I> tab, you may want to drag its left border
+further to the left so that you can read all of the properties.</FONT></FONT>
+<BR>
+<H2>Particle Effects and Emitters</h2>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><SPAN >Before
+you dive into making an effect, <FONT COLOR="#000000">let's talk
+about a couple of important particle concepts in Torque 2D:
+'effects' and 'emitters'. A particle 'effect' is the whole particle
+effect that we save off, including one or more emitters.  An
+'emitter' is a component of a particle effect which will generally
+create one type of particle.  For example, in this tutorial the fire
+will be created by one emitter, and the smoke by another. The
+particle 'effect' will be the combination of these two emitters. This
+technique of combining multiple emitters can make some really
+mind-blowing particle effects.</FONT></SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>First, Type "Fireball" into the <I>Create Emitter</I>
+text box and press the plus sign next to it.  </FONT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Then, click the big &ldquo;Delete This Emitter&rdquo;
+button on the default test emitter. </FONT></FONT><FONT SIZE=3>A new <I>Emitter</I> subsection appears in the <I>Particle Effect</I> section.  We're
+still not seeing anything in the <I>Scene View</I>, but that's about
+to change.  In the <I>Emitter </I>subsection, find the <I>Image</I> dropdown, which contains all the available sprites in the project,
+and select <I>particles1ImageMap</I>.  Now you can see some tiny
+fireballs shooting out in a circle.  Remember, you can zoom in and
+out of the <I>Scene View</I> with the '+' and '-' keys if you want a
+better look.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><IMG SRC="images/ParticleFigure2.png" ALT="Frame2" ALIGN=bottom><BR>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>So
+now we've created our 'emitter' that is spraying out 'particles': the
+fireballs. Already this effect is pretty neato, but it's definitely
+not the explosion we're looking for. For one thing, the fireballs are
+too small and they go too far.  For another, we don't want them
+shooting out in this strange pattern. Before going on, press the <I>Save
+Effect</I><SPAN STYLE="FONT-STYLE: normal"> button and name the new
+effect "simpleExplosion.eff".  Remember to use this save
+button whenever you want to save your particle effects... <U>simply
+saving a scene that contains a particle effect will not save the
+particle effect in it!</U></SPAN></FONT></FONT></P>
+<BR>
+<H2>Using the Graph Editor to Change Size</H2>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>We'll cover the
+properties shown in the <I>Particle Effect</I> and <I>Particle
+Emitter</I> sections later.  For now, we're going to explore the real
+powerhouse of T2D particle system... the graph editor.  We want to
+edit the graph of our emitter, so click on the graph icon next to the
+<I>Emitter - Fireball</I> label.  The dialog that pops up is the
+graph editor, which is used to edit our particles' properties <U>over
+time</U>.  If you don't understand what that means, you will by the
+end of this tutorial.</FONT></FONT></P>
+<IMG SRC="images/ParticleFigure3.png" NAME="Frame3" ALT="Frame3" ALIGN=bottom>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>To see a list of emitter
+properties that you can access with the graph, click the <I>Current
+Field </I>dropdown <I>(as shown in Figure 3)</I>.  Dang, that's a lot
+of options!  That's why it's a good idea to have some idea what
+you're trying to create before you jump in. Select <I>Size X Life</I>
+from the list.  This property defines the size of our particles
+during their lifetime. The point on the far left is the starting
+point.  Click on the point and you'll see its starting value, which
+is 0,1.  The first of these numbers is the time, and the second
+number is the value.  In this case, at time zero (when the particle
+is created) the <I>Size X Life</I> value is one.  Drag that point up
+and down.  You can see your particles change size as you do this. 
+Leave the point at around 0,3.5.  If your particle effect is hidden
+behind the graph editor, move it so you can see it as you work, like
+this:</FONT></FONT></P>
+
+<BR>
+
+<IMG SRC="images/ParticleFigure4.png" NAME="Frame4" ALT="Frame4" ALIGN=bottom>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Now, we want to make our
+fireballs get smaller and smaller until they disappear a little ways
+from the selection box of our particle.  To do this, add a new point
+in the middle area of the graph by clicking there.  Drag the point
+around until the fireballs shrink to nothing just outside the
+selection box.  What you are doing is creating a graph of the
+particles' size. They start full size at time zero (the 0,3.5 point),
+then shrink as time progresses to the right.  </FONT></FONT>
+</P>
+<BR>
+<IMG SRC="images/ParticleFigure5.png" NAME="Frame5" ALT="Frame5" ALIGN=bottom><BR>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>If you need to delete a
+point in the graph editor, you can simply right-click on it.  Note
+that you are not allowed to delete the point at time 0 (the far left
+point).</FONT></FONT></P>
+<BR>
+<H2>Using The Graph Editor To Fade</H2>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Right now the fireballs
+just shoot out and shrink, then disappear instantly... what we really
+want is for them to fade out quickly at the end, like a real
+explosion.  To do this we'll use the property called <I>Visibility
+Life</I>, which controls the particles' transparency.  In the graph
+editor <I>Current Field</I> dropdown, select that property.  To begin
+with, create a point in the middle of the graph, then drag it all the
+way to the bottom.  Now drag that point left and right until you can
+see the particles fading out at the end of their lifespans, but make
+sure they still last long enough to reach the edge of the selection
+box. This makes the particles fade gradually throughout their life,
+but what we really want is for them to stay at full intensity until
+about halfway through their life, then fade out.  All we have to do
+is create a new graph point between the two points you already have,
+and drag that point straight up to the top of the graph.  Now, when a particle is created it is fully
+visible. It stays that way until halfway through its life, then it
+fades out to nothing.  If you have trouble seeing this effect, close
+the graph editor and zoom into your particle effect with the '+' key.</FONT></FONT></P>
+<BR>
+
+<IMG SRC="images/ParticleFigure6.png" NAME="Frame6" ALT="Frame6" ALIGN=bottom><BR>
+<H2>Using the Graph Editor on the Effect Scene</H2>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Okay, the effect is
+starting to look pretty cool, but we wanted an explosion, not a
+continuous spray of fire. To change this, we're going to edit some
+effect properties, as opposed to <U>emitter</U> properties, which is
+what we have been editing. Scroll up to the main <I>Particle Effect</I>
+section and open the graph.  Select <I>Quantity Scale</I> from the
+<I>Current Field</I> dropdown. This property affects the quantity of
+particles produced.  Raise that initial point all the way to the top
+of the graph (0, 20).  Well, now it's sort of exploding, but it seems
+to last forever.  What we want is to produce this quantity of
+particles, but only for a second, and then stop.  Like you did in the
+last section, add a couple more points... one at around 0.9, 20 and
+the other at around 1, 0.  When you put
+in the point at 1,0 you'll see the particle effect stop producing
+particles... this is because the <I>Quantity Scale</I> goes down to
+zero, meaning zero particles will be produced.  To see your effect
+continue to generate, change the <I>Effect Mode </I>property in the
+<I>Particle Effect </I>section to <I>CYCLE</I>.  Next change the
+<I>Effect Lifetime </I>to "2".  Now the effect starts over
+(or 'cycles') every 2 seconds... 2 because the <I>Effect Lifetime</I>
+is set to 2.  Good stuff...  the effect is looking a little more like
+an explosion now!</FONT></FONT></P>
+<BR>
+<IMG SRC="images/ParticleFigure7.png" NAME="Frame7" ALT="Frame7" ALIGN=bottom 
+        width="700"><BR>
+<BR>
+<H3>Creating A Second Emitter</H3>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Let's quickly go through
+making a second emitter.  This will make the explosion look more real
+by adding smoke and it will also solidify your understanding of using
+the particle editor.  To begin, type "Smoke" into the
+<I>Create Emitter</I> text box, and press the plus sign to create. 
+You can now scroll down to the <I>Emitter - Smoke </I>section.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>First we need an image. 
+Actually, this time lets use an animation... in the <I>Animation</I>
+property, which contains all the animated sprites from your project,
+select <I>flamesAnimation</I>.  Open the emitter's graph editor and
+change <I>Size X Base </I>point to around 0,5.  Now we can see our
+smoke animation.  Change the <I>Quantity Base </I>point to around 0,
+20.  Now change the <I>Speed Base</I> point to 0, 0.5 to stop the smoke
+from rushing away.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>For the next property,
+we're going to use the text boxes on the bottom of the graph editor. 
+Select <I>Speed Variance</I> in the dropdown and try to set it the
+point to 0, 0.5.  It's pretty hard to be exact because the graph is 0
+on the bottom and 1000 on the top.  These numbers are defined by the
+<I>Value (Min/Max)</I> properties.  Drag the point down to the
+bottom, then change the <I>Value Max</I> property to "10"
+and press <I>Enter</I>.  Now the graph goes from 0 on the bottom to
+<U>10</U> on the top.  Position the <I>Speed Variance </I>around 0, 0.5.  Note that if you needed to, you could
+change the <I>Time (Min/Max)</I> properties to affect the
+left-to-right scale of the graph also. Keep in mind that you can tailor these values to your liking, and your values may not always be identical to these screens.</FONT></FONT></P>
+<BR>
+<IMG SRC="images/ParticleFigure8.png" NAME="Frame8" ALT="Frame8" ALIGN=bottom 
+        width="700"><BR>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>The last change to make
+in the graph editor is to <I>Visibility Life</I>.  Put points near 0,
+0 then 0.3, 0.3 then 0.7, 0.  This
+makes the smoke fade in and out nicely. If you think the smoke lags behind the explosion, modify your first point's value to something close to 0, 0.1.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Finally, we just need to
+get rid of that funny ghost shape that always appears in the center. 
+To do this, we'll make the particles come out randomly rotated,
+instead of always standing up in the same orientation.  Simply change
+the <I>Orientation</I> property in <I>Emitter - Smoke </I>to <I>RANDOM</I>.
+ </FONT></FONT>
+</P>
+<BR>
+<IMG SRC="images/ParticleFigure9.png" NAME="Frame9" ALT="Frame9" ALIGN=bottom><BR>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Okay, you now have a
+decent little explosion animation.  The best way to learn the
+particle system is to experiment, so if you want to try making some
+changes, go for it!</FONT></FONT></P>
+<BR><BR>
+<H3>Particle Effect Properties</H3>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>Now that you have some
+hands on experience with the T2D particle system, you'll have an
+easier time understanding the various properties available in the
+<I>Particle Effect </I>section and <I>Emitter</I> subsections of the
+<I>Edit </I>tab.  We'll start with the two that are available in the
+<I>Particle Effect</I> section.  </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Effect Mode</B> has
+four possibilities.  All of them except <I>INFINITE</I> use the
+<I>Effect Lifetime </I>property.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>INFINITE:</B><SPAN >
+The particle has an infinite lifespan.  An infinite mode particle
+can, however, become invisible if it is no longer generating any
+visible particles, it just has no built in time frame.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>CYCLE: </B><SPAN >The
+particle will repeat its life-cycle over and over again.  The
+interval of this repetition is defined by the <I>Effect Lifetime</I>
+property.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>KILL:</B><SPAN >
+The effect will delete itself once the <I>Effect Lifetime </I>elapses.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>STOP: </B><SPAN >The
+effect will stop playing, but will not delete itself, when the <I>Effect
+Lifetime</I> elapses.</SPAN></FONT></FONT></P>
+<BR>
+<H3>Particle Emitter Properties</H3>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>The real meat of a
+particle effect is in its emitters.  Here's a list of all the
+available settings in the <I>Edit </I>tab:</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Image:</B><SPAN >
+What image is used for the particle. </SPAN></FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Animation:</B><SPAN >
+What animation is used for the particle.  <U>Either</U> <I>Image </I>or
+<I>Animation</I> will be used, both cannot be used simultaneously.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Frame:</B><SPAN >
+When using a cell based <I>Image</I> this defines which frame to use
+for the particle.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Type:</B><SPAN >
+This tells an emitter where exactly to emit from.  <I>POINT</I> emits
+from the center of the particle effect object.  <I>LINEX</I> emits
+from a horizontal line through the center of the particle effect. 
+<I>LINEY</I> emits from a vertical line through the center of the
+particle effect.  <I>AREA</I> emits from the whole particle effect
+area.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Orientation: </B><SPAN >This
+defines at what angle the particles are emitted.  <I>ALIGNED</I>
+emits at the same angle that the particle effect object is rotated
+to.  <I>FIXED</I> emits them at the angle in the <I>Fixed Angle</I>
+property.  <I>RANDOM</I> emits them at (surprise!) a random angle.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Pivot (X and Y):</B><SPAN >
+Define the relative (0 to 1)  location of each particle's pivot
+points.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Force Angle: </B><SPAN >Used
+by the 'Fixed Force' graphs.  Usually this is used for simulating
+gravity.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Fixed Aspect: </B><SPAN >When
+this is selected, the particle's overall size is defined by their
+<U>Size X</U><I> </I>in the graphs, with their Y sizes proportionally
+scaled.  When this is not selected, its Y scale and X scale are
+determined separately, by 'Size Y' and 'Size X'.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Use Effect Emission:
+</B><SPAN >Allows many of the emitters
+graph values to be set by the overall effect's graphs.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Intense Particles:</B><SPAN >
+ Makes the particles look fire-like.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Single Particle: </B><SPAN >Only
+shows one particle at a time.  This is helpful for editing certain
+properties.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Attach Position:</B><SPAN >
+When this is selected, all particles will move with the particle
+effect object when it is moved.  Otherwise, they will trail behind
+it, pursuing their individual destinies.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Attach Rotation:</B><SPAN >
+When this is selected, all particles will follow the rotation of the
+particle effect object, similar to the <I>Attach Position</I>
+property.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Rotate Emission:</B><SPAN >
+Aligns the emitter with the particle effect object.  This is useful
+for directional particles, like jet flames.</SPAN></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>First in Front:</B><SPAN >
+Normally when a particle is created, it is seen <U>in front of</U>
+previous particles that were created by its particle effect.  When
+this is checked, new particles are created <U>behind</U> previously
+particles.</SPAN></FONT></FONT></P>
+<BR>
+<H3>In Conclusion</H3>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>This tutorial has covered
+enough to get you started with particles in T2D.  As you've seen,
+though, there are an incredible number of options available to you
+using this system.  This tutorial did not cover most of the options
+available in the emitter and effect graphs.  For information about
+these, see the <I>Particle Engine</I> reference document.  Also, as
+mentioned above, one of the best ways to learn about the particle
+system is just to play with it and see what kind of effects you can
+come up with.  It will be well worth your while to experiment with
+every property described here and in the <I>Particle Engine</I>
+document.  Enjoy!</FONT></FONT></P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

@@ -1,0 +1,323 @@
+﻿<style type="text/css">
+    .style1
+    {
+        width: 425px;
+        height: 257px;
+    }
+    .style3
+    {
+        width: 546px;
+        height: 409px;
+    }
+    .style4
+    {
+        width: 434px;
+        height: 715px;
+    }
+    .style5
+    {
+        width: 458px;
+        height: 296px;
+    }
+    .style6
+    {
+        width: 695px;
+        height: 693px;
+    }
+    .style7
+    {
+        width: 435px;
+        height: 171px;
+    }
+    .style8
+    {
+        width: 434px;
+        height: 366px;
+    }
+    .style9
+    {
+        width: 541px;
+        height: 324px;
+    }
+    .style10
+    {
+        width: 523px;
+        height: 627px;
+    }
+    .style11
+    {
+        width: 391px;
+        height: 189px;
+    }
+    .style12
+    {
+        width: 432px;
+        height: 224px;
+    }
+    .style13
+    {
+        width: 24px;
+        height: 24px;
+    }
+    .style14
+    {
+        width: 271px;
+        height: 322px;
+    }
+    .style15
+    {
+        width: 521px;
+        height: 193px;
+    }
+    .style16
+    {
+        width: 488px;
+        height: 196px;
+    }
+    .style17
+    {
+        width: 628px;
+        height: 238px;
+    }
+</style>
+<tooltip>Covers basic A-Star Setup</tooltip>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 81;
+   parent.leftFrame.expandToItem('tree2', 'doc81');
+   var element = parent.leftFrame.document.getElementById('doc81');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+    <title>A-Star Basic Setup in Torque 2D</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+<p><em>This article was posted to the TDN by <strong>Steven A. Hine</strong>.</em></p>
+
+<p>First I'd like to acknowledge the person who wrote the aStar code. This is an awesome resource. Thanks Phil. After trying to implement this in a few games I finally figured it out. Here is the easiest way to use aStar.</p>
+
+<h3>Step 1: (Creating a Project)</h3>
+
+<p>First create a new project called aStarFollowing, add the puzzle template, and check the copy executable box.</p>
+
+    <p>
+        <img alt="" class="style1" src="images/aStarFollow01.png" /></p>
+
+<p>Next we will need to add some behaviors to make the player and camera move. (You can get the behaviors from 
+    the Shooter game demo included with Torque 2D.)&nbsp; Simply copy the behaviors 
+    from the <strong>Shooter\game\behaviors</strong> folder into the <strong>\aStarFollowing\game\behaviors</strong> folder.</p>
+
+<p>The next step to do is to reload T2D's editor. This can be done by going to the project menu and clicking 'reload project'. This will add the new behaviors to the editor.</p>
+
+<p>Now the aStar files need to be added to the scripts folder. They should be in T2D's installed folder: 
+    <strong>\Program Files\Torque\TorqueGameBuilder-1.7.5\games\AStarDemo\game\gameScripts</strong>. Copy the files 
+    <strong>aStarActor.cs</strong> and <strong>aStarPath.cs</strong> into the<strong> \aStarFollowing\game\gameScripts</strong> folder.</p>
+
+<p>All files are setup except the scripts we need to create. The next section will set up the scene for interaction with the player and AI.</p>
+
+<h3>Step 2: (Creating a scene)</h3>
+
+<p>aStar uses a tile map to process path calculations. Each tile in the map is a location in the game world that the AI can either be on or have to move around. This is set up is by using the tile editor to create values for each tile in the map. First drag a new newlayer object into the level area from the tile maps tab. Change the tile count x/y to 30 and tile size x/y to 5. Then press the size object to layer button to show all the tiles.</p>
+
+    <p>
+        <img alt="" class="style3" src="images/aStarFollow03.png" /></p>
+
+<p>To add tiles to the map press the tile editing tab to reveal the edit controls:</p>
+
+<p>
+    <img alt="" class="style4" src="images/aStarFollow04.png" /></p>
+
+<p>First, under image find the puzzleBlock_1ImageMap. Then under custom data delete 'none' and type in 10. This is where aStar will find the value to rate each tile. Each tile in the map does not have to be done. Only the tiles that need to have a value higher than 0 will have to be done.&nbsp; 
+    Check the Collision box so that the player can&#39;t pass through our walls.</p>
+
+<p>A value of 0 means that the AI can move on to the tile, higher values tell aStar to move around the tile. 10 is the highest value and impassable. The AI will not be able to use this tile. When a tile&#39;s custom data is set a circle 
+    with a &#39;C&#39; in it will be put in the top left hand corner of the tile.</p>
+
+<p>
+    <img alt="" class="style5" src="images/aStarFollow05.png" /></p>
+
+<p>After setting up the tile, save the tile setup as a Brush.&nbsp; Here are the 
+    steps again:</p>
+    <p>
+        <img alt="" class="style10" src="images/aStarFollow10.png" /></p>
+    <p>Next, create a floor brush using frame 3, Custom Data set to 0 and Collision off.</p>
+    <p>
+        <img alt="" class="style10" src="images/aStarFollow11.png" /></p>
+    <p>Now, select your wall brush and paint walls, then select your floor brush and use 
+        the Flood Fill tool to paint the floor.&nbsp; </p>
+    <p>
+        <img alt="" class="style11" src="images/aStarFollow12.png" /></p>
+    <p>
+        <img alt="" class="style12" src="images/aStarFollow13.png" /></p>
+    <p>Build a map that resembles the following:</p>
+
+<p>
+    <img alt="" class="style6" src="images/aStarFollow06.png" /></p>
+
+<p>Lastly, scroll down to the 'scripting' tab and enter 'pathLayer' into the class field. This hooks the tile layer with the aStar $PathGrid global variable.</p>
+    <p>
+        <img alt="" class="style7" src="images/aStarFollow07.png" /></p>
+
+<h3>Step 3: (Adding the player with controls and camera)</h3>
+
+<p>To see how well aStar works, a player will be added with keyboard controls of left, right, up, and down. Press the create button to show the 'Static 
+    Sprites' tab. Choose any image from the tab and drag it into the scene into the tile layer. With this image still selected 
+    select the Edit tab and open the 'Behaviors' rollout.&nbsp; Click the drop-down 
+    to open the list of available behaviors. This is what it should look like:</p>
+
+<p>
+    <img alt="" class="style8" src="images/aStarFollow08.png" /></p>
+
+<p>The behaviors we copied from the Shooter project should appear. If they are not there, check to see if they are in the correct folder (/'project name'/behaviors/) and reload the project. When asked to save the project, save it as start.t2d.</p>
+
+<p>Select Shooter Controls and click the green &#39;plus&#39; button (
+    <img alt="" class="style13" src="images/aStarFollowAddButton.png" 
+        style="vertical-align: middle" /> ) to add the behavior to the object. Change the setting in the Shooter Controls to this:</p>
+
+<p>
+    <img alt="" class="style9" src="images/aStarFollow09.png" /></p>
+
+<p>If the scene was played now, the keyboard arrows would move the object around the screen. The controls are now set up.&nbsp; </p>
+    <p>Open the Scripting rollout and name your player object &#39;thePlayer&#39;, then set the 
+        Class attribute to &#39;playerClass&#39;.&nbsp; This will let us mount the camera to the 
+        player as well as handle a few other things in script.</p>
+    <p>
+        <img alt="" class="style15" src="images/aStarFollow15.png" /></p>
+    <p>Now the player is set up. Next we&#39;ll add the AI and scripts to set up the aStar movement.</p>
+
+<h3>Step 4: (AI and aStar)</h3>
+
+<p>First choose a Static Sprite and drag it into the scene inside the tile map. It should be put between the blocks in the map. Open up the scripting tab and enter this information: Name: pAI Class: AIClass Super Class: aStarActor.</p>
+    <p>
+        <img alt="" class="style16" src="images/aStarFollow17.png" /></p>
+    <p>It is always good to give object a unique name. The class will be used to add 
+        some more functionality to the object through script. Finally the super class 
+        aStarActor will add all the functions need to give control to the aStar system.</p>
+    <p>&nbsp;While we&#39;re here, let&#39;s give the enemy a Face Object behavior and have it 
+        face the player object:</p>
+    <p>
+        <img alt="" class="style17" src="images/aStarFollow16.png" /></p>
+
+<p>At this point the level can be saved as 'start.t2d' and T2D closed.</p>
+
+<p>aStar works by making each tile in the tile map a node that the AI can move to. Of course, whether or not the tile is used depends on the custom data value that it has. All the blocks we added earlier have a value of 10, so they are not usable and aStar will move around them. It is assumed that any tile that does not have its custom data set has a value of zero.</p>
+
+<p>In this picture the AI moves in the path shown by the arrows , because it is the shortest path of tiles that are open.</p>
+
+<p>
+    <img alt="" class="style14" src="images/aStarFollow14.png" /></p>
+
+<p>If you need a more in depth understanding of aStar, there are many resources on the internet as well as books on the subject. All 
+    of these calculations happen in engine code as they are set up and requested by 
+    the game scripts.</p>
+
+<p>To get aStar to work, open up a new notepad file and type in this code:</p>
+
+<pre>
+function AIClass::onLevelLoaded(%this, %sceneGraph)
+{
+   %this.moveSpeed = 10;
+   %this.enableUpdateCallback();
+}
+
+function AIClass::onUpdate(%this)
+{
+  
+   %this.startPath(%this.getPosition(), $thePlayer.getPosition());
+}
+</pre>
+
+<p>First the onLevelLoaded function is used to set up the moveSpeed variable. This variable is used to tell aStar how fast the AI should move to the next tile or node in the tile map. Then the onUpdate callback is enabled, so that the player and AI position can be passed to aStar. aStar will use these to create the path. Next, type in this code below the onUpdate function.</p>
+
+<pre>
+function AIClass::startPath(%this, %start, %dest)
+{
+   // find our path
+   %this.pathGrid = $pathGrid;
+   %newPath = %this.findDestinationPath(%dest);
+   if (isObject(%newPath)  )
+   {
+     %this.currentPath = %newPath;
+     %this.followAStarPath(%newPath);
+     activeActorsSet.add(%this);
+   }
+   else
+   {
+      %this.isFrustrated("noPath");
+   }
+}
+</pre>
+
+<p>This code comes from the aStar demo in the sample games distributed with T2D. First a function called startPath is declared for the AIClass. In it we pass a start destination (%start) and a end destination (%dest). Next a pathGrid object is created that points to the aStarPath tileLayer from the level. A %newPath is created by calling aStarActor findDestinationPath. This function was added to the AI by the super class. It tries to find a path to the destination passed to the startPath function.</p>
+
+<p>If a newPath is created, the code continues through the 'if' statement. The currentPath is updated with the newPath. Next the AI is told to follow the path by calling followAStarPath from the aStarActor supr class. Lastly, this object is added to the activeActorsSet, which will update the path if the game world has changed.</p>
+
+<p>When a path is not found to the object, the else statement is executed. The isFrustrated function is called, which states there is no path. The isFrustrated function can be changed to create different behaviors. The most obvious is when a path was tried several times with no conclusion. By keeping count of how many tries were made, the AI's last try could tell it to do some other action. These actions could be to wait, random directions, or give up. Save the file as 'Actor.cs'.</p>
+
+<p>Create another new file and enter the following code:</p>
+
+<pre>
+function playerClass::onLevelLoaded(%this, %scenegraph)
+{
+   $thePlayer = %this;
+   %this.class = playerClass;
+   
+   $thePlayer.setCollisionMaxIterations(2);   
+   
+   %force = 20;
+   sceneWindow2D.mount($thePlayer, "0 0", %force, true);
+   
+   // register with our possible destinations list
+   if (!isObject(DestinationSet) )
+   {
+      $targets = new SimSet(DestinationSet);
+   }
+   DestinationSet.add(%this);
+}
+</pre>
+
+<p>This sets up a global $thePlayer variable that we can use to access the player 
+    from anywhere in our scripts.&nbsp; It also keeps the collision detection system 
+    from bogging the system down by setting the maximum iterations to 2.&nbsp; This 
+    basically limits the processing done when your player object collides with one 
+    of your wall tiles.&nbsp; Then 
+    it mounts the camera to the player so that we can watch ourselves wander about 
+    our level.&nbsp; Finally, it puts our player on the destination list for the 
+    aStarActor objects in the game so that they will follow us.&nbsp; Save this file 
+    as &#39;player.cs&#39;.</p>
+
+<p>Before any of the above code will run, T2D needs to be told to compile the new file as well as aStarActor and aStarPath. Add this code to the main.cs file in the 'game' directory of the project. It goes below the 'Exec game scripts' line::</p>
+
+<pre>
+exec("./gameScripts/aStarActor.cs");
+exec("./gameScripts/aStarPath.cs");
+exec("./gameScripts/actor.cs");
+exec("./gameScripts/player.cs");
+</pre>
+
+<p>These lines should be self explanatory. Save the file and close notepad. At this point the scene can be run. Open up T2D and run the scene. The AI should chase the player around the scene avoiding the blocks in the tile map. </p>
+
+<h3>Conclusion</h3>
+    <p>After this basic coverage of the A-Star pathfinding system hopefully you are now 
+        ready to set up and use it in your games.&nbsp; Additionally, in <a href="http://www.garagegames.com/community/forums/viewthread/126616" class="external text" 
+                        title="aStar with Tile Line-of-Sight" rel="nofollow">this post</a> Kevin Hawkins adds line-of-sight calculation to the 
+    existing A-Star pathfinding system.</p>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

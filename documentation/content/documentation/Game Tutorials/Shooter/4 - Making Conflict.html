@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 37;
+   parent.leftFrame.expandToItem('tree2', 'doc37');
+   var element = parent.leftFrame.document.getElementById('doc37');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Torque 2D &ndash; Shooter Tutorial Part 4</TITLE>
+	<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050225;10000000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;17040100">
+    <STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0.73in; font-style: normal">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=5 STYLE="font-size: 17pt"><B>Torque
+	2D &ndash; Shooter Tutorial &ndash; Part 4</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>4.
+Making Conflict</B></FONT></FONT></P>
+<BR>
+
+<H2 CLASS="western">4.1 Creating Enemies</H2>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>So, now that we have our
+player in the level and moving around, bound by the constraints of
+the map, let's give him an opponent to worry about. In your Static
+Sprites library in your Create tab, click and drag an enemy ship into
+the level.</FONT></FONT></P>
+
+&nbsp;
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You will notice something
+peculiar when you drag your enemy into the scene:</FONT></FONT></P>
+
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Your enemy is HUGE
+compared to you! The reason he is so much bigger is not because he
+was drawn bigger, it is because when T2D resizes artwork, they resize
+it in respect to your camera view. This is a good idea because if you
+made all of your artwork for an 800x600 game, T2D will size it for
+you in ratio to your canvas. That simply means that T2D assumes that
+the camera view is an 800x600 screen view and so sizes the artwork we
+bring in relative to that assumption. So, since we made our camera
+view bigger to accommodate our player ship, all other art we bring in
+is going to be bigger <I>(as shown in Figure 4.1.1.)</I>. So, to
+remedy this, we need to resize our enemy to about the size of our
+player <I>(as shown in Figure 4.1.2)</I>.&nbsp; </FONT></FONT>
+<br>
+
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-1-1.jpg" NAME="graphics43" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.1.1</B></I></FONT></P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-1-2.jpg" NAME="graphics44" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.1.2</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we have our enemy, let's get them moving across the screen. 
+Like the player ship, we will need to give this enemy a name and a
+class. Go into the Edit tab with the enemy selected and type in the
+name &ldquo;eShip&rdquo; and a class of &ldquo;enemyShip&rdquo;.
+Again we should save our progress and close down T2D. Browse out to
+your yourProjectName/gameScripts folder, the same folder we created
+our player.cs file, add a new text file named enemy.cs  </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Inside
+your enemy.cs file, add the following code:</FONT></FONT></P>
+<BR>
+
+<pre class = "code">
+function enemyShip::onLevelLoaded(%this, %scenegraph)
+{
+   %this.enemyMovement();
+}
+
+function enemyShip::enemyMovement(%this)
+{
+   %this.setLinearVelocityX(getRandom(%this.minSpeed, %this.maxSpeed));
+}
+</pre>
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.1.1</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>All
+this function does is call a movement function for the enemy that
+sets its speed along the X axis to a random variable between minSpeed
+and maxSpeed. Again, these are variables that don't exist yet, so we
+will create it the same way we created the variables for the player's
+ship &ndash; the dynamic fields box. But first we need to get the
+engine to run the code we just wrote.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>To do this, we again need
+to browse out to our main games/yourProjectName/gameScripts folder
+and open up our game.cs file. When you get your file open, you need
+to find this line of code again:</FONT></FONT></P>
+
+<pre class = "code">
+exec(&quot;./player.cs&quot;);
+</pre>
+
+<FONT SIZE=2>Once you have located
+this, add this line of code right below it:</FONT>
+
+<pre class = "code">
+exec(&quot;./enemy.cs&quot;);
+</pre>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.1.2</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>As with before, this just
+tells your game to run your enemy.cs file when it loads up.&nbsp; Now that
+the game will run your code, let's add hSpeed to our enemy and get it
+to move across the screen!</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Open
+the Level Builder back up and select the enemy ship. Add a
+minSpeed and maxSpeed variable with values of your desire. I wanted
+my enemies to move quickly, so I chose -175 and -225, respectively.
+You will need to remember that your enemy is moving in the opposite
+direction as you, so the numbers for their speeds will also need to
+be opposite, hence the negative numbers. &nbsp; Once you have your speed
+range set, go back into the game and check out the results <I>(as
+shown in Figure 4.1.3)</I>!</FONT></FONT></P>
+<br>
+<table>
+<tr>
+<td>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-1-3a.png" NAME="graphics34" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.1.3a</B></I></FONT></P>
+</td>
+</tr><tr>
+<td valign = top>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-1-3b.gif" NAME="graphics45" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.1.3b</B></I></FONT></P>
+</td>
+</tr>
+</table>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+enemy sprite will keep moving with this velocity, unless we tell it
+not to any more. As you surely noticed very quickly, when the
+enemy zooms by the player, they go off screen never to be seen again.
+This is not desirable since we want to fight the enemy more than
+once. So, we are going to set it up so that our enemy respawns in a
+random Y location when they hit the outer edge of their world limit. </FONT></FONT>
+</P>
+<BR>
+
+
+<BR>
+
+<H2 CLASS="western">4.2 Respawning our Enemy</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>In order to respawn our
+enemy, we need to figure out at what point to respawn him and where
+to respawn him. Luckily, since we know where our enemy's world limit
+is, we can use this as a means to determine when to respawn them.
+First, we need to adjust our enemy's world limit. Select our enemy
+and change the
+world limit to be just outside of the camera view <I>(as shown in
+Figure 4.2.2)</I>. We do this so that the enemy will spawn outside of
+the screen view and fly completely off of our screen view before we
+respawn them, so it gives the illusion of multiple enemies.&nbsp;</FONT></FONT></P>
+<BR>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-2.jpg" NAME="graphics1" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.2.2</B></I></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that you have your enemy's world limit set properly, you should move
+them outside of the camera view. Also, just to save us some time
+before we code- select your enemy and go into the dynamic fields
+rollout of the edit tab. Create two new fields named minY and maxY.
+The values for these fields should be highest on the screen you want
+the enemy to spawn, and the lowest on the screen.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Not
+sure what those numbers are? You can easily find out by selecting
+your enemy ship and moving it to the maximum Y location you want it
+to spawn. Then, get into the Scene Object rollout and see what Y
+location that is <I>(as shown in Figure 4.2.3)</I>. </FONT></FONT>
+</P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-3.jpg" NAME="graphics2" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT>
+	                               <FONT SIZE=1><I><B>Figure 4.2.3</B></I></FONT></P>
+<BR CLEAR=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=2>I
+usually round that number down, so I would probably say that my maxY
+is -95. Do the same to figure out your minY. I rounded mine to 25 <I>(as
+shown in Figure 4.2.4)</I>. </FONT></FONT>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><SPAN ID="Frame43" DIR="LTR" STYLE="float: left; width: 4.6in; height: 1.22in; border: none; padding: 0in; background: #ffffff">
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-4.jpg" NAME="graphics3" ALIGN=LEFT BORDER=0 width="331" height="80"><BR CLEAR=LEFT>
+	                        <FONT SIZE=1><I><B>Figure 4.2.4</B></I></FONT></P>
+</SPAN><BR CLEAR=LEFT> 
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once
+you have those numbers, fill in the values for your minY and maxY.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Next,
+we want to make sure that when our enemy hits the edge of their limit
+we get a callback from the engine. To do this, click on the edit tab
+of the enemy ship and expand the World Limit rollout <I>(as shown in
+Figure 4.2.5)</I>. </FONT></FONT>
+</P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-5.jpg" NAME="graphics4" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.2.5</B></I></FONT></P>
+<BR CLEAR=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+you get into the rollout, change the Limit Mode to NULL and click the
+callback checkbox at the bottom of the rollout. </FONT></FONT>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we have our dynamic fields set up <I>(as shown in Figure 4.2.6)</I>,
+our world limits worked out, we are ready to plug in the code that
+will make our ship work how we want it to. Save your progress and
+close out of the engine. Open up your enemy.cs file and insert the
+following code into it &ndash; note that we are completely reworking
+some of the functions that we created earlier to get the enemy's
+movement working properly. We will start with the onLevelLoaded
+function:</FONT></FONT></P>
+<BR>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-6.jpg" NAME="graphics5" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.2.6</B></I></FONT></P>
+<BR>
+
+<pre class = "code">
+function enemyShip::onLevelLoaded(%this, %scenegraph)
+{
+   %this.startX = %this.getPositionX();
+   %this.spawn();
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.2.1</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Compare
+this new function to the old version we originally put in our file:</FONT></FONT></P>
+<BR>
+
+<pre class = "code">
+function enemyShip::onLevelLoaded(%this, %scenegraph)
+{
+   %this.enemyMovement();
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"> 
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We
+have completely taken out our enemyMovement() function because
+everything it does can be handled in the spawn() function we will be
+creating later. Also, you will notice this line:</FONT></FONT></P>
+<BR>
+
+<pre class = "code">
+   %this.startX = %this.getPositionX();
+</pre>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>What
+this basically does is say that whatever X position our enemy is in
+when the game starts is where it will start when we run the game.
+This allows us to control the X position of the enemy's start inside
+the Level Builder. </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+next function we will create will handle what happens when the enemy
+hits the edge of their world limit:</FONT></FONT></P>
+<BR>
+
+<pre class = "code">
+function enemyShip::onWorldLimit(%this, %mode, %limit)
+{
+   if(%limit $= &quot;left&quot;)
+   {
+      %this.spawn();
+   }
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.2.2</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>What
+this function does is wait for the callback when the enemy hits the
+left edge of their world limit. When they hit the limit, it calls the
+spawn() function:</FONT></FONT></P>
+
+<pre class = "code">
+function enemyShip::spawn(%this)
+{
+   %this.setLinearVelocityX(getRandom(%this.minSpeed, %this.maxSpeed));
+   %this.setPositionY(getRandom(%this.minY, %this.maxY));
+   %this.setPositionX(%this.startX);
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.2.3</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+function handles what happens when the enemy is spawned. The first
+line is cut out of the old enemyMovement() function that we deleted &ndash;
+it sets a random speed to give the enemy. The next line chooses a
+random starting place along the Y axis to spawn the enemy on. The
+third line places the enemy on the X position they were when we
+started the level. </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We
+have made a lot of changes, let's make sure that our code looks the
+same. This is what your enemy.cs file should look like right now:</FONT></FONT></P>
+<BR>
+
+<pre class = "code">
+function enemyShip::onLevelLoaded(%this, %scenegraph)
+{
+   %this.startX = %this.getPositionX();
+   %this.spawn();
+}
+
+
+function enemyShip::onWorldLimit(%this, %mode, %limit)
+{
+   if(%limit $= &quot;left&quot;)
+   {
+      %this.spawn();
+   }
+}
+
+
+function enemyShip::spawn(%this)
+{
+   %this.setLinearVelocityX(getRandom(%this.minSpeed, %this.maxSpeed));
+   %this.setPositionY(getRandom(%this.minY, %this.maxY));
+   %this.setPositionX(%this.startX);
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 4.2.4</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+your code matches, save your script file and reload the engine. When
+you run your new game, you should see your enemy flying across the
+screen at you, disappear behind you, and then respawn at a different
+Y location (and speed) and fly at you again <I>(as shown in Figure
+4.2.7)</I>!</FONT></FONT></P>
+<table>
+<tr>
+<td>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-7a.jpg" NAME="graphics52" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.2.7a</B></I></FONT></P>
+</td><td width = "25>
+</td><td>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-2-7b.jpg" NAME="graphics53" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure_4.2.7b</B></I></FONT>
+</td>
+</tr>
+</table>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"> 
+</P>
+<H2 CLASS="western">4.3 Adding Multiple Enemy Instances</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You may be saying to
+yourself &ldquo;Yeah, this is cool, but I want to battle hordes of
+enemies.&rdquo; Well, thanks to the class system in T2D and the way
+we set up our code, making that dream a reality is as simple as
+copy/paste &ndash; literally! </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>To add multiple enemies,
+simply go into the Level Builder, click on your enemy, type CTRL+C
+for copy and CTRL+V as many times as you want to paste. <B>NOTE: </B>All
+of your new enemy instances will paste directly on top of the
+original enemy,  so don't worry when you still only see one enemy.</FONT></FONT></P>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that you have
+multiple enemies in the level, you can move them around so that they
+start with different X locations. Plus, with the way we set up our
+code, when we test our level, they will all start at different Y
+locations and have different speeds! Test it out <I>(as shown in
+Figure 4.3.1)</I>!</FONT></FONT></P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-3-1a.png" NAME="graphics46" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.3.1a</B></I></FONT></P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure4-3-1b.png" NAME="graphics54" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	4.3.1b</B></I></FONT></P>
+<BR CLEAR=LEFT><BR>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we  have our player and enemies moving, we need to get them
+firing weapons at each other!</FONT></FONT></P>
+<BR>
+
+<BR>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

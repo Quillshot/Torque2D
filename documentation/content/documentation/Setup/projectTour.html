@@ -1,0 +1,114 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 356;
+   parent.leftFrame.expandToItem('tree2', 'doc356');
+   var element = parent.leftFrame.document.getElementById('doc356');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Project Tour</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque2D_Setup skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#File_Hierarchy"><span class="tocnumber">2</span> <span class="toctext">File Hierarchy</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">3</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>A default project created in Torque2D has a common file hierarchy which all 
+                    script and resource files are stored in.</p>
+                <a name="File_Hierarchy" id="File_Hierarchy"></a>
+                <h2> <span class="mw-headline"> File Hierarchy </span></h2>
+                <p><img alt="File:HierarchyImage.png" src="images/HierarchyImage.png" border="0" 
+                        width="296" /> </p>
+                <ul>
+                  <li> <b>common</b>
+                    <ul>
+                      <li> <b>data</b> - Common data. </li>
+                      <li> <b>gameScripts</b> - Common scripts to provide base functionality.</li>
+                      <li> <b>gui</b> - Common GUI elements and screen layouts.</li>
+                        <li> <strong>preferences</strong> - Game preferences are stored here.</li>
+                    </ul>
+                  </li>
+                  <li> <b>game</b>
+                    <ul>
+                          <li> <b>behaviors</b> - The .cs TorqueScript files for all of the Behaviors in your game. </li>
+                      <li> <b>data</b> - All the images, sounds, music, fonts and more
+                        <ul>
+                          <li> <b>audio</b> - All the audio for your game </li>
+                            <li> <b>levels</b> - The .t2d level files, each containing an individual Scene, for your game&nbsp;
+                          </li>
+                          <li> <b>particles</b> - The files containing the Particle Effect data. This only stores the control code for the particles, not the images.</li>
+                            <li> <strong>screenshots</strong> - Game screenshots are stored to this folder.</li>
+                            <li> <strong>shapes</strong> - This folder is for 3D shape objects.</li>
+                            <li> <strong>tilemaps</strong> - All tilemaps are stored to this folder.</li>
+                        </ul>
+                      </li>
+                        <li> <strong>gameScripts</strong> - This is where the game.cs file is located.&nbsp; 
+                            This file is the starting point for your game.</li>
+                      <li> <b>gui</b> - The .gui files for your in-game Graphical User Interfaces </li>
+                      <li> <b>managed</b> - Contains the datablock and brush files for your project. It 
+                          also contains the script files that carry the definitions of persistent game 
+                          objects.&nbsp; These are created and managed by the Torque2D editor. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Each Torque2D project has a standard hierarchical layout, making it 
+                  easy for even a new Torque developer to find their way through any 
+                  Torque2D project. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

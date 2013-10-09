@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 46;
+   parent.leftFrame.expandToItem('tree2', 'doc46');
+   var element = parent.leftFrame.document.getElementById('doc46');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  
+
+
+  <title>Torque 2D &ndash; Importing Resources</title><meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060728;13055200">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+H1 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+H1.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US }
+H1.cjk { font-family: "Lucida Sans Unicode"; font-size: 16pt }
+H1.ctl { font-family: "Tahoma"; font-size: 16pt; so-language: ar-SA }
+H2 { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+H2.western { font-family: "Arial", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
+H2.cjk { font-family: "Lucida Sans Unicode"; font-size: 14pt; font-style: italic }
+H2.ctl { font-family: "Tahoma"; font-size: 14pt; so-language: ar-SA; font-style: italic }
+A:link { color: #0000ff }
+-->
+  </style></head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="direction: ltr; color: rgb(0, 0, 0); width: 700px; padding: 10px;" lang="en-US" link="#0000ff" >
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Importing Resources</strong></font></font></font></p>
+    <p align="justify" class="western" style="margin-bottom: 0in; font-style: normal">
+        <font color="#333333"><font face="Arial, sans-serif"><font size="2">To import a T2D resource pack into your project,
+click the &ldquo;<strong>Project-&gt;Resources...</strong>&rdquo;
+dropdown menu. You will be presented with two lists. The list on
+the left contains all of the available resources that we don't have
+linked
+into your project, while the list on the right contains all of the
+resources currently linked into your project. For example, if you want
+to use the art from the checkers demo, select the
+&ldquo;<em>checkersArt</em>&rdquo; resource in the left list and click
+the <em>Add
+To Project</em> button <i>(as shown in Figure&nbsp;1)</i>.
+Now you should
+see the checkersArt resource listed in the right list. Click the <em>Save</em>
+button to finish the process <i>(as shown in Figure&nbsp;2)</i>.
+Now
+your object library in the right pane should be populated with
+checkers art <i>(as shown in Figure 3)</i>. With a couple
+clicks
+we've imported all the art needed for checkers!</font></font></font></p>
+
+<br>
+
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td>
+      <p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 190px; height: 304px; float: left;" alt="" src="images/Importing%20Resources%2001.jpg" name="graphics9"><br clear="left">
+
+      <font size="1"><i><b>Figure&nbsp;1</b></i></font></p>
+
+      </td>
+
+      <td width="25"></td>
+
+      <td>
+      <p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 191px; height: 343px; float: left;" alt="" src="images/Importing%20Resources%2002.jpg" name="graphics10"><br clear="left">
+
+      <font size="1"><i><b>Figure&nbsp;2</b></i></font></p>
+
+      </td>
+
+      <td width="25"></td>
+
+      <td>
+      <p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 230px; height: 335px; float: left;" alt="" src="images/Importing%20Resources%2003.jpg" name="graphics11"><br clear="left">
+
+      <font size="1"><i><b>Figure&nbsp;3</b></i></font></p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

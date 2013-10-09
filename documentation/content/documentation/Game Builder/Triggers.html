@@ -1,0 +1,171 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 12;
+   parent.leftFrame.expandToItem('tree2', 'doc12');
+   var element = parent.leftFrame.document.getElementById('doc12');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Scene Objects</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Trigger objects (t2dTrigger) allow a rectangular region to be placed 
+                  in the scene and have events occur whenever another object enters, is 
+                  within, or leaves it. t2dTrigger objects also have a collision callback 
+                  and can respond to physics events. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>To place a trigger, navigate to the Create panel. Find the Trigger object in the Other panel. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TriggerButton.png" src="images/RainyDay_TriggerButton.png" border="0" height="81" width="60" /> </p>
+                <p><br />
+                  Drag and drop this into the scene where you want it to exist. Once the 
+                  trigger has been placed, it can be resized like any other object within 
+                  the Scene View. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TriggerPlaced.png" src="images/RainyDay_TriggerPlaced.png" border="0" height="294" width="298" /> </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p>The properties of a trigger toggle what kind of callbacks exist whenever another object interacts with it. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TriggerPanel.png" src="images/RainyDay_TriggerPanel.png" border="0" height="87" width="122" /> </p>
+                <ul>
+                  <li> <b>Enter Callback</b> - Receive notifications of objects 
+                    entering the Trigger Area.  Causes the onEnter() callback function for 
+                    the designated behavior to be called. If no behavior is designated this 
+                    falls back to the onEnter() callback for the trigger's datablock. </li>
+                </ul>
+                <ul>
+                  <li> <b>Stay Callback</b> - Receive notifications of objects staying
+                    in the Trigger Area.  Causes the onStay() callback function for the 
+                    designated behavior to be called. If no behavior is designated this 
+                    falls back to the onStay() callback for the trigger's datablock.&nbsp; The Stay 
+                      callback runs every 30 milliseconds, so try not to do any really heavy work 
+                      inside of this function. </li>
+                </ul>
+                <ul>
+                  <li> <b>Leave Callback</b> - Receive notifications of objects 
+                    leaving the Trigger Area.  Causes the onLeave() callback function for 
+                    the designated behavior to be called. If no behavior is designated this 
+                    falls back to the onLeave() callback for the trigger's datablock. </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>   new t2dTrigger(newTriggerObject) {
+      canSaveDynamicFields = "1";
+      Position = "155.197 -85.001";
+      size = "82.323 538.627";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+      UsesPhysics = "1";
+      MountOffset = "-0.005 0.248";
+      MountOwned = "0";
+      MountInheritAttributes = "0";
+         mountID = "4";
+         mountToID = "3";
+   };
+
+// This callback function is invoked when another object
+// enters the trigger zone
+// %this - The current trigger
+// %object - ID of the object that has entered the zone
+function MyTrigger::onEnter(%this, %object)
+{
+   // Get the name of the object that entered the trigger
+   %name = %object.getName();
+   echo(%name @ " entered this trigger");
+}
+
+// This callback function is invoked when another object
+// is within the trigger zone
+// %this - The current trigger
+// %object - ID of the object that is within the trigger
+function MyTrigger::onStay(%this, %object)
+{
+   // Get the name of the object that entered the trigger
+   %name = %object.getName();
+   echo(%name @ " is in this trigger");
+}
+
+// This callback function is invoked when an object
+// leaves the trigger zone
+// %this - The current trigger
+// %object - ID of the object that has left the zone
+function MyTrigger::onLeave(%this, %object)
+{
+   // Get the name of the object that left the trigger
+   %name = %object.getName();
+   echo(%name @ " exited this trigger");
+}
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Trigger objects allow your worlds to come to life with real time 
+                  events. Use them to toggle the dispensing of coins when hitting blocks, 
+                  or when the player has reached the level boss, amongst numerous other 
+                  things. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

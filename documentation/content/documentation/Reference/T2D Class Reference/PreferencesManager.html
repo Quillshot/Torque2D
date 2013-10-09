@@ -1,0 +1,467 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 271;
+   parent.leftFrame.expandToItem('tree2', 'doc271');
+   var element = parent.leftFrame.document.getElementById('doc271');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>PreferencesManager</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">PreferencesManager</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+SimObject
+</li>
+</ul>
+
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">addPref(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefBool(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list as a Bool. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefColorF(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list as a ColorF. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefColorI(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list as a ColorI. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefF32(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list as a F32. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefGroup(groupname, description[, selector])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference group to the list. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addPrefS32(prefname, description, type, tgevariable, defaultvalue[, selector][, label])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add a preference to the list as a S32. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">endPrefGroup()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> End the current preference group. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enumeratePrefGroup(group, selector, callback, callbackData)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Enumerate a preference group 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enumeratePrefs(selector, callback, callbackData)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Enumerate all preferences 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">get(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBool(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value as a boolean value. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getColorF(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value as a ColorF. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getColorI(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value as a ColorI. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFloat(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value as a floating point number. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getInt(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's value as an integer. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPrefBroadcastState(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's broadcast state. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPrefCtrlLabel(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's control label. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPrefSetupCtrlCB(prefname)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get a preference's control setup callback. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">set(prefname, value)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set a preference's value. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPrefBroadcastState(prefname, bool state)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set a preference's broadcast state. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPrefCtrlLabel(prefname, label)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set a preference's control label. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPrefSetupCtrlCB(prefname, callback)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set a preference's control setup callback. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

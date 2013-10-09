@@ -1,0 +1,1097 @@
+<style type="text/css">
+    .style1
+    {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+<html>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 88;
+   parent.leftFrame.expandToItem('tree2', 'doc88');
+   var element = parent.leftFrame.document.getElementById('doc88');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <title>T2D Glossary</title>
+   </head>
+   <BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font style="font-size: 16pt;" size="4"><b>Glossary</b></font></font></p>      
+
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Coordinate Systems</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">A coordinate system is a method of representing 
+            positions in a space. All coordinate systems in T2D are two-dimensional. </FONT>
+      </P>
+      <a name="Canvas_Space"></a>
+      <H4 CLASS="western"><FONT FACE="Arial, sans-serif">Canvas Space</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Canvas space matches the pixel size of the entire 
+            T2D window. (0, 0) is the upper left hand corner of the window and (resX, resY) 
+            is the lower right hand corner, where resX and resY are the horizontal and 
+            vertical resolution. Coordinates in this space are integer values. </FONT>
+      </P>
+      <P><FONT FACE="Arial, sans-serif"><B>Conversions</B> </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P><A HREF="#Window_Space"><FONT FACE="Arial, sans-serif">Window space</FONT></A><FONT FACE="Arial, sans-serif">
+                  can be converted to canvas space with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneWindow::getCanvasPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+      </UL>
+      <br />
+      <h2><span class="style1"><em>Local </em></span><A NAME="Local_Space"></A><em>
+          <span class="style1">Space:</span></em></h2>
+      <br />
+      <H4 CLASS="western"><A NAME="Object_Space"></A><FONT FACE="Arial, sans-serif">Object Space</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Each object has its own local coordinate system in 
+            object space. Valid coordinates in this system are in the range [-1.0, 1.0] 
+            where the point (-1.0, -1.0) is the upper left corner of the object's </FONT>
+         <A HREF="#Bounding_Box" target=""><FONT FACE="Arial, sans-serif">bounding box</FONT></A><FONT FACE="Arial, sans-serif">
+            and (1.0, 1.0) is the lower right corner of the bounding box. The center of the 
+            object is the origin. This space is used to define various </FONT>
+          <A HREF="../T2D%20Class%20Reference/t2dSceneObject.html">
+            <FONT FACE="Arial, sans-serif">t2dSceneObject</FONT></A><FONT FACE="Arial, sans-serif">
+            properties such as the collision polygon and mount points. </FONT>
+      </P>
+      <P><FONT FACE="Arial, sans-serif"><B>Conversions</B> </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Object space can be 
+                  converted to </FONT><A HREF="#World_Space"><FONT FACE="Arial, sans-serif">world 
+                     space</FONT></A><FONT FACE="Arial, sans-serif"> with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneObject::getWorldPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+         <LI>
+            <P><A HREF="#World_Space"><FONT FACE="Arial, sans-serif">World space</FONT></A><FONT FACE="Arial, sans-serif">
+                  can be converted to object space with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneObject::getLocalPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H4 CLASS="western"><A NAME="Window_Space"></A><FONT FACE="Arial, sans-serif">Window Space</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Window space is simply a translation of </FONT><A HREF="#Canvas_Space">
+            <FONT FACE="Arial, sans-serif">canvas space</FONT></A><FONT FACE="Arial, sans-serif">
+            offset by the position of the </FONT>
+          <A HREF="../T2D%20Class%20Reference/t2dSceneWindow.html">
+            <FONT FACE="Arial, sans-serif">t2dSceneWindow</FONT></A><FONT FACE="Arial, sans-serif">
+            on the </FONT><A HREF="../T2D%20Class%20Reference/GuiCanvas.html">
+            <FONT FACE="Arial, sans-serif">GuiCanvas</FONT></A><FONT FACE="Arial, sans-serif">.
+         </FONT>
+      </P>
+      <P><FONT FACE="Arial, sans-serif"><B>Conversions</B> </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">Window space can be 
+                  converted to </FONT><FONT FACE="Arial, sans-serif">canvas 
+                     space</FONT><FONT FACE="Arial, sans-serif"> with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneWindow::getCanvasPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><A HREF="#World_Space"><FONT FACE="Arial, sans-serif">World 
+                     space</FONT></A><FONT FACE="Arial, sans-serif"> can be converted to window 
+                  space with the </FONT><FONT FACE="Arial, sans-serif">
+                     t2dSceneWindow::getWindowPoint()</FONT><FONT FACE="Arial, sans-serif"> function.
+               </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif">Window space can be converted to </FONT><A HREF="#World_Space">
+                  <FONT FACE="Arial, sans-serif">world space</FONT></A><FONT FACE="Arial, sans-serif">
+                  with the </FONT><FONT FACE="Arial, sans-serif">
+                     t2dSceneWindow::getWorldPoint()</FONT><FONT FACE="Arial, sans-serif"> function.
+               </FONT>
+            </P>
+      </UL>
+      <br />
+      <h2><A NAME="Scene_Space"></A><span class="style1"><em>Scene Space:</em></span></h2>
+      <br />
+      <H4 CLASS="western"><A NAME="World_Space"></A><FONT FACE="Arial, sans-serif">World Space</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">World space is a virtual coordinate system that 
+            defines positions in the game world. By default, the origin is in the center of 
+            the screen, however this can be changed through the </FONT>
+          <A HREF="../T2D%20Class%20Reference/t2dSceneWindow.html">
+            <FONT FACE="Arial, sans-serif">t2dSceneWindow camera methods</FONT></A><FONT FACE="Arial, sans-serif">. 
+            The coordinate system is independent of screen resolution. </FONT>
+      </P>
+      <P><FONT FACE="Arial, sans-serif"><B>Conversions</B> </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">World space can be 
+                  converted to </FONT><A HREF="#Window_Space"><FONT FACE="Arial, sans-serif">window 
+                     space</FONT></A><FONT FACE="Arial, sans-serif"> with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneWindow::getWindowPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><A HREF="#Window_Space"><FONT FACE="Arial, sans-serif">Window 
+                     space</FONT></A><FONT FACE="Arial, sans-serif"> can be converted to world 
+                  space with the </FONT><FONT FACE="Arial, sans-serif">
+                     t2dSceneWindow::getWorldPoint()</FONT><FONT FACE="Arial, sans-serif"> function.
+               </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><A HREF="#Object_Space"><FONT FACE="Arial, sans-serif">Object 
+                     space</FONT></A><FONT FACE="Arial, sans-serif"> can be converted to world 
+                  space with the </FONT>
+                  <FONT FACE="Arial, sans-serif">t2dSceneObject::getWorldPoint()</FONT><FONT FACE="Arial, sans-serif">
+                  function. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif">World space can be converted to </FONT><A HREF="#Object_Space">
+                  <FONT FACE="Arial, sans-serif">object space</FONT></A><FONT FACE="Arial, sans-serif">
+                  with the </FONT><FONT FACE="Arial, sans-serif">
+                     t2dSceneObject::getLocalPoint()</FONT><FONT FACE="Arial, sans-serif"> function.
+               </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Data Types</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">TorqueScript is a typeless language, which means 
+            variables can be of any type, however several functions provided by T2D require 
+            parameters to be of a certain form. Also, the return value of many functions 
+            often takes the form of one of these data types. </FONT>
+      </P>
+      <H4 CLASS="western"><FONT FACE="Arial, sans-serif">Integer</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A whole number, positive or negative. </FONT>
+      </P>
+      <p>1, 34, -11, 0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Float"></A><FONT FACE="Arial, sans-serif">Float</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A real number, positive or negative. </FONT>
+      </P>
+      <p>1.5, 0.3, -14.7, 0.0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Bool"></A><FONT FACE="Arial, sans-serif">Bool</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Either true or false. Any non-zero number evaluates 
+            to true. Zero evaluates to false. The empty string also evaluates to false. </FONT>
+      </P>
+      <p>true, false, 1, 0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="String"></A><FONT FACE="Arial, sans-serif">String</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A sequence of any number of characters. </FONT>
+      </P>
+      <p>"This is a string."</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Vector"></A><FONT FACE="Arial, sans-serif">Vector</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Two </FONT><A HREF="#Float" target=""><FONT FACE="Arial, sans-serif">
+               float</FONT></A><FONT FACE="Arial, sans-serif"> values separated by a space 
+            with the first being the x value and the second being the y value. This could 
+            represent a position, vector, or size. To access a single component of the 
+            vector, use </FONT><A HREF="../../Scripting/Introduction.html">
+            <FONT FACE="Arial, sans-serif">getWord()</FONT></A><FONT FACE="Arial, sans-serif">.
+         </FONT>
+      </P>
+      <p>1.5 0.3 (or, for instance, %myVector = "1.5 0.3"; in script)</p>
+      <br />
+      <H4 CLASS="western"><A NAME="3D_Vector"></A><FONT FACE="Arial, sans-serif">3D Vector</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">This is the same as </FONT><A HREF="#Vector" target="">
+            <FONT FACE="Arial, sans-serif">vector</FONT></A><FONT FACE="Arial, sans-serif">, 
+            but includes a z value as a third component. </FONT>
+      </P>
+      <p>5.98 -12.4 0.0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Rectangle"></A><FONT FACE="Arial, sans-serif">Rectangle</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Four </FONT><A HREF="#Float" target=""><FONT FACE="Arial, sans-serif">
+               float</FONT></A><FONT FACE="Arial, sans-serif"> values separated by a space 
+            with the first two being the x and y position of the upper left corner, and the 
+            last two being the x and y position of the lower right corner of a rectangle. </FONT>
+      </P>
+      <p>0.0 0.0 10.0 10.0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Angle"></A><FONT FACE="Arial, sans-serif">Angle</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A </FONT><A HREF="#Float" target=""><FONT FACE="Arial, sans-serif">
+               float</FONT></A><FONT FACE="Arial, sans-serif"> value that represents an 
+            angle in degrees. If the number is an angular velocity, it is in degrees per 
+            second. </FONT>
+      </P>
+      <p>359.9</p>
+      <br />
+      <H4 CLASS="western"><A NAME="ColorF"></A><FONT FACE="Arial, sans-serif">ColorF</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A </FONT><A HREF="#Float" target=""><FONT FACE="Arial, sans-serif">
+               float</FONT></A><FONT FACE="Arial, sans-serif"> value between 0.0 and 1.0 
+            with 0.0 representing no color and 1.0 representing full color. The color fields are Red Green Blue Alpha.</FONT>
+      </P>
+      <p>The color white = 1.0 1.0 1.0 1.0</p>
+      <br />
+      <H4 CLASS="western"><A NAME="ColorI"></A><FONT FACE="Arial, sans-serif">ColorI</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">An </FONT><FONT FACE="Arial, sans-serif">
+               integer</FONT><FONT FACE="Arial, sans-serif"> value between 0 and 255 
+            with 0 representing no color and 255 representing full color. The color fields are Red Green Blue Alpha.</FONT>
+      </P>
+      <p>The color white = 255 255 255 255</p>
+      <br />
+      <H4 CLASS="western"><A NAME="Filename"></A><FONT FACE="Arial, sans-serif">Filename</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A string value that holds the name and path of a file.  Filenames in Torque are specified relative to the 
+            folder that the engine executable is in. The ~ character is used to indicate the game root folder.</FONT>
+      </P>
+      <p>%spriteImage = "~/data/images/mySprite.png";</p>
+      <br />
+      <H4 CLASS="western"><A NAME="List"></A><FONT FACE="Arial, sans-serif">List</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Multiple values of various data types separated by 
+            spaces. To access a single component of the list, use </FONT>
+          <A HREF="../../Scripting/Introduction.html">
+            <FONT FACE="Arial, sans-serif">getWord()</FONT></A><FONT FACE="Arial, sans-serif">
+         </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Object"></A><FONT FACE="Arial, sans-serif">Object</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">An object can be specified either by name or ID. A 
+            reference to this data type will also include the class of the object. The 
+            actual object that is used can be either of this class or any class derived 
+            from it. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><FONT FACE="Arial, sans-serif">Mask</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">Masks are integers that are treated as a series of 
+            bits instead of a single number. Each bit usually has the purpose of setting 
+            something to either on or off. Bit manipulation can be done with the '&amp;' 
+            and '|' operator as well as the BIT() and BITS() functions.</FONT></P>
+      <br />
+      <H4 CLASS="western"><A NAME="Ranges"></A><FONT FACE="Arial, sans-serif">Ranges</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A range is not a data type in itself, it just 
+            specifies the values that are valid for a particular data type. For example, 
+            the range (0, 31] means that the value can be anywhere between 0 and 31 
+            including 31 but not including 0. </FONT>
+      </P>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Enumerated Types</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">An enumerated type is a type whose possible values 
+            consist of a fixed set of constants. The following lists all of the enumerated 
+            types in T2D, their possible values, and a description of what each value 
+            means. </FONT>
+      </P>
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Image Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FULL</H4>
+                  - The entire image is used as a single frame. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>CELL</H4>
+                  - The image is split into several cells of the same size with each one used as 
+                  a frame. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>KEY</H4>
+                  - A 1 pixel border of a specific color is used to surround each of the frames 
+                  in the image. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>LINK</H4>
+                  - Several image maps are combined into a single image map. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Collision_Detection_Mode"></A><FONT FACE="Arial, sans-serif">Collision Detection Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FULL</H4>
+                  - A superscribed circle is used first to filter objects that are obviously not 
+                  colliding. If the bounding circles of objects are colliding, a further polygon 
+                  check is done to see if a collision actually occurred. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>CIRCLE</H4>
+                  - Only the collision circle is used in determining collisions. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>POLYGON</H4>
+                  - Only the collision polygon is used in determining collisions. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>CUSTOM</H4>
+                  - A custom function is called to detect whether or not collision has occurred 
+                  between two objects. This function is defined by the user in the engine. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Collision_Response_Mode"></A><FONT FACE="Arial, sans-serif">Collision Response Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>RIGID</H4>
+                  - The object uses rigid body physics. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>BOUNCE</H4>
+                  - The object bounces off the object it collided with. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>CLAMP</H4>
+                  - The object is kept from penetrating the object it collided with. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>STICKY</H4>
+                  - The object sticks to the collision point. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>KILL</H4>
+                  - The object is deleted. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>CUSTOM</H4>
+                  - A custom function is called to resolve collisions between two objects. This 
+                  function is defined by the user in the engine. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="World_Limit_Mode"></A><FONT FACE="Arial, sans-serif">World Limit Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>OFF</H4>
+                  - Turns the limit off. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>NULL</H4>
+                  - Nothing is done, but the callback is still called. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>CLAMP</H4>
+                  - The object is clamped to the edge of the limit bounds. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>STICKY</H4>
+                  - The object sticks to the spot where it hit the limit bounds. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>BOUNCE</H4>
+                  - The object bounces off the limit bounds. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>KILL</H4>
+                  - The object is deleted when it reaches the limit bounds. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Limit_Type"></A><FONT FACE="Arial, sans-serif">Limit 
+            Type</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>LEFT</H4>
+                  - The left side of the world limit. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>RIGHT</H4>
+                  - The right side of the world limit. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>TOP</H4>
+                  - The top of the world limit. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>BOTTOM</H4>
+                  - The bottom of the world limit </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Path_Type"></A><FONT FACE="Arial, sans-serif">Path Type</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>LINEAR</H4>
+                  - Pathed objects move in a straight line between path nodes. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>BEZIER</H4>
+                  - The path uses cubic bezier spline interpolation between nodes. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>CATMULL</H4>
+                  - The path uses catmull-rom spline interpolation between nodes. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Follow_Method"></A><FONT FACE="Arial, sans-serif">Follow Method</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>WRAP</H4>
+                  - Pathed objects continue in the same direction around the path upon reaching 
+                  the end node. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>REVERSE</H4>
+                  - Pathed objects reverse direction upon reaching the end node. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>RESTART</H4>
+                  - Pathed objects warp to the start node upon reaching the end node. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Life_Mode"></A><FONT FACE="Arial, sans-serif">Life Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>INFINITE</H4>
+                  - The effect will last forever regardless of the lifetime. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>CYCLE</H4>
+                  - All time graphs will be reset after the lifetime has expired. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>KILL</H4>
+                  - The effect will be deleted after the lifetime has expired. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>STOP</H4>
+                  - The effect will stop after the lifetime has expired. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Source_Blend_Factor"></A><FONT FACE="Arial, sans-serif">Source Blend Factor</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">The source blend factor determines how the color 
+            values of the incoming pixels are scaled in a blending operation. The final 
+            pixel color is computed by multiplying the source color by the source scale 
+            factor and adding it to the destination color multiplied by the destination 
+            scale factor. The following is a list of the source scale factors that can be 
+            used. Rs, Gs, Bs, and As are the red, green, blue, and alpha components of the 
+            source color and Rd, Gd, Bd, and Ad are the red, green, blue, and alpha of the 
+            destination color. </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ZERO</H4> - (0, 0, 0, 0) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE</H4> - (1, 1, 1, 1) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>DST_COLOR</H4> - (Rd, Gd, Bd, 
+                  Ad) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_DST_COLOR</H4> - 
+                  (1, 1, 1, 1) - (Rd, Gd, Bd, Ad) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>SRC_ALPHA</H4> - (As, As, As, 
+                  As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_SRC_ALPHA</H4>
+ -                   (1, 1, 1, 1) - (As, As, As, As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>DST_ALPHA</H4> - (Ad, Ad, Ad, 
+                  Ad) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_DST_ALPHA</H4> - 
+                  (1, 1, 1, 1) - (Ad, Ad, Ad, Ad) </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>SRC_ALPHA_SATURATE</H4> - (min(As, 1 - Ad), min(As, 1 - 
+                  Ad), min(As, 1 - Ad), 1) </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Destination_Blend_Factor"></A><FONT FACE="Arial, sans-serif">Destination Blend Factor</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">The destination blend factor determines how the 
+            color values of the pixels already in the frame buffer are scaled in a blending 
+            operation. The final pixel color is computed by multiplying the source color by 
+            the source scale factor and adding it to the destination color multiplied by 
+            the destination scale factor. The following is a list of the destination scale 
+            factors that can be used. Rs, Gs, Bs, and As are the red, green, blue, and 
+            alpha components of the source color and Rd, Gd, Bd, and Ad are the red, green, 
+            blue, and alpha of the destination color. </FONT>
+      </P>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ZERO</H4> - (0, 0, 0, 0) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE</H4> - (1, 1, 1, 1) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>SRC_COLOR</H4> - (Rs, Gs, Bs, 
+                  As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_SRC_COLOR</H4> - 
+                  (1, 1, 1, 1) - (Rs, Gs, Bs, As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>SRC_ALPHA</H4> - (As, As, As, 
+                  As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_SRC_ALPHA</H4> -
+                  (1, 1, 1, 1) - (As, As, As, As) </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>DST_ALPHA</H4> - (Ad, Ad, Ad, 
+                  Ad) </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>ONE_MINUS_DST_ALPHA - </H4>(1, 1, 1, 1) -(Ad, Ad, Ad, 
+                  Ad) </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Camera_Interpolation_Mode"></A><FONT FACE="Arial, sans-serif">Camera Interpolation Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>LINEAR</H4> - The camera 
+                  moves at a constant speed. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>SIGMOID</H4> - The camera starts and stops slowly for 
+                  smooth movement. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Emitter_Type"></A><FONT FACE="Arial, sans-serif">Emitter Type</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>POINT</H4> - All particles 
+                  are produced at the center point of the effect. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>LINEX</H4> - Particles are 
+                  produced randomly along a horizontal line the width of the effect. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>LINEY</H4> - Particles are 
+                  produced randomly along a vertical line the height of the effect. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>AREA</H4> - Particles are produced randomly anywhere in 
+                  the effect bounds. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Layer_Order_Command"></A><FONT FACE="Arial, sans-serif">Layer Order Command</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FRONT</H4> - The object is 
+                  moved to the front of the layer. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>BACK</H4> - The object is 
+                  moved to the back of the layer. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FORWARD</H4> - The object is 
+                  moved forward by one. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>BACKWARD</H4> - The object is moved backward by one. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Draw_Order_Command"></A><FONT FACE="Arial, sans-serif">Draw Order Command</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FRONT</H4> - The object is 
+                  moved to the front of layer 0. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>BACK</H4> - The object is 
+                  moved to the back of layer 31. </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FORWARD</H4> - The object is 
+                  moved forward by one. </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>BACKWARD</H4> - The object is moved backward by one. </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><A NAME="Particle_Orientation_Mode"></A><FONT FACE="Arial, sans-serif">Particle Orientation Mode</FONT></H2>
+      <UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>ALIGNED</H4> </FONT>
+            </P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FIXED</H4> </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>RANDOM</H4> </FONT>
+            </P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Math Extensions</FONT></H2>
+      <UL>
+         <LI VALUE="1">
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>DETECT</H4> &ndash; Auto 
+                  detect available extensions.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>C</H4> &ndash; Enable C 
+                  routines.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>FPU</H4> &ndash; Enable FPU 
+                  routines.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>MMX</H4> &ndash; Enable MMX 
+                  routines.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>3DNOW</H4> &ndash; Enable 
+                  3DNow routines.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>SSE</H4> &ndash; Enable SSE 
+                  routines.</FONT></P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Input Device</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">The mouse and joystick are appended with a number 
+            specifying the index of the device to use. This is used for situations where 
+            more than one mouse or joystick is attached to the computer. In cases where 
+            only one is attached, use '0' for '#'.</FONT></P>
+      <UL>
+         <LI VALUE="1">
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>MOUSE</H4></FONT></P>
+            <UL>
+               <LI>MOUSE#
+            </UL>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>KEYBOARD</H4> </FONT>
+            </P>
+         <LI>
+            <P><FONT FACE="Arial, sans-serif"><H4>JOYSTICK</H4></FONT></P>
+            <UL>
+               <LI>JOYSTICK#
+            </UL>
+      </UL>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Input Action</FONT></H2>
+      <P><FONT FACE="Arial, sans-serif">The following input actions names correspond to 
+            keys on the keyboard, buttons on a joystick or mouse, or a mouse axis. Any of 
+            these actions can optionally be pre-pended with a modifier followed by a space. 
+            This will cause the action to only be triggered when the modifier key or keys 
+            are held down. Available modifiers are 'ctrl', 'shift', 'alt', 'cmd', or 'opt'. 
+            A key name pre-pended with 'l' or 'r' indicate the left key or right key either 
+            based on the direction they face (brackets for example) or the side of the 
+            keyboard they are on ('ctrl' for example).</FONT></P>
+      <br />
+      <P>
+         <FONT FACE="Arial, sans-serif"><H2>Keyboard Keys</H2></FONT></P>
+      <UL>
+         <LI VALUE="1">
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>[LETTER]</H4> &ndash; Any 
+                  letter A-Z.</FONT></P>
+         <LI>
+            <P STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><H4>[NUMBER]</H4> &ndash; Any 
+                  number 0-9</FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>backspace</H4></FONT></FONT></P>
+      </UL>
+      <UL>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>tab</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>return</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>enter</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>shift</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ctrl</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>alt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>pause</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>capslock</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>escape</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>space</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>pagedown</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>pageup</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>end</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>home</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>left</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>up</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>right</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>down</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>print</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>insert</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>delete</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>help</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>win_lwindow</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>win_rwindow</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>win_apps</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>cmd</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>opt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lopt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ropt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad0</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad1</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad3</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad4</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad5</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad6</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad7</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad8</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpad9</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpadmult</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpadadd</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpadsep</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpadminus</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpaddecimal</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpaddivide</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numpadenter</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f1</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f3</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f4</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f5</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f6</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f7</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f8</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f9</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f10</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f11</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f12</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f13</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f14</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f15</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f16</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f17</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f18</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f19</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f20</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f21</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f22</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f23</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>f24</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>numlock</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>scrolllock</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lshift</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rshift</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lcontrol</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rcontrol</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lalt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ralt</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>tilde</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>minus</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>equals</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lbracket</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rbracket</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>backslash</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>semicolon</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>apostrophe</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>comma</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>period</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>slash</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lessthan</H4></FONT></FONT></P>
+      </UL>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H2>Joystick and Mouse Buttons</H2></FONT></FONT></P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <UL>
+         <LI VALUE="1">
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button0</H4> 
+                     &ndash; Left mouse button.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button1</H4> 
+                     &ndash; Right mouse button.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button2</H4> 
+                     &ndash; Middle mouse button.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button3</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button4</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button5</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button6</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button7</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button8</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button9</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button10</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button11</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button12</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button13</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button14</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button15</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button16</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button17</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button18</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button19</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button20</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button21</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button22</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button23</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button24</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button25</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button26</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button27</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button28</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button29</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button30</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>button31</H4></FONT></FONT></P>
+      </UL>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H2>Mouse and Joystick Axes</H2></FONT></FONT></P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <UL>
+         <LI VALUE="1">
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>xaxis</H4> 
+                     &ndash; Horizontal mouse, joystick, or left analog stick movement.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>yaxis</H4> 
+                     &ndash; Vertical mouse, joystick, or left analog stick movement.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>zaxis</H4> 
+                     &ndash; Scroll wheel movement or left analog trigger.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rxaxis</H4> 
+                     &ndash; Horizontal right analog stick movement.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ryaxis</H4> 
+                     &ndash; Vertical right analog stick movement.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rzaxis</H4> 
+                     &ndash; Right analog trigger.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>slider</H4></FONT></FONT></P>
+      </UL>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Joystick POV</FONT></FONT></P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <UL>
+         <LI VALUE="1">
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>xpov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ypov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>upov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>dpov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lpov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rpov</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>xpov2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>ypov2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>upov2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>dpov2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>lpov2</H4></FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>rpov2</H4></FONT></FONT></P>
+      </UL>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <P LANG="" STYLE="margin-bottom: 0in">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H2>Miscellaneous Events</H2></FONT></FONT></P>
+      <P LANG="" STYLE="margin-bottom: 0in"><BR>
+      </P>
+      <UL>
+         <LI VALUE="1">
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>anykey</H4> 
+                     &ndash; Any keyboard event.</FONT></FONT></P>
+         <LI>
+            <P LANG="" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><H4>nomatch</H4> 
+                     &ndash; Any key that is not bound to another event.</FONT></FONT></P>
+      </UL>
+      <br />
+      <H2 CLASS="western"><FONT FACE="Arial, sans-serif">Terms</FONT></H2>
+      <H4 CLASS="western"><FONT FACE="Arial, sans-serif">Callback</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A callback is a function defined in script that is 
+            called by the engine when some event occurs. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Field"></A><FONT FACE="Arial, sans-serif">Field</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A field is a variable that belongs to a specific 
+            object. These fields can be either static (sometimes called persistent) or 
+            dynamic. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Dynamic_Field"></A><FONT FACE="Arial, sans-serif">Dynamic Field</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A field that is created dynamically in script to 
+            store various information. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Persistent_Field"></A><FONT FACE="Arial, sans-serif">Persistent Field</FONT></H4>
+      <br />
+      <H4 CLASS="western"><A NAME="Static_Field"></A><FONT FACE="Arial, sans-serif">Static Field</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A field that is specified in the engine on a per 
+            class basis and used to store specific information about the state of the 
+            object. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Layer_Rendering"></A><FONT FACE="Arial, sans-serif">Layer Rendering</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">T2D has 32 layers numbered 0 - 31. Layer 0 is the 
+            top most layer, so objects on it will be drawn in front of objects on layer 3, 
+            for example. Objects can also be sorted within their layer with calls to 
+            t2dSceneGraph::setLayerDrawOrder. By default, objects added to a t2dSceneGraph 
+            are placed at the front of their layer. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Graph_Group"></A><FONT FACE="Arial, sans-serif">Graph Group</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">The graph group is a property mostly used for 
+            tagging objects. The most common use is as a collision group to separate 
+            objects that have the same collision properties. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Bounding_Box"></A><FONT FACE="Arial, sans-serif">Bounding Box</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">An object's bounding box is the smallest 
+            axis-aligned rectangle that completely encloses the object. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Convex"></A><FONT FACE="Arial, sans-serif">Convex</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A convex polygon is a polygon whose edges come 
+            together at internal angles less than 180 degrees. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Gravitic_Force"></A><FONT FACE="Arial, sans-serif">Gravitic Force</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A gravitic force acts on objects independent of 
+            their mass. </FONT>
+      </P>
+      <br />
+      <H4 CLASS="western"><A NAME="Constant_Force"></A><FONT FACE="Arial, sans-serif">Constant Force</FONT></H4>
+      <P><FONT FACE="Arial, sans-serif">A constant force is a force that acts continuously 
+            on an object, like gravity, for instance. </FONT>
+      </P>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

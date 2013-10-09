@@ -1,0 +1,24 @@
+There are two ways to install TSTK for use in your games.  One is easy, one is more difficult.
+
+Installing TSTK for TGB Games (The Easy Way)
+--------------------------------------------
+1. Go to "http://roaminggamer.com/resources/torque/tgb-templates/"
+2. Download and install any of the TGB game templates found there.
+3. Create a new game using one of the templates.
+4. Edit your game as you normally would. TSTK is installed. :)
+
+
+Installing TSTK for TGB Games (More Difficult Way)
+--------------------------------------------------
+1. Locate the directory containing your current game.  This is usually something like "~\Documents\MyGames\MyGame\", where the last part of the directory name "MyGame" is whatever you called your game when you created it.
+2. Copy "TSTK" into "~\Documents\MyGames\MyGame\game\"
+3. Edit the file "~\Documents\MyGames\MyGame\game\main.cs".
+4. Place this code at the top of the file:
+//---------------------------------------------------------------------------------------------
+// Torque Game Builder
+// Copyright (C) GarageGames.com, Inc.
+//---------------------------------------------------------------------------------------------
+
+exec("./TSTK/main.cs");
+
+5. Edit your game as you normally would. TSTK is installed. :)

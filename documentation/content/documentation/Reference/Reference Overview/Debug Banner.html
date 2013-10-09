@@ -1,0 +1,583 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 85;
+   parent.leftFrame.expandToItem('tree2', 'doc85');
+   var element = parent.leftFrame.document.getElementById('doc85');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE> </TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20050415;15540000">
+	<META NAME="CHANGED" CONTENT="20060601;9105300">
+	<STYLE>
+	<!--
+		@page { size: 11in 8.5in; margin-left: 1in; margin-right: 1in; margin-top: 0.49in; margin-bottom: 0.49in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P ALIGN=CENTER STYLE="margin-bottom: 0.22in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Torque
+	2D &ndash; Debug Banner</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Debug%20Banner.jpg" NAME="graphics1" ALIGN=BOTTOM WIDTH=660 HEIGHT=118 BORDER=0></P>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">The
+debug-banner can be activated by calling the following function on
+your t2dSceneGraph object:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<pre>
+mySceneGraph.setDebugOn( 0 );
+</pre>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">The
+debug-banner contains the following information:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<TABLE WIDTH=700 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=60>
+	<COL WIDTH=320>
+	<COL WIDTH=320>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#0000ff">
+			<P CLASS="western"><FONT COLOR="#ffffff"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>Banner
+			Name</I></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#0000ff">
+			<P CLASS="western"><FONT COLOR="#ffffff"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>Synopsis</I></FONT></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#0000ff">
+			<P CLASS="western"><FONT COLOR="#ffffff"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>Notes</I></FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">TotalObj</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Total
+			Objects in Scene-Graph.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			is the quantity of objects added to the scene.  Soon, this will
+			additionally have objects that are enabled/disabled as seperate
+			stats.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">SceneTime</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Current
+			Scene-Time.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			is world-time since start-up and is not necessarily indentical
+			with the internal platform-clock.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ActualFPS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			current FPS.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			current FPS is taken directly from the platform FPS calculation. 
+			It does not directly relate to the simulation FPS as the two can
+			be decoupled.</FONT></FONT></P>
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>setScenePhysicsFPSActive()&rdquo;</I>.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">MinFPS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			minimum FPS since start-up.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			minimum FPS currently includes the time taken during start-up. 
+			This can lead to low MinFPS values, depending on how fast the
+			system is.  This will be rectified in the future by not being
+			calculated until a period of time has elapsed (settle-time).</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">MaxFPS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			maximum FPS since start-up.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			maximum FPS isn&rsquo;t affected by start-up issues and is
+			therefore accurate in all situations.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">DeltaFPS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			Difference between the min/max FPS.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			allows you to get an idea of the difference between you maximum
+			and minimum FPS.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">X-Pos</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			X-position of the current camera.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Y-Pos</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			Y-position of the current camera.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">X-Width</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			width of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Y-Height</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			height of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Zoom</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			current camera zoom.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">X-Min</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			X-position of the top-left of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Y-Min</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			Y-position of the top-left of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">X-Max</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			X-position of the bottom-right of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Y-Max</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			Y-position of the bottom-right of the current camera view.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">BinReloc</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			quantity of bin-relocations this frame.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">MaxReloc</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			maximum quantity of bin-relocations since start-up.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">BinCollis</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			quantity of bins searched for all collisions.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">MaxCollis</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			maximum quantity of bins searched for all collisions since
+			start-up</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">PotCol</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			broad-phase potential collisions searched.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			gives you an idea of how many collisions the system is broadly
+			checking for.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ActCol</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			actual (broad+narrow phase) collisions found.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			gives you an idea of how many collisions are taking place.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ColHit</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			percentage collision-hits of &ldquo;ActCol&rdquo; to &ldquo;PotCol&rdquo;.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			higher the percentage here, the more efficient the
+			collision-system is working.</FONT></FONT></P>
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Contacts</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			number of contact-points calculated by the collision-system.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">PotRender</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			broad-phase potential object-renders searched.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			gives you an idea of how many objects to render the system is
+			broadly checking for.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ActRender</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			actual object-renders found.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			gives you an idea of how many object-renders are taking place.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">RenderHit</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			percentage of render-hits of &ldquo;ActRender&rdquo; to
+			&ldquo;PotRender&rdquo;.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			higher the percentage here, the more efficient the render-system
+			is working.</FONT></FONT></P>
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">SortedObj</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			number of objects sorted in preparation to layer-rendering.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">After
+			the set of objects to render (&ldquo;ActRender&rdquo;) has been
+			determined, they are sorted according to the layer-sorting rules
+			specified in the scene-graph.</FONT></FONT></P>
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">See
+			&ldquo;<I>t2dSceneGraph::initialise()</I>&rdquo;.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ParFree</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			number of free particle blocks allocated (one per particle).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			particle system attempts to keep a quantity of particle-blocks
+			free so that it can quickly allocated particles without allocating
+			any platform memory (cache).</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">ParUsed</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			number of used particle blocks (particles).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			is the quantity of active particles.  The higher the number, the
+			worse the performance.  This value on its own can be the cause of
+			poor performance and should be kept to an absolute minimum by
+			careful designing of particle effects/emitters.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyFpsLim</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			physics FPS Limit (lower-threshold).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">See
+			&ldquo;</FONT><I><FONT FACE="Arial, sans-serif">t2dSceneGraph::setScenePhysicsLimitFPS()</FONT></I><FONT FACE="Arial Narrow, sans-serif">&rdquo;</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyFpsTgt</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			physics FPS Target (simulation target).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">See
+			&ldquo;</FONT><I><FONT FACE="Arial, sans-serif">t2dSceneGraph::setScenePhysicsTargetFPS()</FONT></I><FONT FACE="Arial Narrow, sans-serif">&rdquo;</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyMaxItr</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			maximum physics iterations allowed (when below Limit).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial Narrow, sans-serif">See
+			&ldquo;</FONT><I><FONT FACE="Arial, sans-serif">t2dSceneGraph::setScenePhysicsMaxIterations</FONT></I><FONT FACE="Arial Narrow, sans-serif">&rdquo;</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*FrameDown</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			quantity of frame inactivity.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">This
+			will become obsolete very shortly but at the moment, there is no
+			sub-frame simulation whilst the integrator is waiting for the
+			target-time to elapse.  This will change with the networking
+			inter/extrapolation work.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyItrTim</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			physics time spent doing physics iteration this frame.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">-</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyUnfTim</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			physics time not used but to be added to next frame (underflow).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">When
+			the simulation is running, it will only process elapsed-time up to
+			the target-fps integration-time.  Anything over this time (slower
+			fps) will be added into the elapsed time during the next-frame and
+			hopefully used there.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=62 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">*PhyOflTim</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=335 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			total physics time out-of-bounds (overflow &ndash; lost time).</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=431 BGCOLOR="#e6e6e6">
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">The
+			simulation will ignore elapsed-time if it exceeds one-second
+			(1000ms / 1 FPS).  At this point, anything added here will be
+			ignored but tracked here as a cumulative total of lost time.</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*
+Only used when &ldquo;t2dSceneGraph::setScenePhysicsFPSActive()&rdquo;
+is activated.</I></FONT></FONT></P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

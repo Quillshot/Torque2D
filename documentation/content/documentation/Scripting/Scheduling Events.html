@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 351;
+   parent.leftFrame.expandToItem('tree2', 'doc351');
+   var element = parent.leftFrame.document.getElementById('doc351');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  <title>Torque 2D &ndash; Scheduling Events</title>
+
+
+  <meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060731;17161500">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+-->
+  </style>
+</head>
+
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Scheduling Events</strong></font></font></font></p>
+
+<p>The TorqueScript schedule() function lets you set up events for later.
+There are two very similar versions of this function: a global function
+version and an object method version. The base syntax for each is in Code Sample 1.</p>
+
+<pre class = "code">//GLOBAL
+schedule(5000, "spawnBadGuys", BadGuySpawner, 6, 3);
+//METHOD
+BadGuySpawner2.schedule(5000, "spawnBadGuys", 6, 3);
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 1</b></i></font></font></p>
+
+<br>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+<font face="Arial, sans-serif"><font size="2"><span style="font-size: 12pt; font-family: Times New Roman">
+    Both
+of the examples schedule a "spawn bad guys" event. Let's look at the
+global function version first.&nbsp;</span></font></font></p>
+
+<ol>
+
+  <li><span style="font-family: Times New Roman"><span style="font-size: 12pt"><font face="Arial, sans-serif"><font size="2"><span style="font-size: 12pt; font-family: Times New Roman">
+          The first argument, 5000, is the number of
+milliseconds to delay the event for, so the bad guys will be spawned in
+5 seconds.</span>&nbsp;</font></font> </span>
+  </span></li>
+
+  <li><span style="font-family: Times New Roman"><span style="font-size: 12pt"><font face="Arial, sans-serif"><font size="2"><span style="font-size: 12pt; font-family: Times New Roman">
+          The second argument is the name of the function to
+be called.</span></font></font></span></span></li><li><span style="font-family: Times New Roman"><span style="font-size: 12pt"><font face="Arial, sans-serif"><font size="2"><span style="font-size: 12pt; font-family: Times New Roman">
+            The third argument is the name of a reference
+object. If you specify an object in this argument, when the event is
+about to happen, Torque will check to make sure that object still
+exists. If the reference object does not exist at the scheduled
+            time, the event will be skipped. If you do not want a reference object
+test, simply put 0 in this argument.</span></font></font></span></span></li>
+    <li><span style="font-family: Times New Roman"><span style="font-size: 12pt"><font
+        face="Arial, sans-serif"><font size="2"><span style="font-size: 12pt; font-family: Times New Roman">
+            All further arguments are passed to the scheduled
+function. In the fictitious example function, perhaps the 6 and 3
+arguments represent the number of rows and columns of enemies to create. </span></font></font></span></span></li>
+
+</ol>
+    <span style="font-size: 12pt"><span style="font-family: Times New Roman">So,
+as long as the BadGuySpawner object exists in 5 seconds, this function
+call in Code Sample 2 will be executed at that time.
+
+<br>
+    </span></span>
+
+<pre class = "code">spawnBadGuys( 6, 3);
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 2</b></i></font></font></p>
+
+<br>
+
+The
+object method version of schedule() is quite similar. The object that
+calls the schedule() method acts like the reference object in the
+global function. So, in the example, if BadGuySpawner2 does not exist
+at the scheduled time, the event is skipped. The other difference in
+the object method version, is that the specified function
+is called as a method of the object. So, after 5 seconds,
+the function call in Code Sample 3 will be executed.
+
+<br>
+
+<pre class = "code">BadGuySpawner2.spawnBadGuys( 6, 3);
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 3</b></i></font></font></p>
+<p class="western" style="margin-bottom: 0in;" align="justify">If
+you ever need to cancel an event or check if an event is pending, they
+can be referenced using the eventID, which is returned when the
+schedule function is called. This can be useful to start player
+    movement checks only if there isn't one already (for instance, to prevent impulse-based
+    movement systems from being influenced by key-tapping). See the example in Code Sample 4.</p>
+
+<pre class = "code">// store the eventID in $spawnEvent
+$spawnEvent = schedule(5000, "spawnBadGuys", BadGuySpawner, 6, 3);
+// check to see if the event is pending
+if ( isEventPending( $spawnEvent))
+{
+   // delete the event
+   cancel( $spawnEvent);
+}
+</pre>
+
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="1"><i><b>Code
+Sample 4</b></i></font></font></p>
+
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

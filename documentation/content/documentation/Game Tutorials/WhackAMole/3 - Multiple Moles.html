@@ -1,0 +1,289 @@
+
+<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 43;
+   parent.leftFrame.expandToItem('tree2', 'doc43');
+   var element = parent.leftFrame.document.getElementById('doc43');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE>Torque 2D - Wack-A-Mole Tutorial Part 3</TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="CREATED" CONTENT="20060525;16445800">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060724;12225600">
+<STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	--></STYLE>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt">Torque 
+				2D - Whack-A-Mole Tutorial Part 3</FONT></FONT></P>
+</DIV>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Part 3 - 
+				Multiple Moles</B></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Fixing our mole 
+					spawn</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">You might have 
+			noticed that sometimes two moles spawn in the same point. To avoid this the 
+			moleLevel::spawnMole() function has to be modified in the moleLevel.cs script 
+			file. It first looks for any respawnPoints free. If so, it continues and 
+			randomly picks a respawnPoint until it finds one that is not occupied. It 
+			spawns the mole as before and then marks the spawn point as occupied.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function moleLevel::spawnMole(%this)
+{
+   // if all spawn points are occupied don't spawn a new mole
+   if( %this.spawnPointsOccupied == %this.respawnPointSet.getCount() )
+      return;
+
+   // find a respawn point
+   %pointFound = false;
+
+   // search until we find a respawn point
+   while ( !%pointFound )
+   {
+      %respawnPointIndex = getRandom( %this.respawnPointSet.getCount()-1 );
+      %respawnPoint = %this.respawnPointSet.getObject( %respawnPointIndex );
+
+      if( %respawnPoint.isOccupied $= "" )
+         %pointFound = true;
+   }
+
+
+   // select a color for the mole
+   %color = getRandom(2);
+   if( %color == 0 )
+      %color = "Red";
+   if( %color == 1 )
+      %color = "Green";
+   if( %color == 2 )
+      %color = "Lilac";
+
+   // create a new Mole
+   %mole = new t2dAnimatedSprite()
+   {
+      sceneGraph = %this;
+      class = "Mole";
+      layer = 4;
+      size = "9.125 16";
+   };
+
+   // play the right animation according to the color
+   %mole.playAnimation("animMoleComeOut" @ %color);
+
+   // save the selected color as dynamic field
+   %mole.moleColor = %color;
+
+   // set the position of the mole to the position of the respawn point
+   %mole.setPosition( %respawnPoint.getPosition() );
+
+   // mark this respawn point as occupied
+   %respawnPoint.isOccupied = true;
+
+   // increment the occupied counter
+   %this.spawnPointsOccupied += 1;
+
+   // give the mole a reference to its respawn point
+   %mole.respawnPoint = %respawnPoint;
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.1</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">We also have to 
+			mark the respawn points as free again when a mole gets whacked (in the 
+			mole.cs),</FONT></FONT></P>
+<BR>
+<pre class="code">
+function mole::onAnimationEnd(%this)
+{
+   if(%this.getAnimationName() !$= ("animMoleComeOut" @ %this.moleColor))
+   {
+      // free the respawn point for other moles
+      %this.respawnPoint.isOccupied = "";
+
+      // decrement the occupied counter
+      %this.sceneGraph.spawnPointsOccupied -= 1;
+
+      //%this.sceneGraph.schedule( 1500, "spawnMole");<BR>      // we don't need to do the above line anymore because the factory will do it<BR>
+      %this.safeDelete();
+   }
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.2</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">And we have to 
+			set the occupied counter to zero when the level is loaded. Therefore we modify 
+			moleLevel::onLevelLoaded() (in moleLevel.cs):</FONT></FONT></P>
+<BR>
+<pre class="code">
+function moleLevel::onLevelLoaded(%this)
+{
+   %this.respawnPointSet = new SimSet();
+
+
+   // set the occupied counter to zero
+   %this.spawnPointsOccupied = 0;
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.3</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">And we better 
+			remove the moles that we created in the level builder. Because they were not 
+			created through moleLevel::spawnMole() it will mess up the occupied 
+			counter.&nbsp; Select each mole and press DELETE to do this.</FONT></FONT></P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Automatic Moles</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now there are 
+			no more moles in level builder. They should be created automatically. To 
+			accomplish this we again write a function that does this for us. Put this in 
+			moleLevel.cs at the beginning of the file:</FONT></FONT></P>
+<BR>
+<pre class="code">
+// values in milliseconds
+$MOLE_FACTORY::maxCreationInterval = 2000;
+$MOLE_FACTORY::minCreationInterval = 400;
+
+
+$MOLE_FACTORY::speedUp = 30;
+
+
+function moleLevel::startFactory(%this)
+{
+   // spawn a new mole
+   %this.spawnMole();
+
+   // calculate when to spawn the next mole
+   %delay = %this.minCreationInterval + getRandom(%this.maxCreationInterval - 
+    %this.minCreationInterval);
+
+
+   // call the function recursively but with the calculated delay
+   // we save the event id so we can stop the function if we want
+   %this.factoryEventId = %this.schedule( %delay, "startFactory" );
+
+   // calculate new creation intervals so the game gets faster
+   %this.minCreationInterval -= %this.speedUp;
+
+   if(%this.minCreationInterval &lt; 1)
+      %this.minCreationInterval = 1;
+
+   %this.maxCreationInterval -= %this.speedUp;
+
+   if(%this.maxCreationInterval &lt; 1)
+      %this.maxCreationInterval = 1;
+}
+
+
+function moleLevel::stopFactory(%this)
+{
+   cancel( %this.factoryEventId );
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.4</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">By modifying 
+			the values at the top the game can be made faster or slower. Now the factory 
+			has to be started when level is loaded and stopped when the level is unloaded. 
+			So we modify moleLevel::onLevelLoaded and onLevelEnded again:</FONT></FONT></P>
+<BR>
+<pre class="code">
+function moleLevel::onLevelLoaded(%this)
+{
+   %this.respawnPointSet = new SimSet();
+
+   // set the occupied counter to zero
+   %this.spawnPointsOccupied = 0;
+
+   // load the start values
+   %this.maxCreationInterval = $MOLE_FACTORY::maxCreationInterval;
+   %this.minCreationInterval = $MOLE_FACTORY::minCreationInterval;
+   %this.speedUp = $MOLE_FACTORY::speedUp;
+
+
+   // start the mole creation
+   %this.startFactory();
+}
+
+
+function MoleLevel::onLevelEnded(%this)
+{
+   // stop the mole creation
+   %this.stopFactory();
+
+   %this.respawnPointSet.delete();
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.5</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Try it!</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Mole Extension </B>
+			</I></FONT></FONT>
+</P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Until now a 
+			mole could only disappear if it was whacked. However, we want them to dive back 
+			into the ground if they have got enough fresh air. Therefore we schedule them 
+			to dive back in when they are created. We need to create a new functions in 
+			mole.cs and modify an existing one:</FONT></FONT></P>
+<BR>
+<pre class="code">
+//This function will let the mole dive into the earth again but only 
+// if it was not already whacked.
+function mole::diveIn(%this)
+{
+   // only if not already whacked
+   if( %this.getAnimationName() $= ("animMoleComeOut" @ %this.moleColor) )
+      %this.playAnimation("animMoleDiveIn" @ %this.moleColor);
+   }
+
+
+function Mole::onAdd(%this)
+{
+   %this.setUseMouseEvents( true );
+   // let them dive back into the earth after 1 second
+   %this.diveInEventId = %this.schedule(1000,"diveIn");
+}
+</pre>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 3.6</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">We schedule the 
+			retreat in the Mole::onAdd() method that is called on when the mole is created. 
+			We save the event ID so we can cancel the event when the mole gets deleted. 
+			Otherwise there will be problems if an event is called on an object that 
+			doesn't exist anymore.</FONT></FONT></P>
+<DIV TYPE="FOOTER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision 
+					2.1</I></FONT></FONT></P>
+</DIV>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

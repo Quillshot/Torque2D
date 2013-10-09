@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 64;
+   parent.leftFrame.expandToItem('tree2', 'doc64');
+   var element = parent.leftFrame.document.getElementById('doc64');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <title>Torque 2D - World Limits Tutorial</title>
+      <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+      <meta content="OpenOffice.org 2.0 (Win32)" name="GENERATOR">
+      <meta content="User" name="AUTHOR">
+      <meta content="20050723;15050000" name="CREATED">
+      <meta content="Matt" name="CHANGEDBY">
+      <meta content="20060801;12015100" name="CHANGED">
+      <meta content="" name="SDFOOTNOTE" ;="" p="">
+      <meta content="ARABIC" name="SDENDNOTE">
+      <style> <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></style>
+   </head>
+   <BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+      <div type="HEADER">
+         <p class="western" style="MARGIN-BOTTOM: 0.73in" align="center"><font face="Arial, sans-serif"><font style="FONT-SIZE: 16pt" size="4"><b>Torque 
+                     2D - World Limits Tutorial</b></font></font></p>
+      </div>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Introduction</H3>
+      <br>
+      <p>In 
+               this tutorial, you'll learn how to set up and use world limits in Torque 2D (T2D). 'World limits' are an object's boundaries within a game. That 
+               is, an object's world limits define the area the object can occupy in your 
+               world. </font></font>
+      </p>
+      <p><br>
+            </font>To prepare for this tutorial, run Torque 2D and load the <strong>TutorialBase</strong>
+            project (if it's not already loaded) by choosing <strong>Open Project...</strong><span style="FONT-STYLE: normal"> from the file menu and
+selecting </span><strong>games/TutorialBase</strong><span style="FONT-STYLE: normal">. Next, <a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Making a New Level.html">create a new scene</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('Levels/Making a New Level', '0', 'create a new scene')"><u>create a new scene</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span>. Finally,
+<a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Saving a Level.html">save your scene</a><a id = "componentLink1" class = "componentLink" onClick = "loadComponent('Levels/Saving a Level', '1', 'save your scene')"><u>save your scene</u></a><span class = "componentBox" ID = "componentTag1" style="overflow:hidden;display:none;"></span> by </span><span style="FONT-STYLE: normal">the name "WorldLimit".</span></font></p>
+      <br>
+      <p>For 
+            this tutorial, we'll just use one object to examine all the possibilities of 
+            the Torque 2D world limit system. In the <strong>Create</strong> tab on the 
+            right side of the <strong>Scene Editor</strong>, open the <strong>Static Sprites</strong> section. Drag 
+            the&nbsp;girder-like crate (space_crateImageMap) into the <strong>Scene View</strong>.</font>      </p>
+<p>
+            <p><img src="images/WorldlimitsFigure1.png" name="graphics2" align="left" 
+                    border="0" width="700"><br clear="left" />
+         </span>
+      <P></P>
+      <p>In 
+            order to see the effects of world limits, we're going to want this object to 
+            move. First, make sure that the crate is selected by clicking on it. Next, 
+            click the <strong>Edit</strong> tab on the right side of the screen and scroll down to 
+            the <strong>Physics</strong><i> </i>section. Open that section by clicking it, then change 
+          <strong>Velocity 
+               X</strong> to "10" and <strong>Velocity Y </strong>to "10". Save your scene, then press the <a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Playing a Level.html">
+          Play  button</a><a id = "componentLink2" class = "componentLink" onClick = "loadComponent('Levels/Playing a Level', '2', '          Play  button')"><u>
+          Play  button</u></a><span class = "componentBox" ID = "componentTag2" style="overflow:hidden;display:none;"></span>. If everything is done right, you should see the crate slide off the 
+            screen to the right.</font></p>
+<br>
+
+<p>
+    <img src="images/WorldlimitsFigure2.png" /><br clear="left" /><font size="1"><i><b>Figure 2</b></i></font></p>
+            
+      </span><br clear="left">
+         <BR><BR>
+         <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Setting 
+         Up World Limits</H3>
+<br>
+      <p><font size="3">In 
+               order to see world limits at work, we need to define those limits for our 
+               crate. To do this, select the crate object in the
+               <span style="TEXT-DECORATION: none">Scene View
+and keep your mouse over it. You'll see the Object Editor Toolbar appear over it...
+select <strong>Change the world limits for this object</strong>. Click it, and the view will zoom out to
+show you the current world limits of the crate, which is shown as a
+gray rectangle. </span></font></font></p>
+      <br><br>
+      <p><img alt="Frame3" src="images%5CWorldlimitsFigure3.png" name="Frame3" align="bottom"></span></p>
+<br>
+      <p>Drag the sizing handles 
+               (blue squares) until the world limits are within the blue camera view box. When 
+               this is complete, click on the <strong>Selection Tool</strong> (white arrow) in the 
+               toolbar, or hit <strong>Enter</strong>. This saves the 
+               world limits and returns you to the normal view.</font></font></p>
+      <br>
+      <p><img alt="Frame4" src="images/WorldlimitsFigure4.png" name="Frame4" align="bottom"></p>
+      <p></p>
+      <br>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">World 
+         Limit Response Modes</H3>
+      <br>
+      <p>Now we are set up to 
+               experiment with the various response modes. Every object in your game has its 
+               own world limit response settings. Select the crate, then open the <strong>World Limits</strong>
+               section in the <strong>Edit</strong> tab. Assuming you 
+               haven't fiddled with this already, you'll just see the <strong>Limit Mode</strong> property 
+               set to <strong>OFF</strong>. Set it to <strong>NULL</strong> <i>(as shown in Figure 5),</i> and 
+               you'll see the coordinates that define the crate's world limits, as well as the 
+          <strong>Callback</strong> checkbox. We won't go too deeply into the <strong>Callback</strong> checkbox 
+               here, but suffice it to say that it is used when you want to script your 
+               object's limit response in an <strong>onWorldLimit</strong> function.</font></font></p>
+      <p><img alt="Frame5" src="images/WorldLimitsFigure5.png" name="Frame5" align="bottom"></p>
+      <p></p>
+      <br>
+      <p>Okay, time for the fun 
+               part: trying each response mode. We'll go through the definitions here; you 
+               should go ahead and set the <strong>Limit Mode</strong><i> </i>to each of these, then click 
+          <strong>Play</strong><i> 
+                  </i> to see the mode in action.</font></font></p>
+<br>
+      <p><b>OFF: </b>
+               <span>The world
+limits are not even tested by the object.</span></font></font></p>
+      <br>
+      <p><b>NULL:</b><span> The world
+limits are tested, but no action is taken when the object reaches the
+limits; it just continues on its way. This mode is used in combination
+with the <i>Callback</i> checkbox to script your own
+responses to reaching the world limits.</span></font></font></p>
+      <br>
+      <p><b>BOUNCE:</b><span> The object
+bounces off the world limits in a simple, pong-like way and doesn't
+include spin.</span></font></font></p>
+      <br>
+      <p><b>CLAMP:</b><span> The object
+slides along the world limits and will not move past them.</span></font></font></p>
+      <br>
+      <p><b>STICKY:</b><span> The object
+stops all movement when it touches the world limits.</span></font></font></p>
+      <br>
+      <p><b>KILL:</b><span> The object
+deletes itself when it touches the world limits.</span></font></font></p>
+      <br>
+      <p><font size="3">If 
+               you ever want to see the world limits in the Scene View, click on an 
+               empty area of the Scene View and open the <strong>Debug Rendering</strong><i> </i>section 
+               in the <strong>Edit</strong> tab. In this section, select the <strong>World Limits</strong> checkbox, 
+               and you'll see the crate's world limits displayed in white
+               <span>
+                  <span style="TEXT-DECORATION: none">
+               </span>. Note that you will not see anything for objects that have<strong> Limit Mode</strong>
+               set to <strong>OFF</strong>.</font></font></p>
+      <br>
+      <p><img alt="Frame6" src="images/WorldlimitsFigure6.png" name="Frame6" align="bottom"></p>
+      <p></p>
+      <br>
+      <br>
+      <H3>In Conclusion</H3>
+      <br>
+      <p>This tutorial has 
+               covered most of the basics of world limits in T2D. These represent very simple 
+               possibilities for world limits, and you will often want to script additional 
+               effects. One of the most useful of the basic responses is <strong>KILL</strong>, which 
+               can easily take care of any objects (like shots or the like) that go flying off 
+               the screen. Whatever your specific needs, you now have a solid jumping off 
+               point.</font></font></p>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

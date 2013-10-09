@@ -1,0 +1,20 @@
+Installing TSTK for TGEA
+-----------------------
+
+1. Copy the folder "TSTK" from wherever you unzipped it into your TGEA "game" directory.  In these instructions, we'll assume you are using "C:\TGEA_1_8_1\GameExamples\TGEDemoAdvanced\".  Accordingly, you would copy "TSTK\" into "C:\TGEA_1_8_1\GameExamples\TGEDemoAdvanced\game\"
+2. Edit the file "~\game\main.cs".
+3. Locate the following lines:
+
+$isDedicated = false;
+$dirCount = 2;
+$userDirs = "tools;" @ $defaultGame;
+
+
+4. Change the above lines to:
+
+$isDedicated = false;
+$dirCount = 3;
+$userDirs = "TSTK;" @ "tools;" @ $defaultGame;
+
+5. Save "~\game\main.cs".
+6. Run TGEA as you normally do.  TSTK is installed. :)

@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 60;
+   parent.leftFrame.expandToItem('tree2', 'doc60');
+   var element = parent.leftFrame.document.getElementById('doc60');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Scroller Tutorial</TITLE>
+      <META http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+      <META content="OpenOffice.org 2.0  (Win32)" name="GENERATOR">
+      <META content="User" name="AUTHOR">
+      <META content="20050225;10000000" name="CREATED">
+      <META content="Matt" name="CHANGEDBY">
+      <META content="20060801;11524300" name="CHANGED">
+      <STYLE> 
+      <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	      .style1
+          {
+              width: 457px;
+          }
+	      .style2
+          {
+              width: 481px;
+          }
+	-->
+      </STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P class="western" style="MARGIN-BOTTOM: 0.73in" align="center"><FONT face="Arial, sans-serif"><FONT style="FONT-SIZE: 16pt" size="4"><B>Torque 
+                     2D - Scroller Tutorial</B></FONT></FONT></P>
+      </DIV>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Introduction</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">In 
+               this document, you will learn how to set up background images for use in a 
+               scroller. Controlling the speed and getting that cool parallax scrolling effect 
+               are of course topics that will be covered.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Alright, 
+               let’s see how to get some stuff up on the screen!</FONT></FONT></P>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Opening 
+         a Project</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="3">We 
+               will begin by loading up T2D and opening the <strong>TutorialBase</strong> project. If you still have TutorialBase as your current project, great! If not, go to <B>File &gt; Open Project...</B>
+               (<em>Figure 1</em>) and locate games/TutorialBase/project.t2dproj.</FONT></FONT></P>
+<BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure1.jpg" align="left" border="0" name="graphics1"><BR clear="left">
+         <FONT size="1"><I><B>Figure 1</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="3">You 
+               should now have an empty screen with the default starter art content <I>(next page, 
+                  as shown in Figure 2)</I>:</FONT></FONT></P>
+<P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure2.jpg" align="left" 
+        border="0" name="graphics12" width="700"><BR clear="left">
+         <FONT size="1"><I><B>Figure 2</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Learning the Basics</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">To 
+               start off, grab the&nbsp;<strong>dusk_skyImageMap</strong> <I>(as shown in Figure 3)</I> from 
+               your <strong>Static Sprites</strong> rollout. Drag it into the scene view. We'll be using this 
+               as the background, so drag its sizing handles until it completely covers the 
+               camera view <I>(next page, as shown in Figure 4)</I>.</FONT></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"></P>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure3.jpg" align="left" border="0" name="graphics11"><BR clear="left">
+         <FONT size="1"><I><B>Figure 3</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure4.jpg" align="left" 
+              border="0" name="graphics2" width="700"><BR clear="left">
+         <FONT size="1"><I><B>Figure 4</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Before 
+               we leave the edit tab, in the same section of the rollout (Scene Object) change 
+               the <strong>layer</strong> to <strong>30</strong> <I>(as shown in Figure 5)</I>.</FONT></FONT></P>
+      <BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure5.jpg" align="left" border="0" name="graphics20"><BR clear="left">
+         <FONT size="1"><I><B>Figure 5</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3"><B>Note:
+               </B>
+               <SPAN>
+                  <I>T2D uses a layer system to determine which items in a game are going to be 
+                     viewed in front of everything and which items are going to be viewed behind 
+                     everything. T2D has 32 layers to choose from - the smaller the layer number, 
+                     the closer to the front the object is. All objects default at layer 0 when they are initially brought 
+                     into the scene - the front-most layer.</I></SPAN></FONT></FONT></P>
+   <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">OK, 
+               back to the <strong>Create</strong> tab! Let's add our first Scroller object. In the 
+       <strong>Scroller</strong> 
+               rollout, drag the&nbsp;cloud in the list into the scene view <I>(as shown in 
+                  Figure 6)</I>.</FONT></FONT></P>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure6.png" align="left" border="0" name="graphics19"><BR clear="left">
+         <FONT size="1"><I><B>Figure 6</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">With 
+               the cloud still selected, click on the <strong>Edit</strong> tab again. Now we can edit the 
+               properties of this object.</FONT></FONT></P>
+      <BR>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure7.jpg" align="left" border="0" name="graphics13"><BR clear="left">
+         <FONT size="1"><I><B>Figure 7</B></I></FONT></P>
+      <FONT face="Arial, sans-serif"><FONT size="3">In the <strong>Scene Object</strong> rollout, edit the
+       <strong>Position</strong> to 0, -35, the <strong>Size</strong> to 200, 75, and the 
+       <strong>Layer</strong> to 5 <I>(as shown in Figure 
+         7).</I></FONT></FONT><BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">If you are using a Design Resolution of 1024x768, your 
+               clouds should now look like the picture below <I>(as shown in Figure 8).</I> If you are using a different resolution, try and match your objects in size and position as the following examples are shown.</FONT></FONT></P>
+<P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure8.png" align="left" border="0" name="graphics10"><BR clear="left">
+         <FONT size="1"><I><B>Figure 8</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Now 
+               it's time to actually do what we set out for in this tutorial - make it scroll! 
+               In the rollout named Scroller (at the top just above Scene Object), you can see 
+               fields for editing the basic properties of the scroller. Let's start simple and 
+               just play with the speed. For this to look good, let's set the X scroll speed 
+               to 5. And surprise, you can actually see it scroll in the scene view! Feel free 
+               to play around with the speed. When you are done, set it back to 5 <I>(as shown in 
+                  Figure 9)</I>.</FONT></FONT></P>
+      <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure9.jpg" align="left" border="0" name="graphics14"><BR clear="left">
+         <FONT size="1"><I><B>Figure 9</B></I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in" align="justify">
+      <FONT face="Arial, sans-serif"><FONT size="3">At 
+               this point, let's save what we have as a scene named &quot;Scroller&quot;. <a class = "componentNoJSLink" href = "../../../Component Tutorials/Levels/Saving a Level.html">If you are unsure of how to do save your scene, click here.</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('Levels/Saving a Level', '0', 'If you are unsure of how to do save your scene, click here.')"><u>If you are unsure of how to do save your scene, click here.</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span></FONT></FONT></P>
+
+<BR clear="left">
+<BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Good, 
+               our scene is now saved. If you want, you can now click on the play button in 
+               the toolbar and see our simple scene as it appears in game <I>(as shown in Figure 
+                  10)</I>.</FONT></FONT></P>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure11.jpg" align="left" border="0" name="graphics4"><BR clear="left">
+      <FONT size="2"><I>Figure 10</I></FONT></P>
+      <BR clear="left">
+      <BR>
+      <P></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Now 
+               that we have the basics down, let's get working on a much nicer looking scene!</FONT></FONT></P>
+      <BR>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Turn it up a Notch</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Combined 
+               with T2D's multiple layer capabilities, we can create some great looking 
+               scrolling scenes. Let's continue with the scene we have and add more.</FONT></FONT></P>
+      <BR>
+      <BR>
+      <FONT face="Arial, sans-serif"><FONT size="3">From the Scroller rollout, drag 
+            the&nbsp;hills (<strong>dusk_nearScrollImageMap</strong><EM>)</EM> &nbsp;into the scene view <I>(as 
+               shown in Figure 11)</I>.</FONT></FONT> <FONT face="Arial, sans-serif"><FONT size="2">
+            <FONT size="3">Set the position, size and layer <I>(as shown in Figure 11 and Figure 12)</I>.</FONT>
+         </FONT></FONT>
+               <TABLE>
+         <TR>
+            <TD class="style2">
+              <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure12.png" align="left" border="0" name="graphics5"><BR clear="left">
+                 <FONT size="1"><I><B>Figure 11</B></I></FONT></P>
+            </TD>
+            </tr><tr>
+            <TD>
+              <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure13.jpg" align="left" border="0" name="graphics6"><BR clear="left">
+                 <FONT size="1"><I><B>Figure 12</B></I></FONT></P>
+            </TD>
+         </TR>
+      </TABLE>
+      <BR>
+      <BR>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Go 
+               back to the create tab, and drag the mountains scroller (<strong>dusk_farScrollImageMap</strong>
+               ) into the scene view <I>(as shown in Figure 13)</I>. We want to have this 
+               appear behind the grass scroller. Set the position, size and layer <I>(as shown in 
+                  Figure 14)</I>.</FONT></FONT></P>
+      <TABLE>
+         <TR>
+            <TD class="style1">
+              <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure14.png" align="left" border="0" name="graphics7"><BR clear="left">
+                 <FONT size="1"><I><B>Figure 13</B></I></FONT></P>
+            </TD>
+            </TR><tr>
+            <TD>
+              <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure15.jpg" align="left" border="0" name="graphics8"><BR clear="left">
+                 <FONT size="1"><I><B>Figure 14</B></I></FONT></P>
+            </TD>
+         </TR>
+      </TABLE>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Following 
+               the same procedure we've been using, add the tree as a scroller, so that it 
+               looks like <em>Figure 15</em>.</FONT></FONT>
+         <BR>
+   </P>
+<P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure16.png" align="left" border="0" name="graphics9"><BR clear="left">
+         <FONT size="1"><I><B>Figure 15</B></I></FONT></P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Now,&nbsp;in 
+         the Edit tab, set the tree's&nbsp;<strong>Scroll Speed X</strong> to 10. It scrolls alright, but 
+         only within&nbsp;its boundaries (<EM>see Figure 16</EM>).&nbsp; In order to 
+         make it scroll across the whole screen, stretch the scroller so that its 
+         boundaries are outside the camera view.&nbsp;Now it reaches across the screen, 
+         but it's a bit deformed. To fix this, go back to the Scroller area in the Edit 
+         tab and change the <strong>Repeat X</strong>&nbsp;to 2.&nbsp;This tells the scroller to repeat 
+         its graphic twice along the X axis. Experiment with&nbsp;some 
+         different&nbsp;values in Repeat X if you want&nbsp;to see examples of this. 
+         Your scene should now look like <em>Figure 18</em>.</P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <TABLE id="Table1">
+            <TR>
+               <TD>
+                 <P style="MARGIN-TOP: 0.08in"><IMG height="300" src="images/ScrollerFigure17.jpg" width="396" align="left" border="0"
+                        name="graphics7"><BR clear="left">
+                    <FONT size="1"><I><B>Figure 16</B></I></FONT></P>
+               </TD>
+               <TD>
+                 <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure18.jpg" align="left" border="0" name="graphics8"><BR clear="left">
+                    <FONT size="1"><I><B>Figure 17</B></I></FONT></P>
+               </TD>
+            </TR>
+   </TABLE>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">&nbsp;</P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <TABLE id="Table2">
+            <TR>
+               <TD>
+                 <P style="MARGIN-TOP: 0.08in"><IMG src="images\ScrollerFigure19.jpg" align="left" border="0" name="graphics7"><BR clear="left">
+                    <FONT size="1"><I><B>Figure 18</B></I></FONT></P>
+               </TD>
+               <TD>
+                 <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure20.jpg" align="left" border="0" name="graphics8"><BR clear="left">
+                    <FONT size="1"><I><B>Figure 19</B></I></FONT></P>
+               </TD>
+            </TR>
+   </TABLE>
+      </P>
+      <P></P>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">Get it Moving</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="left"><FONT face="Arial, sans-serif"><FONT size="3">Let's 
+               turn on scrolling for all of the objects in the scene now.&nbsp; Here are some 
+               Scroll Speed X values to start with:</FONT></FONT><BR>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="left">
+   <TABLE borderColor="#000000" cellSpacing="0" cellPadding="4" width="190" border="1">
+            <COLGROUP>
+               <COL width="133">
+                  <COL width="39">
+     <TR vAlign="top">
+                        <TD width="133">
+                           <P class="western"><FONT face="Arial, sans-serif">Tree</FONT></P>
+                        </TD>
+                        <TD width="39">
+                           <P class="western"><FONT face="Arial, sans-serif">10</FONT></P>
+                        </TD>
+     </TR>
+                     <TR vAlign="top">
+                        <TD width="133">
+                           <P class="western"><FONT face="Arial, sans-serif">Hills</FONT></P>
+                        </TD>
+                        <TD width="39">
+                           <P class="western"><FONT face="Arial, sans-serif">10</FONT></P>
+                        </TD>
+                     </TR>
+                     <TR vAlign="top">
+                        <TD width="133">
+                           <P class="western"><FONT face="Arial, sans-serif">Mountains</FONT></P>
+                        </TD>
+                        <TD width="39">
+                           <P class="western"><FONT face="Arial, sans-serif">5</FONT></P>
+                        </TD>
+                     </TR>
+                     <TR vAlign="top">
+                        <TD width="133">
+                           <P class="western"><FONT face="Arial, sans-serif">Clouds</FONT></P>
+                        </TD>
+                        <TD width="39">
+                           <P class="western"><FONT face="Arial, sans-serif">3</FONT></P>
+                        </TD>
+                     </TR></TABLE>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Feel 
+               free to experiment with other values.&nbsp; Just remember that the further away 
+               something is, the slower it seems to move... so the more distant objects in the 
+               scene should always have lower scroll values.&nbsp;</FONT></FONT><FONT face="Arial, sans-serif"><FONT size="3">When 
+               you are happy with what you have, remember to save and press the <strong>Play</strong> button to 
+               see your scene in all it's scrolling glory <I>(as shown in Figure 20)</I>.</FONT></FONT><FONT face="Arial, sans-serif"><FONT size="4"><B></P>
+      <P></P>
+   <P style="MARGIN-TOP: 0.08in"><IMG src="images/ScrollerFigure21.jpg" align="left" border="0" name="graphics9"><BR clear="left">
+      <FONT size="1"><I><B>Figure 20</B></I></FONT></P>
+</B></FONT></FONT>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">Conclusion</H3>
+      <BR>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Hopefully 
+               everything important about scrollers is clear to you now. Keep in mind that to 
+               add an image to the scroller rollout, the image map has to be in&nbsp;Full 
+               mode, not Cell. Also, scrollers will display correctly only if their dimensions 
+               are powers of 2 (i.e. 256 x 512, 64 x 64 etc.) If you have done other basic 
+               tutorials, you can add a &quot;player&quot; sprite to the mix and get a good feel for how 
+               a potential scrolling game might play. For another great example, load up the 
+               scroller demo and take note of how it handles scrolling backgrounds. Instead of 
+               Scroller objects, tile layers with wrapping turned on (through scripting) are 
+               used, which is a more advanced technique.</FONT></FONT><BR>
+         <BR>
+      </P>
+      <P class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><FONT face="Arial, sans-serif"><FONT size="3">Thanks 
+               for reading!</FONT></FONT></P>
+      <DIV TYPE="FOOTER">
+         <P style="MARGIN-BOTTOM: 0in" align="center"><I><FONT style="FONT-SIZE: 8pt" size="1"><FONT face="Arial, sans-serif">Revision 
+                     1.2</FONT></FONT></I></P>
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

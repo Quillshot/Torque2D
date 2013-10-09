@@ -1,0 +1,206 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 344;
+   parent.leftFrame.expandToItem('tree2', 'doc344');
+   var element = parent.leftFrame.document.getElementById('doc344');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <title>Making a new script</title>
+         <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      </HEAD>
+      <BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Creating 
+               a Script File</strong></font></font></font></p>
+<font face="Arial, sans-serif"><font size="3"><i><b>Script editing</b></i></font></font>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">Those of you that are new to script 
+         editing will definitely want to read through this section. T2D scripts end with 
+         a ".cs" extension, such as "game.cs". Now, you may or may not see this 
+         extension when browsing for the files, depending on whether you're working on 
+         Windows or a Mac. </font></font>
+</p>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <br>
+</p>
+<p class="western" style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always" align="justify">
+   <font face="Arial, sans-serif"><font size="3"><i><b>Windows scripting (Mac users skip to 
+               next section)</b></i></font></font></p>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">First you will need to browse out to 
+         the directory you saved your project to. Once you are there ensure you browse 
+         into your game project folder. From this folder you can a "common" and a "game" 
+         folder. Now you should either see a file called "main" as shown in the left 
+         picture<i>(your icons images may be different than the picture displayed)</i> or 
+         a file called "main.cs" as shown in the right picture.</font></font>
+</p>
+<br>
+<table>
+   <tbody>
+      <tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure5.jpg" name="graphics5" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         <td width="25">
+         </td>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure6.jpg" name="graphics6" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<br clear="left">
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">If you see the "main.cs" file then you 
+         don't need to change any further settings, though if you only see "main" then 
+         you need to change an explorer setting that will allow you to view extensions. 
+         You can do this by clicking the Tools-&gt;Folder Options... menu.</font></font></p>
+<br>
+<p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure7.jpg" name="graphics7" align="left" border="0"><br clear="left">
+</p>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">You should then be presented with a 
+         Folder Options dialog. Click the "View" tab. This is the section we need to be 
+         in to tell it to not hide the extension types. You should see the proper option 
+         listed as "Hide extensions for known file types", uncheck that option and then 
+         click the OK button. You should now see "main.cs".</font></font></p>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <br>
+</p>
+<table>
+   <tbody>
+      <tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure8.jpg" name="graphics8" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         <td width="25">
+         </td>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure9.jpg" name="graphics9" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         <td width="25">
+         </td>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure10.jpg" name="graphics10" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">Now that we can see our .cs files, we 
+         can also create them easily. To do this simply right click on an empty spot on 
+         the screen and click File-&gt;New. You should now see a menu drop down. Select 
+         Text Document from the list. Now you should see a new text document called "New 
+         Text Document.txt". The text is highlighted so you can type a new name. Type in 
+         the name "test.cs" and press enter. You should be prompted with a yes or no box 
+         asking if you want to change your extension. Click <strong>yes</strong> and you should now see 
+         your new file with the proper .cs extension to be a T2D script file. </font></font>
+</p>
+<p class="western" style="MARGIN-BOTTOM: 0in" align="justify">
+   <br>
+</p>
+<table>
+   <tbody>
+      <tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure11.jpg" name="graphics11" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         </tr><tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure13.jpg" name="graphics13" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure12.jpg" name="graphics12" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         <td width="25">
+         </td>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure14.jpg" name="graphics14" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">Now that we have a script file, we can 
+         edit it by right clicking on the file and selecting Open With. If you see 
+         "Notepad" listed then select that. If you don't see "Notepad" listed then click 
+         "Choose Program". This will present you with another list. From here you can 
+         choose "Notepad". It should then open up your blank script file in Notepad. 
+         This is how you can create and edit script files for the upcoming tutorials. 
+         There are many other script editing programs, such as Torsion.</font></font></p>
+<br>
+<br>
+<p class="western" style="MARGIN-BOTTOM: 0in" align="justify"><font face="Arial, sans-serif"><font size="3"><i><b>Mac 
+               Scripting</b></i></font></font></p>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <br>
+</p>
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">
+   <font face="Arial, sans-serif"><font size="2">To create script files on a Mac you can 
+         go to Applications/TextEdit. You should now be presented with a basic text 
+         editor. Script files are in plain text and by default you cannot save to plain 
+         text, so to change this you can click Format-&gt;Make Plain Text. Now we can 
+         click File-&gt;Save As. You should be presented with a Save dialog. Be sure to 
+         save the name with a ".cs" extension (such as "test.cs"). Then cilck the blue 
+         arrow to bring up the file browser. The first thing you need to do is uncheck 
+         the "hide extension" check box. Now we need to save this empty script file in 
+         our game directory. Browse to wherever you saved your project. When you have 
+         chosen the folder to save it to, click the Save button and you should be 
+         presented with a dialog asking you to change your file extension to .txt or 
+         append it with .txt. Don't append it and make sure you use .cs.</font></font></p>
+<br>
+<table id="Table1">
+   <tbody>
+      <tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure15.jpg" name="graphics17" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+         </tr><tr>
+         <td>
+            <p style="MARGIN-TOP: 0.08in"><img src="images/FishIntroFigure16.jpg" name="graphics15" align="left" border="0"><br clear="left">
+            </p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+<br>
+<div type="FOOTER">
+   <p style="MARGIN-BOTTOM: 0in" align="center"><i><font style="FONT-SIZE: 8pt" size="1"><font face="Arial, sans-serif">Revision 
+               2.0</font></font></i></p>
+</div>
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

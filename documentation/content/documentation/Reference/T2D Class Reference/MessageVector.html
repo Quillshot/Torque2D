@@ -1,0 +1,317 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 255;
+   parent.leftFrame.expandToItem('tree2', 'doc255');
+   var element = parent.leftFrame.document.getElementById('doc255');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>MessageVector</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">MessageVector</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+SimObject
+</li>
+</ul>
+
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">clear()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Clear the message vector. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">deleteLine(int deletePos)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Delete the line at the specified position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dump(string filename, string header=NULL)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dump the message vector to a file, optionally prefixing a header. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLineIndexByTag(int tag)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Scan through the vector, returning the line number of the first line that matches the specified tag; else returns -1 if no match was found. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLineTag(int line)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the tag of a specified line. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLineText(int line)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the text at a specified line. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLineTextByTag(int tag)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Scan through the lines in the vector, returning the first line that has a matching tag. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getNumLines()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the number of lines in the vector. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">insertLine(int insertPos, string msg, int tag=0)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Insert a new line into the vector at the specified position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">popBackLine()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Pop a line from the back of the list; destroys the line. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">popFrontLine()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Pop a line from the front of the vector, destroying the line. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pushBackLine(string msg, int tag=0)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Push a line onto the back of the list. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pushFrontLine(string msg, int tag=0)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Push a line onto the front of the vector. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

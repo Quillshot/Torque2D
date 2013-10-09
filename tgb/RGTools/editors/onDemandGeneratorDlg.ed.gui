@@ -1,0 +1,544 @@
+if(!isObject(GuiTextExistsProfile)) new GuiControlProfile (GuiTextExistsProfile : GuiTextProfile)
+{
+   fontColor = "255 0 0";
+//   fontSize = 24;
+   justify = "center";
+};
+
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiControl(onDemandGeneratorDlg) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 2";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+
+   new GuiWindowCtrl() {
+      canSaveDynamicFields = "0";
+      Profile = "EditorWindowProfile";
+      HorizSizing = "right";
+      VertSizing = "center";
+      position = "50 108";
+      Extent = "700 310";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      hovertime = "1000";
+      text = "Roaming Gamer - On Demand Behavior Generator";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "canvas.popDialog(onDemandGeneratorDlg);";
+
+      new GuiTextCtrl(eventBehaviorsGUI) {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "16 30";
+         Extent = "181 20";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Event Atoms";
+         maxLength = "255";
+      };
+     
+      new GuiControl() {
+         canSaveDynamicFields = "0";
+         Profile = "EditorPanelMedium";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 50";
+         Extent = "181 215";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         
+         new GuiPopUpMenuCtrl(eventCategoryMenu) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiPopUpMenuProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "7 6";
+            Extent = "165 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "255";
+            maxPopupHeight = "200";
+            sbUsesNAColor = "0";
+            reverseTextList = "0";
+            bitmapBounds = "16 16";
+         };
+         
+         new GuiPopUpMenuCtrl(eventSubCategoryMenu) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiPopUpMenuProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "7 26";
+            Extent = "165 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "255";
+            maxPopupHeight = "200";
+            sbUsesNAColor = "0";
+            reverseTextList = "0";
+            bitmapBounds = "16 16";
+         };
+
+         new GuiScrollCtrl(behaviorEventsScroll) {
+            canSaveDynamicFields = "0";
+            Profile = "EditorTransparentScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "10 46";
+            Extent = "162 160";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            willFirstRespond = "1";
+            hScrollBar = "dynamic";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+
+            new GuiListBoxCtrl(behaviorEventsList) {
+               canSaveDynamicFields = "0";
+               Profile = "EditorListBox";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "1 1";
+               Extent = "142 2";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               AllowMultipleSelections = "0";
+               fitParentWidth = "1";
+            };
+         };
+      };
+      
+      new GuiTextCtrl() {
+         canSaveDynamicFields = "0";
+         Profile = "GuiTextProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "206 30";
+         Extent = "181 20";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Action Atoms / Full Behaviors";
+         maxLength = "255";
+      };
+      
+      new GuiControl() {
+         canSaveDynamicFields = "0";
+         Profile = "EditorPanelMedium";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "199 50";
+         Extent = "181 215";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+
+         new GuiPopUpMenuCtrl(actionCategoryMenu) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiPopUpMenuProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "7 6";
+            Extent = "165 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "255";
+            maxPopupHeight = "200";
+            sbUsesNAColor = "0";
+            reverseTextList = "0";
+            bitmapBounds = "16 16";
+         };
+         
+         new GuiPopUpMenuCtrl(actionSubCategoryMenu) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiPopUpMenuProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "7 26";
+            Extent = "165 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "255";
+            maxPopupHeight = "200";
+            sbUsesNAColor = "0";
+            reverseTextList = "0";
+            bitmapBounds = "16 16";
+         };
+
+         new GuiScrollCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "EditorTransparentScrollProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "10 46";
+            Extent = "162 160";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            willFirstRespond = "1";
+            hScrollBar = "dynamic";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "0 0";
+
+            new GuiListBoxCtrl(behaviorActionsList) {
+               canSaveDynamicFields = "0";
+               Profile = "EditorListBox";
+               HorizSizing = "right";
+               VertSizing = "bottom";
+               position = "1 1";
+               Extent = "142 2";
+               MinExtent = "8 2";
+               canSave = "1";
+               Visible = "1";
+               hovertime = "1000";
+               AllowMultipleSelections = "0";
+               fitParentWidth = "1";
+            };
+         };
+      };
+
+      new GuiControl() {
+         canSaveDynamicFields = "0";
+         Profile = "EditorPanelMedium";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "389 30";
+         Extent = "301 235";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+
+
+         new GuiTextCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "11 6";
+            Extent = "301 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Behavior Name";
+            maxLength = "255";
+         };
+
+         new GuiTextEditCtrl(newBehaviorName) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiTextEditProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "11 26";
+            Extent = "285 20";
+            MinExtent = "8 20";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "1024";
+            historySize = "0";
+            password = "0";
+            tabComplete = "0";
+            sinkAllKeyEvents = "0";
+            password = "0";
+            passwordMask = "*";
+         };    
+
+         new GuiTextCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "11 50";
+            Extent = "301 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Friendly Name";
+            maxLength = "255";
+         };
+
+         new GuiTextEditCtrl(newBehaviorFriendlyName) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiTextEditProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "11 70";
+            Extent = "285 20";
+            MinExtent = "8 20";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "1024";
+            historySize = "0";
+            password = "0";
+            tabComplete = "0";
+            sinkAllKeyEvents = "0";
+            password = "0";
+            passwordMask = "*";
+         };    
+
+         new GuiTextCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "11 94";
+            Extent = "301 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Behavior Type";
+            maxLength = "255";
+         };
+
+         new GuiTextEditCtrl(newBehaviorType) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiTextEditProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "11 114";
+            Extent = "285 20";
+            MinExtent = "8 20";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "1024";
+            historySize = "0";
+            password = "0";
+            tabComplete = "0";
+            sinkAllKeyEvents = "0";
+            password = "0";
+            passwordMask = "*";
+         };    
+
+         new GuiTextCtrl() {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "11 138";
+            Extent = "301 20";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Behavior Description";
+            maxLength = "255";
+         };
+
+         new GuiTextEditCtrl(newBehaviorDescription) {
+            canSaveDynamicFields = "0";
+            isContainer = "0";
+            Profile = "GuiTextEditProfile";
+            HorizSizing = "right";
+            VertSizing = "center";
+            position = "11 158";
+            Extent = "285 20";
+            MinExtent = "8 20";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "1024";
+            historySize = "0";
+            password = "0";
+            tabComplete = "0";
+            sinkAllKeyEvents = "0";
+            password = "0";
+            passwordMask = "*";
+         };    
+
+         new GuiIconButtonCtrl(autoFillButton) {
+            canSaveDynamicFields = "0";
+            Profile = "EditorButtonLeft";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "9 185";
+            Extent = "165 25";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Slurp Details";
+            groupNum = "-1";
+            buttonType = "PushButton";
+            iconBitmap = "./images/iconAdd.png";
+            sizeIconToButton = "0";
+            textLocation = "Center";
+            textMargin = "4";
+            buttonMargin = "4 4";
+         };
+         
+         new GuiCheckBoxCtrl(behaviorOverwrite) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiCheckBoxProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "185 185";
+            Extent = "120 25";
+            MinExtent = "8 8";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "Allow Overwrite";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+
+         new GuiTextCtrl(newBehaviorExistsIndicator) {
+            canSaveDynamicFields = "0";
+            Profile = "GuiTextExistsProfile";
+            HorizSizing = "right";
+            VertSizing = "bottom";
+            position = "9 210";
+            Extent = "285 25";
+            MinExtent = "8 2";
+            canSave = "1";
+            Visible = "1";
+            hovertime = "1000";
+            text = "";
+            maxLength = "255";
+         };
+      };      
+
+      new GuiIconButtonCtrl(clearEventListSelection) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "9 272";
+         Extent = "181 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Clear Selection";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconDelete.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+      new GuiIconButtonCtrl(clearActionListSelection) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonRight";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "199 272";
+         Extent = "181 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Clear Selection";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconDelete.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+      
+      new GuiIconButtonCtrl(generateNewBehaviorButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonRight";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "389 272";
+         Extent = "145 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         text = "Generate";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconAccept.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };
+            
+      new GuiIconButtonCtrl(closeResourceGeneratorDialogButton) {
+         canSaveDynamicFields = "0";
+         Profile = "EditorButtonLeft";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "544 272";
+         Extent = "145 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "canvas.popDialog(onDemandGeneratorDlg);";
+         hovertime = "1000";
+         text = "Close";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         iconBitmap = "./images/iconCancel.png";
+         sizeIconToButton = "0";
+         textLocation = "Center";
+         textMargin = "4";
+         buttonMargin = "4 4";
+      };      
+   };
+};
+//--- OBJECT WRITE END ---

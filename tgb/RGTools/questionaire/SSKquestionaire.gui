@@ -1,0 +1,188 @@
+
+if(!isObject(GuiSSKQCenterTextProfile)) new GuiControlProfile (GuiSSKQCenterTextProfile : GuiTextProfile)
+{
+   // font
+   fontType = "Arial Bold";
+   fontSize = 18;
+   justify = "center";
+
+   fontColor = "128 128 255";
+   fontColorHL = "32 100 100";
+   fontColorNA = "0 0 0";
+   fontColorSEL= "200 200 200";
+};
+
+if(!isObject(GuiSSKQLeftTextProfile)) new GuiControlProfile (GuiSSKQLeftTextProfile : GuiTextProfile)
+{
+   justify = "left";
+};
+
+if(!isObject(GuiSSKQTextProfile)) new GuiControlProfile (GuiSSKQTextProfile : GuiTextProfile)
+{
+   // font
+   fontType = "Arial Bold";
+//   justify = "right";
+   fontColor = "128 128 255";
+   fontColorHL = "32 100 100";
+   fontColorNA = "0 0 0";
+   fontColorSEL= "200 200 200";
+};
+
+if(!isObject(GuiSSKCheckBoxProfile)) new GuiControlProfile (GuiSSKCheckBoxProfile : GuiCheckBoxProfile)
+{
+   border  = -2;
+   borderColor = "40 40 40 100";
+};
+
+if(!isObject(SSKQ_GuiBack0)) new GuiControlProfile (SSKQ_GuiBack0 : GuiDefaultProfile)
+{
+   opaque = true;
+   fillColor = "204 255 255";
+   border = 0;
+};
+
+if(!isObject(SSKQ_GuiBack1)) new GuiControlProfile (SSKQ_GuiBack1 : SSKQ_GuiBack0)
+{
+   fillColor = "102 153 153";
+};
+
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiControl(SSKQuestionaireDlg) {
+   canSaveDynamicFields = "0";
+   isContainer = "1";
+   Profile = "GuiDefaultProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "1024 768";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   hovertime = "1000";
+   
+   new GuiWindowCtrl() {
+      canSaveDynamicFields = "0";
+      isContainer = "1";
+      Profile = "GuiWindowProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "257 186";
+      Extent = "800 430";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      Command = "closeSSKQuestionaireDialog(false);";
+      Accelerator = "escape";
+      hovertime = "1000";
+      text = "SSKQuestionaire";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "closeSSKQuestionaireDialog();";
+
+      new GuiTabBookCtrl(SSKQuestionaireTabBook) {
+         canSaveDynamicFields = "0";
+         isContainer = "1";
+         Profile = "GuiTabBookProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "3 24";
+         Extent = "794 367";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         hovertime = "1000";
+         TabPosition = "Top";
+         TabHeight = "22";
+         TabMargin = "7";
+         MinTabWidth = "64";
+      };
+      
+      new GuiButtonCtrl(SSKQ_LoadButton) 
+      {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "20 397";
+         Extent = "100 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "LoadQuestionaire();";
+         hovertime = "1000";
+         text = "Load";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         useMouseEvents = "0";
+      };
+      
+      new GuiButtonCtrl(SSKQ_SaveButton) 
+      {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "140 397";
+         Extent = "100 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "SaveQuestionare();";
+         hovertime = "1000";
+         text = "Save";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         useMouseEvents = "0";
+      };
+
+      new GuiButtonCtrl(SSKQ_CloseButton) 
+      {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "right";
+         VertSizing = "top";
+         position = "260 397";
+         Extent = "100 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "closeSSKQuestionaireDialog(false);";
+         hovertime = "1000";
+         text = "Close";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         useMouseEvents = "0";
+      };
+
+      new GuiButtonCtrl(SSKQ_ResetButton) 
+      {
+         canSaveDynamicFields = "0";
+         isContainer = "0";
+         Profile = "GuiButtonProfile";
+         HorizSizing = "left";
+         VertSizing = "top";
+         position = "674 397";
+         Extent = "100 25";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         Command = "ResetQuestionare();";
+         Accelerator = "numpadenter";
+         hovertime = "1000";
+         text = "Reset";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         useMouseEvents = "0";
+      };      
+   };
+};
+//--- OBJECT WRITE END ---

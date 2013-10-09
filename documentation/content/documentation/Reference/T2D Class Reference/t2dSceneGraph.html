@@ -1,0 +1,1001 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 310;
+   parent.leftFrame.expandToItem('tree2', 'doc310');
+   var element = parent.leftFrame.document.getElementById('doc310');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>t2dSceneGraph</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">t2dSceneGraph</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+SimSet
+</li>
+</ul>
+
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">addToScene(t2dSceneObject)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add  to Scene. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">clearScene([deleteObjects?])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Clear Scene of all  objects. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getConstantForce()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the scene constant-force. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getDebugOn(debug mode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the state of the debug mode 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getGlobalTileMap()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> getGlobalTileMap 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneObject()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the selected Scene Object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneObjectCount()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Scene Object-Count. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneObjectList()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Scene Object-List. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getScenePause()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets scene pause status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneTime()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Scene Graph Time. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">initialise(containerBinSize, containerBinCount, useLayerSorting?, lastInFrontSorting?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Initialise Scene Graph. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadScene(file $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Loads a Scene from a Disk File. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">performPostInit()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Performs mount and other post initialization tasks 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pickLine(start x/y, end x/y,[groupMask],[layerMask],[showInvisible?],[excludeObject])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Picks objects intersecting line with optional group/layer masks. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pickPoint(x/y,[groupMask],[layerMask],[showInvisible?],[excludeObject])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Picks objects intersecting point with optional group/layer masks. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pickRadius(x/y, radius,[groupMask],[layerMask],[showInvisible?],[excludeObject])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Picks objects intersecting circle with optional group/layer masks. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">pickRect(start x/y, end x/y,[groupMask],[layerMask],[showInvisible?],[excludeObject])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Picks objects intersecting rectangle with optional group/layer masks. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeFromScene(t2dSceneObject)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Remove  from Scene. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">saveScene(file $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Saves a Scene to a Disk File. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForce(forceX/forceY,[gravitic?])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Apply a continuous force. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForcePolar(angle, force,[gravitic?])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Apply a continuous polar force. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDebugOff(debugMask)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Debug Off Mode(s). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDebugOn(debugMask)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Debug On Mode(s). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLayerDrawOrder(t2dSceneObject, orderCommand $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Layer Draw Order for Specified Object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSceneDrawOrder(t2dSceneObject, orderCommand $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Scene Draw Order for Specified Object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setScenePause(status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets scene pause status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">stopConstantForce()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Stops any continuous force. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "functionsHead">Callbacks:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">onLevelLoaded(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The scenegraph has been loaded as a level.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This function is called when you have loaded a level, the scenegraph this is being called on is the object holding all of the level objects.
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that has been loaded.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onSafeDelete(%this, %object)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> 
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> 
+
+</span><span class = "param">
+<span class = "paramTitle">object:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">An object is being deleted after a call to safeDelete().</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> 
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> 
+
+</span><span class = "param">
+<span class = "paramTitle">object:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onUpdateScene(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A frame has completed processing.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This is called every frame, and thus is dependent on the frame rate of the engine. Therefore, you should not do any movement of objects here, because the speed at which they move will not be constant. Also, it is recommended to only use this callback on a specific scenegraph. Using it on the entire t2dSceneGraph class can result in LevelBuilder/Packaged Game differences.
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "variablesHead">Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">config</h2>
+<span class = "variableBox">
+
+
+
+
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode0</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode1</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode10</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode11</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode12</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode13</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode14</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode15</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode16</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode17</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode18</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode19</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode2</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode20</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode21</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode22</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode23</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode24</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode25</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode26</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode27</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode28</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode29</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode3</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode30</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode31</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode4</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode5</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode6</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode7</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode8</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">layerSortMode9</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">UseLayerSorting</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

@@ -1,0 +1,328 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 137;
+   parent.leftFrame.expandToItem('tree2', 'doc137');
+   var element = parent.leftFrame.document.getElementById('doc137');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>GuiBackgroundCtrl</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">GuiBackgroundCtrl</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+GuiControl
+</li>
+</ul>
+
+</span>
+<br>
+<br>
+<span class = "classBox">
+
+
+
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">Accelerator</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AltCommand</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">canSave</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Command</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Extent</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">HorizSizing</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinExtent</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Modal</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> deprecated
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Position</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Profile</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> GuiProfile
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">setFirstResponder</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> deprecated
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Variable</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">VertSizing</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Visible</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">hovertime</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ToolTip</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">tooltipprofile</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> GuiProfile
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">isContainer</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">langTableMod</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

@@ -1,0 +1,201 @@
+<HTML><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 34;
+   parent.leftFrame.expandToItem('tree2', 'doc34');
+   var element = parent.leftFrame.document.getElementById('doc34');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<TITLE>Torque 2D - Shooter Tutorial Part 1</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+	<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050225;10000000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;16461300">
+    <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	H3 { margin-bottom: 0.04in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	H3.western { font-family: "Arial", sans-serif; so-language: en-US }
+	H3.cjk { font-family: "Times New Roman", serif }
+	H3.ctl { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--> 
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  lang=en-US dir=ltr text=#000000 link=#0000ff style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=center STYLE="MARGIN-BOTTOM: 0.73in; FONT-STYLE: normal">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=5 STYLE="FONT-SIZE: 17pt"><B>Torque
+	2D - Shooter Tutorial - Part 1</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="FONT-SIZE: 16pt"><B>Introduction</B></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>W<IMG SRC="images/ShooterFigureGettingStarted.jpg" NAME="graphics1" ALIGN=left HSPACE=12 BORDER=0>elcome
+to Torque 2D (T2D)!  Our goal is to empower people from
+all walks of life to make  the best 2D games around. <FONT COLOR="#000000">We
+are looking forward to feedback about your experiences with T2D, since
+it will help make the most powerful 2D engine on the planet even
+better! So please remember to stop by the T2D Private Forums and come
+talk with other T2D developers, get hel</FONT>p, and much more. 
+Also, keep an eye on the Torque 2D Product Page for updates.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Okay,
+let’s get on with this tutorial.  We're going to walk you
+through a quick example of how to use T2D.  By the end of this
+shooter tutorial, you’ll have learned how to load sprites and
+particle effects, set up collision detection, accept player input,
+and even add a hint of gameplay!  </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We’ll
+treat T2D pretty much as a black box - rather than explaining how
+everything works inside T2D, our goal here is just to get you up and
+running as quickly as possible.  This tutorial is written so that
+pretty much anyone can understand it; experienced programmers will no
+doubt want to skip over some of the explanatory stuff.  We’re
+not trying to provide a whole programming tutorial;  We assume
+you are at least capable of reading and understanding simple scripts.  If you want more information on
+TorqueScript, please see the Torque Documentation in the
+documentation/reference/ folder.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We’ll
+be adding to the T2D documentation more and more over time. Be sure
+to regularly check back and watch for new T2D documentation.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Alright,
+let’s see how to get some stuff up on the screen!</FONT></FONT></P>
+<BR>
+
+    <P class=western style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always" 
+align=justify><FONT face="Arial, sans-serif"><FONT style="FONT-SIZE: 16pt" 
+size=4><B>1. Getting Started</B></FONT></FONT></P>
+<BR>
+
+<H2 CLASS="western">1.1 T2D Scene Editor</H2>
+
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>T2D
+comes with some example demos, which you can look at and learn from. 
+You can think of these demos as mini-&quot;Starter Kits&quot;,
+which show you simple examples of how to build particular kinds of
+games.  The Scene Editor is an invaluable tool in creating your game scenes (as
+shown in Figure 1.1.1)</I>.</FONT></FONT></P>
+<BR>
+
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure1-1-1.jpg" NAME="graphics3" ALIGN=left BORDER=0><BR CLEAR=left>
+	   <FONT SIZE=1><I><B>Figure 1.1.1</B></I></FONT></P>
+<BR CLEAR=left><BR>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>That
+is the base T2D Scene Editor.  From here, you can create and edit
+your scenes as well as launch T2D's GUI Builder, Particle Builder,
+Image Builder, Animation Builder, and Tile Builder.  You can also
+hook into the T2D community and forums. Let’s dig in!</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; MARGIN-LEFT: -0.01in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><FONT COLOR="#000000">T</FONT>he
+Scene Editor allows users to easily start new projects through a
+simple project creation wizard. This gives designers a much more
+flexible approach to creating new projects, since the Scene Editor
+automatically creates all of the files a user needs to make a game.
+This section of the shooter tutorial will help you work through the
+process of starting a brand new game project from scratch.</FONT></FONT></P>
+<H2 CLASS="western">1.2 New Project</H2>
+<BR>
+
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><FONT COLOR="#000000">To
+start, open up your T2D.exe (by clicking the T2D icon on your
+desktop)</FONT>.  Now make a new project
+and give it a logical name (like shooterTutorial).&nbsp;</P>
+<BR>
+<BR CLEAR=left>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>At this point you should see the Scene Editor with an open workspace, as shown
+here <I>(as shown in Figure 1.2.4)</I>:</FONT></FONT></P>
+	<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ShooterFigure1-2-4.jpg" NAME="graphics6" ALIGN=left BORDER=0><BR CLEAR=left><FONT SIZE=1><I><B>Figure
+	1.2.4</B></I></FONT></P>
+<BR CLEAR=left><BR>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+you create a new project, the T2D Scene Editor automatically sets up
+the base file hierarchy for your project.  <FONT COLOR="#000000">Windows
+and Mac users can find their project directory (assuming you've used
+the default install direcory) in the following locations:</FONT></FONT></FONT></P>
+<UL>
+	<LI>
+	  <P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><FONT COLOR="#000000">Windows:
+	&quot;<SPAN STYLE="TEXT-DECORATION: none">C:/Users/USER_NAME/Documents/MyGames</SPAN>/yourProjectName&quot; (depending on which version of Windows you are using)</FONT></FONT></FONT></P>
+	<LI><FONT size="2" FACE="Arial, sans-serif">M</FONT><FONT FACE="Arial, sans-serif"><FONT SIZE=2>ac:
+  &quot;/Applications/TorqueGameBuilder/games/yourProjectName&quot;</FONT></FONT></LI>
+</UL>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"></P>
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"> 
+</P>
+<H2 CLASS="western">1.3 Loading Images</H2>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So,
+what should we put up on the screen?  Remember, we’ve got those
+nifty little demos with lots of art to pull from, so let’s use
+art from those.  In fact, let’s use the side-scrolling shooter
+demo. In this tutorial, we’ll see how to get started making a
+little &quot;game&quot; just like this demo.  When we’re all
+done, you should not only have a good feel for how to get started
+with T2D, but you can compare the simple example code we create in
+this tutorial to the full demo code, and see what the differences
+are.  It will help you learn more about creating more complex
+projects in T2D.</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Important
+Step - </B>Go back to the games folder.  Now go to the<font color="#000000"> BehaviorShooter</font>/data/images folder, and
+copy everything in there (a bunch of pictures) over to our
+yourProjectName/data/images folder.  Choose to replace any files that
+you get asked about.  And viola, we’ve got some art to work
+with.  Go into the <FONT COLOR="#000000">BehaviorShooter/</FONT>data/particles
+folder and copy out the playerJet, and big_explosion effects into
+your own yourProjectName/data/particles folder, so we can add some
+good-looking particle effects to the game later. </FONT><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Also, you will want to add the <strong>particleArt</strong> resource from the Project-&gt;Resources menu. </FONT></FONT></FONT></P>
+<br>
+
+<P CLASS="western" ALIGN=justify STYLE="MARGIN-BOTTOM: 0in"><font size="2" face="Arial, sans-serif">Now,
+use the ImageMap Builder to load "playership.png" into your project,
+using the defaults settings (FULL).</font></P>
+<P class=western style="MARGIN-BOTTOM: 0in" align=justify><FONT 
+face="Arial, sans-serif"><FONT size=2>Now that you know how to import images, 
+repeat this process to import the rest of the images we will need for this 
+tutorial: bg_blank_sky, enemyMissile, enemyShip1, and playerMissile. Also we 
+will want to import our particle images. <FONT style="FONT-SIZE: 9pt" 
+size=2><B>One thing to note, when you import your particles, for this tutorial, 
+you will need to modify their Image Mode to CELL within the Image Builder menu. 
+</B><SPAN>Import</SPAN></FONT> particles1, particles2, particles5, and 
+particles6. </FONT></FONT></P><BR>
+<P class=western style="MARGIN-BOTTOM: 0in" align=justify><FONT 
+face="Arial, sans-serif"><FONT size=2>Once you have all of your images imported, 
+we can begin making our game world. </FONT></FONT></P><BR><BR>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

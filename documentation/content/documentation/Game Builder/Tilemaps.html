@@ -1,0 +1,461 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 11;
+   parent.leftFrame.expandToItem('tree2', 'doc11');
+   var element = parent.leftFrame.document.getElementById('doc11');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+<title>Torque 2D - Tile Maps</title>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Tilemaps skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td><table id="toc">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Importing_Tile_Map_Art"><span class="tocnumber">2</span> <span class="toctext">Importing Tile Map Art</span></a></li>
+                          <li class="toclevel-1"><a href="#Creating_A_Tile_Map"><span class="tocnumber">3</span> <span class="toctext">Creating A Tile Map</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Tile_Layer_Properties"><span class="tocnumber">3.1</span> <span class="toctext">Tile Layer Properties</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Tile_Layer_Editing"><span class="tocnumber">4</span> <span class="toctext">Tile Layer Editing</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Tile_Editing_Fields"><span class="tocnumber">4.1</span> <span class="toctext">Tile Editing Fields</span></a></li>
+                              <li class="toclevel-2"><a href="#Painting"><span class="tocnumber">4.2</span> <span class="toctext">Painting</span></a></li>
+                              <li class="toclevel-2"><a href="#Saving"><span class="tocnumber">4.3</span> <span class="toctext">Saving</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+				<h2> <span class="mw-headline" id="Introduction"> Introduction </span></h2>
+                <p>The main use of the Torque 2D Tile Map Builder is to create a 
+                  repeating (tiling) map for a game level. Tile maps have been around for 
+                  years and are still used for modern 2D games. The artwork used in a tile
+                  map can drastically alter the perspective of a game, such as top-down 
+                  or "3/4" views. In almost every case, a tile map will have repeating 
+                  elements. </p>
+                <p><br />
+                  The main advantage to using a tile map is conserving memory. Rather than
+                  having several large images on multiple layers, you can use a single 
+                  tile map and hand paint your level. This requires a little more work and
+                  some extra CPU processing, but the gains of memory optimization and 
+                  extended customization create some balance. </p>
+                <br><h2> <span class="mw-headline" id="Importing_Tile_Map_Art"> Importing Tile Map Art </span></h2>
+                <p>Creating a tile map is a multi-step process, but a very simple one. 
+                  The following portion of this guide can be applied to all your asset 
+                  importing and setup. Loading the image will be the same process as any 
+                  other sprite. In the Create tab, click on the "Create a new ImageMap" 
+                  button. </p>
+                <p><br />
+                  When the file browser appears, navigate to the directory containing your spritesheet and open the image. For this guide, the <b>tgb/resources/starterArt/images/tilemap.png</b> artwork is used: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/OpenTileImage.jpg" class="livethumbnail"><img src="images/OpenTileImage.jpg" width="342" height="266" largewidth="685" largeheight="532" /></a><br />
+                <p><br />
+                  After you open the artwork, a new imageMap is created. Tiles are treated
+                  similarly to Animated Sprites. Each tile should be in a separate cell, 
+                  which means you need to edit the imageMap in the Image Builder. Double 
+                  click on the tilemapImageMap, then change the settings to resemble the 
+                  following: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/EditTileImageMap.jpg" class="livethumbnail"><img src="images/EditTileImageMap.jpg" width="356" height="206" largewidth="713" largeheight="413" /></a><br />
+                <p><br />
+                  The following changes are the most important: </p>
+                <ul>
+                  <li> Set Filter Mode to NONE </li>
+                </ul>
+                <ul>
+                  <li> Disable Filter Pad </li>
+                </ul>
+                <ul>
+                  <li> Set Image Mode to CELL </li>
+                </ul>
+                <ul>
+                  <li> Change the Cell Count X and Cell Count Y to the number of tiles for the art, 4 in this example </li>
+                </ul>
+                <p><br />
+                  After saving the changes, the new imageMap preview should show a single 
+                  tile. Back in the Create tab, you should now see the final 
+                  representation of the celled ImageMap. Notice it just shows one frame, 
+                  which you can cycle through by clicking the numbers below the preview: </p>
+                <p><br />
+                  <img alt="TileImageMap.jpg" src="images/TileImageMap.jpg" width="226" height="158" /> </p>
+                <br><h2> <span class="mw-headline" id="Creating_A_Tile_Map"> Creating A Tile Map </span></h2>
+                <p>Once your artwork is loaded into the editor, the next step is to 
+                  create an actual tile layer. Like other T2D objects, this can be added 
+                  from the editor. Switch to the Create tab, then scroll down until you 
+                  see the Tilemaps section. Unless you previously created a tile layer, 
+                  there should just be a single entry: </p>
+                <p><br />
+                  <img alt="NewLayer.jpg" src="images/NewLayer.jpg" width="132" height="101" /> </p>
+                <p><br />
+                  Left click and drag the newLayer object into your scene. The editor's 
+                  interface will change to Tile Editor mode. The rest of your scene will 
+                  be darkened and a blue grid will appear where you released the left 
+                  mouse button. This represents a stock tile layer, with no modifications 
+                  or image: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/NewLayerAdded.jpg" class="livethumbnail"><img src="images/NewLayerAdded.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <br><h3> <span class="mw-headline" id="Tile_Layer_Properties"> Tile Layer Properties </span></h3>
+                <p><i>(click to enlarge)</i> </p>
+                <a href="images/TileMapProperties.jpg" class="livethumbnail"><img src="images/TileMapProperties.jpg" width="226" height="182" largewidth="452" largeheight="365" /></a><br />
+                <ul>
+                  <li> <b>Auto Pan</b> - Specifies the speed at which the tilemap will
+                    automatically scroll the tiles across its surface. This makes the 
+                    tilemap operate much like a Scroller object.
+                    <ul>
+                      <li> <i>X</i> - Horizontal scroll speed </li>
+                      <li> <i>Y</i> - Vertical scroll speed </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Pan Position</b> - Manually sets the offset of the tiles on 
+                    the surface of the tilemap. This provides the ability to modify the 
+                    tiling effect by hand.
+                    <ul>
+                      <li> <i>X</i> - Horizontal offset of tiling </li>
+                      <li> <i>Y</i> - Vertical offset of tiling </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Wrap</b> - Specifies whether or not the tiles should be repeated across the surface of the tilemap.
+                    <ul>
+                      <li> <i>X</i> - Toggle infinite tiling in the tilemap rows </li>
+                      <li> <i>Y</i> - Toggle infinite tiling in the tilemap columns </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Tile Count</b> - Controls the number of tiles in the tilemap
+                    <ul>
+                      <li> <i>X</i> - Number of rows </li>
+                      <li> <i>Y</i> - Number of columns </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Tile Size</b> - Determines the dimensions of each tile in the tilemap
+                    <ul>
+                      <li> <i>X</i> - Width of each tile </li>
+                      <li> <i>Y</i> - Height of each tile </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p>Before you start painting, you will want to make sure your tile 
+                  layer is ready. The first thing you need to do is scale the actual tile 
+                  map layer. For this example, the tile layer needs to fit the entire 
+                  camera view for an iPad game. This doesn't always have to be the case. </p>
+                <p><br />
+                  If you can still see a blue grid on screen, press the Enter/Return key 
+                  or click on the select tool. This will switch from Tile Editing mode to 
+                  regular Scene Editor mode. Stretch the object until it fits the screen, 
+                  which is 1024x768 in this example: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/ScaleTilemap.jpg" class="livethumbnail"><img src="images/ScaleTilemap.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <p><br />
+                  The next step is to determine the Tile Size. If you add an individual 
+                  frame from the tile's imageMap (under Static Sprites) to the scene, you 
+                  can find out how large each one is. In this example, each tile is 
+                  100x100: </p>
+                <p><br />
+                  <img alt="TestTileSize.jpg" src="images/TestTileSize.jpg" width="322" height="159" /> </p>
+                <p><br />
+                  To continue editing the layer, you need to switch back to Tile Editor 
+                  Mode. To do this, simply select your layer, hover the cursor over it, 
+                  then click the "Edit this Tile map" button: </p>
+                <br />
+                  <img alt="EditTileMapButton.jpg" src="images/EditTileMapButton.jpg" width="215" height="63"/>
+                <p><br />
+                  Under the Tile Map properties section, change the <b>Tile Size X</b> and <b>Tile Size Y</b> to 100: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/ScaleTileSize.jpg" class="livethumbnail"><img src="images/ScaleTileSize.jpg" width="191" height="183" largewidth="382" largeheight="367" /></a><br />
+                <p><br />
+                  This will immediately change your tile layer's grid to reflect the 
+                  larger tile size. This will allow you to paint your tiles down in their 
+                  original size: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/TileSizeScaled.jpg" class="livethumbnail"><img src="images/TileSizeScaled.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <p><br />
+                  You should notice a shaded area on your grid. This represents an area of
+                  the tile layer you will not be able to edit. This is due to the tile 
+                  size modification. To gain access to the full area of the tile layer, 
+                  you need to increase the Tile Count. Under the Tile Map section, change 
+                  the Tile Count X to 11 and Tile Count Y to 10: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/ChangeTileCount.jpg" class="livethumbnail"><img src="images/ChangeTileCount.jpg" width="191" height="183" largewidth="382" largeheight="367" /></a><br />
+                <p><br />
+                  The full area should now be available for tile painting: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/TileCountChanged.jpg" class="livethumbnail"><img src="images/TileCountChanged.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <br><h2> <span class="mw-headline" id="Tile_Layer_Editing"> Tile Layer Editing </span></h2>
+                <p>The tile map is now ready for editing. This part is quite simple, as 
+                  you will only be clicking and dragging on the grid to paint down tiles. 
+                  Before proceeding, it is a good idea to know what each field under Tile 
+                  Editing does: </p>
+                <br><h3> <span class="mw-headline" id="Tile_Editing_Fields"> Tile Editing Fields </span></h3>
+                <p><i>(click to enlarge)</i> </p>
+                <a href="images/TileEditingProperties.jpg" class="livethumbnail"><img src="images/TileEditingProperties.jpg" width="226" height="304" largewidth="452" largeheight="609" /></a><br />
+                <ul>
+                  <li> <b>Brush</b> - A prefab containing settings created at 
+                    different time. For example, you can load a brush that uses a specific 
+                    frame, with Flip Vertical enabled and Collision enabled. </li>
+                </ul>
+                <ul>
+                  <li> <b>Image</b> - The imageMap used for painting </li>
+                </ul>
+                <ul>
+                  <li> <b>Frame</b> - Opens a tile palette. The palette consists of 
+                    the cells for the imageMap during CELL mode modification. The frame 
+                    numbers increase from left to right, top to bottom </li>
+                </ul>
+                <ul>
+                  <li> <b>Tile Script</b> - The text to pass to the onTileScript callback when the tile is first displayed on screen </li>
+                </ul>
+                <ul>
+                  <li> <b>Custom Data</b> - Used to define and store custom properties on a per tile basis </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Horizontal</b> - Reverses the horizontal orientation of the tile </li>
+                </ul>
+                <ul>
+                  <li> <b>Flip Vertical</b> - Reverses the vertical orientation of the tile </li>
+                </ul>
+                <ul>
+                  <li> <b>Collision</b> - Enables collisions on this specific tile 
+                    being painted. This will only work if the tile map itself has Uses 
+                    Physics, Send Physics and Receive Physics enabled </li>
+                </ul>
+                <ul>
+                  <li> <b>Apply To Selection</b> - Applies the current settings of the brush to a tile selected in the grid </li>
+                </ul>
+                <ul>
+                  <li> <b>Save Brush</b> - Saves the current brush settings to a prefab for use later </li>
+                </ul>
+                <ul>
+                  <li> <b>Delete Brush</b> - Deletes the current brush from the system </li>
+                </ul>
+                <br><h3> <span class="mw-headline" id="Painting"> Painting </span></h3>
+                <p>To get started, click on the Image drop down and locate the imageMap 
+                  containing the tile art. In this example, a single tilemapImageMap 
+                  exists. Only imageMaps with CELL mode enabled should be used here: </p>
+                <br />
+                  <img alt="SelectImage.jpg" src="images/SelectImage.jpg" width="440" height="236" />
+                <p><br />
+                  To paint a single tile, simply left click somewhere in the grid. The 
+                  tile will be added to the layer using whatever size the grid cell 
+                  allows: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/PaintTile.jpg" class="livethumbnail"><img src="images/PaintTile.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <p><br />
+                  To change the tile art, click on the Frame number. This will open the palette, allowing you to pick another tile for painting: </p>
+                <br />
+                  <img alt="SelectFrame.jpg" src="images/SelectFrame.jpg" width="299" height="194" /> 
+                <p><br />
+                  To change the painting action, select another tool. This is located directly under the Load Layer button: </p>
+                <br />
+                  <img alt="TileTools.jpg" src="images/TileTools.jpg" width="172" height="48" /> 
+                <ul>
+                  <li> <b>Select</b> - Selects a tile on the grid, including its properties </li>
+                </ul>
+                <ul>
+                  <li> <b>Paint</b> - Paints a single tile onto the grid. You can left click and drag over the grid to paint continuously </li>
+                </ul>
+                <ul>
+                  <li> <b>Flood Fill</b> - Fill in an area of the grid with the current brush. Any connected tiles of the same type will be affected by this. </li>
+                </ul>
+                <ul>
+                  <li> <b>Eraser</b> - Erases an individual tile on the grid. You can left click and drag over the grid to erase continuously </li>
+                </ul>
+                <p><br />
+                  Click on the Flood Fill tool, then click on the grid. The fill will stop
+                  when it reaches an area of the grid separated by an entire column or 
+                  row of existing tiles: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/TileFill.jpg" class="livethumbnail"><img src="images/TileFill.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <p><br />
+                  A common practice is to fill an entire area with a base tile, then use 
+                  the eraser and other tiles to create the rest of the tile map. With a 
+                  base tile filled, select the Eraser tool and remove a section of the 
+                  grid: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/EraseTiles.jpg" class="livethumbnail"><img src="images/EraseTiles.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <p><br />
+                  You are now free to experiment. The tile map art used for this example 
+                  has many tiles to play around with. While not perfect, the following 
+                  image represents a a body of water with a path leading up to it 
+                  (surrounded by grass and trees): </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/FinishedTileMap.jpg" class="livethumbnail"><img src="images/FinishedTileMap.jpg" width="350" height="208" largewidth="700" largeheight="417" /></a><br />
+                <br><h3> <span class="mw-headline" id="Saving"> Saving </span></h3>
+                <p>Once you are happy with your tile map, you will want to save it out 
+                  as a layer. You should do this often as you finish important sections. 
+                  To save, click on the Save Layer button under Tile Editing: </p>
+                <br />
+                  <img alt="SaveLayerButton.jpg" src="images/SaveLayerButton.jpg" width="466" height="84" /> 
+                <p><br />
+                  A file browser dialog will appear. Each tile layer is saved as a <b>.lyr</b> file. Navigate to or create a directory to save your tile layer in. In 
+                  the following image, a new folder named tilemaps is created in the 
+                  projectFiles/game/data directory: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/SaveLYR.jpg" class="livethumbnail"><img src="images/SaveLYR.jpg" width="343" height="266" largewidth="687" largeheight="532" /></a><br />
+                <p><br />
+                  Do not forget to save your scene and add the imageMap to the level's datablocks: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/TileDatablock.jpg" class="livethumbnail"><img src="images/TileDatablock.jpg" width="281" height="183" largewidth="562" largeheight="366" /></a><br />
+                <p><br />
+                  When your layer, scene and datablocks are all saved you can play your 
+                  scene to get a preview of what your new tile map looks like: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/TilemapTest.jpg" class="livethumbnail"><img src="images/TilemapTest.jpg" width="350" height="270" largewidth="700" largeheight="541" /></a><br />
+                <br><h2> <span class="mw-headline" id="Conclusion"> Conclusion </span></h2>
+                <p>This concludes the introduction to tile maps in Torque 2D. Tile map 
+                  creation is 100% editor driven, allowing programmers, designers and 
+                  artists the ability to quickly create tile maps and levels. Keep in mind
+                  your level allows multiple tile maps to exist, just like any other 
+                  sprite. You can layer them to create some really unique looking levels. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+<script type="text/javascript">
+
+var links = document.getElementsByTagName('a');
+
+for (var i = 0; i < links.length; i++)
+	if (links[i].className == 'livethumbnail')
+	{
+		var img = links[i].getElementsByTagName('img')[0];		
+		img.state = 'small';
+		img.smallSrc = img.getAttribute('src');
+		img.smallWidth = parseInt(img.getAttribute('width'));
+		img.smallHeight = parseInt(img.getAttribute('height'));
+		img.largeSrc = links[i].getAttribute('href');
+		img.largeWidth = parseInt(img.getAttribute('largewidth'));
+		img.largeHeight = parseInt(img.getAttribute('largeheight'));
+		img.ratio = img.smallHeight / img.smallWidth;
+		links[i].onclick = scale;
+	}
+	
+function scale()
+{
+	var img = this.getElementsByTagName('img')[0];		
+	img.src = img.smallSrc;
+	
+	if (! img.preloaded)
+	{
+		img.preloaded = new Image();
+		img.preloaded.src = img.largeSrc;
+	}
+
+	var interval = window.setInterval(scaleStep, 10);
+	return false;
+	
+	function scaleStep()
+	{
+		var step = 45;
+		var width = parseInt(img.getAttribute('width'));
+		var height = parseInt(img.getAttribute('height'));
+		
+		if (img.state == 'small')
+		{
+			width += step;
+			height += Math.floor(step * img.ratio);
+			
+			img.setAttribute('width', width);
+			img.setAttribute('height', height);
+			
+			if (width > img.largeWidth - step)
+			{
+				img.setAttribute('width', img.largeWidth);
+				img.setAttribute('height', img.largeHeight);
+				img.setAttribute('src', img.largeSrc);
+				window.clearInterval(interval);
+				img.state = 'large';
+			}
+		}
+		else
+		{
+			width -= step;
+			height -= Math.floor(step * img.ratio);
+
+			img.setAttribute('width', width);
+			img.setAttribute('height', height);
+			
+			if (width < img.smallWidth + step)
+			{
+				img.setAttribute('width', img.smallWidth);
+				img.setAttribute('height', img.smallHeight);
+				img.src = img.smallSrc;
+				window.clearInterval(interval);
+				img.state = 'small';
+			}
+		}
+	}			
+}
+
+</script>
+</html>

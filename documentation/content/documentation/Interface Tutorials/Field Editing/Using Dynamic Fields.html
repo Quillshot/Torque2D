@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 66;
+   parent.leftFrame.expandToItem('tree2', 'doc66');
+   var element = parent.leftFrame.document.getElementById('doc66');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  
+
+
+  <title>Torque 2D&ndash; Using Dynamic Fields</title><meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060731;11520200">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+-->
+  </style></head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Using Dynamic Fields</strong></font></font></font></p>
+<font face="Arial, sans-serif"><font size="2">Dynamic fields let you
+store data associated with a T2D object. In order to work with an
+object's dynamic fields, open up the object's <i>Dynamic Fields </i>rollout in the 
+    <em>Edit</em> tab <i>(you may need to
+scroll
+down to find it)</i>. For an object with no dynamic fields defined, its Dynamic Fields rollout will look like Figure 1.</font></font>
+<br>
+
+<p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 286px; height: 78px; float: left;" alt="" src="images/Using%20Dynamic%20Fields%2001.jpg" name="graphics3"><br clear="left">
+
+<font size="1"><i><b>Figure 1</b></i></font></p>
+
+<br>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+<font face="Arial, sans-serif"><font size="2">The
+<i>Field Name</i> will hold
+the name of the dynamic field we want to create, and the <i>Field Value</i>
+is
+the actual value we want to store in the field. For our example, we will add an
+<i>hSpeed</i> and <i>vSpeed</i> value, representing horizontal and vertical speeds for an object. First,
+enter &ldquo;hSpeed&rdquo;
+into the <i>Field Name</i> section, then enter
+&ldquo;30&rdquo; into
+the <i>Field Value</i> section <i>(as shown in
+Figure 2)</i>. For the tutorials, add whatever fields and values it suggests. </font></font>
+</p>
+
+<br>
+
+<p style="margin-top: 0.08in;"><img style="border: 0px solid ; width: 286px; height: 78px; float: left;" alt="" src="images/Using%20Dynamic%20Fields%2002.jpg" name="graphics4"><br clear="left">
+
+<font size="1"><i><b>Figure 2</b></i></font></p>
+
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify">
+<font face="Arial, sans-serif"><font size="2">Next, click the&nbsp;green plus sign button to confirm that you want to add the field. You
+should now see &ldquo;hSpeed&rdquo; as non-editable text, and
+the
+value as editable with a little red minus sign instead of the plus
+sign <i>(as shown in Figure 3)</i>. If you want to delete a dynamic field, click the minus sign. For an example, I'll add&nbsp;<i>vSpeed</i>. Type &ldquo;vSpeed&rdquo; into the <i>Field Name</i>
+and &ldquo;15&rdquo;
+into the <i>Field Value</i>. Then click the little green
+plus sign,
+and the <i>vSpeed</i> should appear just like the <i>hSpeed</i>
+<i>(as
+shown in Figure 4)</i>.<table cellpadding="10">
+    <tr>
+        <td style="width: 100px">
+            <img style="border: 0px solid ; width: 284px; height: 105px; float: left;" alt="" src="images/Using%20Dynamic%20Fields%2003.jpg" name="graphics5">&nbsp;<br clear="left">
+
+<font size="1"><i><b>Figure 3</b></i></font></td>
+        <td style="width: 100px">
+            <img style="border: 0px solid ; width: 283px; height: 134px; float: left;" alt="" src="images/Using%20Dynamic%20Fields%2004.jpg" name="graphics6"><br clear="left">
+
+<font size="1"><i><b>Figure 4</b></i></font></td>
+    </tr>
+</table>
+</font></font></p>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+
+<font face="Arial, sans-serif"><font size="2">This system allows you to add any custom data you want to your T2D game objects. 
+    In script, they can be accessed with the dot operator,
+    like so:</font></font><br>
+<pre class = "code">%this.vSpeed = 20;</pre>
+<br>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

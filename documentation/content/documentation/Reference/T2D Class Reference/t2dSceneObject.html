@@ -1,0 +1,6107 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 312;
+   parent.leftFrame.expandToItem('tree2', 'doc312');
+   var element = parent.leftFrame.document.getElementById('doc312');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>t2dSceneObject</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px;">
+<h8 class = "classHead">t2dSceneObject</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+BehaviorComponent
+</li>
+</ul>
+<span class = "hierarchyDerivedHead">Object's derived from this:</span>
+<ul class = "hierarchyDerivedList">
+<li class = "hierarchyEntry">
+t2dAnimatedSprite
+</li><li class = "hierarchyEntry">
+t2dChunkedSprite
+</li><li class = "hierarchyEntry">
+t2dParticleEffect
+</li><li class = "hierarchyEntry">
+t2dPath
+</li><li class = "hierarchyEntry">
+t2dScroller
+</li><li class = "hierarchyEntry">
+t2dShape3D
+</li><li class = "hierarchyEntry">
+t2dShapeVector
+</li><li class = "hierarchyEntry">
+t2dStaticSprite
+</li><li class = "hierarchyEntry">
+t2dTextObject
+</li><li class = "hierarchyEntry">
+t2dTileLayer
+</li><li class = "hierarchyEntry">
+t2dTileMap
+</li><li class = "hierarchyEntry">
+t2dTrigger
+</li>
+</ul>
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox" style="width: 650px;">
+<h4 class = "functionHead">addLinkPoint([float offsetX/float offsetY])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Adds a Link-Point. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">offsetX:</span> the local x offset to create the point at. 
+
+</span><span class = "param">
+<span class = "paramTitle">offsetY:</span> the local y offset to create the point at. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer linkPointID:</b> The link point ID if created properly, otherwise -1. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">addToScene(t2dSceneGraph scenegraph)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Add the object to a scenegraph. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">scenegraph:</span> the scenegraph you wish to add this object to. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">attachGui(guiControl guiObject, t2dSceneWindow window,[sizeControl?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Attach a GUI Control to the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">guiObject:</span> The  to attach. 
+
+</span><span class = "param">
+<span class = "paramTitle">window:</span> The  to bind the  to. 
+
+</span><span class = "param">
+<span class = "paramTitle">sizeControl:</span> Whether or not to size the  to the size of this object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">behavior(string behaviorName)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the behavior instance ID off of the object based on the behavior name passed. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">behaviorName:</span> The name of the behavior you want to get the instance ID of. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer behaviorID:</b> The id of the behavior instance. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">castCollision(float elapsedTime)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns collision details for object over elapsed-time. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">elapsedTime:</span> The number of seconds into the future to check for collisions. If this number is 0.0, the collision will be done based on the current position of all objects. If it is greater than 0.0, the engine will perform the collision detection across a simulated time period of length time and return the first collision detected. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>space seperated list:</b> If no collision occurs, the return value is an empty string. Otherwise, the list is in the form 'object time contactX contactY normalX normalY'. 'object' is the object collided with, 'time' is the number of seconds in the future the collision took place as a float (this number will always be less than the time parameter), 'contact' is the position the objects collided at as a vector, and 'normal' is the normal of the collision as a vector. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">castCollisionList(float elapsedTime)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns list of objects collided with over elapsed-time. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">elapstedTime:</span> The number of seconds into the future to check for collisions. If this number is 0.0, the collision will be done based on the current position of all objects. If it is greater than 0.0, the engine will perform the collision detection across a simulated time period of length time and return the first collision detected. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>space seperated list:</b> The objects that would be collided with. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">clone(bool copyFields?=false)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Clone Object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">copyFields:</span> Whether or not to copy the dynamic fields of the object to the newly cloned object.
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer newObjectID:</b> The newly cloned object's id if successful, otherwise a 0. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">cloneWithBehaviors()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Clones the object and its behaviors. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>newObjectID:</b> The newly cloned object's id if successful, otherwise a 0. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">copy(t2dSceneObject object,[copyFields?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Copies one object from another. The object being copied to needs to be of the same class as the object being copied from. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">object:</span> The  to copy this object to. 
+
+</span><span class = "param">
+<span class = "paramTitle">copyFields:</span> Specifies whether or not the object's dynamic fields should be copied to the new object. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool:</b> Whether or not the copy was successful. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">detachGui()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Detach any GUI Control. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool:</b> Whether or not the copy was successful. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">disableUpdateCallback()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Disables calling of the onUpdate callback 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool:</b> Whether or not the copy was successful. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dismount()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dismounts object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool dismounted:</b> Returns true if it properly dismounted, false if it didn't. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">enableUpdateCallback()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Enables calling of the onUpdate callback 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool dismounted:</b> Returns true if it properly dismounted, false if it didn't. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAngularVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Angular Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocity:</b> The speed at which the object is rotating. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getArea()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's area. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocity:</b> The speed at which the object is rotating. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAreaMax(float x2/float y2)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The lower right corner x and y position of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocity:</b> The speed at which the object is rotating. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAreaMin()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the upper left point of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocity:</b> The speed at which the object is rotating. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAtRest()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether the Object is at Rest. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool atRest:</b> Whether or not the object is at rest. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAttachedToPath()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the  that this object is attached to. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b> path:</b> The path that this object is attached to, or 0 if it is not attached to a path. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAutoMassInertia()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Auto Mass/Inertia Mode. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not to auto calculate the mass and inertia. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAutoMountRotation()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects auto mount rotation. float (autoMountRotationSpeed) The auto mount rotation speed. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not to auto calculate the mass and inertia. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getAutoRotation()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects auto rotation. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not to auto calculate the mass and inertia. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBlendAlpha()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Rendering Alpha (transparency). 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">(float:</span> alpha) The alpha value, a range from 0.0 to 1.0. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBlendColor(float red/float green/float blue/float alpha)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The red, green, blue, and alpha values of this object's blending color (a range from 0.0 to 1.0). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBlendColour()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Rendering Blend Colour. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float red / float green / float blue / float alpha:</b> The red, green, blue, and alpha values of this object's blending color (a range from 0.0 to 1.0). 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBlending()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Rendering Blend Options. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool blendStatus / srcBlendFactor / dstBlendFactor:</b> Whether or not the blending is enabled as well as the source and destination blending factors. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getBlendingStatus()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the blending status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionActive()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the collision active directions. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionActiveReceive(bool recieve)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The receive collision active status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionActiveSend(bool send)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The send collision active status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionCallback(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Whether or not the collision callback will be called. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionCircleScale(float scale)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The circle scale factor. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionCircleSuperscribed()</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionDetection(string detectionMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The current collision detection mode, see  for the modes. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is using blending. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionGroups()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the collision groups. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionLayers()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the collision layers. @ return (collisionLayers) A list of collision layers. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionMasks(groupMask/layerMask)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The Graph Groups and Rendering Layers the object is enabled to collide with. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionMaxIterations(integer iterationCount)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> the max number of iterations. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPhysics(bool send/bool recieve)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The send and receive physics status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPhysicsReceive(bool recieve)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The receive physics status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPhysicsSend(bool send)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The send physics status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPoly(poly-Definition)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The vertices of the collision polygon in object space. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPolyCount(integer poly-count)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The edge count of the collision polygon. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionPolyScale(float widthScale/float heightScale)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The width and height poly scale values. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionResponse(responseMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The current collision response mode, see setCollisionResponse for the modes. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCollisionSuppress(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Whether to supress the collision or not. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>collisionGroups:</b> A list of collision groups. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getConfigDatablock()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the configuration datablock this object is using. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>configDatablock:</b> The configuration datablock name. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getConstantForce()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects constant-force. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float forceX / float forceY:</b> The x and y components of the constant force. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getConstantForceX()</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float forceX / float forceY:</b> The x and y components of the constant force. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getConstantForceY()</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float forceX / float forceY:</b> The x and y components of the constant force. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getDamping()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Damping. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float damping:</b> The damping value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getDensity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Density. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float density:</b> The density value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getDstBlendFactor()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the dst blend factor. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>dstBlend:</b> The destination blend factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFlip()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the flip for each axis. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>dstBlend:</b> The destination blend factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFlipX()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether or not the object is flipped horizontally. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>dstBlend:</b> The destination blend factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFlipY()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether or not the object is flipped vertically.
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>dstBlend:</b> The destination blend factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getForceScale()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects force-scale. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float scale:</b> The scale factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getForwardMovementOnly()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object forward movement only status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float scale:</b> The scale factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getFriction()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Friction. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float friction:</b> The friction value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getGraphGroup(integer group)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The group the object is on. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float friction:</b> The friction value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getGraviticConstantForce()</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float friction:</b> The friction value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getHeight()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the height of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float friction:</b> The friction value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getImmovable()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the immovable status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is immovable. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getInertialMoment()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Inertial Moment. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float intertia:</b> The intertia value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsChild()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects Child status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float intertia:</b> The intertia value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsMounted()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get 'Is Mounted' Status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool isMounted:</b> Whether or not the object is mounted. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsPointInObject(worldX, worldY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns whether point intersects with object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">worldX:</span> The x component of the world position to check. 
+
+</span><span class = "param">
+<span class = "paramTitle">worldY:</span> The y component of the world position to check. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool isInside:</b> True if the point is inside the object, false otherwise. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLayer(integer layer)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The layer the object is on. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool isInside:</b> True if the point is inside the object, false otherwise. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLifetime(float lifetime)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The objects lifetime left before it is automatically deleted. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool isInside:</b> True if the point is inside the object, false otherwise. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinearVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Linear Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocityX, float velocityY:</b> The x and y velocities of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinearVelocityPolar()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Objects Linear Velocity using Polar angle/speed. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float angle, float speed:</b> The angle and speed the object is moving at. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinearVelocityX()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Linear Velocity X. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocityX:</b> The object's velocity along the x axis. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinearVelocityY()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Linear Velocity Y. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float velocityY:</b> The object's velocity along the y axis. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinkCount()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Link-Point Count. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer linkPointCount:</b> The count of link points. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLinkPoint(integer mountID)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets a Link-Point. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float worldX / float worldY:</b> The world position at which the link point is. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLocalPoint(float worldX, float worldY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns local-point for object. Converts a point in world space to object space. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">worldX:</span> The world position x you want to convert into local x.
+
+</span><span class = "param">
+<span class = "paramTitle">worldY:</span> The world position y you want to convert into local y.
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float localX / float local Y:</b> The local position that was converted from the world position passed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMass()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Mass. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float mass:</b> The mass value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMaxAngularVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Objects Max Angular Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float maxAngularVelocity:</b> The maximum angular velocity the object is allowed to move. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMaxLinearVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Objects Max Linear Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float maxLinearVelocity:</b> The maximum velocity the object is allowed to move. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMinAngularVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Objects Min Angular Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float minAngularVelocity:</b> The minimum angular velocity the object is allowed to move. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMinLinearVelocity()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Objects Min Linear Velocity. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float minLinearVelocity:</b> The minimum velocity the object is allowed to move. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountedParent()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get Parent we're mounted-to. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer parentID:</b> The parent's object ID if it is mounted, otherwise 0. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountForce()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the mount force. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+(float mountForce The mountForce value. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountInheritAttributes()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the inherit attributes status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool inheritAttributes:</b> Whether or not this object is inheriting attributes from the object it is mounted to. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountOwned()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the mount owned status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool ownedByMount:</b> Whether or not the object is deleted when the object it is mounted to is deleted. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountRotation()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's mount rotation. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool ownedByMount:</b> Whether or not the object is deleted when the object it is mounted to is deleted. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMountTrackRotation()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the track rotation status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool trackRotation:</b> Whether or not the mount is set to track rotation. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMouseLocked()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the mouse locked status of the object 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool trackRotation:</b> Whether or not the mount is set to track rotation. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPaused()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's paused status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool trackRotation:</b> Whether or not the mount is set to track rotation. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPhysicsSuppress()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the Objects Physics Suppress Status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the physics for this object are supressed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPosition()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's position. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the physics for this object are supressed. 
+</span>
+<span class = "exampleHead">Example(s):</span>
+<span class = "exampleBox">
+<pre class = "example">
+%pos = %obj.getPosition();
+</pre>
+</span>
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPositionX()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's x position. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the physics for this object are supressed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getPositionY()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's y position. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the physics for this object are supressed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRenderPosition()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the current render position. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the physics for this object are supressed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRestitution()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Object Restitution. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRotation()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's rotation. 0 is the default object rotation. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneGraph()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get the scenegraph the object is in. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSize()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the objects size. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSizeX()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the width of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSizeY()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the height of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSortPoint()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the layer draw order sorting point. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSortPointX()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the x component of the layer draw order sorting point. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSortPointY()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the y component of the layer draw order sorting point. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float restitution:</b> The restitution value of the object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSrcBlendFactor()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the src blend factor. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>srcBlend:</b> The source blend factor. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getUseMouseEvents()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether mouses-events are monitored by this object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool mouseStatus:</b> Whether mouse-events are monitored by this object. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getVisible()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the object's visible status. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is visible. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWidth()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the width of the object. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is visible. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWorldLimit(limitMode/float minX/float minY/float maxX/float maxY/bool callback)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The return is a space seperated string containing the mode, the top left corner x and y position, the bottom right x and y position, and then whether or not the callback is enabled. 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool status:</b> Whether or not the object is visible. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWorldPoint(float localX, float localY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns world-point from object. Converts a point in object space to world space. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">localX:</span> The local x position you want to convert into world x.
+
+</span><span class = "param">
+<span class = "paramTitle">localY:</span> The local y position you want to convert into world y.
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>float worldX / float worldY:</b> The world position that was converted from the local position passed. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">loadCopy(objectFile $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Loads a copy of the object from disk. Loads a previously saved object into this one. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">objectFile:</span> The filename to load from.
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool:</b> Whether or not the loading was successful. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mount(t2dSceneObject object,[float offsetX=0],[float offsetY=0],[float mountForce=0],[bool trackRotation?=true],[bool sendToMount?=true],[bool ownedByMount?=true],[bool inheritAttributes?=true])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Mounts onto a specified object. Object's can be mounted to any other object regardless of whether they have other mounts, or are mounted themselves. The only restriction is that there cannot be any cyclical mounting (two objects mounted to each other, for example). The functions listed other than mount only work if the object is already mounted to another object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">object:</span> The object to mount to. 
+
+</span><span class = "param">
+<span class = "paramTitle">offsetX:</span> The x position to mount to in the object space of object. 
+
+</span><span class = "param">
+<span class = "paramTitle">offsetY:</span> The y position to mount to in the object space of object. 
+
+</span><span class = "param">
+<span class = "paramTitle">mountForce:</span> The magnitude of the force constantly applied to the object to keep it at the mount point. A value of 0 makes the mount rigid, and thus stuck to the object it is mounted to. 
+
+</span><span class = "param">
+<span class = "paramTitle">trackRotation:</span> Whether or not to track the rotation of the object this is being mounted to. 
+
+</span><span class = "param">
+<span class = "paramTitle">sendToMount:</span> Whether or not to send the object directly to the mount point. 
+
+</span><span class = "param">
+<span class = "paramTitle">ownedByMount:</span> Whether or not the object is deleted when the object it is mounted to is deleted. 
+
+</span><span class = "param">
+<span class = "paramTitle">inheritAttributes:</span> Whether or not to inherit certain attributes from the object this is being mounted to. The inherited attributes are enabled, visible, paused, and flip. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>integer mountID:</b> The mount ID if successful or -1 if the mount fails. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">moveTo(t2dVector positionTarget, float linearSpeed,[bool autoStop=true],[bool callback=false],[bool snap=true],[float targetMargin=0.1])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets a position target for the object and moves toward it. The object is not actually forced to the target position, it is merely sent there. So, if a collision or some other outside force interferes with the object, it may not make it to the target position. However, the target is still set, so the object may still reach the target in the future. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">positionTarget:</span> The x and y position of the position target. 
+
+</span><span class = "param">
+<span class = "paramTitle">linearSpeed:</span> The speed at which the object is setn to the target. 
+
+</span><span class = "param">
+<span class = "paramTitle">autoStop:</span> Whether or not to autoStop upon reaching the taret. 
+
+</span><span class = "param">
+<span class = "paramTitle">callback:</span> Whether or not to perform a script callback (onPositionTarget()) upon reaching the designated target. 
+
+</span><span class = "param">
+<span class = "paramTitle">snap:</span> Whether or not to snap the object to the target when it is within margin. 
+
+</span><span class = "param">
+<span class = "paramTitle">targetMargin:</span> The proximity to the target necessary to qualify as reaching the target. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeAllLinkPoints()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Removes all Link-Points. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeFromScene()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Remove the object from the scenegraph. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">removeLinkPoint(integer mountID)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Removes a Link-Point. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mountID:</span> The id of the link point to remove. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">rotateTo(float rotationTarget, float angularSpeed,[bool autoStop=true],[bool callback=false],[bool snap=true],[float targetMargin=0.1])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets a rotation target for the object and rotates toward it. The object is not forced to the target rotation. It just has an angular velocity set that sends it toward the target. If it is interrupted by a collision or some other means, the target will be set, but the object may not reach it. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">rotationTarget:</span> The rotation target. 
+
+</span><span class = "param">
+<span class = "paramTitle">angularSpeed:</span> The speed at which you want the object to rotate to the target. 
+
+</span><span class = "param">
+<span class = "paramTitle">autoStop:</span> Whether or not to autoStop upon reaching the taret. 
+
+</span><span class = "param">
+<span class = "paramTitle">callback:</span> Whether or not to perform a script callback (onRotationTarget()) upon reaching the designated target rotation. 
+
+</span><span class = "param">
+<span class = "paramTitle">snap:</span> Whether or not to snap the object to the target when it is within margin. 
+
+</span><span class = "param">
+<span class = "paramTitle">targetMargin:</span> The proximity to the target necessary to qualify as reaching the target. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">safeDelete()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Safely deletes object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">saveCopy(objectFile $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Saves a copy of the object to disk. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">objectFile:</span> The filename to load from.
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+<b>bool:</b> Whether or not the saving was successful. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setAngularVelocity(float velocity)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Objects Angular Velocity. Auto rotation and angular velocity are two different values, though both of them affect the speed at which the object rotates. Auto rotation is not affected by any of the object's physics, whereas angular velocity is. If an auto rotation is set, it will be used instead of angular velocity. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">velocity:</span> The speed at which the object will rotate. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setArea(float x1, float y1, float x2, float y2)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects area. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">x1:</span> The upper left corner x position. 
+
+</span><span class = "param">
+<span class = "paramTitle">y1:</span> The upper left corner y position. 
+
+</span><span class = "param">
+<span class = "paramTitle">x2:</span> The lower right corner x position. 
+
+</span><span class = "param">
+<span class = "paramTitle">y2:</span> The lower right corner y position. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setAtRest()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object at Rest. Both linear velocities and angular velocities are set to 0 so the object will be at rest right after the function is called. However, if any forces are applied to the object after it is set at rest, it will move again. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setAutoMassInertia(bool status?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Auto Mass/Inertia Calculations. Sets whether or not mass and inertia should be automatically calculated based on the size and density of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether or not to auto calculate the mass and inertia. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setAutoMountRotation(float autoMountRotationSpeed)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects auto mount rotation speed. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">autoMountRotationSpeed:</span> The auto mount rotation speed. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setAutoRotation(float autoRotationSpeed)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects auto rotation speed. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">autoRotationSpeed:</span> the speed of the auto rotation. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setBlendAlpha(float alpha)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Rendering Alpha (transparency). The alpha value specifies directly the transparency of the image. A value of 1.0 will not affect the object and a value of 0.0 will make the object completely transparent. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">alpha:</span> The alpha value. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setBlendColor(float red, float green, float blue,[float alpha=1.0])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Rendering Blend Color.The blend color specifies how much of each color in the original image to show. A red value of 0.5 will cut the amount of red shown in half. A blend color of (1.0, 1.0, 1.0) will not affect the image and a blend color of (0.0, 0.0, 0.0) will make the image black. The alpha value specifies directly the transparency of the image. A value of 1.0 will not affect the object and a value of 0.0 will make the object completely transparent.Blending must be enabled (as set in setBlending) for this to have any effect. It is enabled by default. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">red:</span> The red value. 
+
+</span><span class = "param">
+<span class = "paramTitle">green:</span> The green value. 
+
+</span><span class = "param">
+<span class = "paramTitle">blue:</span> The blue value. 
+
+</span><span class = "param">
+<span class = "paramTitle">alpha:</span> The alpha value. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setBlendColour(float red, float green, float blue,[float alpha=1.0])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Rendering Blend Colour.The blend color specifies how much of each color in the original image to show. A red value of 0.5 will cut the amount of red shown in half. A blend color of (1.0, 1.0, 1.0) will not affect the image and a blend color of (0.0, 0.0, 0.0) will make the image black. The alpha value specifies directly the transparency of the image. A value of 1.0 will not affect the object and a value of 0.0 will make the object completely transparent.Blending must be enabled (as set in setBlending) for this to have any effect. It is enabled by default. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">red:</span> The red value. 
+
+</span><span class = "param">
+<span class = "paramTitle">green:</span> The green value. 
+
+</span><span class = "param">
+<span class = "paramTitle">blue:</span> The blue value. 
+
+</span><span class = "param">
+<span class = "paramTitle">alpha:</span> The alpha value. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setBlending(bool blendStatus?,[srcBlendFactor=GL_SRC_ALPHA],[dstBlendFactor=GL_ONE_MINUS_SRC_ALPHA])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Rendering Blend Options. Blending controls how colors will be blended when they are overlapping in the scene. setBlending(status) should only be used to turn blending off with setBlending(false). A subsequent call with setBlending(true) will reset srcFactor to SRC_ALPHA and dstFactor to ONE_MINUS_SRC_ALPHA. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">blendStatus:</span> Enables or disables blending. 
+
+</span><span class = "param">
+<span class = "paramTitle">srcBlendFactor:</span> The source blend factor. 
+
+</span><span class = "param">
+<span class = "paramTitle">dstBlendFactor:</span> The destination blend factor. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setBlendingStatus(bool blendStatus)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Enables blending. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">blendStatus:</span> Whether or not the object should use blending. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionActive(bool send, bool receive)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision check directions. Object's can both collide with other objects and be collided with by other objects. Setting an object to send collisions makes it able to collide, and setting an object to receive collisions makes it able to be collided with. So, an object that is sending collisions will only be able to collide with objects that are receiving collisions and vice versa. A single object can be set to both send and receive collisions. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">send:</span> Whether or not the object can collide with other objects. 
+
+</span><span class = "param">
+<span class = "paramTitle">receive:</span> Whether or not the object can be collided with by other objects. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionActiveReceive(bool receive)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision active receive status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">receive:</span> Whether or not the object can be collided with by other objects. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionActiveSend(bool send)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision active send status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">send:</span> Whether or not the object can collide with other objects. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionAgainst(t2dSceneObject object,[clearMasks?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision masks against a specific object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">object:</span> The t2dSceneobject to set collision masks against 
+
+</span><span class = "param">
+<span class = "paramTitle">clearMasks:</span> Wether or not to clear the collision masks before setting them against the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionCallback(bool status?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision callback status. Sets whether or not the onCollision() callback will be called for this object when it is part of a collision. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether or not to call a collision callback. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionCircleScale(float scale)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision-circle scale. This value is not cumulative. So, if a scale factor of 0.5 is applied twice, the second one will have no affect on the collision circle. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">scale:</span> Float in the range (0.0, 1.0] 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionCircleSuperscribed(superscribeMode?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Collision-Circle superscribed mode. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">superscribeMode:</span> Whether to enable or disable the superscribed mode. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionDetection(detectionMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Collision-Detection mode. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">detectionMode:</span> <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">FULL</span>: A superscribed circle is used first to filter objects that are obviously not colliding. If the bounding circles of objects are colliding, a further polygon check is done to see if a collision actually occurred.<br</li>
+<li><span class = "fieldListTitle">CIRCLE</span>: Only the collision circle is used in determining collisions.<br</li>
+<li><span class = "fieldListTitle">POLYGON</span>: Only the collision polygon is used in determining collisions.<br</li>
+<li><span class = "fieldListTitle">CUSTOM</span>: A custom function is called to detect whether or not collision has occurred between two objects. This function is defined by the user in the engine.</li></ul>
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionGroups(groups $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision group(s). 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">groups:</span> A list of collision group numbers to collide with. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionLayers(layers $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision layers(s). 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">layers:</span> A list of layers numbers to collide with. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionMasks(groupMask,[layerMask])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision masks. Collision masks limit the objects that are collided with based on their Graph Group and Rendering Layer. In order for two objects to collide, the sending object must have the receiving object's Graph Group and Rendering Layer in its masks. The receiving object's masks, however, do not have to contain the sending object's Graph Group and Rendering Layer. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">groupMask:</span> The Graph Groups to enable collision with. 
+
+</span><span class = "param">
+<span class = "paramTitle">layerMask:</span> The Rendering Layers to enable collision with. If layerMask is not specified all Rendering Layers will be included. . 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionMaterial(collisionMaterial)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Collision Material. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">collisionMateral:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionMaxIterations(iterationCount)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Objects Maximum Collision Iterations. Sets the maximum number of iterations that will be taken through the collision detection and resolution systems in a single frame. For most cases, the default value of 1 is sufficient here. If you have a good reason to increase the number, keep in mind that there will be a performance hit. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">iterationCount:</span> the max number of iterations. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPhysics(bool send, bool receive)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision physics directions. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">send:</span> Whether or not to use physics in sent collisions. 
+
+</span><span class = "param">
+<span class = "paramTitle">receive:</span> Whether or not to use physics in received collisions. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPhysicsReceive(bool receive)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision physics receive status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">receive:</span> Whether or not to use physics in received collisions. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPhysicsSend(bool send)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the collision physics send status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">send:</span> Whether or not to use physics in sent collisions. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPolyCustom(integer poly-count, poly-Definition $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Custom Collision Polygon. The collision polygon must be convex. While 1 or 2 edges doesn't make a polygon, it is perfectly valid to use these numbers for edgeCount in order to specify a single point or a line for collision detection.The higher the number of edges in the collision polygon, the longer collision detection will take. The polygon should contain the fewest edges possible while still accurately representing the desired collision area. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">poly-count:</span> Integer in the range [1, 64]. The number of edges in the polygon. 
+
+</span><span class = "param">
+<span class = "paramTitle">poly-Definition:</span> Each of these parameters is a vertex of the collision polygon in object space. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPolyPrimitive(integer poly-count)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Primitive Collision Polygon. While 1 or 2 edges doesn't make a polygon, it is perfectly valid to use these numbers for edgeCount in order to specify a single point or a line for collision detection.The polygon is subscribed within the bounding box of the object.The higher the number of edges in the collision polygon, the longer collision detection will take. The polygon should contain the fewest edges possible while still accurately representing the desired collision area. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">poly-count:</span> Integer in the range [1, 64]. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionPolyScale(float widthScale/[float heightScale])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision-polygon scale. This value is not cumulative. So, if a scale factor of 0.5 is applied twice, the second one will have no affect on the collision polygon. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">widthScale:</span> The scale factor for the collision polygon width. 
+
+</span><span class = "param">
+<span class = "paramTitle">heightScale:</span> The scale factor for the collision polygon height. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionResponse(responseMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Collision-Response mode. The collision response is only used if collision physics are active for the collision. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">responseMode:</span> <br>
+<br><span class = "fieldListHead">Possible values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">RIGID</span>: The object uses rigid body physics.<br</li>
+<li><span class = "fieldListTitle">BOUNCE</span>: The object bounces off the object it collided with.<br</li>
+<li><span class = "fieldListTitle">CLAMP</span>: The object is kept from penetrating the object it collided with.<br</li>
+<li><span class = "fieldListTitle">STICKY</span>: The object sticks to the collision point.<br</li>
+<li><span class = "fieldListTitle">KILL</span>: The object is deleted.<br</li>
+<li><span class = "fieldListTitle">CUSTOM</span>: A custom function is called to resolve collisions between two objects. This function is defined by the user in the engine.</li></ul>
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCollisionSuppress(bool status?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the collision suppress status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether to suppress the collision or not. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConfigDatablock(configDatablock)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Applies a configuration datablock to this object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">configDatablock:</span> The configuration datablock name. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForce(float forceX/float forceY,[gravitic?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Apply a continuous force. Sets a constant force to be applied to the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">forceX:</span> The x component of the constant force. 
+
+</span><span class = "param">
+<span class = "paramTitle">forceY:</span> The y component of the constant force. 
+
+</span><span class = "param">
+<span class = "paramTitle">gravitic:</span> Whether to set the constant force as gravitic. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForcePolar(float angle, float force,[bool gravitic?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Apply a continuous polar force. Sets a constant force to be applied to the object in polar form. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">angle:</span> The direction of the force. 
+
+</span><span class = "param">
+<span class = "paramTitle">force:</span> The magnitude of the force. 
+
+</span><span class = "param">
+<span class = "paramTitle">gravitic:</span> Whether to set the constant force as gravitic. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForceX(float forceX)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">forceX:</span> The x component of the constant force. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setConstantForceY(float forceY)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">forceY:</span> The y component of the constant force. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDamping(float damping)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Objects Damping. Damping is a percentage value of the amount of linear and angular velocity the object loses per second. A damping value of 1.0 will cause the object to be completely still after 1 second. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">damping:</span> The damping value for the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDebugOff(debugMask)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Debug Off Mask. Disables debug modes. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">debugMask:</span> A list of debug modes to disable, see  for a list of modes you can pass. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDebugOn(debugMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Debug On Mode(s). The debug banner (debug mode 0) has no effect on t2dSceneObjects. It is only relevant to t2dSceneGraphs. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">debugMode:</span> The debug modes to enable, this can be one or all in a comma seperated list. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">1. Bounding, Collision, and Clipping Boxes</span>: Displays the axis aligned bounding box in dark cyan, the axis aligned collision bounding box in light cyan, and various clipping rectangles.<br</li>
+<li><span class = "fieldListTitle">2. Mount Nodes</span>: Shows, as yellow crosses, all the mount nodes.<br</li>
+<li><span class = "fieldListTitle">3. Mount Force Lines</span>: Shows, in red, the force lines for mounted objects.<br</li>
+<li><span class = "fieldListTitle">4. World Limit</span>: Shows, in white, the world limit rectangle.<br</li>
+<li><span class = "fieldListTitle">5. Collision Bounds</span>: Shows, in green, the object collision polygon or circle.</li></ul>
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDefaultWorldLimit()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set to the world limit to default values. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDensity(float density)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Density. Density is only used when auto mass inertia is active. It is used in calculating the mass and inertia of the object. The higher the density, the larger the mass and inertia. Very low values, in the vicinity of 0.01, are recommended. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">density:</span> The density of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDstBlendFactor(dstBlend)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the blending properties of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">dstBlend:</span> The source blend factor. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setEnabled(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Enables or disables the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether to enable or disable the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setFlip(bool flipX, bool flipY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets flipping for each axis. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">flipX:</span> Whether or not to flip the object along the x (horizontal) axis. 
+
+</span><span class = "param">
+<span class = "paramTitle">flipY:</span> Whether or not to flip the object along the y (vertical) axis. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setFlipX(bool flipX)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets whether or not the object is flipped horizontally. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">flipX:</span> Whether or not to flip the object along the x (horizontal) axis. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setFlipY(bool flipY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets whether or not the object is flipped vertically. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">flipY:</span> Whether or not to flip the object along the y (vertical) axis. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setForceScale(float scale)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the scale factor for all forces applied to this object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">scale:</span> The scale factor. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setForwardMovementOnly(bool forwardMovementOnly)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the object to only move forward. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">forwardMovementOnly:</span> Whether or not the object should only move forward. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setForwardSpeed(float forwardSpeed)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the forward speed of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">forwardSpeed:</span> The foward speed of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setFriction(float friction)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Friction. This is kinetic friction, which is the force that resists the movement of the object along the surface of another object. Larger numbers will slow down the object more. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">friction:</span> The kinetic friction. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setGraphGroup(integer group)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects group (0-31). The graph group to place the object in. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">group:</span> Integer in the range [0-31]. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setGraviticConstantForce(bool gravitic)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">gravitic:</span> Whether to set the constant force as gravitic. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setHeight(float height)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the height of the object.
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">height:</span> The height of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setImmovable(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set the Object Immovable. Completely stops the object and makes it immovable. An immovable object will not react to any forces or velocities applied to it. The object can still be moved or rotated directly with  and . 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether or not the object should be immovable. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setImpulseForce(float impulseForceX/float impulseForceY,[bool gravitic?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Applies a one time force to the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">impulseForceX:</span> The x component of the impulse force 
+
+</span><span class = "param">
+<span class = "paramTitle">impulseForceY:</span> The y component of the impulse force 
+
+</span><span class = "param">
+<span class = "paramTitle">gravitic:</span> Whether or not the force should be gravitic. 
+
+</span>
+</span>
+
+<span class = "exampleHead">Example(s):</span>
+<span class = "exampleBox">
+<pre class="example">
+// this set's the impulse force to 5 in the X velocity and 10 in the Y velocity
+%obj.setImpulseForce(5, 10);
+</pre>
+<pre class="example">
+// this set's the impulse force to 15 in the X velocity and 20 in the Y velocity
+%obj.setImpulseForce(15, 20);
+</pre>
+
+</span>
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setImpulseForcePolar(float angle, float force,[bool gravitic?=false])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Apply an instantaneous polar force. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">angle:</span> The angle of direction you want to apply the force to. 
+
+</span><span class = "param">
+<span class = "paramTitle">force:</span> The force value you want to apply 
+
+</span><span class = "param">
+<span class = "paramTitle">gravitic:</span> Whether or not the force should be gravitic. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setInertialMoment(float inertia)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Inertial Moment. The inertia is used in determining the effect of angular forces applied to the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">inertia:</span> The inertial moment. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLayer(integer layer)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects layer (0-31). The layer on which to place the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">layer:</span> Integer in the range [0-31]. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLifetime(float lifetime)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Objects' Lifetime. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">lifetime:</span> The amount of time, in seconds, before the object is automatically deleted. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLinearVelocity(float velocityX, float velocityY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Objects Linear Velocity. Sets the velocity at which the object will move. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">velocityX:</span> The x component of the velocity. 
+
+</span><span class = "param">
+<span class = "paramTitle">velocityY:</span> The y component of the velocity. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLinearVelocityPolar(float angle, float speed)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Objects Linear Velocity using Polar-speed. Sets the speed and direction at which the object will move. This has the same effect as , it just sets the velocity in a different way. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">angle:</span> The angle of the direction at which the object to move. 
+
+</span><span class = "param">
+<span class = "paramTitle">speed:</span> The speed at which the object will move. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLinearVelocityX(float velocityX)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Objects Linear Velocity X-Component. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">velocityX:</span> The x component of the velocity. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLinearVelocityY(float velocityY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Objects Linear Velocity Y-Component. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">velocityY:</span> The y component of the velocity. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLinkPoint(integer mountID, float offsetX, float offsetY)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets a Link-Point Position. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mountID:</span> The id of the link point. 
+
+</span><span class = "param">
+<span class = "paramTitle">offsetX:</span> the local x offset to move the point to. 
+
+</span><span class = "param">
+<span class = "paramTitle">offsetY:</span> the local y offset to move the point to. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMass(float mass)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Mass. The mass is used in determining the effect of linear forces applied to the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mass:</span> The mass of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMaxAngularVelocity(float maxAngularVelocity)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Max Angular Velocity. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">maxAngularVelocity:</span> The maximum angular velocity the object is allowed to move. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMaxLinearVelocity(float maxLinearVelocity)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Max Linear Velocity. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">maxLinearVelocity:</span> The maximum velocity the object is allowed to move. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMinAngularVelocity(float minAngularVelocity)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Min Angular Velocity. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">minAngularVelocity:</span> The minimum angular velocity the object is allowed to move. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMinLinearVelocity(float minLinearVelocity)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Min Linear Velocity. Sets the minimum velocity at which the object is allowed to move. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">minLinearVelocity:</span> The minimum velocity for the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMountForce(float mountForce)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the mount force. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mountForce:</span> The magnitude of the force constantly applied to the object to keep it at the mount point. A value of 0 makes the mount rigid, and thus stuck to the object it is mounted to. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMountInheritAttributes(bool inheritAttributes)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the mount inherit attributes status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">inheritAttributes:</span> Whether or not to inherit certain attributes from the object this is being mounted to. The inherited attributes are enabled, visible, paused, and flip. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMountOwned(bool ownedByMount)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the mount owned status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">ownedByMount:</span> Whether or not the object is deleted when the object it is mounted to is deleted. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMountRotation(float mountRotation)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects Mount rotation. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mountRotation:</span> The mount rotation. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMountTrackRotation(bool trackRotation)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the track rotation status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">trackRotation:</span> Whether or not to track the rotation of the object this is being mounted to. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMouseLocked(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Allows the object to receive all mouse events, regardless of whether it is under the mouse. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">setMouseLocked:</span> Whether to lock or unlock the mouse. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPaused(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Pauses or unpauses the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether to pause or unpause the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPhysicsSuppress(bool status?)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the Objects Physics Suppress Status. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> True to disable physics, false to enable them. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPosition(float x, float y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects position. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">x:</span> The position of the object along the horizontal axis. 
+
+</span><span class = "param">
+<span class = "paramTitle">y:</span> The position of the object along the vertical axis. 
+
+</span>
+</span>
+
+<span class = "exampleHead">Example(s):</span>
+<span class = "exampleBox">
+<pre class = "example">
+%obj.setPosition(15, 15);
+</pre>
+</span>
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPositionTarget(t2dVector positionTarget,[bool autoStop=true],[bool callback=false],[bool snap=true],[float targetMargin=0.1])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets a position target for the object. This function does not actually move the object. Instead, it allows an object to be stopped or execute a callback upon reaching a destination position. To have an object automatically move to a target position, use . 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">positionTarget:</span> The x and y position of the position target. 
+
+</span><span class = "param">
+<span class = "paramTitle">autoStop:</span> Whether or not to autoStop upon reaching the taret. 
+
+</span><span class = "param">
+<span class = "paramTitle">callback:</span> Whether or not to perform a script callback (onPositionTarget()) upon reaching the designated target. 
+
+</span><span class = "param">
+<span class = "paramTitle">snap:</span> Whether or not to snap the object to the target when it is within margin. 
+
+</span><span class = "param">
+<span class = "paramTitle">targetMargin:</span> The proximity to the target necessary to qualify as reaching the target. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPositionTargetOff()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Cancels the objects position target. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPositionX(float x)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects x position. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">x:</span> The horizontal position of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setPositionY(float y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects y position. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">y:</span> The vertical position of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRestitution(float restitution)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Object Restitution. A restitution of 1.0 will cause the object to bounce with perfect elasticity, while a value 0.0 will cause the object to not bounce at all. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">restitution:</span> Float in the range [0.0, 1.0], the restitution. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRotation(float rotation)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects rotation. 0 is the default object rotation. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">rotation:</span> The rotation (angle) of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRotationTarget(float rotationTarget,[bool autoStop=true],[bool callback=false],[bool snap=true],[float targetMargin=0.1])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets a rotation target for the object. This function does not actually rotate the object. It merely provides a target rotation for the object. To actually rotate an object to a target use . 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">rotationTarget:</span> The rotation target. 
+
+</span><span class = "param">
+<span class = "paramTitle">autoStop:</span> Whether or not to autoStop upon reaching the taret. 
+
+</span><span class = "param">
+<span class = "paramTitle">callback:</span> Whether or not to perform a script callback (onRotationTarget()) upon reaching the designated target rotation. 
+
+</span><span class = "param">
+<span class = "paramTitle">snap:</span> Whether or not to snap the object to the target when it is within margin. 
+
+</span><span class = "param">
+<span class = "paramTitle">targetMargin:</span> The proximity to the target necessary to qualify as reaching the target. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRotationTargetOff()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Removes the objects rotation target. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSize(float width, float height)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the objects size. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">width:</span> The width of the object. 
+
+</span><span class = "param">
+<span class = "paramTitle">height:</span> The height of the object. 
+
+</span>
+</span>
+
+<span class = "exampleHead">Example(s):</span>
+<span class = "exampleBox">
+<pre class = "example">
+%obj.setSize(15, 15);
+</pre>
+</span>
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSizeX(float width)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the width of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">width:</span> The width of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSizeY(float height)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the height of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">height:</span> The height of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSortPoint(float x, float y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the layer draw order sorting point. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">x:</span> The x position local to the object of the sort point. 
+
+</span><span class = "param">
+<span class = "paramTitle">y:</span> The y position local to the object of the sort point. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSortPointX(float x)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the x-component of the layer draw order sorting point. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">x:</span> The x position local to the object of the sort point. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSortPointY(float y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the y-component of the layer draw order sorting point. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">y:</span> The y position local to the object of the sort point. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSrcBlendFactor(srcBlend)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the blending properties of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">srcBlend:</span> The source blend factor. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setTimerOff()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Stops the periodic timer for this object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setTimerOn(float timePeriod)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Starts a periodic timer for this object. Sets a timer on the object that, when it expires, will cause the object to execute the onTimer() callback. The timer event will continue to occur at regular intervals until  is called. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">timePeriod:</span> The period of time, in milliseconds, between each callback. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setUseMouseEvents(bool mouseStatus)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets whether mouses-events are monitored by this object. The  that is attached to the  this object is in must have 'use object mouse events' enabled as set in setUseObjectMouseEvents. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">mouseStatus:</span> Whether or not to monitor mouse events. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setVisible(bool status)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Show or hide the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">status:</span> Whether to enable or disable visiblity on the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setWidth(float width)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the width of the object. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">width:</span> The width of the object. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setWorldLimit(limitMode,[float minX/float minY/float maxX/float maxY],[bool callback?])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set World Limit. 
+
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">limitMode:</span> <br>
+<br><span class = "fieldListHead">Possible Values:<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">OFF</span>: Turns the limit off.<br</li>
+<li><span class = "fieldListTitle">NULL</span>: Nothing is done, but the callback is still called.<br</li>
+<li><span class = "fieldListTitle">RIGID</span>: The objects responds with a rigid collision response.<br</li>
+<li><span class = "fieldListTitle">BOUNCE</span>: The object bounces off the limit bounds.<br</li>
+<li><span class = "fieldListTitle">CLAMP</span>: The object is clamped to the edge of the limit bounds.<br</li>
+<li><span class = "fieldListTitle">STICKY</span>: The object sticks to the spot it hit the limit bounds.<br</li>
+<li><span class = "fieldListTitle">KILL</span>: The object is deleted when it collides with any limit bound</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">minX:</span> The top left x position.
+
+</span><span class = "param">
+<span class = "paramTitle">minY:</span> The top left y position.
+
+</span><span class = "param">
+<span class = "paramTitle">maxX:</span> The bottom right x position.
+
+</span><span class = "param">
+<span class = "paramTitle">maxY:</span> The bottom right y position.
+
+</span><span class = "param">
+<span class = "paramTitle">callback:</span> Whether or not to trigger the onWorldLimit() callback. 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">stopConstantForce()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Stops any continuous force. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "functionsHead">Callbacks:</h2>
+<span class = "functionsBox" style="width: 650px;">
+<h4 class = "functionHead">onAdd(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has been added to the scene.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Unless you have specific reason to use onAdd(), use onLevelLoaded(). onAdd() will be called when the LevelBuilder loads the level too, which is dangerous. onAdd is called whenever objects are created (as compared to onLevelLoaded()).
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that was added to the scene.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onCollision(%srcObject, %dstObject, %srcRef, %dstRef, %time, %normal, %contacts, %points)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> Two objects have collided with each other.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This is only called when the sender of a collision has its collision callback enabled as set in setCollisionCallback().
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">srcObject:</span> The object sending the collision.
+
+</span><span class = "param">
+<span class = "paramTitle">dstObject:</span> The object receiving the collision.
+
+</span><span class = "param">
+<span class = "paramTitle">srcRef:</span> Custom information that can be set by the object sending the collision. Currently only used by t2dTileLayer to pass the logical tile position the collision took place at.
+
+</span><span class = "param">
+<span class = "paramTitle">dstRef:</span> Custom information that can be set by the object receiving the collision. Currently only used by t2dTileLayer to pass the logical tile position the collision took place at.
+
+</span><span class = "param">
+<span class = "paramTitle">time:</span> The amount of time passed since the end of the previous frame until the collision took place.
+
+</span><span class = "param">
+<span class = "paramTitle">normal:</span> The normal vector from the object receiving the collision.
+
+</span><span class = "param">
+<span class = "paramTitle">contacts:</span> The number of contacts in the collision.
+
+</span><span class = "param">
+<span class = "paramTitle">points:</span> The positions of the contact points.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onLevelEnded(%this, %scenegraph)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object is being notified that the level is ending.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This function is called when you have ended a level (using the endLevel() function).
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that is going to be unloaded.
+
+</span><span class = "param">
+<span class = "paramTitle">scenegraph:</span> The scenegraph the object is loaded into.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onLevelLoaded(%this, %scenegraph)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has been loaded into the level.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This function is called when you have loaded a level (using the loadLevel() function) and is often used to initialize objects in script.
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that has been loaded.
+
+</span><span class = "param">
+<span class = "paramTitle">scenegraph:</span> The scenegraph the object is loaded into.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseMove(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseDown(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseDragged(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseUp(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseEnter(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseLeave(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseDown(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseDragged(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseUp(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred over the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have mouse events enabled as set by setUseMouseEvents(). Also, for an object to get mouse events, you must call setUseObjectMouseEvents(true) on the sceneWindow
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object the event was triggered by.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> The number of times the mouse button has been pressed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onPositionTarget(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has reached its target position.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> A target position can be set by setPositionTarget() or moveTo()
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that reached the target.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRemove(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has been deleted.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object was deleted using delete or safeDelete.
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that was removed.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRotationTarget(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has reached its target rotation.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> A target rotation can be set by setRotationTarget() or rotateTo()
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that reached the target.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onTimer(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> An object's timer expired.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The timer is set by setTimerOn().
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object whose timer went off.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onUpdate(%this)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> Called every tick (32 ms) to allow script updating of the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This callback should be used with care as it can dramatically hinder framerates. Because of this, it has to be specifically enabled on a per object basis with a call to enableUpdateCallback().
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">Called every tick (32 ms) to allow script updating of the object.</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> Called every tick (32 ms) to allow script updating of the object.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This callback should be used with care as it can dramatically hinder framerates. Because of this, it has to be specifically enabled on a per object basis with a call to enableUpdateCallback().
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onWorldLimit(%this, %limitMode, %limit)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The object has hit its world limit.
+
+</span>
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> The object must have its world limit callback enabled as set by the sixth parameter of setWorldLimit().
+</span>
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The object that is hitting its world limit.
+
+</span><span class = "param">
+<span class = "paramTitle">limitMode:</span> The action the object is taking as set by setWorldLimit().
+
+</span><span class = "param">
+<span class = "paramTitle">limit:</span> The limit that was hit.
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "variablesHead">Fields:</h2>
+<span class = "variablesBox" style="width: 650px;">
+<h4 class = "variableHead">AngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoMassInertia</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoMountRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AutoRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">BlendColor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> ColorF
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">BlendingEnabled</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionActiveReceive</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionActiveSend</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCallback</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCircleScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionCircleSuperscribed</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionDetectionMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionGroups</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionLayers</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionMaxIterations</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPhysicsReceive</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPhysicsSend</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPolyList</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> point2FList
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionPolyScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">CollisionResponseMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">config</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ConstantForce</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ConstantForceGravitic</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">damping</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Density</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">DstBlendFactor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">FlipX</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">FlipY</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ForceScale</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ForwardOnly</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Friction</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">GraphGroup</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Immovable</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Inertia</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Layer</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Lifetime</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">LinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">LinkPoints</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> point2FList
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Mass</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MaxAngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MaxLinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinAngularVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinLinearVelocity</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountForce</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountInheritAttributes</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountOffset</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountOwned</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MountTrackRotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Paused</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Position</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Restitution</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Rotation</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> float
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">scenegraph</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">size</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">SortPoint</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">SrcBlendFactor</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">useMouseEvents</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Visible</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitCallback</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMax</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMin</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2F
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">WorldLimitMode</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox" style="width: 650px;">
+<h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Enabled</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

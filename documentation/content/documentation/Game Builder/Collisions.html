@@ -1,0 +1,356 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 2;
+   parent.leftFrame.expandToItem('tree2', 'doc2');
+   var element = parent.leftFrame.document.getElementById('doc2');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+<title>Torque 2D - Collision</title>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_CollisionEditor skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <br><a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Basic_Collision"><span class="tocnumber">2</span> <span class="toctext">Basic Collision</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Enabling_Collision"><span class="tocnumber">2.1</span> <span class="toctext">Enabling Collision</span></a></li>
+                              <li class="toclevel-2"><a href="#Collision_Properties"><span class="tocnumber">2.2</span> <span class="toctext">Collision Properties</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Advanced_Collision"><span class="tocnumber">3</span> <span class="toctext">Advanced Collision</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Collision_Editor"><span class="tocnumber">3.1</span> <span class="toctext">Collision Editor</span></a></li>
+                              <li class="toclevel-2"><a href="#Collision_and_Physics_Messages"><span class="tocnumber">3.2</span> <span class="toctext">Collision and Physics Messages</span></a></li>
+                              <li class="toclevel-2"><a href="#Callbacks"><span class="tocnumber">3.3</span> <span class="toctext">Callbacks</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">4</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br><a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>In this tutorial, you will be shown how to enable collisions and set 
+                  up responses using Torque 2D. Whenever you need two or more objects to 
+                  collide with each other and react in an appropriate manner, you will 
+                  need to use the information in this guide. This can range from stopping a
+                  moving object, bouncing objects off of each other and creating custom 
+                  functions based on collision types. The following topics are covered in 
+                  this tutorial: </p>
+                <ul>
+                  <li> Basic scene editing </li>
+                </ul>
+                <ul>
+                  <li> Collision </li>
+                </ul>
+                <ul>
+                  <li> Scripting </li>
+                </ul>
+                <ul>
+                  <li> Callbacks </li>
+                </ul>
+                <ul>
+                  <li> Collision Editor </li>
+                </ul>
+                <br><a name="Basic_Collision" id="Basic_Collision"></a>
+                <h2> <span class="mw-headline"> Basic Collision </span></h2>
+                <p>Torque 2D uses a proprietary physics and collision system. While not
+                  as feature rich as Box2D, it can still support your game's collision 
+                  needs. You can get basic box to box collision running with only a couple
+                  mouse clicks. </p>
+                <br><a name="Enabling_Collision" id="Enabling_Collision"></a>
+                <h3> <span class="mw-headline">Enabling Collision</span></h3>
+                <p>By default, collision is disabled for a new object when you add it to
+                  a scene. This is an optimization, since not every sprite in your scene 
+                  needs collision (like a backdrop). To enable collision, start by 
+                  clicking on the an object in the scene. Switch to the Edit tab, then 
+                  scroll down to the Collision rollout. Click the top two check boxes to 
+                  enable Send Collision and Receive Collision: </p>
+                <p><br />
+                  <img alt="Image:FlowerCollision.jpg" src="images/FlowerCollision.jpg" border="0" height="122" width="240" /> </p>
+                <br><a name="Collision_Properties" id="Collision_Properties"></a>
+                <h3> <span class="mw-headline">Collision Properties</span></h3>
+                <p>With the exception of scripting, you will control the functionality 
+                  of your object's collision via the Collision rollout. The full set of 
+                  properties are shown below: </p>
+                <p><br />
+                  <i>(click to enlarge)</i> </p>
+                <a href="images/CollisionRollout.png" class="livethumbnail"><img src="images/CollisionRollout.png" width="204" height="244" largewidth="409" largeheight="488" /></a><br />
+                <ul>
+                  <li> <b>Send Collision</b>: When toggled, this will tell other objects it has collided with them. </li>
+                </ul>
+                <ul>
+                  <li> <b>Receive Collision</b>: When toggle, this object will receive notification of collision with other objects. </li>
+                </ul>
+                <ul>
+                  <li> <b>Send Physics</b>: Determines whether the object's default physics response will be used when it is sending the collision. </li>
+                </ul>
+                <ul>
+                  <li> <b>Receive Physics</b>: Determines whether or not the object's default physics response will be used when it is receiving the collision. </li>
+                </ul>
+                <ul>
+                  <li> <b>Callback</b>: When enabled, a script callback named <b>onCollision</b> will be triggered when this object collides with another. </li>
+                </ul>
+                <ul>
+                  <li> <b>Detection Mode</b>: Changes the algorithm used for collision detection
+                    <ul>
+                      <li> <i>Full</i>: Swept circle combined with polygon detection. The circle is generated dynamically based on the original bounding box size</li>
+                      <li> <i>Circle</i>: Swept circle only </li>
+                      <li> <i>Polygon</i>: Polygon detection (can be modified using the Collision Editor) </li>
+                      <li> <i>Custom</i>: Allows for custom collision calculation. 
+                        Currently this does nothing, but you can implement your code in the the 
+                        blank function found in t2dSceneObject.cc. This function is named <i>t2dSceneObject::onCustomCollisionDetection</i> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Circle Scale</b>: Controls the size of the collision circle when using the Full and Circle detection modes. </li>
+                </ul>
+                <ul>
+                  <li> <b>Superscribe Ellipse</b>: When enabled, the circle used in 
+                    FULL mode collision will automatically scale to a size that covers the 
+                    entire polygon at each point. </li>
+                </ul>
+                <ul>
+                  <li> <b>Collision Response</b>: Contains a set of default behaviors an object will perform when collision occurs.
+                    <ul>
+                      <li> <i>BOUNCE</i>: A simple, pong-style bouncing effect. The 
+                        colliding object will reverse its velocity in both the X and Y directions, 
+                          essentially reversing its motion.</li>
+                      <li> <i>CLAMP</i>: The colliding object slides along the surface it hits. </li>
+                      <li> <i>STICKY</i>: The colliding object will stop completely. </li>
+                      <li> <i>KILL</i>: The colliding object will be deleted immediately. </li>
+                      <li> <i>RIGID</i>: The colliding object will react using built-in rigid body physics. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Collision Layers</b>: Controls which layers this object will
+                    collide with. By default, an object collides with all layers. If layer 0
+                    is turned off, this object will not collide with any objects in that 
+                    layer. </li>
+                </ul>
+                <ul>
+                  <li> <b>Collision Groups</b>: Similar to Collision Layers, except 
+                    this is a manual organization of collision not reliant on any scene 
+                    properties (like layers). This can work in conjunction with Collision 
+                    Layers. For example, you can disable collision with everything except 
+                    objects that exist on layer 3, layer 4 and are only in group 2. This 
+                    becomes very important when you have many types of objects on screen 
+                    moving at once. </li>
+                </ul>
+                <br><a name="Advanced_Collision" id="Advanced_Collision"></a>
+                <h2> <span class="mw-headline"> Advanced Collision </span></h2>
+                <p>In addition to the basic collision properties described previously, 
+                  you can extend your object's collision functionality using the Collision
+                  Editor, messages and script callbacks. </p>
+                <br><a name="Collision_Editor" id="Collision_Editor"></a>
+                <h3> <span class="mw-headline">Collision Editor</span></h3>
+                <p>When you have an object selected in the scene, it is outlined by a 
+                  box. This is called the bounding box, which is used as the object's 
+                  default collision shape. Not every sprite you add to your scene actually
+                  uses that entire space. Many sprites you will be adding likely have 
+                  abnormal shapes, such as a walking human, spaceship, flower, etc. A 
+                  simple box to box collision is not always ideal. </p>
+                <p><br />
+                  This is easily fixed by using the Collision Editor. While custom shapes 
+                  can consume more processor power, your game play will be more believable
+                  and intuitive. Start by selecting an object in the scene, then click on
+                  the first button on the left end of the Selection Editor Toolbar: </p>
+                <p><br />
+                  <img alt="Image:CollisionPolyButton.jpg" src="images/CollisionPolyButton.jpg" border="0" height="127" width="438" /> </p>
+                <p><br />
+                  Clicking that button will activate the Collision Editor. At first, the 
+                  four points you see are identical to the sprite&#39;s bounding box. You can start adding nodes to the box to create a custom shape that more closely resembles the art's shape. The main limitation to this feature is that shapes must be <a href="http://en.wikipedia.org/wiki/Convex_hull">convex</a>, meaning they have no inward facing angles:</p>
+                <p><br />
+                  <b>BEFORE:</b> </p>
+                <p><i>(click to enlarge)</i> </p>
+                <a href="images/TutCollEditor1.jpg" class="livethumbnail"><img src="images/TutCollEditor1.jpg" width="393" height="270" largewidth="786" largeheight="540" /></a><br />
+                <p><br />
+                  <b>AFTER:</b> </p>
+                <p><i>(click to enlarge)</i> </p>
+                <a href="images/TutCollEditor2.jpg" class="livethumbnail"><img src="images/TutCollEditor2.jpg" width="393" height="270" largewidth="786" largeheight="540" /></a><br />
+                <br><a name="Collision_and_Physics_Messages" id="Collision_and_Physics_Messages"></a>
+                <h3> <span class="mw-headline">Collision and Physics Messages</span></h3>
+                <p>The four check boxes at the top of an object's collision properties 
+                  define the object's participation in the collision system using these 
+                  properties individually. For example, turning Send Collision on but 
+                  leaving Receive off will result in some objects never responding to 
+                  collision. </p>
+                <p><br />
+                  Objects that have "Send Collision" active can be thought of as active 
+                  colliders, while objects that have "receive collision" active can be 
+                  thought of as passive colliders. A collision will only be detected 
+                  between objects if one of the objects is an active collider and the 
+                  other is a passive collider. Keep in mind that an object can both send 
+                  and receive collisions. </p>
+                <p><br />
+                  Send and receive physics are treated slightly differently. Send physics 
+                  dictates whether or not the object's default physics response will be 
+                  used when it is sending the collision. Receive physics dictates whether 
+                  or not the object's default physics response will be used when it is 
+                  receiving the collision. </p>
+                <br><a name="Callbacks" id="Callbacks"></a>
+                <h3> <span class="mw-headline">Callbacks</span></h3>
+                <p>Perhaps the most powerful feature of the collision system is the 
+                  callback implementation. When you enable the Callback checkbox, the 
+                  engine will call a specific script function when a collision occurs. If 
+                  this script function does not exist, nothing will happen. However, you 
+                  can write the script function out and it will automatically execute. </p>
+                <p><br />
+                  In the following example, assume there is an object in your scene named 
+                  "Mine". This object has <a href="#Enabling_Collision">collision enabled</a> and the callback checkbox 
+                  turned on. </p>
+                <pre>// %srcObj - The object receiving the collision
+// %dstObj - The object that is being collided with.
+// %srcRef - Custom information set by the source object. Only used by t2dTileLayer
+// %dstRef - Custom information set by the destination object. Only used by t2dTileLayer
+// %time - The time since the previous tick when the collision happened.
+// %normal - The normal vector of the collision.
+// %contactCount - The number of contact points in the collision.
+// %contacts - The list of contact points. 
+function Mine::onCollision(%srcObj, %dstObj, %srcRef, %dstRef, %time, %normal, 
+    %contactCount, %contacts)
+{
+   // Custom collision code goes here
+}
+</pre>
+                <br><a name="Conclusion" id="Conclusion"></a>
+                <h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>This concludes the introduction to Torque 2D collision. While you 
+                  can enable basic collision without ever touching code, you will most 
+                  likely make heavy use of the <b>onCollision</b> callback. The tutorials 
+                  in the rest of this documentation will provide examples of how to fill 
+                  in the function. The instructions you learned in this guide are 
+                  essential and will be used throughout your development. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+<script type="text/javascript">
+
+var links = document.getElementsByTagName('a');
+
+for (var i = 0; i < links.length; i++)
+	if (links[i].className == 'livethumbnail')
+	{
+		var img = links[i].getElementsByTagName('img')[0];		
+		img.state = 'small';
+		img.smallSrc = img.getAttribute('src');
+		img.smallWidth = parseInt(img.getAttribute('width'));
+		img.smallHeight = parseInt(img.getAttribute('height'));
+		img.largeSrc = links[i].getAttribute('href');
+		img.largeWidth = parseInt(img.getAttribute('largewidth'));
+		img.largeHeight = parseInt(img.getAttribute('largeheight'));
+		img.ratio = img.smallHeight / img.smallWidth;
+		links[i].onclick = scale;
+	}
+	
+function scale()
+{
+	var img = this.getElementsByTagName('img')[0];		
+	img.src = img.smallSrc;
+	
+	if (! img.preloaded)
+	{
+		img.preloaded = new Image();
+		img.preloaded.src = img.largeSrc;
+	}
+
+	var interval = window.setInterval(scaleStep, 10);
+	return false;
+	
+	function scaleStep()
+	{
+		var step = 45;
+		var width = parseInt(img.getAttribute('width'));
+		var height = parseInt(img.getAttribute('height'));
+		
+		if (img.state == 'small')
+		{
+			width += step;
+			height += Math.floor(step * img.ratio);
+			
+			img.setAttribute('width', width);
+			img.setAttribute('height', height);
+			
+			if (width > img.largeWidth - step)
+			{
+				img.setAttribute('width', img.largeWidth);
+				img.setAttribute('height', img.largeHeight);
+				img.setAttribute('src', img.largeSrc);
+				window.clearInterval(interval);
+				img.state = 'large';
+			}
+		}
+		else
+		{
+			width -= step;
+			height -= Math.floor(step * img.ratio);
+
+			img.setAttribute('width', width);
+			img.setAttribute('height', height);
+			
+			if (width < img.smallWidth + step)
+			{
+				img.setAttribute('width', img.smallWidth);
+				img.setAttribute('height', img.smallHeight);
+				img.src = img.smallSrc;
+				window.clearInterval(interval);
+				img.state = 'small';
+			}
+		}
+	}			
+}
+
+</script>
+</html>

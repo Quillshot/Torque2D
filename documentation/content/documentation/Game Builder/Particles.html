@@ -1,0 +1,492 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 4;
+   parent.leftFrame.expandToItem('tree2', 'doc4');
+   var element = parent.leftFrame.document.getElementById('doc4');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Animated Sprites</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Adding_Particle_Art"><span class="tocnumber">2</span> <span class="toctext">Adding Particle Art</span></a></li>
+                          <li class="toclevel-1"><a href="#Creating_A_New_Effect"><span class="tocnumber">3</span> <span class="toctext">Creating A New Effect</span></a></li>
+                          <li class="toclevel-1"><a href="#Editing_An_Effect"><span class="tocnumber">4</span> <span class="toctext">Editing An Effect</span></a></li>
+                          <li class="toclevel-1"><a href="#Saving_Effects_To_File"><span class="tocnumber">5</span> <span class="toctext">Saving Effects To File</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#Effect_Properties"><span class="tocnumber">5.1</span> <span class="toctext">Effect Properties</span></a></li>
+                              <li class="toclevel-2"><a href="#Emitter_Properties"><span class="tocnumber">5.2</span> <span class="toctext">Emitter Properties</span></a></li>
+                              <li class="toclevel-2"><a href="#Graphs"><span class="tocnumber">5.3</span> <span class="toctext">Graphs</span></a></li>
+                            </ul>
+                          </li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">6</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">7</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>When it comes to special effects, particles are the first thing you 
+                  should think of when making a game. In this guide, you will learn how to
+                  create particle effects in Torque 2D. Particle effects are commonly 
+                  used for things like explosions, rain, smoke, etc. </p>
+                <p><br />
+                  Particles are generated automatically by a set of parameters inside of 
+                  an emitter, which can be edited visually. A single particle effect can 
+                  contain multiple emitters, which is a powerful system for creating 
+                  amazing and complex effects. </p>
+                <a name="Adding_Particle_Art" id="Adding_Particle_Art"></a>
+                <br><h2> <span class="mw-headline"> Adding Particle Art </span></h2>
+                <p>Like every other object that renders to the scene, particle effects 
+                  require an ImageMap. Before creating the particles, you need to import 
+                  the image. Under the Create tab, click on the "Create a new ImageMap" 
+                  button. Locate the image you will use for the particle effect. For this 
+                  example, the particles from the RainyDay demo are used: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:SelectParticlesImage.jpg" src="images/SelectParticlesImage.jpg" border="0" height="433" width="719" /> </p>
+                <p><br />
+                  Double click on the particlesImageMap entry. As with Animated Sprites 
+                  and Tile Maps, this ImageMap needs to be in Cell format. Click on the 
+                  Image Mode dropdown to display a list of options. Choose the <b>Cell</b> entry to split the image up into four parts. Because of the resolution 
+                  and number of cells, this operation should automatically split the image
+                  evenly. </p>
+                <p><br />
+                  This automatic operation only works for images containing 2x2 cells. You
+                  can still set the values for Cell Count X and Cell Count Y to 2 and see
+                    that the effect is the same. Make sure your final version looks similar to 
+                  the following: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:ParticlesImageBuilder.jpg" src="images/ParticlesImageBuilder.jpg" border="0" height="414" width="714" /> </p>
+                <p><br />
+                  <b>Note:</b> In most cases it is best to disable the Filter Pad check box and set Filter Mode to "NONE". </p>
+                <p><br />
+                  The new imageMap will appear in the Static Sprites rollout in a cell 
+                  format. Notice it just shows one frame, which you can cycle through by 
+                  clicking the numbers below the preview: </p>
+                <p><br />
+                  <img alt="Image:NewParticleAdded.jpg" src="images/NewParticleAdded.jpg" border="0" height="184" width="248" /> </p>
+                <a name="Creating_A_New_Effect" id="Creating_A_New_Effect"></a>
+                <br><h2> <span class="mw-headline"> Creating A New Effect </span></h2>
+                <p>This guide will create a very simple effect which will produce 
+                  several raindrops going toward the bottom of the scene. To get started, 
+                  open up the Create tab and scroll down to the Particle Effects rollout. 
+                  Unless you have created effects previously, there should be only one 
+                  entry called newEffect: </p>
+                <p><br />
+                  <img alt="Image:ParticleEffectsRollout.jpg" src="images/ParticleEffectsRollout.jpg" border="0" height="139" width="171" /> </p>
+                <p><br />
+                  Left click on that entry and drag it into your scene. When you let go of
+                  the mouse button, a blank particle effect is added to the scene. This 
+                  effect is essentially temporary. You can edit it all you want, but it 
+                  will need to be saved if you wish to use it in the future. For now, it 
+                  should not be doing anything: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:BlankParticleAdded.jpg" src="images/BlankParticleAdded.jpg" border="0" height="416" width="494" /> </p>
+                <p><br />
+                  Switch to the Edit tab while you have the new effect selected. Scroll 
+                  down to the Particle Effect rollout. You should only have the base 
+                  effect data. Click in the <b>Create Emitter</b> text box and type 'drops'. Then click on the green plus button to add the new emitter: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:NameDropsEmitter.jpg" src="images/NameDropsEmitter.jpg" border="0" height="247" width="415" /> </p>
+                <p><br />
+                  At this point you should have a default emitter. Since there is no 
+                  image, animation or frame associated with the emitter, your effect 
+                  should still show nothing. Your default emitter should look like this: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:DropsEmitterRollout.jpg" src="images/DropsEmitterRollout.jpg" border="0" height="537" width="415" /> </p>
+                <a name="Editing_An_Effect" id="Editing_An_Effect"></a>
+                <br><h2> <span class="mw-headline"> Editing An Effect </span></h2>
+                <p>The first major change you need to make to the emitter is to supply 
+                  it with an imageMap. The effect needs to know what it should be drawing 
+                  to the screen. Click on the <b>Image</b> drop down box and select the particlesImageMap you imported earlier: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:SetParticleImageMap.jpg" src="images/SetParticleImageMap.jpg" border="0" height="100" width="415" /> </p>
+                <p><br />
+                  You should immediately see particles rendering in your scene after 
+                  selecting the particlesImageMap. Unless you made any other previous 
+                  changes, this emitter will be rendering the first frame (or cell) from 
+                  the imageMap. This would be the sparkle image: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:SparklyRain.jpg" src="images/SparklyRain.jpg" border="0" height="469" width="480" /> </p>
+                <p><br />
+                  Move further down in the emitter properties and locate the <b>Frame</b> section. Set this to 1 to use the second cell in the imageMap because 
+                  this is the portion of the image containing the rain drop: </p>
+                <p><br />
+                  <img alt="Image:RainFrame1.jpg" src="images/RainFrame1.jpg" border="0" height="162" width="403" /> </p>
+                <p><br />
+                  Next, scroll down until you see the various check boxes which control the base particle behavior. Disable <b>Use Effect Emission</b> checkbox. This tells the effect to use the emitter property instead of the base effect graph: </p>
+                <p><br />
+                  <img alt="Image:DisableUseEffectEmission.jpg" src="images/DisableUseEffectEmission.jpg" border="0" height="159" width="161" /> </p>
+                <p><br />
+                  Notice how all the rain drop particles are shooting in every direction 
+                  from the center of the emitter. Rain typically falls in a straight line down 
+                  from a source (like a cloud). To change the origin of particle 
+                  creation, scroll down to the <b>Type</b> property. Click on the drop 
+                  down, then select <strong>LINEX</strong>. This means the particles will be generated 
+                  across a horizontal line, instead of a single center point or area: </p>
+                <p><img alt="Image:SetLinex.jpg" src="images/SetLinex.jpg" border="0" height="89" width="377" /> </p>
+                <p><br />
+                  Now it's time to really change the particle emitter behavior. Locate the <b>Edit Emitter Graph</b> button. You will want to left click this to start changing the emitter properties: </p>
+                <p><br />
+                  <img alt="Image:EditEmitterGraph.jpg" src="images/EditEmitterGraph.jpg" border="0" height="68" width="423" /> </p>
+                <p>A small dialog will pop up with a particle property selected. This is the emitter graph. If you click on the <b>Current Field</b> drop down, you will see all the properties you can change for this emitter: </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:EmitterValueList.jpg" src="images/EmitterValueList.jpg" border="0" height="542" width="263" /> </p>
+                <p><br />
+                  Don't panic. You do not need to change all the properties to simulate 
+                  rainfall. Only five properties need to be modified. From the Current 
+                  Field drop down, locate and select <b>Size X Base</b>. Left click on the
+                  red dot in the graph, then drag it up to around 30. It does not 
+                  have to be completely perfect, just as close as you can get it: </p>
+                <p><br />
+                  <img alt="Image:SetRainSizeBase.jpg" src="images/SetRainSizeBase.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  If you click in a blank area of the box, you will create a new value 
+                  node. This does not change the initial value of the Size X Base. What 
+                  this does is tell the particle being emitted to change its horizontal 
+                  size over time. This allows for more advanced particle effects, but it's
+                  not something you need right now. To get rid of this, right click on 
+                  the new node. </p>
+                <p><br />
+                  You should now be able to see rain drops being emitted from your effect.
+                  Look at the preview to make sure you can see the small white drops 
+                  being created. Don't worry about what they are doing just yet. All that 
+                  matters is you can see them. If not, increase the size a little more to 
+                  your liking: </p>
+                <p><br />
+                  <img alt="Image:BiggerRain.jpg" src="images/BiggerRain.jpg" border="0" height="204" width="206" /> </p>
+                <p><br />
+                  The rain is currently shooting in every direction. This is controlled by the <b>Emission Arc Base</b>. Switch to that field and you should see the stock value of 360: </p>
+                <p><br />
+                  <img alt="Image:ArcBaseBefore.jpg" src="images/ArcBaseBefore.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  This correlates to a circle, with the graph representing values from 0 
+                  to 360 degrees. The node is currently at 360, which causes the particles
+                  to shoot in every direction.  We want our particles emitting in a 
+                  straight line from a single line emitter. To achieve this, drag the 
+                  value node down to the very bottom. This results in a value of 0: </p>
+                <p><br />
+                  <img alt="Image:ArcBaseAfter.jpg" src="images/ArcBaseAfter.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  Moving on, select the <b>Emission Angle Base</b> field. You will notice 
+                  your rain is falling in the wrong direction. It is going straight up, 
+                  which is not a desired emission. This is the stock angle ejection for 
+                  particles. If you think about circles, what value represents a point or 
+                  rotation in the exact opposite direction? The answer is 180 degrees. </p>
+                <p><br />
+                  The stock values for <b>Emission Angle Base</b> will be -360 / 360, with
+                  a time of 0 / 1. This means you can drag the value node anywhere 
+                  between -360 (bottom) to 360 (top). You may find it difficult to carefully nudge the node 
+                  somewhere in the top area to get close to an accurate 180. A handy trick
+                  is to change the <b>Value (Min/Max)</b>. </p>
+                <p><br />
+                  Set the Value Min to 0, then the Value Max to 180. Now, setting the 
+                  particle emission to go in the exact opposite direction is as simple as 
+                  dragging the value node to the top of the graph: </p>
+                <p><br />
+                  <img alt="Image:SetAngleBase.jpg" src="images/SetAngleBase.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  Our current rainfall is a light sprinkling, which can barely sustain 
+                  life on the ground. You need to increase the amount of particles that are 
+                  generated by this emitter. Switch to the <b>Quantity Base</b> field, then set the value to something close to 45. This should give us enough rain to work with: </p>
+                <p><br />
+                  <img alt="Image:SetQuantityBase.jpg" src="images/SetQuantityBase.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  Finally, you need to adjust how quickly the rain falls. If this were 
+                  snow, you would want to slow it down. Since this is rain, you should 
+                  increase the force used to eject particles downward. Switch the current 
+                  field to <b>Emission Force Base</b>. If you have not adjusted any values you will be working with a huge range of -1000 to 1000. </p>
+                <p><br />
+                  Remember the trick shown earlier for setting the Emission Angle Base 
+                  range? Repeat this process for the Emission Force Base. Set the Value 
+                  Min to 0 and Value Max to 100. This makes it a lot easier to move the 
+                  value node to something small, like 17 or 18: </p>
+                <p><img alt="Image:SetForceBase.jpg" src="images/SetForceBase.jpg" border="0" height="287" width="271" /> </p>
+                <p><br />
+                  That's it! Click the close button on the emitter graph and admire your 
+                  new rain particle effect. You can always go back into the emitter 
+                  properties and tweak the effect until you are happy with it: </p>
+                <p><br />
+                  <img alt="Image:FinalRainParticles.jpg" src="images/FinalRainParticles.jpg" border="0" height="306" width="231" /> </p>
+                <a name="Saving_Effects_To_File" id="Saving_Effects_To_File"></a>
+                <br><h2> <span class="mw-headline"> Saving Effects To File </span></h2>
+                <p>One last step remains. This new effect is still just temporary. 
+                  Torque 2D particle effects need to be saved out to a file. This allows 
+                  your game to load the effect when it needs it and provides you with the 
+                  option to share particle effects with other projects or teams. </p>
+                <p><br />
+                  Scroll back to the top of the Particle Effect rollout. Look for the <b>Save Effect</b> button. Click that button, then choose a directory in your game project to save the effect. For this example, a <i>particles</i> folder was created in the projectFiles/game/data directory. Set the file's name to <b>rain.eff</b>, then click Save. </p>
+                <p><br />
+                   </p>
+                <p><img alt="Image:SaveRainEff.jpg" src="images/SaveRainEff.jpg" border="0" height="447" width="721" /> </p>
+                <p><br />
+                  That's it! Making rain fall is not a complex effect, nor does it require
+                  a lot of work. However, there are plenty of tweaks that could be made 
+                  to the effect. For example, if you know there will be a "wind" factor in
+                  your game, you can change the motion variance so the rain does not 
+                  always fall in a straight line. </p>
+                <a name="Effect_Properties" id="Effect_Properties"></a>
+                <h3> <span class="mw-headline"> Effect Properties </span></h3>
+                <p>A single Effect consists of a collection of Emitters. These settings will affect all Emitters within this Effect. </p>
+                <ul>
+                  <li> <b>Effect Mode</b> - Affects the base life of a particle effect. With the exception of INFINITE, the options use the Effect Lifetime property
+                    <ul>
+                      <li> <i>INFINITE</i> - Effect has an infinite lifespan, never looping </li>
+                      <li> <i>CYCLE</i> - The effect will repeat from start to finish in cycles. The interval between cycles is defined by the Effect Lifetime </li>
+                      <li> <i>KILL</i> - The effect will delete itself once the Effect Lifetime elapses </li>
+                      <li> <i>STOP</i> - The effect will stop playing, but not delete itself, once the Effect Lifetime elapses </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Effect Collisions</b> - When enabled, individual 
+                    particle collision will be turned on. Whenever a particle node collides 
+                    with another object in the same collision group or mask, the function <b>onParticleCollision</b> will be called for the emitter. </li>
+                </ul>
+                <ul>
+                  <li> <b>Create Emitter</b> - When clicked, will create a blank emitter using the specified name </li>
+                </ul>
+                <a name="Emitter_Properties" id="Emitter_Properties"></a>
+                <h3> <span class="mw-headline"> Emitter Properties </span></h3>
+                <p>Each Emitter within an Effect has its own list of Properties. These 
+                  Properties define how the Effect functions, looks and animates within 
+                  your Scene.<br />
+                </p>
+                <ul>
+                  <li> <b>Image</b> - The imagemap, defined on the Create tab, which contains the imagery to use for this Emitter. </li>
+                </ul>
+                <ul>
+                  <li> <b>Animation</b> - An animation, created on the Create tab, to use for this Emitter. If used, this will override the Image property. </li>
+                </ul>
+                <ul>
+                  <li> <b>Type</b> - How to orient this emitter.
+                    <ul>
+                      <li> <b>AREA</b> - Particles will be created randomly throughout the entire Area of this Effect. </li>
+                      <li> <b>LINEX</b> - Particles will be created across the horizontal center of the Area of this Effect. </li>
+                      <li> <b>LINEY</b> - Particles will be created across the vertical center of the Area of this Effect. </li>
+                      <li> <b>POINT</b> - Particles will be created at the center (relative position 0,0) of this Effect. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Orientation</b> - The rotation that Particles will have when
+                    spawned within this Emitter. The following Pivot properly is used 
+                    differently for each Orientation option.
+                    <ul>
+                      <li> <b>ALIGNED</b> - All particles will be oriented in the same direction, and will have no rotation. </li>
+                      <li> <b>FIXED</b> - All particles will be rotated by the same amount when spawned. The rotation is defined in the Fixed Angle field. </li>
+                      <li> <b>RANDOM</b> - All particles will be rotated in a random angle when spawned. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Fixed Angle</b> - Defines the spawn rotation angle of the 
+                    Particles when the FIXED orientation type is used. Has no effect in 
+                    other Orientation options. </li>
+                </ul>
+                <ul>
+                  <li> <b>Pivot</b> - Defines the offset that Particles will have from the center of the Emitter Area when spawned. </li>
+                </ul>
+                <ul>
+                  <li> <b>Force Angle</b> - Used by the 'Fixed Force' graphs. Usually this is used for simulating gravity. </li>
+                </ul>
+                <ul>
+                  <li> <b>Fixed Aspect</b> - When this is selected, the particle's 
+                    overall size is defined by their Size X in the graphs, with their Y 
+                    sizes proportionally scaled. When this is not selected, its Y scale and X
+                    scale are determined separately, by 'Size Y' and 'Size X'. </li>
+                </ul>
+                <ul>
+                  <li> <b>Use Effect Emission</b> - Allows many of the emitters graph values to be set by the overall effect's graphs. </li>
+                </ul>
+                <ul>
+                  <li> <b>Intense Particles</b> - Makes the particles look fire-like. </li>
+                </ul>
+                <ul>
+                  <li> <b>Single Particle</b> -  Only shows one particle at a time. This is helpful for editing certain properties. </li>
+                </ul>
+                <ul>
+                  <li> <b>Attach Position</b> -  When this is selected, all particles 
+                    will move with the particle effect object when it is moved. Otherwise, 
+                    they will trail behind it, pursuing their individual destinies. </li>
+                </ul>
+                <ul>
+                  <li> <b>Attach Rotation</b> -  When this is selected, all particles 
+                    will follow the rotation of the particle effect object, similar to the 
+                    Attach Position property. </li>
+                </ul>
+                <ul>
+                  <li> <b>Rotate Emission</b> - Aligns the emitter with the particle effect object. This is useful for directional particles, like jet flames. </li>
+                </ul>
+                <ul>
+                  <li> <b>First in Front</b> - Normally when a particle is created, it
+                    is seen in front of previous particles that were created by its 
+                    particle effect. When this is checked, new particles are created behind 
+                    previously particles. </li>
+                </ul>
+                <a name="Graphs" id="Graphs"></a>
+                <h3> <span class="mw-headline"> Graphs </span></h3>
+                <p>All movement and life properties of Effects and Emitters in Torque 2D
+                  are modified by a simple graph system. This graph system allows a 
+                  single property to have an effect that gets stronger or weaker at any 
+                  desired speed during the course of the life of a single particle, or 
+                  during the life of the Emitter as a whole. </p>
+                <p><br />
+                  <img alt="File:RainyDay_ParticleGraph_Scale.jpg" src="images/RainyDay_ParticleGraph_Scale.jpg" border="0" height="285" width="272" /> </p>
+                <p><br />
+                  The lower a node is on the graph, the lower the number. The higher a 
+                  node is on the graph, the higher the number. The far-left is at time 
+                  '0.0' of the life, while the far-left is at the end, or time '1.0' of 
+                  the life. </p>
+                <p><br />
+                  <img alt="File:RainyDay_ParticleGraph_Variance.jpg" src="images/RainyDay_ParticleGraph_Variance.jpg" border="0" height="284" width="274" /> </p>
+                <p><br />
+                  More nodes can be simply added by clicking on the graph. Clicking and 
+                  dragging on a node will move it, while right-clicking on a node will 
+                  remove it.
+                  When editing Effects, there are two types of graphs - Effect Graphs and 
+                  Emitter Graphs. </p>
+                <p><br />
+                  <b> Effect Graph</b> Properties in the Effect Graph will affect all Emitters attached to this Effect as a whole. </p>
+                <ul>
+                  <li> <b>Particle Life Scale</b> - Scales the life of particles. </li>
+                  <li> <b>Quantity Scale</b> - Scales the quantity of particles. </li>
+                  <li> <b>Size X Scale</b> - Scales the size of particles along the X coordinate. </li>
+                  <li> <b>Size Y Scale</b> - Scales the size of particles along the Y coordinate. </li>
+                  <li> <b>Speed Scale</b> - Scales the speed of particles. </li>
+                  <li> <b>Spin Scale</b> - Scales the spin of particles. </li>
+                  <li> <b>Fixed Force Scale</b> - Scales the Fixed Force of particles. </li>
+                  <li> <b>Random Motion Scale</b> - Scales the Random Motion of particles. </li>
+                  <li> <b>Visibility Scale</b> - Scales the Visibility of particles. </li>
+                  <li> <b>Emission Force Base</b> - The speed that particles will move when spawned. </li>
+                  <li> <b>Emission Force Variance</b> - Allowed randomness floor and ceiling that the Emission Force may have. </li>
+                  <li> <b>Emission Angle Base</b> - The base angle that particles will be spawned to move in. </li>
+                  <li> <b>Emission Angle Variance</b> - Allowed randomness floor and ceiling that the Angle may have. </li>
+                  <li> <b>Emission Arc Base</b> - The base arc that particles will be 'thrown' in when created. </li>
+                  <li> <b>Emission Arc Variance</b> - Allowed randomness floor and ceiling that the Arc may have. </li>
+                </ul>
+                <p><b>Emitter Graph</b> </p>
+                <ul>
+                  <li> <b>Particle Life Base</b> - The base duration of a particle in the world before it is destroyed. </li>
+                  <li> <b>Particle Life Variance</b> -  Allowed randomness floor and ceiling that the Particle Life may have. </li>
+                  <li> <b>Size X Base</b> - Size of particles along the X coordinate. </li>
+                  <li> <b>Size X Variance</b> - Allowed randomness floor and ceiling that the X size may have. </li>
+                  <li> <b>Size X Life</b> - The life of the animation along the X coordinate through the total life of the particle. </li>
+                  <li> <b>Size Y Base</b> - Size of particles along the Y coordinate. </li>
+                  <li> <b>Size Y Variance</b> - Allowed randomness floor and ceiling that the Y size may have. </li>
+                  <li> <b>Size Y Life</b> - The life of the animation along the Y coordinate through the total life of the particle. </li>
+                  <li> <b>Speed Base</b> - The speed at which spawned particles will move. </li>
+                  <li> <b>Speed Variance</b> - Allowed randomness floor and ceiling that the Speed may have. </li>
+                  <li> <b>Speed Life</b> - The life of the speed animation through the total life of the particle. </li>
+                  <li> <b>Spin Base</b> - The speed that a particle will rotate. </li>
+                  <li> <b>Spin Variance</b> - Allowed randomness floor and ceiling that the Spin may have. </li>
+                  <li> <b>Spin Life</b> - The life of the Spin animation through the total life of the particle. </li>
+                  <li> <b>Fixed Force Base</b> - The speed and direction that 
+                    particles will move. A positive number moves up on the screen, while a 
+                    negative number moves down. The higher / lower the number, the faster 
+                    the movement is. </li>
+                  <li> <b>Fixed Force Variance</b> - Allowed randomness floor and ceiling that the Fixed Force may have. </li>
+                  <li> <b>Fixed Force Life</b> - The duration of the Fixed Force animation through the total life of the particle. </li>
+                  <li> <b>Random Motion Base</b> - The higher the number, the more the particles will randomize their movements in all directions. </li>
+                  <li> <b>Random Motion Variance</b> - Allowed randomness floor and ceiling that the Random Motion may have. </li>
+                  <li> <b>Random Motion Life</b> - The life of the Random Motion animation through the total life of the particle. </li>
+                  <li> <b>Emission Force Base</b> - The speed that particles will move when spawned. </li>
+                  <li> <b>Emission Force Variance</b> - Allowed randomness floor and ceiling that the Emission Force may have. </li>
+                  <li> <b>Emission Angle Base</b> - The base angle that particles will move in when created. </li>
+                  <li> <b>Emission Angle Variance</b> - Allowed randomness floor and ceiling that the Angle may have. </li>
+                  <li> <b>Emission Arc Base</b> - The Arc to the base Angle movement that the particle will move in when created. </li>
+                  <li> <b>Emission Arc Variance</b> - Allowed randomness floor and ceiling that the Arc may have. </li>
+                  <li> <b>Red Color Life</b> - The strength of the Red color channel to a particle during the life of the particle. </li>
+                  <li> <b>Green Color Life</b> - The strength of the Green color channel to a particle during the life of the particle. </li>
+                  <li> <b>Blue Color Life</b> - The strength of the Blue color channel to a particle during the life of the particle. </li>
+                  <li> <b>Visibility Life</b> - The transparency of a particle during the life of the particle. </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <p>When you add a particle effect to your scene and save, the following is what will exist in the level file: </p>
+                <pre>   new t2dParticleEffect() {
+      effectFile = "data/particles/rain.eff";
+      useEffectCollisions = "0";
+      effectMode = "INFINITE";
+      effectTime = "0";
+      canSaveDynamicFields = "1";
+      Position = "155.803 -67.181";
+      size = "111.049 128.000";
+      Layer = "1";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+      UsesPhysics = "1";
+      MountOffset = "0.005 0.842";
+         mountID = "5";
+         mountToID = "3";
+   };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>This concludes the introduction to particle effects. The Torque 2D 
+                  particle editor is extremely powerful and versatile. While not every 
+                  game needs particles, it is often a good idea to plan ahead for them. 
+                  The instructions you learned in this guide are essential and used all 
+                  throughout your development. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

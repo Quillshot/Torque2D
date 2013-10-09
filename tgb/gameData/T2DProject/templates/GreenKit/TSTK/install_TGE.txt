@@ -1,0 +1,21 @@
+Installing TSTK for TGE
+-----------------------
+
+1. Copy the folder "TSTK" from wherever you unzipped it into your TGE "examples\" directory.  This is usually something like: "C:\TGE_1_5_2\example\".
+2. Edit the file "~\example\main.cs".
+3. Locate the following lines:
+
+$isDedicated = false;
+$modcount = 2;
+$userMods = "creator;" @ $defaultGame;
+
+
+4. Change the above lines to:
+
+$isDedicated = false;
+$modcount = 3;
+$userMods = "TSTK;" @ "creator;" @ $defaultGame;
+
+5. Save "~\example\main.cs".
+6. Run TGE as you normally do.  TSTK is installed. :)
+

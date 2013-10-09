@@ -1,0 +1,540 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 84;
+   parent.leftFrame.expandToItem('tree2', 'doc84');
+   var element = parent.leftFrame.document.getElementById('doc84');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Hierarchy</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20050419;14060000">
+	<META NAME="CHANGED" CONTENT="20060614;14531600">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.79in; margin-top: 0.49in; margin-bottom: 0.49in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		H1 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US }
+		H1.cjk { font-family: "Lucida Sans Unicode"; font-size: 16pt }
+		H1.ctl { font-family: "Tahoma"; font-size: 16pt; so-language: ar-SA }
+		H2 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		H2.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US; font-style: normal }
+		H2.cjk { font-family: "Lucida Sans Unicode"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Tahoma"; font-size: 14pt; so-language: ar-SA; font-style: italic }
+		H6 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		H6.western { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US }
+		H6.cjk { font-family: "Lucida Sans Unicode"; font-size: 10pt }
+		H6.ctl { font-family: "Tahoma"; font-size: 10pt; so-language: ar-SA }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P ALIGN=CENTER STYLE="margin-bottom: 0in"><B><FONT SIZE=5 STYLE="font-size: 20pt"><FONT FACE="Arial, sans-serif">Torque
+	2D &ndash; The common Folder</FONT></FONT></B></P>
+	<P ALIGN=CENTER STYLE="margin-bottom: 0.26in"><BR>
+	</P>
+</DIV>
+<H1 CLASS="western" STYLE="page-break-before: always"><FONT SIZE=4 STYLE="font-size: 16pt">Introduction</FONT></H1>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">When you
+package a Torque 2D project, the common <SPAN STYLE="font-style: normal">folder
+will be included with your project-specific folder.  This common
+folder contains many scripts and other resources that T2D requires
+for most applications.  Sometimes, you will want to edit these
+resources or examine them to understand exactly what they are doing. 
+This document will give you a general idea of what you will find in
+common.</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in; font-style: normal">
+<IMG SRC="images/Common%20Directory.png" NAME="graphics1" ALIGN=BOTTOM WIDTH=225 
+        HEIGHT=247 BORDER=0></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in; font-style: normal">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+When you package your project, only the compiled script files will be
+included in the common folder.  In order to view or make
+changes to these scripts, you must look in the common folder
+in your <b>Torque2D/games</b> folder.</P>
+<H1 CLASS="western"><FONT SIZE=4 STYLE="font-size: 16pt"><SPAN STYLE="font-style: normal">data</SPAN><I>
+</I><SPAN STYLE="font-style: normal">Folder</SPAN></FONT></H1>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=3>This
+folder contains folders for various non-script data files that are
+used by T2D.</FONT></P>
+<H2 CLASS="western"><FONT SIZE=4>	<SPAN STYLE="font-style: normal">audio</SPAN>
+<SPAN STYLE="font-style: normal">Folder</SPAN></FONT></H2>
+<P CLASS="western" STYLE="font-style: normal">This folder contains
+standard sound files.  T2D can load .ogg and .wav files.</P>
+<H2 CLASS="western"><FONT SIZE=4>	<SPAN STYLE="font-style: normal">font</SPAN>
+<B><SPAN STYLE="font-style: normal">Folder</SPAN></B></FONT></H2>
+<P CLASS="western" STYLE="font-style: normal; font-weight: medium"><FONT SIZE=3>This
+folder contains standard font files.  </FONT>
+</P>
+<H2 CLASS="western"> <FONT SIZE=4>	<SPAN STYLE="font-style: normal">help
+Folder</SPAN></FONT></H2>
+<P CLASS="western" STYLE="font-style: normal">This folder contains
+help files in the .hfl format (.hfl files uses a html like syntax). 
+This format can be viewed with a text editor.</P>
+<H1 CLASS="western" STYLE="font-style: normal">gameScripts Folder</H1>
+<P CLASS="western"><SPAN STYLE="font-style: normal">This folder
+contains many scripts that are used by T2D games.  It includes the
+client and server
+folders that are used for networking.</SPAN></P>
+<CENTER>
+	<TABLE WIDTH=675 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=138>
+		<COL WIDTH=507>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=2 WIDTH=659 VALIGN=TOP BGCOLOR="#808080">
+					<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><I><B>common/gameScripts
+					</B></I><SPAN STYLE="font-style: normal"><B>Folder</B></SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+					File</B></FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Synopsis</B></FONT></FONT></P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>audio.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Audio
+					and OpenAL setup</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>canvas.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Functions
+					for the T2D canvas (the overall display window)</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>common.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Loads
+					all files in the <I>common</I><SPAN STYLE="font-style: normal">
+					folder</SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>cursor.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Cursor
+					(mouse pointer) functions</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>keybindings.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>T2D
+					keybinding (keyboard/mouse/joystick) interface</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>levelManagement.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Setting
+					up and cleaning up game levels</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>metrics.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Utilities
+					for various metric (status) callbacks</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>options.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Used
+					by the <I>Options</I><SPAN STYLE="font-style: normal"> dialog
+					(for resolution, sound etc.)</SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>projectManagement.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Setting
+					up and cleaning up projects</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>projectResources.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Setting
+					up and cleaning up resources</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>screenshot.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Capturing
+					screenshots and movies</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>scriptDoc.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Outputting
+					script functions and classes to a file</FONT></FONT></P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+</P>
+<H2 CLASS="western"><FONT SIZE=4>	<SPAN STYLE="font-style: normal">client</SPAN><I>
+</I><SPAN STYLE="font-style: normal">Folder</SPAN></FONT></H2>
+<P CLASS="western" STYLE="font-style: normal">This folder contains
+files that are used by the clients in a networked game.</P>
+<CENTER>
+	<TABLE WIDTH=675 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=138>
+		<COL WIDTH=507>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=2 WIDTH=659 VALIGN=TOP BGCOLOR="#808080">
+					<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><I><B>common/gameScripts/client
+					</B></I><SPAN STYLE="font-style: normal"><B>Folder</B></SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+					File</B></FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Synopsis</B></FONT></FONT></P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>chatClient.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Clientside
+					chat utilities</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>client.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Connecting
+					to the server</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>message.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Handling
+					messages from the server</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>serverConnection.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Dealing
+					with server connections (connect errors, connection dropped
+					etc.)</FONT></FONT></P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H2 CLASS="western"> <FONT SIZE=4>	<SPAN STYLE="font-style: normal">server
+Folder</SPAN></FONT></H2>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=3>This
+folder contains files that are used by the server in a networked
+game.</FONT></P>
+<CENTER>
+	<TABLE WIDTH=675 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=138>
+		<COL WIDTH=507>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=2 WIDTH=659 VALIGN=TOP BGCOLOR="#808080">
+					<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><I><B>common/gameScripts/server
+					</B></I><SPAN STYLE="font-style: normal"><B>Folder</B></SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+					File</B></FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Synopsis</B></FONT></FONT></P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>banlist.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Contains
+					a list of banned clients, if there is one</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>chatServer.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Serverside
+					chat utilities</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>clientConnection.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Dealing
+					with client connections (requests, drops etc.)</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>kickban.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Kicks
+					off and bans clients</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>message.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Sending
+					messages to the clients</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>server.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Setting
+					up and cleaning up the server</FONT></FONT></P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="font-style: normal">gui Folder</H1>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="font-style: normal">This
+folder contains standard Torque 2D GUIs that are used by
+most games.  It also contains script files and a folder of images
+that are used by those GUIs.<FONT SIZE=3>  The .gui files in this
+folder have fairly self-explanatory names, and can be examined from
+the GUI editor.  It is highly recommended that you make backup copies
+of any GUIs you edit.</FONT></P>
+<CENTER>
+	<TABLE WIDTH=675 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=138>
+		<COL WIDTH=507>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=2 WIDTH=659 VALIGN=TOP BGCOLOR="#808080">
+					<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><I><B>common/gui
+					</B></I><SPAN STYLE="font-style: normal"><B>Folder</B></SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+					File</B></FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Synopsis</B></FONT></FONT></P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>cursors.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Loads
+					the standard cursor</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>help.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>For
+					HelpDlg.gui</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>messageBox.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>For
+					all the standard message box GUIs</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>profiles.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Contains
+					all the standard text formatting options for GUIs</FONT></FONT></P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H6 CLASS="western" STYLE="font-style: normal">          <FONT SIZE=4>images<I>
+</I>Folder</FONT></H6>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=3>This
+folder contains all the images used by standard Torque 2D
+GUIs</FONT></P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western"><SPAN STYLE="font-style: normal">preferences</SPAN><I>
+</I><SPAN STYLE="font-style: normal">Folder</SPAN></H1>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="font-style: normal">This
+folder contains the preferences for your project as well as T2D
+keybindings.  
+</P>
+<CENTER>
+	<TABLE WIDTH=675 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=138>
+		<COL WIDTH=507>
+		<THEAD>
+			<TR>
+				<TD COLSPAN=2 WIDTH=659 VALIGN=TOP BGCOLOR="#808080">
+					<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><I><B>common/preferences
+					</B></I><SPAN STYLE="font-style: normal"><B>Folder</B></SPAN></FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Script
+					File</B></FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#c0c0c0">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2><B>Synopsis</B></FONT></FONT></P>
+				</TD>
+			</TR>
+		</THEAD>
+		<TBODY>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>bind.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>T2D
+					keybindings</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>defaultPrefs.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>The
+					default preferences... will be used the first time this project
+					is run</FONT></FONT></P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=138 BGCOLOR="#e6e6e6">
+					<P CLASS="western"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>prefs.cs</FONT></FONT></P>
+				</TD>
+				<TD WIDTH=507 BGCOLOR="#e6e6e6">
+					<P CLASS="western" STYLE="font-weight: medium"><FONT FACE="Arial Narrow, sans-serif"><FONT SIZE=2>Current
+					preferences... this file is altered/created when the user sets
+					up preferences, such as screen resolution or sound volume.</FONT></FONT></P>
+				</TD>
+			</TR>
+		</TBODY>
+	</TABLE>
+</CENTER>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="font-style: normal"><BR><BR>
+</P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

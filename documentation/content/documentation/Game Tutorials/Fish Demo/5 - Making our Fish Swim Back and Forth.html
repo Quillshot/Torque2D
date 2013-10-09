@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 20;
+   parent.leftFrame.expandToItem('tree2', 'doc20');
+   var element = parent.leftFrame.document.getElementById('doc20');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Fish Demo Tutorial Part 5</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="AUTHOR" CONTENT="User">
+      <META NAME="CREATED" CONTENT="20050225;10000000">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060728;13533400">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+                     2D - Fish Demo Tutorial - Part 5</B></FONT></FONT></P>
+      </DIV>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>5. 
+                  Making our Fish Swim Back and Forth</B></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B><H4>5.1 Setting up our fish's world limit</H4></B></I></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that our fish is swimming in one 
+               direction, we need it to swim from one side of the level to the other. We can 
+               accomplish this easily using our fish's <I>world limit</I>. The world limit is 
+               a bounding box that we can define visually in our <I>Level Builder</I>. This is 
+               the world bounds for our fish object. We can also make it send a <I>script 
+                  callback</I> to our fish class when it reaches the edge of its world limit. 
+               A script callback says to the engine, &quot;call this script whenever this event 
+               happens&quot;. (This is different from a script execution, which is done to tell T2D 
+               where scripts we need are located.) By attaching a script callback to the world 
+               limit, we tell our fish to swim back and forth. </FONT></FONT>
+      </P>
+         <BR>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">So, change the fish's world limits extend
+             slightly outside the camera <em>(as shown in Figure 5.1.3).  Our purpose for this is to give enough space between the camera limit and the world limit for the entire width of the fish to fit, that way we don't see it turn around. </em>
+            </FONT></FONT>
+         <BR>
+      </P>
+      <table>
+      <tr>
+      <td>
+       </td><td>
+           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-1-3.gif"
+                  NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5.1.3</B></I></FONT></P>
+      </td>
+      </tr>
+      </table>    
+         <BR>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that the world limit boundary is 
+               set, we need to configure the settings for it. If you haven't already exited out of the <I>World Limit 
+                  Boundary Tool</I>, click on the <I>Selection Tool</I> in the top toolbar <I>(as 
+                  shown in Figure 5.1.4)</I>. </FONT></FONT>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+            
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-1-4.jpg" NAME="graphics4" ALIGN="left"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5.1.4</B></I></FONT></P>
+
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we are out, click the <I>Edit</I>
+               tab to look at our fish's settings again. This time we are going to expand the 
+               world limit settings by clicking the <I>World Limits</I> label <I>(as shown in 
+                  Figure 5.1.5)</I>. The default world limit is set to &quot;OFF&quot;. Click the 
+               dropdown and change it to &quot;NULL&quot; <I>(as shown in Figure 5.1.6)</I>. As you can 
+               see, there are a few other options such as BOUNCE, CLAMP, etc. In our case we 
+               don't want any physics response, and we want to control the response by script, 
+               so NULL works perfectly. We also need to check the <I>Callback</I> box to ensure our 
+               script will be called when the fish reaches the world limit. (<I>See Figure 5.1.7.</I>)</FONT></FONT>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+            
+      <table>
+      <tr>
+      <td>            
+             <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-1-5.jpg" NAME="graphics5" ALIGN="left"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5.1.5</B></I></FONT></P>
+       </td><td width = "25">
+       </td><td>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-1-6.jpg" NAME="graphics6" ALIGN="left"
+                  BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5.1.6</B></I></FONT></P>
+       </td>
+       </tr><tr>
+       <td>        
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-1-7.jpg" NAME="graphics6" ALIGN="left"
+            BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 5.1.7</B></I></FONT></P>
+      </td>
+      </tr>
+      </table>   
+      <br><br><br>
+      </P>
+      <P><FONT face="Arial, sans-serif"><FONT size="3"><B><I><H4>5.2 Scripting our world limit response</H4></I></B></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that our world limit is properly 
+               set up in the <I>Level Builder</I>, we can add the script to set the proper 
+               response. Open your <I>game.cs</I> script file in again <I>(MyFishDemo/game/gameScripts)</I>
+               folder. </FONT></FONT>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Add the following function to the end of the file.</FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+<pre class = "code">
+function FishClass::onWorldLimit(%this, %mode, %limit)
+{
+
+   switch$ (%limit)
+   {
+
+      case "left":
+         %this.setLinearVelocityX(20);
+         %this.setFlipX(false);
+
+      case "right":
+         %this.setLinearVelocityX(-20);
+         %this.setFlipX(true);
+   }
+
+}
+</pre>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+                     Sample 5.2.1</B></I></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Since we checked the <I>Callback</I> option 
+               in the <I>Level Builder</I>, this function will get called when our fish has 
+               reached its world limit. Two values are passed to this function. <I>%mode</I> represents 
+               the mode setting for the world limit. In this case, the NULL mode. The <I>%limit</I>
+               value represents which world limit it has reached, either <I>right</I>, <I>left</I>,
+               <I>top</I>, or <I>bottom</I>. We start our function out with a &quot;switch$ 
+               (%limit)&quot; statement. This takes the value of <I>%limit</I> and then lets you 
+               compare it to different situations, or <I>cases</I>. It allows you to have 
+               different things happen based on those cases. As you can see, we continue with 
+               the statement and compare it to &quot;left&quot; and &quot;right&quot;. The &quot;$&quot; after &quot;switch&quot; 
+               means that we are going to be comparing string values, such as &quot;left&quot; and 
+               &quot;right&quot; instead of numerical values like &quot;1&quot; and &quot;5&quot;. In the case where our 
+               fish has reached its &quot;left&quot; world limit, we do two things. First, we set its 
+               linear velocity along the X axis (horizontal) to 20. This should send our fish 
+               to the right. We also call a function <I>setFlipX()</I> passing it a &quot;false&quot; 
+               value. This ensures our fish is facing the default direction (which, if you 
+               remember, is to the right). If our fish hits the right world limit, it calls 
+               the linear velocity function along the X axis, this time setting it to negative 
+               20. This causes our fish to go left. We also call the same <I>setFlipX()</I> function, 
+               though we pass it &quot;true&quot; this time. This should flip our fish animation to face 
+               the left side, so it will appear to be swimming in the proper direction (we 
+               don't want moonwalking fish). </FONT></FONT>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Save your <I>game.cs</I> script file and click the <I>Play Level</I> button. You should 
+               see your fish swim back and forth! <I>(as shown in Figure 5.2.1)</I></FONT></FONT></P>
+      <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+         <BR>
+      </P>
+            <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishDemoFigure5-2-1.gif"
+                  NAME="graphics8" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5.2.1</B></I></FONT></P>
+         <BR CLEAR="left">
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

@@ -1,0 +1,117 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 1;
+   parent.leftFrame.expandToItem('tree2', 'doc1');
+   var element = parent.leftFrame.document.getElementById('doc1');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Animated Sprites</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Animated Sprites (t2dAnimatedSprite) are any objects that use a 
+                  series of imagemap frames, or cells, to create an animation. They are 
+                  commonly used for animating characters, moving props and various special
+                  effects. Animated sprites require an animation to have previously been 
+                  created in the Create Tab. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>To view a short tutorial on creating an animation in the editor,  
+                  <a href="../Interface%20Tutorials/Feature/Animated%20Sprites.html">click 
+                  here</a>. Once your animation has been created, 
+                  navigate to the Create Tab and find your previously created Animated 
+                  Sprites. </p>
+                <p><br />
+                  <img alt="File:Aquarium_AnimatedSprites.png" src="images/Aquarium_AnimatedSprites.png" border="0" height="94" width="564" /> </p>
+                <p><br />
+                  Find the Animated Sprite that you wish to add to your scene. Drag it from the panel and drop it in your scene. </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p>With the Animated Sprite placed in your scene, make sure it is selected then click on the Edit Tab. </p>
+                <p><br />
+                  <img alt="File:Aquarium_AnimatedSprite_Panel.png" src="images/Aquarium_AnimatedSprite_Panel.png" border="0" height="129" width="680" /> </p>
+                <ul>
+                  <li> <b>Animation</b> - The animation to use for this animated sprite object. </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>   new t2dAnimatedSprite() {
+      animationName = "angelfish1sheetAnimation";
+      canSaveDynamicFields = "1";
+      config = "FishDatablock";
+      Position = "-92.000 -127.000";
+      size = "64.000 64.000";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+         mountID = "5";
+   };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Animated sprites are essential to providing a lively and visually 
+                  appealing experience for your users. Most objects involved in an 
+                  interaction can make use of an animation, so use them often. To view a short tutorial on creating an animation in the editor,  
+                  <a href="../Interface%20Tutorials/Feature/Animated%20Sprites.html">click here</a>. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

@@ -1,0 +1,2848 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 86;
+   parent.leftFrame.expandToItem('tree2', 'doc86');
+   var element = parent.leftFrame.document.getElementById('doc86');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Introduction</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Melvyn May">
+	<META NAME="CREATED" CONTENT="20051010;3530000">
+	<META NAME="CHANGED" CONTENT="20060523;9231200">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 1.1in; margin-right: 1.1in; margin-top: 0.5in; margin-bottom: 0.5in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	    .style1
+        {
+            width: 135px;
+        }
+        .style2
+        {
+            width: 136px;
+        }
+        .style3
+        {
+            width: 202px;
+        }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0.64in"><FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Torque
+	2D &ndash; Image Maps</B></FONT></FONT></P>
+</DIV>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Introduction</B></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>T<IMG SRC="images/Image%20Maps_html_m4283c2ca.png" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=181 HEIGHT=181 BORDER=0>his
+document is intended to give you a complete overview of Torque 2D's (T2D) Image-Map system from what Image-Maps are to how they
+are typically used so without delay, let's begin.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>One
+of the big hurdles when developing any product is managing resources
+and there are few types of resources more troublesome than images. 
+Not only do images occupy lots of disk space and memory but they are
+typically numerous.  Add to this that there are performance issues
+related to the way images are stored/accessed and that these images
+have various runtime options associated with them and the situation
+can get quite complex.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Here's
+where T2D provides a helping hand; introducing the '<I>t2dImageMapDatablock'.</I>
+ As the name implies, the '<I>t2dImageMapDatablock'</I> is a type of
+datablock hereto referred to as an Image-Map.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+first question here is naturally, &quot;what is a datablock?&quot;
+and although a full discussion of the capabilities of datablocks is
+beyond this document, it's worth providing a very quick overview.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Datablocks
+are specialized objects that provide a portable/reusable container
+for common and typically-static 'data'.  Data here could refer to
+characteristics of an enemy's movement, the look/feel of GUI elements
+or more importantly for this document, definition of your imagery.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>An
+example of a datablock would be one that defines the properties of an
+enemy so that whenever an enemy is created, it takes its start-up
+properties from the datablock.  By changing the datablock definition,
+you can globally change the behavior of your enemies.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Typically,
+datablocks do not change at runtime but there is absolutely nothing
+to stop you doing this.  Some things can be changed dynamically, some
+can't.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+        face="Arial, sans-serif">The
+great thing about datablocks is that they have their own keyword
+within the Torque-Script language call &quot;datablock&quot; in the
+same sense that a function has, err &hellip; well, &quot;function&quot;
+but we'll get into the details of configuring datablocks shortly.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+most important way to think about datablocks are that they are
+objects that allow you to group logical, common data for groups of
+objects to use allowing you to make broad changes to any aspect of
+your game whether that be the look/feel or even the behaviors of game
+elements such as enemies or weapons.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Well
+this is all rather vague so let's get into something more practical;
+let's start defining some real datablocks and see how they work.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><B>Frame Configuration</B></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So
+now we've provided a basic idea of what a datablock is, let's
+breakdown what exactly Image-Maps allow you to do.  The idea here is
+to specify an image, how the frames within this image are organized
+and to provide various runtime options.  The basic format for an
+Image-Map is:</FONT></FONT></P>
+    <br />
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+			t2dImageMapDatablock( myImageMap )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">Note
+that you define a datablock by using the keyword &quot;datablock&quot;
+followed by the type of datablock you want to define.  In this case,
+it's a 't2dImageMapDatablock', a type which we simply call
+&quot;Image-Maps&quot;.  The final part of the definition is the
+name, here we're calling it &quot;myImageMap&quot; but you would
+probably call it something more related to its usage, perhaps
+&quot;playerShip&quot; or &quot;bigFont&quot;.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we've got the basic definition of Image-Maps, let's start
+populating the datablock with useful information.  We do this by
+adding a datablock &quot;field&quot; to the standard datablock
+definition.  A field has the following format:</FONT></FONT></P>
+    <br />
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+			t2dImageMapDatablock( myImageMap )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">myField
+			= &quot;foobar&quot;;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">The
+above example isn't that useful but what it does do is create a field
+called &quot;myField&quot; and assigns it the string &quot;foobar&quot;.
+ To access this field we'd use something like:</FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			<P CLASS="western" ALIGN=JUSTIFY><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			myImageMap.myField );</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">This
+shouldn't be difficult to understand as this dynamic-field creation
+is just an extension of standard torque-script you've probably
+already been using. So now that we know we can put our own
+custom-fields into our datablocks, let's look at the very important
+predefined ones that drive Image-Maps:</FONT></P>
+    <br />
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">imageName&rdquo;
+	- Source Imagery</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">imageMode&rdquo;
+	- Previously called the ambiguous &quot;mode&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">frameCount&rdquo;
+	- Optional; specifies the expected frame-count.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellCountX&rdquo;
+	- <I>CELL mode only</I>; 'horizontal' span of cells.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellCountY&rdquo;
+	- <I>CELL mode only</I>; 'vertical' span of cells.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellWidth&rdquo;
+	- <I>CELL mode only</I>; size of 'horizontal' cells.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellHeight&rdquo;
+	- <I>CELL mode only</I>; size of 'vertical' cells.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellOffsetX&rdquo;
+	&ndash; <I>CELL mode only</I>; &lsquo;horizontal&rsquo; pixel-offset
+	to start of tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellOffsetY&rdquo;
+	&ndash; <I>CELL mode only</I>; &lsquo;vertical; pixel-offset to
+	start of tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellStrideX&rdquo;
+	- <I>CELL mode only</I>; &lsquo;horizontal&rsquo; pixel-stride
+	during tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellStrideY&rdquo;
+	- <I>CELL mode only</I>; &lsquo;vertical&rsquo; pixel-stride during
+	tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellRowOrder&rdquo;
+	- <I>CELL mode only</I>; Specifies if row-order is used during tile
+	capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">linkImageMaps&rdquo;<I>
+	&ndash; LINK mode only;</I> Specifies the list of image-maps to link
+	together.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">filterMode&rdquo;
+	- Rendering control of the GPU filter mode.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">filterPad&rdquo;
+	- GPU filtering artifact fix.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">preferPerf&rdquo;
+	&ndash; Prefer Performance over least-waste.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">preload&rdquo;
+	&ndash; Preload Textures when created.  Texture(s) are always
+	active!</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">allowUnload&rdquo;
+	&ndash; Specifies whether the texture(s) can unload.</FONT></FONT></FONT></P>
+</UL>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">This
+list of fields may at first seem daunting but bear in mind that most
+of the time you&rsquo;ll only uses a couple of them, a handful are
+for more advanced control of image-maps only.  Okay, let's go through
+each of these fields and expose how indeed, Image-Maps do provide
+plenty of flexibility in getting your artwork into T2D.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>imageName&rdquo;</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+field defines where the source image is located on the disk.  An
+important thing to note here is the use of the term &quot;image&quot;.
+ When we say &quot;image&quot;, we are referring to a bitmap on the
+disk that contains imagery.  Now although this sounds like an
+overstatement, it's important in understanding what a &quot;frame&quot;
+is.  Quite often, developers use a single &quot;image&quot; that
+contains multiple &quot;frames&quot;.  </FONT></FONT>
+</P>
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">Here's
+an example of a typical image from the SDK that contains multiple
+frames:</FONT></P>
+    <br />
+
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Image%20Maps_html_m484ade1c.png" NAME="graphics2" ALIGN=BOTTOM WIDTH=140 HEIGHT=140 BORDER=0></P>
+    <br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see, this single image contains four separate frames.  The
+image size is 256 wide by 256 high but each frame is 128 wide by 128
+high.  We'll use this image for some examples so you may want to note
+these dimensions so that as we discuss frames you'll have the
+dimensions to hand.</FONT></FONT></P>
+    <br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Multiple
+frames are great but why would we make it so complicated by combining
+frames when we could've easily created four separate images?  Well,
+the answer is essentially simple but hides complex inner workings of
+your graphics-card.  The combining of frames into a single image
+reduces not only the overhead of storing potentially hundreds of
+separate files but also loading/interpreting them.  A more complex
+reason is due to the way that graphics hardware works (<I>see
+technical note at the end of this &quot;imageName&quot; section</I>).</FONT></FONT></P>
+    <br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So
+let's specify the image above in our example image-map:</FONT></FONT></P>
+    <br />
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+		
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+			t2dImageMapDatablock( myImageMap )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageName</B>
+			= &quot;t2d/data/images/tileMap&quot;;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">Here
+we've told T2D that we've got a bitmap located in the directory
+<I>&quot;t2d/data/images/&quot;</I> and its name is <I>&quot;tileMap&quot;</I>.
+  We&rsquo;ve highlighted this field in bold to indicate that you
+must always specify this field in an image-map.  Some fields are
+optional and we&rsquo;ll not highlighted those.  Note also that we
+purposely omitted the files' extension as T2D will attempt to load
+the different formats that it supports automatically, in a specific
+order as follows:</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><TABLE DIR="LTR" 
+        ALIGN=LEFT HSPACE=12 BORDER=1 BORDERCOLOR="#ffffff" CELLPADDING=7 CELLSPACING=0 
+        FRAME=RHS RULES=GROUPS style="width: 399px">
+	<COLGROUP>
+		<COL>
+	</COLGROUP>
+	<COLGROUP>
+		<COL>
+		<COL WIDTH=205>
+	</COLGROUP>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER>
+				</P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">24/32-Bit
+				Images (Typical)</FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">8-Bit
+				(Palletized) Images</FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER><I><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">1<SUP>st</SUP></FONT></FONT></I></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.jpg</I></FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.bm8</I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER><I><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">2<SUP>nd</SUP></FONT></FONT></I></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.png</I></FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.bmp</I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER><I><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">3<SUP>rd</SUP></FONT></FONT></I></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.gif</I></FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.jpg</I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER><I><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">4<SUP>th</SUP></FONT></FONT></I></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.bmp</I></FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.png</I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=34 BGCOLOR="#c0c0c0">
+				<P CLASS="western" ALIGN=CENTER><I><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Arial, sans-serif">5<SUP>th</SUP></FONT></FONT></I></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style1">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>-</I></FONT></FONT></P>
+			</TD>
+			<TD BGCOLOR="#c0c0c0" class="style2">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I>*.jpg</I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in">
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><CENTER>
+	<TABLE DIR="LTR" WIDTH=200 BORDER=1 CELLPADDING=7 CELLSPACING=0 FRAME=RHS>
+		<COL>
+		<TR>
+			<TD VALIGN=TOP BGCOLOR="#c0c0c0" class="style3" style="width: 200px">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Non-palletized
+				24-bit images can get their alpha-layer automatically loaded from
+				a separate &quot;.jpg&quot; file if it is alongside the specified
+				one and it contains a suffix of &quot;.alpha.jpg&quot;</B></I></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+</P>
+
+
+
+
+<br />
+
+
+<TABLE WIDTH=608 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=594>
+	<TR>
+		<TD WIDTH=594 HEIGHT=56 VALIGN=TOP BGCOLOR="#ccffcc">
+			
+			
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>***TECHNICAL
+			 NOTE ***</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>When
+			T2D uploads your imagery into the graphics card, it attempts to
+			place them into the same graphics object called a &quot;texture&quot;.
+			 Current graphics cards have limitations on the dimensions of
+			these texture objects.  Older cards can only handle 256 wide by
+			256 high textures whereas more modern cards can handle up to 4096
+			by 4096.</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>There's
+			also a limitation (on some cards) that the dimensions of these
+			texture-objects have to be a power-of-two in size e.g.
+			2,4,8,16,32,64,128,256,1024,2048,4096 etc.</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Another
+			complexity is that when T2D is rendering your sprites, it needs to
+			tell the graphics card which texture it requires and the
+			graphics-card selects the appropriate texture accordingly.  This
+			is no problem until T2D is selecting frame after frame which all
+			reside on different textures.  Because the graphics-card can only
+			select one texture-object at a time, this can lead to the
+			graphics-card swapping between different texture-objects
+			continuously.  This is commonly called &quot;texture thrashing&quot;
+			and generally reduces performance, sometimes quite considerably. 
+			T2D objects such as the t2dTileLayer can cause this as it renders
+			lots of tiles (therefore frames) during a single screen-update.</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>There
+			are a couple of ways counteracting this problem; rendering the
+			objects in a specific order so that all objects that use the same
+			image are rendered together or alternatively, try to keep as many
+			frames in as few textures as possible.  Also, grouping similar
+			frames into the same texture can be of benefit.</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>The
+			good news is that T2D has an intelligent packing routine that will
+			take the frames from your bitmap images that you supply,
+			reorganize them internally to ensure that the texture card not
+			only gets textures that it can handle but also to try to produce
+			the best performance texture-objects that it can, totally
+			automatically.  Put another way; unlike the older versions of T2D
+			(v1.0.2-), your input bitmap sizes DO NOT have to meet the above
+			conditions.  T2D will extract the frames and reorganize them into
+			compatible textures.  Feel free to create bitmaps that you're
+			happy with!  </B></I></FONT></FONT></FONT>
+			</P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>The
+			only exception is that no individual frame can be larger than that
+			supported by the graphics hardware.  In the future, even this
+			condition may be removed with T2D automatically splitting-up the
+			frame into manageable chunks allowing T2D to render it seamlessly
+			albeit at a loss in performance.</B></I></FONT></FONT></FONT></P>
+            <br />
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>More
+			details on this later.</B></I></FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>imageMode&rdquo;
+(previously called just &ldquo;mode&rdquo;)</I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>So
+now we've told the image-map which image contains the frames we're
+interested in but it doesn't know where the frames are within the
+image so we need to define those.  This is done by defining a
+specific Image-Mode.  The concept of an Image-Mode is probably the
+most complex part of an Image-Map so as soon as you've mastered this
+field, you're pretty much ready to go.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>There
+are four types of image-modes that you can use, these are:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">FULL
+	&ndash; Full-Image (Single-Frame).</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">CELL
+	&ndash; Regularly-Spaced (Multiple-Frames).</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">KEY
+	&ndash; Color-Keyed (Multiple-Frames).</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">LINK
+	&ndash; Linked Image-Map (Multiple-Frames).</FONT></FONT></FONT></P>
+</UL>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">These
+four types of image-modes allow you to extract frames from your
+imagery in different ways.  To some degree, T2D is flexible on the
+arrangement of frames within images but you'll still need to be
+careful to arrange your frames so that you get expected results.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's
+go through each of these image-modes in turn.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>&quot;FULL&quot;
+Image-Mode</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+mode is extremely simple to understand as it simply tells T2D that
+the whole image is a single frame.  There are no extra parameters you
+need to specify at all!  It's probably a good time to mention that
+T2D will assign any frames it finds, a single number starting at
+zero.  In this mode, you'll get a single frame referred to as frame 0
+(zero).</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Here's
+an example datablock defining a <I>&quot;full&quot;</I> image-mode
+image-map:</FONT></FONT></P>
+    <br />
+
+
+
+
+<TABLE WIDTH=612 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=320>
+	<COL WIDTH=264>
+	<TR>
+		<TD WIDTH=320 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m5c9f3206.gif" NAME="Frame3" ALT="Frame3"></P>
+		</TD>
+		<TD WIDTH=264>
+			<P CLASS="western"><FONT COLOR="#333333"><IMG SRC="images/Image%20Maps_html_m557608bc.png" NAME="graphics3" WIDTH=173 HEIGHT=86 BORDER=0></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">As
+you can see, we simply add the field &quot;imageMode&quot; and set it
+to &quot;full&quot; and we're done.  Note that this field is
+highlighted bold here which means you must always specify this field.</FONT></P>
+<br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>&quot;CELL&quot;
+Image-Mode</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+mode is more complex but still easy to understand once you&rsquo;ve
+used it a few times.  It&rsquo;s also the &ldquo;bread and butter&rdquo;
+image-mode that you&rsquo;ll more than likely be using all the time
+so it&rsquo;s important to go through this particular mode in detail.
+ Because this mode is the most common one used, it&rsquo;s also the
+default that if you don&rsquo;t actually specify &ldquo;imageMode&rdquo;,
+T2D will automatically assume you want <I>&ldquo;cell&rdquo;</I>
+mode.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">In
+<I>&quot;cell&quot;</I> mode, you're telling T2D that your frames are
+organized into a regular grid where all frames have a common
+width/height, each frame being termed a <I>&quot;cell&quot;</I>.</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m64b98da8.gif" NAME="Frame4" ALT="Frame4"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_5cd651fc.png" NAME="graphics4" ALIGN=BOTTOM WIDTH=137 HEIGHT=137 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">As
+you can see, our image-map has suddenly expanded with lots of extra
+fields.  Well, don't worry, everything will become clear soon.  We've
+added the <I>&quot;imageMode&quot;</I> as <I>&quot;cell&quot;</I> as
+discussed above but we've also added four more fields described
+briefly at the beginning of this topic.  The reason we're adding them
+now is because these fields are only used when you're in <I>&quot;cell&quot;</I>
+mode.  Let's talk about these extra fields.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">In
+<I>&quot;cell&quot;</I> mode, T2D scans across your image from
+top-left until it reaches the right of your image, it then moves down
+a <I>&quot;cell&quot;</I> and repeats until it reaches the bottom of
+your image.  To do this, T2D needs at least two pieces of
+information, these are the <I>&quot;cellWidth&quot;</I> and the
+<I>&quot;cellHeight&quot;</I>.  Given these two fields, T2D can
+successfully capture frames from the image.  As you may notice these
+fields must be specified but only if the <I>&ldquo;imageMode</I>&rdquo;
+is <I>&ldquo;cell&rdquo;</I>.  So what about the two other fields
+<I>&quot;cellCountX&quot;</I> and <I>&quot;cellCountY&quot;?</I> 
+Well these are <B><I>optional</I></B> fields that allow you to
+restrict how many cells horizontally and vertically you want from the
+starting position of top-left.  If you omit either of these fields,
+T2D will try to get as many of these cells in the respective
+direction as it can.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>So if we look at the
+example image-map datablock we've provided, we can see that we've
+told T2D that we expect a bunch of cells that are 128 wide by 128
+high and that we expect 2 cells horizontally and 2 cells vertically. 
+Of course, we didn't need to explicitly state that we wanted two
+cells horizontally and vertically, we could've just specified the
+following:</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+			</P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+			t2dImageMapDatablock( myImageMap )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageName</B>
+			= &quot;t2d/data/images/tileMap&quot;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageMode</B>
+			= cell;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>cellWidth</B>
+			= 128;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>cellHeight</B>
+			= 128;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">This
+would've given us exactly the same results because as T2D scans
+across the image horizontally, it only finds room for two 128 wide
+cells (frames 0 and 1) before it hits the edge of the image so it
+moves down by the <I>&quot;cellHeight&quot;</I> and scans another
+row.  It then finds another two cells (frames 2 and 3) before it
+again hits the edge of the image so it moves down by the <I>&quot;cellHeight&quot;</I>
+again and hits the bottom of the image so it quits.  At this point,
+it's found 4 frames (frames 0, 1, 2 and 3).</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">When
+you&rsquo;re using optional fields, such as <I>&ldquo;cellCountX&rdquo;</I>
+or <I>&ldquo;cellCountY&rdquo;</I>, T2D does not force you to use
+both at the same time.  It&rsquo;s quite happy if you only want to
+specify the Y count and leave the X count for it to determine.  <B>This
+goes for all optional field pairs!</B></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's
+say, for some reason, that we only want to get two frames at the left
+of the image (the stone tile and the crate tile).  What we need to do
+here is simply tell the image-map that we only want a single tile in
+the horizontal direction but two in the vertical like so:</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_1ed0000f.gif" NAME="Frame5" ALT="Frame5"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m6314cf7.png" NAME="graphics5" ALIGN=BOTTOM WIDTH=137 HEIGHT=137 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">If
+you&rsquo;re pretty happy with what you&rsquo;ve seen so far, it
+might be worth you trying out both the <I>&ldquo;FULL&rdquo;</I>
+image-mode and the <I>&ldquo;CELL&rdquo;</I> image-mode before we go
+further.  Come back when you&rsquo;re ready to proceed, we&rsquo;ll
+still be here!</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>You back already?</I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay,
+let&rsquo;s continue discussing the <I>&ldquo;CELL&rdquo;</I>
+image-mode now that you&rsquo;re more familiar with the basics.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Now
+that you&rsquo;ve used this mode a little, you may have noticed a few
+restrictions when extracting frames from your images.  To start with,
+it looks like you&rsquo;re restricted to starting at the top-left of
+your image.  Also, frames are extracted rightwards and downwards. 
+Well, as you would expect, T2D doesn&rsquo;t restrict you like this
+at all.  Let&rsquo;s introduce a couple of the remainder of the
+<I>&ldquo;CELL&rdquo;</I> image-mode fields:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellOffsetX&rdquo;
+	&ndash; <I>CELL mode only</I>; &lsquo;horizontal&rsquo; pixel-offset
+	to start of tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellOffsetY&rdquo;
+	&ndash; <I>CELL mode only</I>; &lsquo;vertical; pixel-offset to
+	start of tile capture.</FONT></FONT></FONT></P>
+</UL>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">Take
+the first restriction we spoke about which was that the frame
+extraction always starts at the top-left of your image.  Well this
+isn&rsquo;t so!  If you don&rsquo;t specify either <I>&ldquo;cellOffsetX&rdquo;
+or &ldquo;cellOffsetY&rdquo; </I>then indeed, frame extraction will
+start at the top-left of your image.  In-fact, these cell-offsets
+both default to zero so that&rsquo;s why T2D starts at the top-left! 
+If you want to start at a specific position within your image, you
+can specify how many horizontal/vertical pixels you want with
+<I>&ldquo;cellOffsetX&rdquo; or &ldquo;cellOffsetY&rdquo;</I>.  Let&rsquo;s
+show an example to see this working:</FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m55ee8beb.gif" NAME="Frame6" ALT="Frame6"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_4020ba78.png" NAME="graphics6" ALIGN=BOTTOM WIDTH=161 HEIGHT=161 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">What
+we did here was to specify the offset as 128 pixels horizontally and
+0 pixels vertically which equates to the pixel at the top-left of the
+region marked &ldquo;0&rdquo; above.  In other words, the top-left of
+where our frame extraction will begin.  If we look at the other
+fields we specified told T2D that there is 1 cell horizontally, 2
+cells vertically and that the cells are 128 wide by 128 high each. 
+T2D will start at the offset position and extract the first frame 0. 
+It will then move right by the cell-width where it hits the right of
+the image so it moves down by the cell-height back to the specified
+<I>&ldquo;cellOffsetX&rdquo;</I> where it extracts frame 1.  It then
+moves right by the cell-width, hits the right of the image, moves
+down by the cell-height but hits the bottom of the image so it
+finishes.  The result; two frames (0 and 1).</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>So
+the rule is that cell-offsets specify the top-left position of your
+starting frame.</B></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+we mentioned before, some of these fields are optional meaning that
+T2D can still make sense of what it thinks you want without them but
+it may sometimes get it wrong if you want something special.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">In
+the datablock above, we specify the <I>&ldquo;cellOffsetY&rdquo;</I>
+as 0 but it defaults to that so we didn&rsquo;t really need to do it.
+ Also, we set <I>&ldquo;cellCountX&rdquo;</I> to 1 but T2D will
+already determine that it can only extract a single frame
+horizontally from the specified offset.  So why did we do it?  Well,
+it&rsquo;s always a good thing to make your intent clear, especially
+as other programmers/artists may not know what the defaults are and
+you may yourself forget at a later date.  This is not a rule, that&rsquo;s
+why these fields are totally optional, just good advice!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Well, we&rsquo;ve covered
+the cell-offsets so let&rsquo;s move onto the final set of fields
+that might at first be a little confusing.  Let&rsquo;s step back to
+one of the restrictions we spoke about earlier.  We stated that all
+frames are extracted rightwards and downwards.  Indeed all our
+descriptions so far have been based upon the extraction routine
+moving right, hitting the edge of your image and then moving down
+with the extraction process stopping when it hits the bottom of your
+image.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Well,
+it shouldn&rsquo;t be surprising to know that T2D allows you to
+specify how it moves to the next frame.  Let&rsquo;s introduce nearly
+the remainder of the <I>&ldquo;CELL&rdquo;</I> image-mode fields:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellStrideX&rdquo;
+	- <I>CELL mode only</I>; &lsquo;horizontal&rsquo; pixel-stride
+	during tile capture.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellStrideY&rdquo;
+	- <I>CELL mode only</I>; &lsquo;vertical&rsquo; pixel-stride during
+	tile capture.</FONT></FONT></FONT></P>
+</UL>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">If
+you don&rsquo;t specify either of these fields, T2D will extract
+frames as we&rsquo;ve so far specified moving rightwards and
+downwards.  What these fields allow you to do is override this
+movement!  Okay, say we&rsquo;ve gone crazy and we want to extract
+some frames in very specific order.  Again, we&rsquo;ll use the
+example image but this time, we want to extract our frames starting
+at the bottom-right frame, moving leftwards and upwards which is
+completely reverse to what T2D does by default.  Here goes:</FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m8011795.gif" NAME="Frame7" ALT="Frame7"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_7dd08945.png" NAME="graphics7" ALIGN=BOTTOM WIDTH=185 HEIGHT=185 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">As
+you can see, our frames are now in the reverse-order to what we
+originally had.  All we did to achieve this was to specify the cell
+&ldquo;stride&rdquo;.  The &ldquo;stride&rdquo; is the movement that
+occurs after each frame is extracted.  Let&rsquo;s go through what we
+did above.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">First,
+you&rsquo;ll note that we specified the offset to be (128
+horizontally by 128 vertically) which equates to the top-left of the
+frame marked &ldquo;0&rdquo; above.  <B>You must always use the
+top-left of your starting frame for your offset!</B>  The new part is
+that we&rsquo;ve specified both a horizontal and vertical stride. 
+These are both -128.  Why the minus?  Well, as you&rsquo;ve probably
+already worked-out, minus for the horizontal means &ldquo;move left&rdquo;
+whilst minus vertical means &ldquo;move up&rdquo;.  Positive values
+for these strides mean &ldquo;right&rdquo; and &ldquo;down&rdquo;
+respectively.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">So
+what T2D did was to start at the frame marked &ldquo;0&rdquo; because
+we specified an offset of (128,128), it then extracted that frame and
+because we specified a horizontal stride, it moved that stride which
+is (-128) which placed us at the top-left of the frame marked &ldquo;1&rdquo;
+where it extracted that frame.  It then moved the horizontal stride
+again but hit the left of the image so T2D moved by the vertical
+stride which is (-128) and reset the position to the <I>&ldquo;cellOffsetX&rdquo;</I>
+which placed it at the frame marked &ldquo;2&rdquo; where it
+extracted that frame.  Finally, it moved the horizontal stride again
+which placed it at the final frame marked &ldquo;3&rdquo;.  After
+extracting this frame, it moved by the horizontal stride which hit
+the left of the image so T2D moved by the vertical stride which also
+hit the top of the image causing the image extraction to finish.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see, cell-strides allow you to change the direction of the
+image-extraction.  This combined with the ability to specify a
+starting position using the cell-offsets provides great flexibility.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+    &nbsp;<FONT SIZE=2 face="Arial, sans-serif">Okay, now that we&rsquo;ve
+covered using cell-strides, let&rsquo;s talk about using them for a
+possibly unexpected reason.  Say that our example imageMap had frames
+that were still 128 wide by 128 high but that they had &ldquo;gaps&rdquo;
+between the frames that we don&rsquo;t want to acquire; how do we get
+the frames but ignore the gaps?  Here&rsquo;s how:-</FONT></P>
+    <br />
+
+
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_2b4898c0.gif" NAME="Frame8" ALT="Frame8"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m60ed7347.png" NAME="graphics8" ALIGN=BOTTOM WIDTH=155 HEIGHT=155 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">First,
+let&rsquo;s describe the example image; the image has four frames,
+each frame being 128 wide by 128 high as before but now there is a
+gap of two pixels horizontally between the frames making the total
+image-width 128+2+128 = 258 and the total image-height 128+128 = 256
+as before.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">So
+how do we tell T2D so skip that annoying gap?  Well, it&rsquo;s
+actually really easy as it&rsquo;s just an extension of what you&rsquo;ve
+already seen.  Notice we didn&rsquo;t specify the cell-offset so T2D
+will start at the top-left of our image which is just fine with us. 
+As you know, when T2D has extracted the first frame marked &ldquo;0&rdquo;
+above, it will either move horizontally by the cell-width or, if
+we&rsquo;ve specified, move horizontally by the <I>&ldquo;cellStrideX&rdquo;</I>.
+ As you can see, we did specify it as 130.  What T2D will obviously
+now do is to step 130 pixels horizontally to the right to the next
+frame which positions us at the frame marked &ldquo;1&rdquo;.  We
+successfully bridged the gap!  The rest is quite easy to understand
+as we&rsquo;ve done it before.  When T2D hits the right of the image,
+it will move down either by the cell-height or, if we specified, the
+<I>&ldquo;cellStrideY&rdquo;</I>.  Well we didn&rsquo;t specify it in
+this example so T2D moves down by the cell-height which takes us to
+the frame marked &ldquo;2&rdquo;.  The final stage is that T2D moves
+horizontally by our specified <I>&ldquo;cellStrideX&rdquo;</I> of 130
+which takes us to our final frame marked &ldquo;3&rdquo;.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see, strides not only allow you to extract frames in
+different directions but also allow you to skip regular spacing in
+your images.  Quite often, older &ldquo;color-keyed&rdquo; images
+surround each frame with a specific colour and you can use your
+offsets/strides to skip these borders and directly extract the
+frames.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Phew!
+ As you can see, there&rsquo;s lots of different ways you can extract
+stuff in <I>&ldquo;cell&rdquo;</I> mode and thankfully, we&rsquo;ve
+only got a single field to go and then you'll know all there is to
+know about this mode. </FONT></FONT>
+</P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+final field is:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333">&ldquo;<FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace">cellRowOrder&rdquo;
+	- <I>CELL mode only</I>; Specifies if row-order is used during tile
+	capture.</FONT></FONT></FONT></P>
+</UL>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">It
+shouldn&rsquo;t be too much trouble understanding this one as it&rsquo;s
+really just a change of direction.  As we&rsquo;ve mentioned in all
+the examples so far, T2D is very flexible on how it extracts frames
+using offsets/strides/widths and heights.  The one thing, that you
+may have noticed, that has stayed the same during all these frame
+extraction examples is the fact that T2D always moves horizontally
+until it hits either the left or right of your image and then
+vertically until it hits either the top or bottom of your image.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">In-fact, as you may have
+guessed, this is only the default and can again be changed.  The
+field <I>&ldquo;cellRowOrder&rdquo;</I> is simply a flag either <I>true</I>
+or <I>false</I> (defaults to <I>true</I>) that specifies if cells are
+to be extracted in row-order or alternately column-order so <I>true =
+</I>row-order and <I>false</I> = column-order.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">For our final example in
+<I>&ldquo;cell&rdquo;</I> mode, let&rsquo;s use the bog-standard
+example we used in the beginning but let&rsquo;s extract the images
+in the non-standard column-mode like so:</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_477cb9c.gif" NAME="Frame9" ALT="Frame9"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m57ebe957.png" NAME="graphics9" ALIGN=BOTTOM WIDTH=119 HEIGHT=119 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">As you can see, instead
+of the frames being extracted horizontally, they&rsquo;ve been
+extracted vertically simply by changing this field.  Note that you
+can still use the offsets/strides as explained previously; the only
+change is that frames are extracted columns first rather than rows,
+you should still get the same number of frames extracted, just in a
+different order.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Although this offers
+limited practical value, it does allow a preferred style of storing
+your frames or even the flexibility if someone provides you with
+frames in this order.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay, I think you can
+give yourself a pat on the back here as you&rsquo;ve now completely
+covered <I>&ldquo;cell&rdquo;</I> mode.  Go away and practice with it
+until you&rsquo;re totally happy that it does what you want.  Come
+back here when you&rsquo;re ready to continue our tour of T2D
+image-maps.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><I>&quot;KEY&quot;
+Image-Mode</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Welcome back!  Well, so
+far you should know how to setup an image-map to get a single
+full-frame using <I>&quot;FULL&quot;</I> image-mode as well as
+creating multiple, regularly-spaced, same-sized frames using <I>&quot;CELL&quot;</I>
+mode but what if we want multiple-frames of different sizes and
+they're not regularly-spaced in our image?  Well, T2D provides
+another mode to allow you to do just that, the <I>&quot;KEY&quot;</I>
+image-mode.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">In this mode, you can
+place your frames with a large degree of freedom. The frames can also
+be of different sizes.  So how does T2D know where the frames are? 
+Well, it uses a technique called color-keying.  Color-keying is a
+technique used for special-effects in the movies albeit T2D uses it
+slightly differently.  In the movies, a specific color is used in the
+scene to identify the &quot;background&quot; so that nice scenes can
+be added later.  If you've seen actors working against blue or green
+backgrounds, you've seen color-keying.  Unlike in the movies, we're
+not interested in the background; we're <B>not</B> interested in the
+actors e.g. the frames.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">This <I>&quot;key</I>&quot;
+mode can at first be difficult to understand but there only a few
+rules you need to be aware of.  As motivation in understanding this
+mode, it's important to know that the image-format used here is
+identical to the one used when skinning GUI elements in T2D so by
+understanding this, you'll also understand how to format your images
+to skin your GUI!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Okay then, let's start
+with an image that's been setup to have its frames extracted using
+the <I>&quot;key</I>&quot; image-mode:</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<IMG SRC="images/Image%20Maps_html_44750f56.png" NAME="graphics10" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">As you can see, there are
+14 frames of various sizes placed in non-regular positions.  So how
+does T2D extract the frames and in what order?  Well, T2D uses simple
+rules to achieve this and although it looks like the frames have been
+placed arbitrarily, they've actually been placed according to these
+rules.  Let's start by explaining the steps that T2D goes through to
+find frames.  Note that unlike the <I>&quot;cell</I>&quot;
+image-mode, frame-extraction is always fixed moving rightwards and
+downwards.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The first step T2D takes
+before looking for frames is to choose the color-key.  It does this
+by simply using the color at location (0, 0) e.g. the top-left pixel
+of the image.  As you can see, this is red.  From now on, T2D assumes
+that everything that is this color is background only and nothing to
+do with frames.  It is for this reason that that it's extremely
+important that you choose a color that isn't used by your frames! 
+You can choose a different color for each image-map but the same one
+must be used within each individual image.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Okay, now that T2D has
+the color-key, it can begin looking for frames.  To make this
+explanation a little easier, here's the same image and its image-map
+definition but we've marked areas that we're going to discuss as well
+as showing the order of frame-extraction that T2D uses:  </FONT></FONT>
+</P>
+    <br />
+
+
+
+
+<CENTER>
+	<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=317>
+		<COL WIDTH=238>
+		<TR>
+			<TD WIDTH=317 VALIGN=TOP>
+				<P CLASS="western" STYLE="margin-bottom: 0in">
+				</P>
+				<P CLASS="western"><IMG SRC="images/Image Maps_html_13676e76.gif" NAME="Frame10" ALT="Frame10"></P>
+			</TD>
+			<TD WIDTH=238>
+				<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m56ffaf22.png" NAME="graphics11" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">The first step it takes
+is to determine a row to scan across to look for the top-left of your
+frames.  It does this by scanning down the left-most column for a
+color that <B><I>isn't</I></B> the color-key.  As you can see, if it
+does this, it'll encounter the top-left of frame 0 (marked with the
+green pixel).  When it's found this, T2D then scans along the row to
+the right until it finds the color-key.  As you can see, this will be
+the cyan pixel in frame 0.  Now T2D knows the top-left of the frame
+and its width so it only needs to determine the frames height and it
+can extract the frame.  It does this by scanning-down from the
+top-left of the frame (marked with a green pixel) until it reaches
+the bottom-left of the frame 0 (marked with a blue pixel).  Now T2D
+has the top-left, width and height of the frame so it extracts it! </FONT></FONT>
+</P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>What happens next is very
+important.  T2D starts scanning from just past the top-right of the
+last frame (marked with a cyan pixel) until it reaches a
+non-color-key pixel.  When it does this, it finds the top-left of
+frame 1 (marked with a green pixel).  It continues to find the width
+and height of this frame exactly as it did the previous frame.  T2D
+then extracts the frame and repeats finding frames until it hits the
+right-side of the image.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Okay, let's continue to
+extract more frames.  After T2D has extracted the first 3 frames and
+has hit the right-side of the image, it moves straight back to the
+left-side of the image and continues scanning for more frames.  The
+next frame it encounters will be the top-left of frame 3 (marked with
+a green pixel).  T2D then repeats the procedure outline above.  T2D
+will continue extracting frames until it hits the bottom of the
+image.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Before we go any further,
+let's show some of the rules with what we've learned so far.  First,
+it should be obvious that you need to put your color-key in pixel (0,
+0) e.g. the top-left.  Because T2D scans down the leftmost column
+looking for non-color-key pixels, you should place the left of your
+frames against the left of your image.  Also, T2D will totally ignore
+the first row of the image.  When T2D encounters a frame, it scans
+rightwards capturing frames in-between non-color-key pixels.  For
+this reason, you should align the top of all your frames.  Frames can
+be any size but all frames must be no higher than the first frame
+extracted from that row.  When T2D is scanning either down the first
+columns looking for rows to scan or actually scanning rows, it
+doesn't matter how many color-keys are between frames.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Phew!  You may need a
+little time to absorb that but it shouldn't be that bad after you've
+read it a few times.   As a summary, here are the rules to follow
+when creating <I>&quot;key</I>&quot; images:</FONT></FONT></P>
+    <br />
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>First, it should be
+	obvious that you need to put your color-key in pixel (0, 0) e.g. the
+	top-left.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Because T2D scans down
+	the leftmost column looking for non-color-key pixels, you should
+	place the left of your frames against the left of your image.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>T2D will totally ignore
+	the first row of the image.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When T2D encounters a
+	frame, it scans rightwards capturing frames in-between non-color-key
+	pixels.  For this reason, you should align the top of all your
+	frames against the first one in that row.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Frames can be any size
+	but the next row of frames must be below the tallest frame in the
+	previous row otherwise part of the tall frame will be extracted as
+	part of the next row. </FONT></FONT>
+	</P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>When T2D is scanning
+	either down the first columns looking for rows to scan or actually
+	scanning rows, it doesn't matter how many color-keys are between
+	frames.</FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Although not essential,
+	it's a good idea to &quot;fill&quot; non-frame space with your
+	color-key.</FONT></FONT></P>
+</UL>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>To understand these rules
+and their implications, read through them again looking at the
+example image below as a guide.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<IMG SRC="images/Image%20Maps_html_44750f56.png" NAME="graphics12" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Give yourself a pat on
+the back; you've now completely covered the <I>&quot;key&quot;</I>
+image-mode!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+    &nbsp;<FONT SIZE=2 face="Arial, sans-serif"><I>&quot;LINK&quot;
+Image-Mode</I></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>With
+our review of T2D image-modes, something very important becomes
+evident.  It looks like an image-map is restricted to a single
+incoming bitmap from which frames are extracted.  If you thought this
+then you&rsquo;d be correct but you&rsquo;d also be wrong!  In-fact,
+T2D does limit image-modes to acquire from a single incoming image
+but it also lets you do something extremely flexible, it allows you
+to link-together image-maps!</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+at first, this may not seem that important but think about it; T2D
+allows you to gather-up your frames using various techniques to
+extract the frames and then allows you to refer to all those frames
+using a single object that you&rsquo;re already familiar with; the
+imageMap!</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Okay,
+let&rsquo;s look at how this works; let&rsquo;s start by assuming
+we&rsquo;ve got a couple of image-maps already, inventively called
+&ldquo;myImageMap1&rdquo; and &ldquo;myImageMap2&rdquo;; these look
+like this:</FONT></FONT></P>
+    <br />
+
+
+<CENTER>
+	<TABLE WIDTH=493 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=317>
+		<COL WIDTH=148>
+		<TR>
+			<TD WIDTH=317 VALIGN=TOP>
+				<P CLASS="western" STYLE="margin-bottom: 0in">
+				</P>
+				<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m7b7bfbcf.gif" NAME="Frame11" ALT="Frame11"></P>
+			</TD>
+			<TD WIDTH=148>
+				<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m56ffaf22.png" NAME="graphics13" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD WIDTH=317 VALIGN=TOP>
+				<P CLASS="western"><IMG SRC="images/Image Maps_html_m51b43f2c.gif" NAME="Frame12" ALT="Frame12"></P>
+			</TD>
+			<TD WIDTH=148>
+				<P CLASS="western"><IMG SRC="images/Image%20Maps_html_5cd651fc.png" NAME="graphics14" ALIGN=BOTTOM WIDTH=137 HEIGHT=137 BORDER=0></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">As
+you can see, these image-maps different image-modes of <I>&ldquo;key&rdquo;
+</I>and <I>&ldquo;cell&rdquo;</I> to acquire their frames but the
+good news is that a linked image-map doesn&rsquo;t care at all!  It&rsquo;s
+important to note that in this example, we&rsquo;re only using two
+image-maps but you can use as many as you like, the minimum being
+two.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+first image-map contains 14 frames from &ldquo;0&rdquo; to &ldquo;13&rdquo;
+whilst the second contains 4 frames from &ldquo;0&rdquo; to &ldquo;3&rdquo;.
+ Now we&rsquo;ve configured these, let&rsquo;s define an image-map to
+link them up.  Here&rsquo;s how we&rsquo;d do it:</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+			t2dImageMapDatablock( myLinkedImageMap )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageMode</B>
+			= link;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">linkImageMaps
+			= &ldquo;myImageMap1 myImageMap2&rdquo;;</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">As
+you can see, we selected the image-mode <I>&ldquo;link&rdquo;</I> and
+then specified the image-maps we wanted to link together as a string
+with space-separators.  Note that we didn&rsquo;t specify the
+<I>&ldquo;imageName&rdquo;</I> field even though we started by saying
+that this isn&rsquo;t an optional field!  Okay, we lied a little, so
+let&rsquo;s clarify; <I>&ldquo;imageName&rdquo;</I> is mandatory for
+all image-modes except <I>&ldquo;link&rdquo;</I> mode as it&rsquo;s
+simply not needed here.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Something that&rsquo;s
+extremely important to understand is that the referenced image-maps
+<B>must</B> exist when the link image-map is configured, in other
+words, define a linked image-map after you define the image-maps that
+it links together in the <I>&ldquo;linkImageMaps&rdquo;</I> field.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+believe it or not, that&rsquo;s all we need to do!  You can use this
+image-map exactly as you would any other image-map with no other
+configuration needed.  You can still refer to the linked image-maps
+&ldquo;myImageMap1&rdquo; and &ldquo;myImageMap2&rdquo; as normal if
+you wish; they&rsquo;ve not been altered at all.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that we know how to setup a linked image-map, let's talk about how
+the frame numbers are organized as it&rsquo;s these we need to
+access.  Quite simply, each linked image-map specified appends its
+frame numbers to the frame list of the link image-map.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+sounds a little confusing so using our example above, here are the
+linked image-maps with the frame numbers used in our new
+&ldquo;myLinkedImageMap&rdquo; image-map:</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Image%20Maps_html_m56ffaf22.png" NAME="graphics15" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0><IMG SRC="images/Image%20Maps_html_568c5387.png" NAME="graphics16" ALIGN=BOTTOM WIDTH=130 HEIGHT=130 BORDER=0></P>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">As
+you can see, the first set of frames are &ldquo;0&rdquo; to &ldquo;13&rdquo;
+which correspond to the frames from the image-map we first specified
+e.g. &ldquo;myImageMap1&rdquo;.  Now comes the interesting part which
+is the fact that the frames &ldquo;0&rdquo; to &ldquo;3&rdquo; from
+the &ldquo;myImageMap2&rdquo; are now referenced by using frames &ldquo;14&rdquo;
+to &ldquo;17&rdquo;.  As you can see, these have been appended to the
+frames list.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's
+go into a little more detail on exactly what happened here.  The
+first thing to understand is that linking image-maps in this way
+doesn&rsquo;t duplicate the image-map images either in memory or in
+your graphics card.  Linking image-maps is very efficient and uses
+relatively small amounts of memory.  The next point is that the
+original image-maps are not altered in anyway, in-fact, you can still
+access them as normal.  You should understand that accessing frame
+&ldquo;0&rdquo; from &ldquo;myImageMap1&rdquo; is the same as
+accessing frame &ldquo;14&rdquo; from &ldquo;myLinkedImageMap&rdquo;.
+ Yeah?  If not, you might want to go back and read this section again
+as this is an important concept.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>A
+cautionary note now is that T2D will not pack the frames from
+multiple image-maps together to reduce any wasted space.  If it were
+to do this, it would be duplicating the imagery and therefore
+doubling the memory consumption both on your computer and your
+graphics card.  The caution here relates to the fact that the
+original textures from the linked image-maps are used when selecting
+frames.  This means that you need to be careful that you&rsquo;re not
+producing lots of texture-swaps because you&rsquo;re constantly
+swapping between textures.  Typically, this problem only becomes a
+problem if you&rsquo;re really pushing the limit as to how many
+frames you&rsquo;re rendering per screen-update so initially, it&rsquo;s
+probably not something you want to be worrying about.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+that you know how to link-up different image-maps, you should feel
+confident that you can have different images for your player walking
+left and right and perhaps jumping and link them all together into a
+single image-map that your player sprite can refer to.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Happy
+linking!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>frameCount&rdquo;</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that you've seen the
+various image-modes available and the way to organize your images for
+frame extraction, the more cautious of you may be asking, &quot;How
+do I verify I've got all my frames?&quot;</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">Well, this leads us
+nicely into our next optional field, <I>&quot;frameCount&quot;</I>. 
+Let's use the example image in the previous <I>&quot;key&quot;</I>
+image-mode tutorial although this field is relevant to all
+image-modes.  In that tutorial, we had an image with 14 frames like
+so:</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<IMG SRC="images/Image%20Maps_html_44750f56.png" NAME="graphics17" ALIGN=BOTTOM WIDTH=110 HEIGHT=132 BORDER=0></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's suppose we were to
+incorrectly setup either the image-map datablock or the image itself
+which caused us to get something like 13 frames instead of our
+expected 14 frames.  If this were to happen, normally T2D wouldn&rsquo;t
+do anything because as far as it knows, you've got what you expected.
+ Sometimes this can be hard to track down, especially if the
+image-map contains lots of frames.  You'd only notice if you didn't
+get the expected frames or your animations looked screwy!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT SIZE=2><FONT FACE="Arial, sans-serif">To provide a little
+sanity and immediate feedback during development, T2D provides the
+<I>&quot;frameCount</I>&quot; field which allows you to specify how
+many frames you <I>expect</I> from your image-map.  </FONT></FONT>
+</P>
+<br />
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333">&ldquo;<FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">frameCount&rdquo;
+	- Optional; specifies the expected frame-count.</FONT></FONT></FONT></P>
+</UL>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">This hint allows T2D to
+take immediate action if the expected number of frames isn't found. 
+If this happens, T2D will abort the image-map creation and issue a
+warning.  You'll also then find that objects attempting to use this
+image-map will also issue warnings tell you that the image-map
+doesn't exist.  A quick scan of the log will show you the offending
+image-map.  You can then take immediate action to rectify the
+problem.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Finally, here's how we'd
+used the field:</FONT></FONT></P>
+    <br />
+<P CLASS="western" STYLE="margin-bottom: 0in">
+</P>
+<CENTER>
+	<TABLE WIDTH=447 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=433>
+		<TR>
+			<TD WIDTH=433 VALIGN=TOP BGCOLOR="#e6e6e6">
+				
+				
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">datablock
+				t2dImageMapDatablock( myImageMap )</FONT></FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+				  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageName</B>
+				= &quot;t2d/data/images/guiMap&quot;</FONT></FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+				  <FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><B>imageMode</B>
+				= key;</FONT></FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+				  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">frameCount
+				= 14;</FONT></FONT></FONT></P>
+				<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">};</FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">So this is a simple field
+but can save lots of time tracing problems in image-maps.</FONT></P>
+<br />
+
+
+<TABLE WIDTH=608 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=594>
+	<TR>
+		<TD WIDTH=594 HEIGHT=56 VALIGN=TOP BGCOLOR="#ccffcc">
+			
+			
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>***
+			NOTE ***</B></I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in">
+			</P>
+			<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>You
+			can use &ldquo;frameCount&rdquo; in &ldquo;link&rdquo; mode in
+			which case it refers to all the frames from all linked image-maps!</B></I></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>filterMode&rdquo;</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This field is slightly
+different than the ones we've so far discussed.  Unlike the others,
+this field can be changed dynamically at runtime.  T2D also provides
+a nice function call to do the same but we'll get to that later in
+this document.  More importantly, this document is a rendering
+option, not a frame extraction option, hence you being able to change
+it dynamically.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>There
+are two types of filter-modes that you can use, these are:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">NONE
+	&ndash; No Image Filtering.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">SMOOTH
+	&ndash; Bilinear Filtering.</FONT></FONT></FONT></P>
+</UL>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">It is beyond the scope of
+this document to detail GPU filtering modes so we'll simply focus on
+the result of selecting a specific filtering mode.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>In &quot;none&quot; mode,
+the GPU does no filtering.  The effects of this don&rsquo;t become
+apparent if each pixel from your frame gets rendered to a pixel on
+the screen.  You will start seeing this if you either enlarge/shrink
+the image on the screen; you'll get an effect called pixilation as
+shown below:</FONT></FONT></P>
+    <br />
+<CENTER>
+	<TABLE WIDTH=323 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=89>
+		<COL WIDTH=100>
+		<COL WIDTH=92>
+		<TR>
+			<TD WIDTH=89>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Original</B></I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=100>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Scaled
+				Up</B></I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=92>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Scaled
+				Down</B></I></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD WIDTH=89>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_m2b4b3152.png" NAME="graphics18" ALIGN=BOTTOM WIDTH=52 HEIGHT=52 BORDER=0></P>
+			</TD>
+			<TD WIDTH=100>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_m742a7267.png" NAME="graphics19" ALIGN=BOTTOM WIDTH=100 HEIGHT=100 BORDER=0></P>
+			</TD>
+			<TD WIDTH=92>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_30123fb8.png" NAME="graphics20" ALIGN=BOTTOM WIDTH=36 HEIGHT=36 BORDER=0></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">Although this effect
+looks poor, sometimes it can be useful artistically in providing an
+&quot;old school&quot; look.  It can also be used to remove certain
+rendering artifacts that we'll discuss shortly.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now let's look at
+&quot;smooth&quot; mode.  In this mode, the GPU interpolates between
+neighbor pixels when rendering which removes the pixilation effect
+seen above.  Also, there's no need to worry about performance here as
+most if not all graphics cards provide this feature for free e.g.
+it's as fast as turning off filtering.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here's an example of
+&quot;smooth&quot; filtering in action:</FONT></FONT></P>
+    <br />
+<CENTER>
+	<TABLE WIDTH=323 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+		<COL WIDTH=89>
+		<COL WIDTH=100>
+		<COL WIDTH=92>
+		<TR>
+			<TD WIDTH=89>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Original</B></I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=100>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Scaled
+				Up</B></I></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=92>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>Scaled
+				Down</B></I></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD WIDTH=89>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_m2b4b3152.png" NAME="graphics21" ALIGN=BOTTOM WIDTH=52 HEIGHT=52 BORDER=0></P>
+			</TD>
+			<TD WIDTH=100>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_e4f9c4e.png" NAME="graphics22" ALIGN=BOTTOM WIDTH=100 HEIGHT=100 BORDER=0></P>
+			</TD>
+			<TD WIDTH=92>
+				<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in"><IMG SRC="images/Image%20Maps_html_m490d223e.png" NAME="graphics23" ALIGN=BOTTOM WIDTH=36 HEIGHT=36 BORDER=0></P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">As you can see, the
+&quot;smooth&quot; filtering removes the pixilation effect but
+unfortunately tends to blur the images, especially when scaled-up by
+large amounts.</FONT></P>
+<br />
+<TABLE WIDTH=608 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=594>
+	<TR>
+		<TD WIDTH=594 HEIGHT=16 VALIGN=TOP BGCOLOR="#ccffcc">
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>***
+			NOTE ***</B></I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>You
+			can use &ldquo;filterMode&rdquo; in &ldquo;link&rdquo; mode in
+			which case it refers to all linked image-maps!</B></I></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>filterPad&rdquo;</I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that you've seen the
+filter-modes, it's time to introduce a potential problem with using
+the &quot;smooth&quot; filter-mode.  Due to the way that the GPU
+calculates the &quot;smooth&quot; (bilinear) filter, it has a
+tendency to sample neighbor pixels.  What does this mean?  Well,
+let's look at the image below:</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<IMG SRC="images/Image%20Maps_html_m484ade1c.png" NAME="graphics24" ALIGN=BOTTOM WIDTH=140 HEIGHT=140 BORDER=0></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's assume we've
+extracted these four frames and we're using the &quot;water&quot;
+frame at the bottom-right in a tile-map object and that we're using
+the &quot;smooth&quot; filter-mode.  Well, everything will work
+perfectly most of the time but occasionally, you'll notice strange
+lines appearing like so:</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=CENTER STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<IMG SRC="images/Image%20Maps_html_m417b2536.png" NAME="graphics25" ALIGN=BOTTOM WIDTH=263 HEIGHT=235 BORDER=0></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>What the heck is this? 
+Well, this is an unfortunate artifact created by having
+multiple-frames not only in the same texture but actually located
+next to each other.  If you look at the horizontal lines in the image
+above, you may have noticed that they appear to be a brownish color? 
+The reason for this is actually quite simple; when using the &quot;smooth&quot;
+filter-mode, your graphics card renders each pixel of your frame by
+looking at the respective pixels' neighbors so that it can smooth
+what it renders.  This works well until the graphics card tries to
+render pixels at the edge of your frame where the neighbor pixels are
+actually part of another frame! </FONT></FONT>
+</P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>So we started this
+document by saying that T2D will try to pack all these frames
+together inside your graphics card but now we're saying that this
+causes problems!  What's going on here?  Well, packing frames
+together into as few textures as possible is far more important than
+the artifacts produced by doing so but with that said, we can't live
+with these artifacts so we need a way to stop them.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Thankfully, it's
+relatively simple to fix this problem; if you surround each frame
+with a copy of the pixels on the border of the frame, when the filter
+looks at the edge of the frame and therefore looks at the neighbor
+pixels to calculate the &quot;smooth&quot; version, these neighbor
+pixels are identical as they are just a copy of the frames border
+which means, you get no nasty artifacts!</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This sounds great, how do
+I get this to work then?  Well, as you may have guessed, this section
+is entitled &quot;filterPad&quot; and it's this flag that allows you
+to instruct T2D to achieve &quot;padding&quot; of border pixels to
+remove the artifact like so:-</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=583 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=317>
+	<COL WIDTH=238>
+	<TR>
+		<TD WIDTH=317 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m49edb6bf.gif" NAME="Frame13" ALT="Frame13"></P>
+		</TD>
+		<TD WIDTH=238>
+			<P CLASS="western"><IMG SRC="images/Image%20Maps_html_m484ade1c.png" NAME="graphics26" ALIGN=BOTTOM WIDTH=140 HEIGHT=140 BORDER=0></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+        <FONT SIZE=2 face="Arial, sans-serif">Note that filterPad
+current defaults to false (off) but this default may change in the
+future.  To ensure you get the same effect independent of any future
+updates, you can explicitly specify the &quot;filterPad&quot; but
+note that it's not highlighted here meaning it's not a mandatory
+field.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-top: 0.17in; margin-bottom: 0in">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You may be wondering if
+there are any side-effects of using this option and you'd be correct
+for asking this question.  There are indeed some side-effects,
+although not visual, of using doing this.  We'll discuss the
+frame-packing process later in the document but it should be evident
+that these border pixels take a little more room in the final
+textures although only a relatively small amount.  </FONT></FONT>
+</P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">The
+greater potential trouble is related to the previous &quot;technical
+note&quot; you may have read.  In this note, we mentioned that a
+majority of graphics card require the textures on your graphics card
+to be a power-of-two in size e.g.
+2,4,8,16,32,64,128,256,1024,2048,4096 etc.  Note that we're talking
+about the texture that T2D uploads to your graphics card and <B>NOT</B>
+the bitmap you specify in the image-map using &quot;imageName&quot;!</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+this condition is to be met, T2D needs to try to pack your frames
+into textures that are appropriately sized which isn't a problem for
+T2D but can unavoidably result in wasted space in the uploaded
+textures.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+an example of why this happens, imagine that you have the image above
+with four frames, each of 128 wide by 128 high and they all fit
+neatly into a 256 wide by 256 high image.  Without frame-padding,
+this resultant texture will pretty much be the same but with
+frame-padding on, each frame has an additional single-pixel border
+surrounding it resulting in frames that are 130 wide by 130 high in
+size.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Simply
+putting frames into the same arrangement as the original image would
+result in an image that is (130x2) x (130x2) = 260x260 in size.  This
+is slightly bigger than the previous power-of-two size of 256 so the
+next feasible power-of-two size is 512.  Fitting of a 260x260 set of
+frames within a 512x512 image results in (512<SUP>2</SUP> x 260<SUP>2</SUP>)
+= 194544 wasted pixels.</FONT></FONT></P>
+    <br />
+
+
+
+
+<TABLE WIDTH=608 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=594>
+	<TR>
+		<TD WIDTH=594 HEIGHT=56 VALIGN=TOP BGCOLOR="#ccffcc">
+			
+			
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>***
+			NOTE ***</B></I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>We
+			keep referring to &quot;pixels&quot; when we talk about the
+			texture but in-fact, this terminology is incorrect.  A &quot;pixel&quot;
+			is a &quot;PIctureELement&quot; e.g. something that is on-screen. 
+			The correct terminology to use is &quot;texel&quot; which is short
+			for &quot;TEXture Element&quot;.  The reason we separate the two
+			is that it's perfectly normal to render a single &quot;texel&quot;
+			that appears across multiple &quot;pixels&quot;.  This can be
+			confusing if you've not seen this before and therefore we'll keep
+			using &quot;pixel&quot; to mean &quot;texel&quot;.  For those who
+			understand this, please forgive the misuse!</B></I></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>All
+these numbers are hard to visualize so let's show this another way:</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="images/Image%20Maps_html_2558ac11.png" NAME="graphics27" ALIGN=BOTTOM WIDTH=200 HEIGHT=200 BORDER=0></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>As
+you can see, fitting these four 128x128 frames that are padded to
+130x130 results in a required area of 260x260 which doesn't fit in a
+256x256 so we need to use a 512x512 therefore wasting space as shown
+by the checker-pattern.  Of course, T2D does a much better job than
+just arranging the frames as shown!  In-fact, T2Ds intelligent
+packing routine packs these frames with only 129008 wasted pixels
+which is 65536 less than the above example.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>preferPerf&rdquo;</I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">Although
+T2D will pack your frames totally automatically, it does provide a
+field that allows you to give it a hint as to whether you prefer the
+image-map to have higher performance or least-waste.  With the
+<I>&quot;preferPerf&quot;</I> set to <I>true</I> (on), it tells T2D
+that you prefer performance.  With the flag set to <I>false</I>
+(off), it tells T2D that you prefer least-waste.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>In
+&quot;performance&quot; mode, T2D will make the best attempt to
+minimize the number of textures used which reduces the need to swap
+between textures when rendering the frames contained within it.  It
+is important to note that in &quot;performance&quot; mode, any
+performance increase may be negligible but can be potentially much
+higher for frames used in objects such as tile-maps.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>In
+&quot;least waste&quot; mode, T2D will make the best attempt to
+minimize any wasted (unused) pixels in textures.  Although T2D will
+attempt to keep the number of textures required as low as possible,
+it will ultimately prefer the least waste.</FONT></FONT></P>
+
+
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>preload&rdquo;</I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Although
+you can happily leave T2D to deal with the memory used by image-maps,
+there comes a time when you might want to provide some hint on how
+it's handled.  By default, when you create an image-map, T2D compiles
+all the imagery and packs it into textures which are then activated
+so you can start using it immediately.  The trouble is that when the
+textures are activated, they occupy memory.  If you define all your
+image-maps at the start of your game, they can occupy considerable
+memory.  This is essentially <I>preloading</I><SPAN STYLE="font-style: normal">
+in action.  </SPAN>The <I>&ldquo;preload&rdquo;</I><SPAN STYLE="font-style: normal">
+field allows you to control this aspect; if you set this field to
+false (off) then T2D will compile and pack the image-maps but it
+won't load the textures.</SPAN></FONT></FONT></P>
+    <br />
+
+
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>So when will it?  T2D
+will load the textures as soon as any object references the texture;
+if you were to assign a frame to a sprite for instance.  The downside
+here is that it can take a little time to activate the textures,
+dependent upon the current machine's performance.  The good thing
+though is that you use as little memory as possible right up to the
+point where you use it.  Of course, this is totally your choice and
+should be used with care as <B>not</B><SPAN STYLE="font-weight: medium">
+preloading things can potentially hurt performance if T2D ends up
+doing lots of work activating textures when, as far as the user is
+concerned, it should be creating sprites at a critical moment.</SPAN></FONT></FONT><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You can use
+&quot;$prefs::T2D::imageMapPreloadDefault&quot; to control the
+default value for the &ldquo;preload&rdquo; field.</FONT></FONT></P>
+<br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">&ldquo;<FONT FACE="Arial, sans-serif"><FONT SIZE=2 STYLE="font-size: 11pt"><I>allowunload&rdquo;</I></FONT></FONT></P>
+    <br />
+
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This field is closely
+linked with <I>&ldquo;preload&rdquo;</I>.  As mentioned above, when
+<B>not</B><SPAN STYLE="font-weight: medium"> preloading textures,
+textures will be activated when a texture-frame is referenced by a
+T2D object.  What was not discussed was that when the T2D object no
+longer references the texture-frame, the texture is deactivated
+meaning it disappears from memory.  Don't get this confused with the
+image-map being destroyed, this isn't the case, simply the
+texture-data is removed from memory and the image-map is still
+around.  This means that when you don't preload textures, they get
+automatically activated/deactivated as sprites reference them.  You
+can use &ldquo;allowUnload&rdquo; to control whether textures are
+deactivated when an object no longer references it.</SPAN></FONT></FONT>
+
+<br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium; widows: 2; orphans: 2">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>You can use
+&quot;$prefs::T2D::imageMapAllowUnloadDefault&quot; to control the
+default value for the &ldquo;allowunload&rdquo; field.</FONT></FONT></P>
+
+    <br />
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>Memory Primer</B></FONT></FONT></P>
+
+
+<br />
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that we've discussed
+the fields &ldquo;preload&rdquo; and &ldquo;allowUnload&rdquo;, let's
+just clarify exactly how to use them.  When you're interested in how
+much memory your image-maps use at any one time then these fields
+become very valuable.</FONT></FONT></P>
+
+
+<br />
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's assume you want
+your image-map to be activated immediately when you create it.  Your
+image-map would look like this...</FONT></FONT></P>
+
+<br />
+<TABLE WIDTH=604 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=590>
+	<TR>
+		<TD WIDTH=590 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_46da21b0.gif" NAME="Frame16" ALT="Frame16"></P>
+		</TD>
+	</TR>
+</TABLE>
+
+    <br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>
+    Now let's assume you want
+your image-map to only activate when used and deactivate when not
+used.  Your image-map would look like this...</FONT></FONT></P>
+
+<br />
+<TABLE WIDTH=604 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=590>
+	<TR>
+		<TD WIDTH=590 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_24e5d448.gif" NAME="Frame14" ALT="Frame14"></P>
+		</TD>
+	</TR>
+</TABLE>
+
+    <br /><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>
+    Now let's assume you want
+your image-map to only activate when used but stay activated when not
+used.  Your image-map would look like this...</FONT></FONT></P>
+
+
+<TABLE WIDTH=604 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=590>
+	<TR>
+		<TD WIDTH=590 VALIGN=TOP>
+			<P CLASS="western"><IMG SRC="images/Image Maps_html_m11e56c52.gif" NAME="Frame15" ALT="Frame15"></P>
+		</TD>
+	</TR>
+</TABLE>
+
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>    So what do we mean when
+we say the image-map is &ldquo;referenced&rdquo; or &ldquo;used&rdquo;?
+ Well, it's quite simple.  If you assign the image-map to a
+t2dStaticSprite, t2dScroller or indeed, any T2D object, the image-map
+will recognize this and activate (assuming you're not using
+&ldquo;preload&rdquo;).   Now if you change to another image-map or
+you destroy the T2D object that references the image-map, it will be
+deactivated (assuming you're not using &ldquo;preload&rdquo; and
+using &ldquo;allowUnload&rdquo;).  It's that simple!</FONT></FONT></P>
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>So what happens when
+multiple objects use the same image-map?  Well, T2D counts the
+references that objects use.  The first one can activate the texture
+so that's easy but what about deactivating when multiple objects have
+a reference?  Again, it's pretty simple; when an object releases the
+reference to the image-map, T2D will check to see if the image-map
+has any references.  If it does then T2D does nothing but if there
+are no references then T2D can deactivate the texture.  Of course, as
+specified, this is dependent upon the options &ldquo;preload&rdquo;
+and &ldquo;allowUnload&rdquo;.</P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif">
+</FONT></FONT><FONT SIZE=2 face="Arial, sans-serif">So as you can see, T2D
+provides a nice and simple mechanism to specify when image-map
+textures are activated/deactivated.  You can specify this per
+image-map or globally using preferences.</FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Advanced
+Development</B></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Okay,
+now that we've covered the image-map fields, it's easy to think that
+you've got everything you need and to some degree, you can take what
+you've learned so far and stop here.  Please feel free to do that as
+we've definitely covered all you'll need to get started and enjoy
+T2D.  When you're ready, come back and we'll discuss ways of getting
+more advanced information/control over your image-maps.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Welcome
+back!</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>For
+here on we'll be discussing the more advanced features of image-maps
+that can provide vital information when configuring image-maps, not
+only for debugging but to provide an interface to what's going on
+behind the scenes.  This kind of information can enable you to write
+various tools to help you configure your image-maps.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's
+start with a discussion of what we mean when we say that T2D &quot;packs&quot;
+your frames into textures for the graphics card.  When T2D looks at
+your image-map datablock, it finds some vital information.  The first
+is the image-name which defines the bitmap that contains your frames.
+ It then looks at the image-mode which tells T2D how to locate your
+frames within the specified bitmap.  It then goes away and compiles a
+list of frames and their location in the specified bitmap.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now
+comes the complex part!  T2D now takes into account your preference
+of either performance or least-waste as well as whether your frames
+need padding and starts the process of &quot;packing&quot; your
+frames into textures.  At this point T2D interrogates the maximum
+sized texture that your hardware can support.  If you want to do this
+yourself, T2D provides the following function (note that you can find
+more information on this call in the T2D reference documentation):</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><I>%maxSize
+			= </I><B>getT2DMaxTextureSize()</B>;</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">Now
+that T2D knows the maximum-sized textures that it can create, it
+iterates through various combinations of texture sizes noting either
+how much waste there is or how few textures are created according to
+the preference rules.  Iterating lots of frames through all the
+variations of texture sizes can be computationally expensive so T2D
+has some smarter algorithms that enable it to reduce the potential
+fits available.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+T2D has found the best solution, it starts the process of copying the
+frames from your original image into the appropriate locations in the
+new texture(s).  It also adds any frame-padding if appropriate.  When
+this is complete, T2D uploads these textures to your graphics card
+and compiles an internal list so that it can easily refer to the
+correct texture by frame number.  T2D has then completed everything
+needed to compile an image-map.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>During
+this packing process, T2D can encounter several problems.  If a
+problem occurs, T2D will abort the image-map compilation and remove
+any resources that it current holds.  The result of this will be an
+error in the console such as:</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">&quot;Register
+object failed for object myImageMap of class t2dImageMapDatablock.&quot;</FONT></FONT></FONT></P>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">When
+you see this, you know that the image-map named &quot;myImageMap&quot;
+failed.  What you'll probably see then are cascaded failures when
+you've subsequently tried to use the image-map in other T2D objects
+but the important one here is the initial failure.  T2D is based upon
+the T3D engine which provides the message as shown above.  Now
+although this message is useful in knowing that a problem occurred,
+it doesn't say what the problem was.</FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Luckily, T2D provides
+more information on any problems encountered.  It does this in
+several ways.  The first is that T2D issues script-callbacks which
+allow you to directly control what happens when any of your
+image-maps fail at runtime.  Secondly, you can instruct T2D to
+additionally echo any error to the console.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Let's
+start with the script-callbacks; there are three callbacks in total,
+these are:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">onImageMapPackStart()
+	&ndash; Packing has started.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">onImageMapPackEnd()
+	&ndash; Packing has ended.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">onImageMapError()
+	&ndash; A Packing error occurred.</FONT></FONT></FONT></P>
+</UL>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+        <FONT FACE="Arial, sans-serif" size="2">These
+callbacks enable you to monitor the packing start and stop of each
+image-map as well as any errors that may occur.  Due to the fact that
+image-maps are not valid objects until they successfully complete the
+packing process, these callbacks are not passed the typical &quot;%this&quot;
+implicit object identifier.  The callbacks appear in a specific order
+of &quot;<I>onImageMapPackStart&quot;</I>, <I>&quot;onImageMapPackEnd&quot;</I>
+and <I>&quot;onImageMapError&quot;</I>.  They are used like so:</FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><I>//
+			Start Packing.</I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><FONT COLOR="#333333">function
+			<B>onImageMapPackStart</B>( %imageMapName )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			&quot;Packing has started for image-map&quot; SPC %imageMapName );</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT></FONT></P>
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><I>//
+			End Packing.</I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><FONT COLOR="#333333">function
+			<B>onImageMapPackEnd</B>( %imageMapName )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			&quot;Packing has ended for image-map&quot; SPC %imageMapName );</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT></FONT></P>
+			
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt"><I>//
+			Packing Error.</I></FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT FACE="Courier New, monospace"><FONT COLOR="#333333">function
+			<B>onImageMapError</B>( %imageMapName, %errorNumber,
+			%errorDescription )</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">{</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			&quot;An error occurred in image-map&quot; SPC %imageMapName );</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			&quot;The error number was&quot; SPC %errorNumber );</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333">
+			  <FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">echo(
+			&quot;The error description was&quot; SPC %errorDescription );</FONT></FONT></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">The
+start/end packing calls are pretty simplistic and simply allow you to
+monitor which image-maps are being processed and when they complete. 
+The end-packing call will happen irrelevant of any error occurring. 
+Following the end-packing call, you may get an error callback.  Let's
+go into a little more detail on this error callback.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+an image-map error occurs, it immediately aborts and results in the
+packing process ending and an error callback.  Because image-maps
+stop on the first error they encounter, you'll only get a single
+error callback.  Of course, if you resolve the problem and try again,
+you may then get another error.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>All
+of the image-map callbacks return the name of the image-map as the
+first parameter to the callback which is useful in identifying which
+image-map has failed.  As mentioned above, the image-map doesn't yet
+exist as an object to the scripts so you cannot refer to it directly
+so the name is your only reference.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+error callback provides two additional parameters which are extremely
+valuable in determining what went wrong.  The first is the &quot;error
+number&quot; which is an integer starting at 1 which uniquely
+identifies each error.  The second is a textual description of the
+error itself.   You may want to provide specific responses to certain
+errors at runtime so the &quot;error number&quot; is more useful in
+this case.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here's a list of
+potential error numbers and their respective description:</FONT></FONT></P>
+    <br />
+
+
+<OL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid Mode; must be FULL, KEY, CELL or LINK!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid Bitmap File!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Frame Width Too Big; Unsupported by current hardware!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Frame Height Too Big; Unsupported by current hardware!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Filter-Padded Frame Width Too Big; Unsupported by current
+	hardware!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Filter-Padded Frame Height Too Big; Unsupported by current
+	hardware!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Frame Width Too Big; Larger than selected limit!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Frame Height Too Big; Larger than selected limit!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Filter-Padded Frame Width Too Big; Larger than selected
+	limit!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Filter-Padded Frame Height Too Big; Larger than selected
+	limit!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Reported Maximum Hardware Texture Size is invalid!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Selected Maximum Texture-Size is larger than the current
+	hardware limit!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid CELL Offset X!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid CELL Offset Y!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid CELL Dimension!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid CELL Quantity!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Invalid CELL Capture!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Failed to get separator color!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;No frames have been acquired!&quot;</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">-
+	&quot;Number of frames acquired differs from that specified!&quot;</FONT></FONT></FONT></P>
+</OL>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">As
+we mentioned earlier, you can also ask T2D to additionally echo these
+errors to the console.  Perhaps you're not interested in using the
+script callbacks and simply want to monitor your console log.  T2D
+provides several preferences for image-maps, one of these being the
+echoing of image-map errors.  Let's introduce these preferences now:</FONT></P>
+    <br />
+
+
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$prefs::T2D::imageMapEchoErrors</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$prefs::T2D::imageMapShowPacking</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$prefs::T2D::imageMapDumpTextures</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$prefs::T2D::imageMapFixedMaxTextureSize</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$prefs::T2D::imageMapFixedMaxTextureError</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$pref::T2D::imageMapPreloadDefault</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; widows: 2; orphans: 2">
+	<FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">$pref::T2D::imageMapAllowUnloadDefault</FONT></FONT></FONT></P>
+</UL>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">Hopefully,
+you'll already know about your preference file(s).  If you don't then
+you simply need to know that it is a script file where T2D exports
+any variables from the &quot;$prefs::&quot; namespace when you exit
+T2D.  You can specify variable parameters to the T2D engine here
+therefore image-maps expose the previous five preferences here.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>You
+can more detail on these preferences in the T2D reference
+documentation, nevertheless let's go through each of these
+preferences:</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapEchoErrors&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+preference tells T2D to echo any error to the console.  T2D will
+still produce an error callback.</FONT></FONT></P>
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif"><I><B>&quot;$prefs::T2D::imageMapDumpShowPacking&quot;</B></I></FONT></P>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">This
+preference tells T2D to echo image-map statistics at the start and
+stop of packing.  These statistics contain comprehensive information
+on the packing process and can be invaluable in understanding what
+T2D is doing with your frames.  As well as frame locations,
+texture-page dimensions and counts, T2D also provides timings for the
+packing process.</FONT></P>
+<br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapDumpTextures&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+preference tells T2D to dump the resultant textures that contain the
+packed frames to disk before uploading to your graphics card.  You
+can use these images to visualize what exactly T2D is doing with your
+frames.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>T2D
+will always dump these images to the root script directory into a
+subdirectory called &quot;imageMapDump&quot;.  The output images will
+be the same format as the original input image.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+nomenclature for these files is:</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>&lt;image-map
+name&gt;_Page_&lt;Texture Page&gt;.&lt;original image extension&gt;</B></I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>An
+image-map called &quot;myImageMap&quot; that produces two textures
+from frames originally contained in a &quot;.png&quot; file will
+output the following files:</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>&quot;myImageMap_Page_0.png&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>&quot;myImageMap_Page_1.png&quot;</B></I></FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Note
+that T2D does not clear this directory prior to outputting files
+therefore files from previous executions may still be contained.  Any
+files of identical names will be overwritten without confirmation.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapFixedMaxTextureSize&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+preference tells T2D to override the maximum supported hardware
+texture size (MSHTS) in favor of this specified size.  This value
+must be equal or less than the MSHTS.  Additionally, this value <B>must</B>
+be a power-of-two.  If it isn't, T2D will automatically raise it to
+the next power-of-two.  It defaults to zero which tells T2D to ignore
+it and to use the MSHTS instead.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Although
+this preference would probably be left at its default most of the
+time, it does allow you to override under certain conditions.  For
+instance, you may find that performance of the MSHTS is not adequate
+on specific hardware.  You can use the scripts to identify this
+hardware and adjust this preference accordingly.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapFixedMaxTextureError&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+preference is directly related to the previous preference.  It allows
+you to override the situation where the specified maximum texture
+size is actually higher than the MSHTS.  In this situation, T2D
+cannot honor the request and must do something to resolve the
+problem.  T2D has two choices; defer to the MSHTS or abort with an
+error.  This preference controls which option T2D chooses.  The
+default is <I>false</I> (off) which means T2D will defer to the
+MSHTS.  When set to <I>true</I> (on), T2D will abort with an error.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapPreloadDefault&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+you don't specify the &ldquo;preload&rdquo; field then this
+preference allows you to select the value used by default.  You can
+essentially use this setting to select a global default for the
+&ldquo;preload&rdquo; field, overriding it where necessary using the
+&ldquo;preload&rdquo; field.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;$prefs::T2D::imageMapAllowUnloadDefault&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>If
+you don't specify the &ldquo;allowUnload&rdquo; field then this
+preference allows you to select the value used by default.  You can
+essentially use this setting to select a global default for the
+&ldquo;allowUnload&rdquo; field, overriding it where necessary using
+the &ldquo;allowUnload&rdquo; field.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that we've covered
+both callbacks and preferences that can be used to monitor the
+image-map packing process as well as any errors generated, let's
+finish by discussing the functions that image-maps provide to allow
+you to control and interrogate them.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Here's
+a complete list of the functions provided by image-maps:</FONT></FONT></P>
+    <br />
+
+
+<UL>
+	<LI VALUE=1><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">
+	<FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">setFilterMode()
+	&ndash; Set GPU Filter Mode.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getFilterMode()
+	&ndash; Get GPU Filter Mode.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getImageMapMode()
+	&ndash; Get Image-Map Image-Mode.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getSrcBitmapName()
+	&ndash; Get Source Image Bitmap Name.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getSrcBitmapSize()
+	&ndash; Get Source Image Bitmap Size.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getFrameCount()
+	&ndash; Get Total Frame Count.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getFrameSize()
+	&ndash; Get Specific Frame Size.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getTexturePageCount()
+	&ndash; Get Total Texture-Page Count.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getTexturePageSize()
+	&ndash; Get Specific Texture-Page Size.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getTexturePageFrameCount()
+	&ndash; Get Frame Count on specific texture-page.</FONT></FONT></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">getFrameTexturePage()
+	&ndash; Get Texture-Page that specific frame resides.</FONT></FONT></FONT></P>
+</UL>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">You
+can find more information on these functions in the T2D reference
+documentation, nevertheless let's go through these functions
+individually:</FONT></P>
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;setFilterMode(%mode)
+/ getFilterMode()&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">These
+two functions allow you to set/get the filter mode to either &quot;none&quot;
+or &quot;smooth&quot;.  This replicates the image-map field
+<I>&quot;filterMode&quot;</I> such that you can use either the field
+or the functions to set/get the filter-mode.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getImageMapMode()&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the image-map mode.  This replicates the image-map
+field <I>&quot;imageMode&quot;</I> such that you can use either the
+field or the function to get the image-map mode.  Note that changing
+the field after the image-map has been created has no effect
+whatsoever.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getSrcBitmapName()&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the name of the source image bitmap used to
+extract frames.  This replicates the image-map field <I>&quot;imageName&quot;</I>
+such that you can use either the field or the function to get the
+image-name.  Note that changing the field after the image-map has
+been created has no effect whatsoever.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getSrcBitmapSize()&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+function retrieves the size of the source image bitmap used to
+extract frames.  An 800 wide x 600 high bitmap would be returned as
+&quot;800 600&quot;.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getFrameCount()&quot;</B></I></FONT></FONT></P>
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">This
+function retrieves the total frame count calculated by the image-map.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getFrameSize(%frame)&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the size of the specified frame.  The frame-number
+is zero-based and is valid to the value returned by <I>&quot;getFrameCount()&quot;</I>
+minus one.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getTexturePageCount()&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>This
+function retrieves the total texture-page count calculated by the
+image-map.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getTexturePageSize(%page)&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the size of the specified texture-page.  The
+page-number is zero-based and is valid to the value returned by
+<I>&quot;getTexturePageCount()&quot;</I> minus one.</FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in;">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2><I><B>&quot;getTexturePageFrameCount(%page)&quot;</B></I></FONT></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the total frame count on the specified
+texture-page. The page-number is zero-based and is valid to the value
+returned by <I>&quot;getTexturePageCount()&quot;</I> minus one.</FONT></FONT></P>
+    <br />
+
+
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif"><I><B>&quot;getFrameTexturePage(%frame)&quot;</B></I></FONT></P>
+    <br />
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">This
+function retrieves the index of the texture-page where the specified
+frame resides.  The frame-number is zero-based and is valid to the
+value returned by <I>&quot;getFrameCount()&quot;</I> minus one. The
+page-number returned is zero-based and is valid to the value returned
+by <I>&quot;getTexturePageCount()&quot;</I> minus one. </FONT></FONT>
+</P>
+    <br />
+
+
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>It
+may not be obvious how you'd call image-map datablock functions but
+being as they are fundamentally an object within T2D, they can be
+used in much the same way as you would use any other object in T2D. 
+As an example of this calling process, here's how you'd set the
+filter mode on an image-map:</FONT></FONT></P>
+    <br />
+
+
+<TABLE WIDTH=590 BORDER=0 CELLPADDING=7 CELLSPACING=0>
+	<COL WIDTH=576>
+	<TR>
+		<TD WIDTH=576 VALIGN=TOP BGCOLOR="#e6e6e6">
+			
+			
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT COLOR="#333333"><FONT FACE="Courier New, monospace"><FONT SIZE=1 STYLE="font-size: 8pt">myImageMap.SetFilterMode(
+			smooth );</FONT></FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+
+
+
+
+<br />
+    <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2 
+            face="Arial, sans-serif">As
+you can see, there's a wealth of information that can be retrieved
+from image-maps but it is important to understand that if any error
+occurs during the image-map creation, the image-map object will not
+be available therefore neither will these functions.</FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><B>Conclusion</B></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>We've
+now come to the end of our discussion on T2D image-maps and we hope
+that we've provided enough information for T2D novices and veterans
+alike.  T2D image-maps are the &quot;bread and butter&quot; of using
+T2D so a fundamental understanding of how to use them is vital. 
+Because they are so vital, they've become more and more powerful
+offering more ways to define your imagery and they'll get even more
+powerful in the future.</FONT></FONT></P>
+    <br />
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Don't
+forget that you can always find information on T2D image-maps in the
+T2D reference documentation.</FONT></FONT></P>
+    <br />
+
+
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif">All
+the best everyone and happy T2D'ing! </FONT><FONT FACE="Wingdings">&#61514;</FONT></FONT></P>
+
+<br />
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

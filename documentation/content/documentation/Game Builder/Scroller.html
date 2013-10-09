@@ -1,0 +1,139 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 8;
+   parent.leftFrame.expandToItem('tree2', 'doc8');
+   var element = parent.leftFrame.document.getElementById('doc8');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Scrollers</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>A scroller object (t2dScrollerObject) allows for a single plane to 
+                  have a constantly moving image. This is very useful for effects such as a
+                  flowing river or a background mountain range that moves when your 
+                  player runs forward. For a short tutorial on using scrollers, 
+                    <a href="../Interface%20Tutorials/Feature/Scroller.html">click 
+                  here</a>. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>Scrollers are automatically created on the Create Tab whenever an 
+                  imagemap is created. If an imagemap is set to cell, the scroller will 
+                  disappear as it can only use Full mode. </p>
+                <p><br />
+                  <img alt="File:RainyDay_ScrollersPanel.png" src="images/RainyDay_ScrollersPanel.png" border="0" height="117" width="562" /> </p>
+                <p><br />
+                  To add one of these Scrollers into your scene, click on the one you wish
+                  to add then drag and drop it into the Scene View. It will now exist, 
+                  however will not yet scroll - you will need to edit the Properties for 
+                  that. </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p><img alt="File:RainyDay_Scroller_EditPanel.png" src="images/RainyDay_Scroller_EditPanel.png" border="0" height="309" width="562" /> </p>
+                <ul>
+                  <li> <b>Image Map</b> - The image to display on this Scroller </li>
+                  <li><b>Repeat</b> - Number of times to repeat the texture
+                    <ul>
+                      <li> <b>X</b> - Number of times to repeat the texture along the X plane </li>
+                      <li> <b>Y</b> - Number of times to repeat the texture along the Y plane </li>
+                    </ul>
+                  </li>
+                  <li> <b>Scroll Speed</b> - The speed to scroll the texture
+                    <ul>
+                      <li> <b>X</b> - The speed to scroll the texture along the X plane </li>
+                      <li> <b>Y</b> - The speed to scroll the texture along the Y plane </li>
+                    </ul>
+                  </li>
+                  <li> <b>Scroll Position</b> - The scroll position of the texture
+                    <ul>
+                      <li> <b>X</b> - The scroll position of the texture along the X plane </li>
+                      <li> <b>Y</b> - The scroll position of the texture along the Y plane </li>
+                    </ul>
+                  </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>  new t2dScroller() {
+     imageMap = "waveImageMap";
+     scrollX = "15";
+     scrollPositionX = "0.861267";
+     mUseSourceRect = "0";
+     canSaveDynamicFields = "1";
+     useMouseEvents = "1";
+     Position = "-6.000 3.000";
+     size = "737.000 381.000";
+     CollisionMaxIterations = "3";
+     BlendColor = "1 1 1 0.4";
+     AlphaTestValue = "-1";
+        mountID = "13";
+  };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Scrollers allow a quick way for rivers, clouds and even traffic to 
+                  move through your beautiful scenes. You can set them to auto-scroll or 
+                  manually control their movement from script. For a short tutorial on 
+                using scrollers, <a href="../Interface%20Tutorials/Feature/Scroller.html">click here</a>. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

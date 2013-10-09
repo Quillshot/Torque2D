@@ -1,0 +1,47 @@
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiControl(mainScreenGui) {
+   canSaveDynamicFields = "0";
+   Profile = "GuiBlackContentProfile";
+   HorizSizing = "width";
+   VertSizing = "height";
+   Position = "0 0";
+   Extent = "800 600";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   useVariable = "0";
+   
+   new GuiBitmapCtrl(gameBackground) 
+   {
+      canSaveDynamicFields = "0";
+      isContainer          = "0";
+      Profile              = "GuiDefaultProfile";
+      HorizSizing          = "width";
+      VertSizing           = "height";
+      Position             = "0 0";
+      Extent               = "800 600";
+      MinExtent            = "8 2";
+      canSave              = "1";
+      Visible              = "0";
+      hovertime            = "1000";
+      bitmap               = "./images/dummyBack1";
+      wrap                 = "0";
+   };   
+
+   new t2dSceneWindow(sceneWindow2D) {
+      canSaveDynamicFields = "0";
+      Profile = "GuiContentProfile";
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      Position = "0 0";
+      Extent = "800 600";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "1";
+      lockMouse = "0";
+      useWindowMouseEvents = "1";
+      useObjectMouseEvents = "1";
+   };
+
+};
+//--- OBJECT WRITE END ---

@@ -1,0 +1,1521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<tooltip><HTML>
+      <HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 347;
+   parent.leftFrame.expandToItem('tree2', 'doc347');
+   var element = parent.leftFrame.document.getElementById('doc347');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Hierarchy</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+<META NAME="AUTHOR" CONTENT="Melvyn May">
+<META NAME="CREATED" CONTENT="20050419;14060000">
+<META NAME="CHANGED" CONTENT="20060613;16271000">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.79in; margin-top: 0.49in; margin-bottom: 0.49in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	H1 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	H1.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US }
+	H1.cjk { font-family: "Lucida Sans Unicode"; font-size: 16pt }
+	H1.ctl { font-family: "Tahoma"; font-size: 16pt; so-language: ar-SA }
+	H2 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	H2.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US; font-style: italic }
+	H2.cjk { font-family: "Lucida Sans Unicode"; font-size: 14pt; font-style: italic }
+	H2.ctl { font-family: "Tahoma"; font-size: 14pt; so-language: ar-SA; font-style: italic }
+	H3 { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	H3.western { font-family: "Arial", sans-serif; font-size: 12pt; so-language: en-US; font-style: italic }
+	H3.cjk { font-family: "Lucida Sans Unicode" }
+	H3.ctl { font-family: "Tahoma"; so-language: ar-SA }
+	TD P { margin-bottom: 0in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	PRE { direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	PRE.western { so-language: en-US }
+	PRE.ctl { so-language: ar-SA }
+	P.quick-definition-western { color: #800000; font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.quick-definition-cjk { color: #800000; font-family: "Times New Roman", serif; font-size: 12pt }
+	P.quick-definition-ctl { color: #800000; font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	--></STYLE>
+<DIV TYPE="HEADER">
+   <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Input Interaction</B></FONT></FONT></P>
+   <P STYLE="MARGIN-BOTTOM: 0.26in"><BR>
+   </P>
+</DIV>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700">
+<H1 CLASS="western" STYLE="PAGE-BREAK-BEFORE: always"><FONT FACE="Arial, sans-serif">Introduction</FONT></H1>
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">Input is 
+      a very important factor to any game. We can't have a game unless we can let the 
+      player interact with the game. Fortunately, with Torque 2D (T2D) we 
+      have two very easy and expansive ways to interpret input interaction. These two 
+      ways are the following:</FONT></P>
+<br />
+<OL>
+   <LI>
+      <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">Mouse 
+            Event Callbacks</FONT></P>
+   <LI>
+      <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">ActionMaps</FONT></P>
+   </LI>
+</OL>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">These 
+      two methods handle input interaction from typing keys on your keyboard, to 
+      moving your mouse in your T2D game and clicking, and even to moving a joystick. 
+      This reference covers and explains both of these types of interactions and includes full examples in utilizing them.</FONT></P>
+<br />
+<H1 CLASS="western"><FONT FACE="Arial, sans-serif">Quick Reference</FONT></H1>
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">Mouse Event Callbacks Reference</FONT></H2>
+
+   <TABLE WIDTH="675" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0">
+      <COLGROUP>
+         <COL WIDTH="138">
+            <COL WIDTH="104">
+               <COL WIDTH="149">
+                  <COL WIDTH="225">
+                     <TR>
+                        <TD COLSPAN="4" WIDTH="659" VALIGN="top" BGCOLOR="#808080">
+                           <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Mouse 
+                                          Event Callbacks</B></I></FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Callback</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Synopsis</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Parameter(s)</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Detail</B></FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseDown()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Left 
+                                    Mouse Button Pressed.</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><B>this</B>
+                                    - Current Object (self)</FONT></FONT></P>
+                           <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><B>modifier</B>
+                                    - Alt/Ctrl/Shift Key modifiers used.</FONT></FONT></P>
+                           <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><B>worldPosition$</B>
+                                    - Position in world-coordinates.</FONT></FONT></P>
+                           <P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><B>mouseClicks</B>
+                                    - Number of mouse clicks used.</FONT></FONT></P>
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><B>NOTE:-</B>
+                                    The coordinates returned have been converted to world-coordinates and are 
+                                    automatically adjusted for the camera move/zoom. You can use these coordinates 
+                                    directly with all other T2D objects and also use it for object picking (seeing <I>pickPoint</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseUp()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Left 
+                                    Mouse Button Released.</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseMove()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Mouse 
+                                    has been moved.</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseDragged()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Mouse 
+                                    has been dragged (Left Button)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseEnter()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Mouse 
+                                    has entered the <I>t2dSceneWindow.</I></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onMouseLeave()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Mouse 
+                                    has left the <I>t2dSceneWindow</I></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onRightMouseDown()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Right 
+                                    Mouse Button Pressed.</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onRightMouseUp()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Right 
+                                    Mouse Button Released.</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="138" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">onRightMouseDragged()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="104" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Mouse 
+                                    has been dragged (Right Button)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="149" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(this, 
+                                    modifier, worldPosition$, mouseClicks)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="225" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(See 
+                                    &quot;<I>onMouseDown()&quot;</I>).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+   </TABLE>
+
+<br />
+
+         <TABLE WIDTH="548" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0">
+            <COLGROUP>
+               <COL WIDTH="82">
+                  <COL WIDTH="167">
+                     <COL WIDTH="68">
+                        <COL WIDTH="173">
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="532" VALIGN="top" BGCOLOR="#808080">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Mouse 
+                                                Modifier Callback Values</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="82" BGCOLOR="#c0c0c0">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Modifier 
+                                             Value</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="167" BGCOLOR="#c0c0c0">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>What the 
+                                             value represents</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="68" BGCOLOR="#c0c0c0">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Modifier 
+                                             Value</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="173" BGCOLOR="#c0c0c0">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>What the 
+                                             value represents</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="82" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">1</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="167" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Left 
+                                          Shift</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="68" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="173" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Right 
+                                          Shift</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="82" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">4</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="167" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Left 
+                                          Control</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="68" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">8</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="173" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Right 
+                                          Control</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="82" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">16</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="167" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Left 
+                                          Alt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="68" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">32</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="173" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Right 
+                                          Alt</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="532" VALIGN="top" BGCOLOR="#e6e6e6">
+                                 <P CLASS="western" ALIGN="left"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">Any 
+                                          other numbers are a combination of these, for example if you press Left Shift 
+                                          and Left Control together it will produce the modifier value of 5, or if you 
+                                          press Left Alt and Right Alt together it will produce the modifier value of 48.</FONT></FONT></P>
+                              </TD>
+                           </TR>
+         </TABLE>
+<br />
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">ActionMaps Reference</FONT></H2>
+
+   <TABLE WIDTH="675" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="7" CELLSPACING="0">
+      <COLGROUP>
+         <COL WIDTH="193">
+            <COL WIDTH="100">
+               <COL WIDTH="83">
+                  <COL WIDTH="241">
+                     <TR>
+                        <TD COLSPAN="4" WIDTH="659" VALIGN="top" BGCOLOR="#808080">
+                           <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>ActionMaps</B></I></FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Script Example</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Synopsis</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Parameter(s)</B></FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#c0c0c0">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Detail</B></FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">new 
+                                    ActionMap(testActionMap);</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Create 
+                                    a New ActionMap</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(Name)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Use 
+                                    this in script to create a new ActionMap, replace &quot;testActionMap&quot; with whatever 
+                                    name you want to use.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">testActionMap.bind(keyboard, 
+                                    &quot;u&quot;, toggleU);</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Bind 
+                                    a command using bind()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(device, 
+                                    event, function)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">You 
+                                    can bind using this .bind() command, you must specify a device, the action to 
+                                    bind, then a function to be called when the event happens. The function 
+                                    specified must be set to receive a single value passed (ex. &quot;function 
+                                    toggleU(%val)&quot;)</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">testActionMap.bindCmd(keyboard, 
+                                    &quot;u&quot;, &quot;onUDown();&quot;, &quot;onUUp();&quot;);</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Bind 
+                                    a command using bindCmd()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">(device, 
+                                    event, script, script)</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">This 
+                                    function is similar to the .bind() command, except you pass two script values 
+                                    instead of just function names. The first script value will happen when the 
+                                    event is activated (on key down), the second when the event is broken (on key 
+                                    released).</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">testActionMap.push();</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Activate 
+                                    an ActionMap</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">This 
+                                    will activate the ActionMap. Keep in mind the most recently pushed ActionMap 
+                                    will receive the events if multiple ActionMaps are pushed with the same events 
+                                    set.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                     <TR VALIGN="top">
+                        <TD WIDTH="193" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">testActionMap.pop();</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="100" BGCOLOR="#e6e6e6">
+                           <P CLASS="western" STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">Disable 
+                                    an ActionMap</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="83" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">()</FONT></FONT></P>
+                        </TD>
+                        <TD WIDTH="241" BGCOLOR="#e6e6e6">
+                           <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt">This 
+                                    will disable the ActionMap.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+   </TABLE>
+
+<br />
+
+      <TABLE WIDTH="611" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="133">
+               <COL WIDTH="150">
+                  <COL WIDTH="154">
+                     <COL WIDTH="139">
+                        <THEAD>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#666666">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>ActionMap 
+                                                Available Events to Bind</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                        </THEAD>
+                        <TBODY>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Keyboard 
+                                                General Events</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt"><I><B>Note:
+                                             </B>
+                                             <SPAN>All general keys can be
+					bound by simply using the key...  ex. &quot;u&quot;  will
+					trigger the u key response.</SPAN></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">backspace</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">end</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">win_apps</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">tilde</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">tab</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">home</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">cmd</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">minus</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">return</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">left</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">opt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">equals</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">enter</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">up</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lopt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lbracket</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">shift</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">right</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ropt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rbracket</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ctrl</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">down</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numlock</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">backslash</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">alt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">print</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">scrolllock</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">semicolon</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">pause</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">insert</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rshift</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">apostrophe</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">capslock</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">delete</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lcontrol</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">comma</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">escape</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">help</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rcontrol</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">period</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">space</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">win_lwindow</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lalt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">slash</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">pagedown</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">win_rwindow</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ralt</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lessthan</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">pageup</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Keyboard 
+                                                Numpad Events</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad0</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad5</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad9</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpadminus</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad1</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad6</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpadadmult</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpaddecimal</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad7</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpadadd</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpaddivide</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad3</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad8</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpadsep</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpadenter</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">numpad4</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Keyboard 
+                                                Function Key Events</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f1</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f7</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f13</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f19</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f8</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f14</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f20</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f3</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f9</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f15</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f21</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f4</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f10</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f16</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f22</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f5</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f11</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f17</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f23</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f6</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f12</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f18</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">f24</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Joystick/Mouse 
+                                                Events</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button0</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button8</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button16</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button24</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button1</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button9</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button17</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button25</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button10</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button18</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button26</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button3</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button11</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button19</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button27</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button4</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button12</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button20</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button28</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button5</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button13</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button21</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button29</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button6</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button14</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button22</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button30</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button7</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button15</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button23</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">button31</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Joystick/Mouse 
+                                                Axes</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">xaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">zaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ryaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">slider</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">yaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rxaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rzaxis</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Joystick 
+                                                POV</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">xpov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">dpov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">xpov2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">dpov2</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ypov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lpov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">ypov2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">lpov2</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">upov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rpov</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">upov2</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">rpov2</FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR>
+                              <TD COLSPAN="4" WIDTH="601" VALIGN="top" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western" ALIGN="center"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><I><B>Miscellaneous 
+                                                Events</B></I></FONT></FONT></P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"><B>Event Name</B></FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#b3b3b3">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                           <TR VALIGN="top">
+                              <TD WIDTH="133" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">anykey</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="150" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><FONT FACE="Arial, sans-serif"><FONT SIZE="2" STYLE="FONT-SIZE: 9pt">nomatch</FONT></FONT></P>
+                              </TD>
+                              <TD WIDTH="154" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                              <TD WIDTH="139" BGCOLOR="#cccccc">
+                                 <P CLASS="western"><BR>
+                                 </P>
+                              </TD>
+                           </TR>
+                        </TBODY>
+      </TABLE>
+<br />
+<H1 CLASS="western"></H1>
+<H1 CLASS="western" STYLE="PAGE-BREAK-BEFORE: always"><FONT FACE="Arial, sans-serif">Mouse 
+      Event Callbacks</FONT></H1>
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">What is a Mouse Event Callback?</FONT></H2>
+<H3 CLASS="western"><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000"><B><I>Quick 
+               Definition:</I></B> </FONT></FONT>
+</H3>
+<P class="western"><FONT FACE="Arial, sans-serif">A mouse event 
+      callback is simply the response from the T2D engine when a mouse event has 
+      happened. This includes moving, dragging, clicking, releasing, leaving, and 
+      entering the screen so you can easily handle this input in your game a specific 
+      way.</FONT></P>
+<br />
+<H3 CLASS="western" STYLE="TEXT-DECORATION: none"><FONT FACE="Arial, sans-serif">In-Depth 
+      Definition: </FONT>
+</H3>
+<P CLASS="western" STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif">In T2D, 
+      mouse events are Scene Window specific. That way you can handle multiple Scene 
+      Windows in different ways if you like. So when you either move, drag, click, 
+      release, enter the screen, or leave the screen with your mouse it will send 
+      what is referred to as a &quot;callback&quot; to the Scene Window. Callbacks are 
+      basically preset function names that the engine will call when events happen. 
+      This allows you to interact with the engine upon events. Not only does this 
+      interaction trigger the callback method, but it passes plenty of useful data to 
+      the function, such as the position where the event happened, the click counts 
+      if the mouse was pressed as well as any other information that could be useful. </FONT>
+</P>
+<br />
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">How do we use Mouse Event 
+      Callbacks?</FONT></H2>
+<P CLASS="western"><FONT FACE="Arial, sans-serif">Using mouse event callbacks is very 
+      simple, since the callbacks are done through a Scene Window we must first find 
+      out the name of the Scene Window we are using. The Scene Window is the actual 
+      GUI object that the game is displayed on, the default Scene Window used is 
+      called &quot;SceneWindow2D.&quot; Once we have our Scene Window name we can add some 
+      simple script function calls like these:</FONT></P>
+<br />
+
+<pre class = "code">
+function sceneWindow2D::onMouseMove( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onMouseDragged( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onMouseDown( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onMouseUp( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onMouseEnter( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onMouseLeave( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onRightMouseDragged( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onRightMouseDown( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+
+function sceneWindow2D::onRightMouseUp( %this, %modifier, %worldPos, %mouseClicks )
+{
+}
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">You can 
+      see the pattern of function names that represent each mouse event. There are 
+      three different and very useful values passed to these callbacks, the first is 
+      called &quot;%mod&quot; which represents the Alt/Ctrl/Shift modifier keys if used, the 
+      quick reference modifier table explains what these values are output as. The 
+      &quot;%worldPos&quot; represents, what is probably obvious, the world position of the 
+      mouse event. The final value is fairly evident as well, &quot;%mouseClicks&quot; which 
+      represents the number of mouse clicks used.</FONT></P>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">With 
+      these methods you can pretty much insert any functionality you need there, just 
+      remember that &quot;sceneWindow2D&quot; used in these functions is just the default Scene 
+      Window, if you create more Scene Windows then you will need to add the proper 
+      functions, like these, for that new Scene Window name.</FONT></P>
+<br />
+<H1 CLASS="western"><FONT FACE="Arial, sans-serif">ActionMaps</FONT></H1>
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">What is an ActionMap?</FONT></H2>
+<H3 CLASS="western"><FONT FACE="Arial, sans-serif"><FONT COLOR="#000000"><B><I>Quick 
+               Definition:</I></B> </FONT></FONT>
+</H3>
+<P class="western"><FONT FACE="Arial, sans-serif">An 
+         ActionMap is how we can receive &quot;actions&quot; or input events from T2D. These 
+         actions can be anything from pressing the space bar, up arrow, or &quot;w&quot; key to 
+         moving the mouse horizontally or vertically.</FONT>
+</P>
+<br />
+<H3 CLASS="western"><FONT FACE="Arial, sans-serif">In-Depth Definition: </FONT>
+</H3>
+<P CLASS="western" STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif">An 
+      ActionMap is an object that you can define from script. These ActionMaps hold 
+      key/input binds that give you event's when certain input events happen. You can 
+      &quot;push&quot; to enable these ActionMaps and &quot;pop&quot; to disable them. This works almost 
+      as a layer system, that way when multiple ActionMaps specify commands to be 
+      triggered on an event, the most recently pushed one will be the event 
+      triggered. Multiple ActionMaps can be enabled at the same time, you can then 
+      &quot;bind&quot; input commands to an ActionMap in one of two different ways. One method 
+      specifies two functions, one that will be called when the event has occurred 
+      (when a key is pressed), the other when the event is broken (when the key is 
+      let up). The other method you only specify one function, this function will be 
+      called passing a value. If that input command bound is a key that can be 
+      pressed and released then it passes a true or false (a 1 or 0) which signifies 
+      being pressed and released. Further uses for this method of binding a command 
+      is used when input commands don't send back a simple pressed and released 
+      event, but a value, for example the mouse. This way you can accomplish more 
+      complex workings with input commands. </FONT>
+</P>
+<br />
+<H2 CLASS="western"><FONT FACE="Arial, sans-serif">How do we use ActionMaps?</FONT></H2>
+<P CLASS="western"><FONT FACE="Arial, sans-serif">Using ActionMaps is fairly simple, 
+      first we must create a new ActionMap in script, like this:</FONT></P>
+<br />
+<pre class = "code">
+new ActionMap(testActionMap);
+</pre>
+     
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">Now we 
+      have a new ActionMap object called &quot;testActionMap.&quot; We can now call one of two 
+      different functions on this object to &quot;bind&quot; keys/events to this ActionMap. </FONT>
+</P>
+<br />
+<H3 CLASS="western"><FONT FACE="Arial, sans-serif">Using the .bind() command.</FONT></H3>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal; TEXT-DECORATION: none">
+   <FONT FACE="Arial, sans-serif">The first command is .bind(). When you use this 
+      command to bind an action you must specify the input device you are wanting to 
+      bind an event on (such as the &quot;keyboard&quot; or &quot;mouse&quot;), then the event it will 
+      bind, as well as the function it will call when the event is processed. Here is 
+      an example of binding it to the &quot;u&quot; key event.</FONT></P>
+<br />
+<pre class = "code">
+testActionMap.bind(keyboard, "u", toggleU); 
+</pre>
+
+<br />
+<P CLASS="western" STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif">Now we 
+      have bound a &quot;u&quot; key to our testActionMap with the &quot;toggleU&quot; function to be 
+      called when the event is processed. Now we can set up the toggle function like 
+      this.</FONT></P>
+<br />
+
+<pre class = "code">
+function toggleU(%val)
+{
+   if(%val)
+   {
+      echo("u key down");
+   } else
+   {
+      echo("u key up");
+   }
+}
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">One very important thing to note is that this 
+      toggleU function is set to receive a &quot;%val&quot; value. This is very important, when 
+      using the .bind() command you must always set your functions up like this. In 
+      the case of a key (like our &quot;u&quot; key example) the %val will only ever be either 
+      a 1 (representing the key was pressed) or a 0 (representing the key was 
+      released). As you can see we can separate the functionality with a simple if 
+      statement. </FONT>
+</P>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">An non-key example of using .bind() would be this.</FONT></P>
+<br />
+
+<pre class = "code">
+testActionMap.bind(mouse0, "xaxis", xaxis);
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">As you may notice we aren't binding an event from 
+      the &quot;keyboard&quot; this time we chose &quot;mouse0&quot; which represents the first mouse 
+      (since T2D can handle input from multiple mice). The event we're binding is 
+      &quot;xaxis&quot; and we simply call an &quot;xaxis&quot; function. The &quot;xaxis&quot; basically 
+      represents the mouse movement in the xaxis. We can set up the xaxis function 
+      like this. </FONT>
+</P>
+<br />
+
+<pre class = "code">
+function xaxis(%val)
+{
+   echo("xaxis = " @ %val);   
+}
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">In this case we are simply displaying what the 
+      value passed to this xaxis function is. In the case of our mouse xaxis event 
+      the value passed can be a wide range of numbers from negative to positive, in 
+      this specific case the value represents the distance moved on this event since 
+      the last event, so if you move your mouse suddenly you will get large numbers 
+      sent and then it will become small, while if you move it softly then you will 
+      only get small numbers. This give you an extremely accurate way to measure 
+      mouse actions (if you aren't using your mouse callbacks on your SceneWindow). 
+      In most cases you won't need to bind the mouse actions to an ActionMap, mainly 
+      just keys.</FONT></P>
+<br />
+<H3 CLASS="western" STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif">Using 
+      the .bindCmd() command.</FONT></H3>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">An alternative way to bind commands is using a 
+      different function called &quot;.bindCmd().&quot; This function works fairly similar to 
+      the bind() function, except instead of setting a single function to be called 
+      when the event is processed, you set two functions. One will be called when the 
+      event is activated (on key down), while the other is activated when the event 
+      is broken (on key release). In this case you don't pass just a &quot;function&quot; 
+      though, you pass a string that represents script to be run when you activate 
+      that event. That means that you can pass a single line if you want to do a 
+      single script action, though generally you will simple pass a function call in 
+      a string. You can set up the same &quot;u&quot; key like this. </FONT>
+</P>
+<br />
+
+<pre class = "code">
+testActionMap.bindCmd(keyboard, "u", &quot;onUDown();&quot;, &quot;onUUp();&quot;);
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">Notice we wrapped the functions in a string as well 
+      as making it a full script call to that function. Now we can have one function 
+      do what needs to be done when the &quot;u&quot; key is pressed, while the other can do 
+      what is needed when the &quot;u&quot; key is released.</FONT></P>
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif">There is one final step that must be done to get 
+      the ActionMap to work. We've created it and called it testActionMap. We then 
+      bound multiple action events to it on multiple devices. The last step is to 
+      &quot;push&quot; the ActionMap so it will know to receive input. This is a very important 
+      step, it is also important to keep in mind that the most recently pushed 
+      ActionMap will take precedence over the previously set keys, this allows you to 
+      create very usable control schemes with multiple ActionMaps while enabling and 
+      disabling them easily. To push our ActionMap we can do this.</FONT></P>
+<br />
+
+<pre class = "code">
+testActionMap.push();
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">This 
+      will activate our ActionMap and it will start receiving our action events, to 
+      disable an ActionMap we can use a simple function called &quot;pop&quot; like this.</FONT></P>
+<br />
+
+<pre class = "code">
+testActionMap.pop();
+</pre>
+
+<br />
+<P CLASS="western" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif">This 
+      will disable our ActionMap, giving our previous ActionMap precedence again.</FONT></P>
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>

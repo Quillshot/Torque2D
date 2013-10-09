@@ -1,0 +1,65 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 345;
+   parent.leftFrame.expandToItem('tree2', 'doc345');
+   var element = parent.leftFrame.document.getElementById('doc345');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <title>Executing Scripts</title>
+         <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      </HEAD>
+<meta content="Tom Eastman" name="author">
+<meta content="Short explanation of exec" name="description">
+      <BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;">
+<p class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Exec 
+               and You</strong></font></font></font></p>
+<font size="2"><big>To execute a script,&nbsp; simply add the following code to your 
+      game.cs script in &lt;your T2D Game Projects Directory&gt;/&lt;your T2D 
+      Game&gt;/game/gameScripts/game.cs :<br>
+      <br>
+   </big>
+   <pre class="code">exec("./aScript.cs");</pre><br>
+<big>Obviously, change &quot;aScript&quot; to the name of the script you want to execute.<br>
+      <br>
+      You probably want to put this line at the top of the startGame function - this 
+      way, your script changes will be recompiled each time you run the game.</big><br>
+</font>
+<br>
+<font face="Arial, sans-serif"><font size="2">
+      <br>
+      <span style="FONT-WEIGHT: bold">Brief Explanation of Exec:<br>
+
+</span></font></font><br>
+Because game logic should be spread across multiple script files (putting it 
+all in one file would be a bad idea), TorqueScript needs a way to tell which 
+scripts need to be prepared for your game. When the file is exec'd, it will be 
+compiled into a .dso if needed and the file's code will be ready for use with 
+the rest of your game.<br>
+<br>
+As noted above, for changes to a script to show up in your game, they need to 
+be exec'd. For this reason, exec statements are often put in the startGame 
+function in game.cs. startGame is called by the Level Builder every time you hit 
+play, so the scripts will be recompiled if needed. game.cs itself, however, is 
+only recompiled when you open that project, so many people simply close T2D and 
+reopen it (as many of the tutorials do).<br>
+<br>
+Remember exec the next time your script changes aren't taking effect. 
+<div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

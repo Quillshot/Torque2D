@@ -1,0 +1,162 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 10;
+   parent.leftFrame.expandToItem('tree2', 'doc10');
+   var element = parent.leftFrame.document.getElementById('doc10');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Text Objects</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Text objects (t2dTextObject) allow string of dynamic text to exist 
+                  within the Scene, without requiring the GUI to be involved. They are a 
+                  lower level replacement to bitmap sprites representing text,
+                  making them mostly useful for large blocks of text or mock ups. Static 
+                  sprites will always be more attractive and flexible, but text objects 
+                  are available for quick uses. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>To create a text object, start by navigating to the <b>Create</b> Tab. In the <b>Other</b> Panel, located at the very 
+                    bottom, click on the <b>Text Object</b> button and drag it into the scene. Drop it where you would like your Text Object to be created. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TextObject_Button.png" src="images/RainyDay_TextObject_Button.png" border="0" height="80" width="60" /> </p>
+                <p><br />
+                  When the object is first dropped, it will be in Text Edit mode. Write out the string of text that you would like it to contain. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TextObject_HelloWorld.png" src="images/RainyDay_TextObject_HelloWorld.png" border="0" height="181" width="279" /> </p>
+                <p><br />
+                  Alternately, you can click the Text Edit Tool on the Toolbar and then click in your scene to place the new Text Object. </p>
+                <p><br />
+                  <img alt="File:RainyDay_TextEditTool_Button.png" src="images/RainyDay_TextEditTool_Button.png" border="0" height="80" width="265" /> </p>
+                <p><br />
+                  When you have finished editing the text, click anywhere in the Scene View outside of the Text Object to exit Text Edit mode. </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p><img alt="File:RainyDay_TextObject_Panel.png" src="images/RainyDay_TextObject_Panel.png" border="0" height="294" width="562" /><br />
+                </p>
+                <ul>
+                  <li> <b>Font</b> - Font to use for this Text Object. </li>
+                </ul>
+                <ul>
+                  <li> <b>Alignment</b>
+                    <ul>
+                      <li> <b>Left</b> - Each line begins at the left bounds of the object. </li>
+                      <li> <b>Right</b> - Each line ends at the right bounds of the object. </li>
+                      <li> <b>Center</b> - Each line of text is centered within the object bounds. </li>
+                      <li> <b>Justify</b> - Text on complete lines is spaced out to fill the object bounds. </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul>
+                  <li> <b>Character Height</b> - Height of the characters. </li>
+                </ul>
+                <ul>
+                  <li> <b>Line Spacing</b> - Space between each line of text. </li>
+                </ul>
+                <ul>
+                  <li> <b>Character Spacing</b> - Space between each character. </li>
+                </ul>
+                <ul>
+                  <li> <b>Horizontal Scale</b> - Amount of horizontal space the TextObject takes up. </li>
+                </ul>
+                <ul>
+                  <li> <b>Word Wrap</b> - If true, words will automatically wrap to the next line when reaching the end of the TextObject area. </li>
+                </ul>
+                <ul>
+                  <li> <b>Hide Overflow</b> - If true, text outside of the TextArea will not render. </li>
+                </ul>
+                <ul>
+                  <li> <b>Filtered</b> - Enables or Disables the filtering on the TextObject. </li>
+                </ul>
+                <ul>
+                  <li> <b>No Unicode</b> - Disables intensive unicode conversions (if unicode is not required). </li>
+                </ul>
+                <ul>
+                  <li> <b>Integer Precision</b> - Allows the text object to work on integer levels, avoiding half-pixel imprecisions. </li>
+                </ul>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>new t2dTextObject() {  
+      size = "1.0 2.0";  
+      font = "Arial";  
+      wordWrap = "0";  
+      hideOverflow = "0";  
+      textAlign = "Center";  
+      lineHeight = "2.0";  
+      aspectRatio = "1";  
+      lineSpacing = "0";  
+      characterSpacing = "0";  
+      autoSize = "1";  
+      fontSizes = "80";  
+ }; 
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>Text Objects allow dynamic text to exist in your scene, good for 
+                  dynamic numbers such as in-scene scoreboards and more. With clever 
+                  scripting work, you can replace the text object functionality using 
+                  static sprites. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

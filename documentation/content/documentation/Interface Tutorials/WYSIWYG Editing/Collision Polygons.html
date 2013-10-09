@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 74;
+   parent.leftFrame.expandToItem('tree2', 'doc74');
+   var element = parent.leftFrame.document.getElementById('doc74');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+  <title>Torque 2D &ndash; Collision Polygons</title>
+
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+
+  <meta content="OpenOffice.org 2.0 (Win32)" name="GENERATOR">
+
+  <meta content="User" name="AUTHOR">
+
+  <meta content="20050723;15050000" name="CREATED">
+
+  <meta content="Matt" name="CHANGEDBY">
+
+  <meta content="20060731;17350600" name="CHANGED">
+
+  <meta content="" name="SDFOOTNOTE" ;="" p="">
+
+  <meta content="ARABIC" name="SDENDNOTE">
+
+  <style> 
+  <!-- @page { size: 8.5in 11in; margin-left: 0.65in; margin-right: 0.65in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+      .style1
+      {
+          width: 409px;
+      }
+--> 
+  </style>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Collision Polys</strong></font></font></font></p>
+
+<font face="Arial, sans-serif"><font size="3">In order to use polygon
+collision testing on an object,&nbsp;select the object and go to the
+Collision section of the Edit tab. Change the following settings, if
+necessary <span style="font-style: italic;">(see Figure 1)</span></font></font><font face="Arial, sans-serif"><font size="3"></font></font><p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font size="1"><i><b></b></i></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td style="width: 411px">
+                <br>
+<ul>
+  <li>Send Collision must be checked</li>
+  <li>Receive Collision must be checked</li>
+  <li>Detection mode must be set to POLYGON</li>
+</ul>
+            </td></tr>
+            <tr>
+            <td style="width: 86px">
+                <img style="width: 537px; height: 157px;" alt="" src="images/Collisions Polygons 01.jpg" name="Frame2"><br clear="left">
+
+<font size="1"><i><b>Figure 1</b></i></font></td>
+      </tr>
+    </table>
+
+<br>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">With your object still selected, move your mouse over it in the <i>Scene
+View</i>, and click on the far left widget that appears above it
+- <i>Edit this object's collision polygon (as shown in Figure 2)</i>.</span></td>
+            <td style="width: 220px">
+                <img style="width: 214px; height: 215px;" alt="" src="images/Collisions%20Polygons%2002.jpg" name="Frame5"><br clear="left">
+
+<font size="1"><i><b>Figure 2</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font size="1"><i><b></b></i></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Once you click the widget, the Collision Editor will 
+                appear <em>(Shown in Figure 3)</em>.  
+          The main window shows your object with a graph overlay.   
+          The blue, numbered boxes are collision points which connect to each other to create the outline of your collision polygon.</span></td></tr>
+          <tr>
+<td><img src="images/Collisions Polygons 03.jpg" width="551" height="379"><br clear="left">
+
+<font size="1"><i><b>Figure 3</b></i></font></td>
+      </tr>
+    </table>
+
+<br>
+
+
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table style="width: 700px;">
+<tr>
+            <td style="width: 809px">
+                <span style="font-family: Arial">In the 4 corners are number boxes; these are your collision points.  
+                There is one main rule to creating a collision polygon: the polygon must be convex. This means that 
+                it can't have any indents in it. Some images have indents that were created during asset generation, 
+                which means you will not always be able to create perfect collision polygons fully surrounding your 
+                object. Simply put, you have to arrange your collision points to form a convex polygon similar to your 
+                image. <br><br>Within this scene graph, you can click and drag one of the boxes around to adjust the 
+                polygon.  If you right click on the box, it will be deleted.  If you click on an open area, a new 
+    collision point will be created.</tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">In the top right of the editor is a list containing each of your collision points, as well as their X/Y location <em>(Shown in Figure 4)</em>.  In this local graph, each point has a range of -1.000 to 1.000. You can modify these coordinate numbers to move your collision points.  This will give you slightly more precise positioning than dragging the boxes.</i>.</span>
+                </td>
+          <td style="width: 305px"><img src="images/Collisions Polygons 04.jpg" width="300" height="138"><br clear="left">
+
+<font size="1"><i><b>Figure 4</b></i></font></td>
+      </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Below the list of collision points, you will see an option to create a new point <em>(Shown in Figure 5)</em>.  This has the same functionality as right clicking the scene.  Once you enter your X and Y values, click the plus button to add the new point.</i>.</span>
+                </td>
+
+            <td style="width: 305px"><img src="images/Collisions Polygons 05.jpg" width="299" height="47"><br clear="left">
+
+<font size="1"><i><b>Figure 5</b></i></font></td>
+      </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">In the bottom left, you will various toggles that will aid you 
+                								in creating a convex polygon <em>(Shown in Figure 6)</em>.    </i>.</span></td>
+<td style="width: 420px"><img src="images/Collisions Polygons 06.jpg" width="414" height="58"><br clear="left">
+
+<font size="1"><i><b>Figure 6</b></i></font></td>
+      </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td class="style1">
+                <span style="font-family: Arial">To show off these features, 
+                                                let's go ahead and move Point 0 to a new location (<em>Shown in Figure 7</em>).  
+                                                What we have done is moved a collision point to an illegal position; our polygon is no longer convex.</i>.</span></td>
+                                                </tr><tr>
+            <td><img src="images/Collisions Polygons 07.jpg" width="356" height="355"><br clear="left">
+
+<font size="1"><i><b>Figure 7</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+<table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">You should now see 4 lines. The line consisting of points (3,0,1) is bent.  
+                The new green line is a visual guide recommending you where you should have a line to make your polygon convex again.  
+                <BR><BR><BR>Click the "Show Convex Hull" toggle off, which will turn this line suggestion off <em>(Shown in Figure 8)</em>.  
+                This is a handy visual guide for correcting your polygon.</i>.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 08.jpg" width="387" height="442"><br clear="left">
+
+<font size="1"><i><b>Figure 8</b></i></font></td>
+        </tr>
+</table>
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+<table style="width: 700px;">
+<tr>
+            <td><p>You might have noticed that collision point 0 has a red  background, 
+            instead of blue.&nbsp; This is  shown in both the scene and the collision point list.&nbsp; Any 
+            red collision points are violating the  convex rule.&nbsp; If you toggle the <em>&quot;Show  Convex 
+            Violations&quot;</em> box off, you will no longer see which points are in  violation.&nbsp; Go ahead 
+            and turn both  toggles back on.&nbsp; </p>
+            </tr>
+    </table>
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td class="style1">
+               <span style="font-family: Arial">Without creating new points, move 0, 1, 2 and 3 to your image's border <em>(Shown in Figure 9)</em>.</span></td>
+               </tr><tr>
+            <td>
+              <p><img src="images/Collisions Polygons 09.jpg" width="356" height="355"><br clear="left">
+                  
+              <font size="1"><i><b>Figure 9</b></i></font></p>
+			</td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial"> Next to your check boxes, there are 2 radio buttons.  
+                You can only have 1 toggled at a time, as this will dictate how the next point you create 
+                is connected to the rest of your polygon. 
+                <BR><BR>
+                With the "Between Neighbors" toggle on, click on a 
+                location between points 0 and 1 <em>(Shown in Figure 10)</em>.  A new point is created between the two 
+                closest points when "Between Neighbors" is turned on.</i></span></td>
+                </tr><tr>
+            <td><img src="images/Collisions Polygons 10.jpg" width="356" height="355"><br clear="left">
+
+<font size="1"><i><b>Figure 10</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">It's important to note what happened to the numbering of your points.  
+                0 remained the same, the new point became 1, and the rest increased by 1.  What is happening is the 
+                collision editor is keeping your points in order based on clock-wise positioning.  
+                <BR><BR><BR>
+                Think of it like the numbers on a clock.  Create another point between 3 and 4 (Shown in Figure 11).  
+                A new point is added and numbered 4, leaving the last point in the rotation to become #5.</i>.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 11.jpg" width="356" height="356"><br clear="left">
+
+<font size="1"><i><b>Figure 11</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Now, let's show off what the other toggle does.  
+                Click on "New Points at End" to activate it.  Click on an area between 2 and 3 to 
+                see the results <em>(Shown in Figure 12)</em>.
+                <BR>
+                <BR><BR>
+                Oh no!!! The numbers are out of order, lines are crossing, there are at least 3 
+                known convex violations...The placing of point 6 has completely borked our polygon.  
+          Right click on 6 to delete it.</i></span></td>
+          </tr><tr>
+            <td><img src="images/Collisions Polygons 12.jpg" width="356" height="356"><br clear="left">
+
+<font size="1"><i><b>Figure 12</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Let's place that in its "proper location."  
+                Click on an area between points 0 and 5.  The results are much better <em>(Shown in Figure 13)</em>.  
+                <BR>
+                <BR><BR>
+                When "New Points a End" is toggled, the Editor is trusting you to place your collision points in clock-wise order.
+          When I say the Editor "trusts you," it really means the Editor will not perform any reordering for you, so you should be careful.</i></span></td>
+          </tr><tr>
+          <td><img src="images/Collisions Polygons 13.jpg" width="356" height="355"><br clear="left">
+
+<font size="1"><i><b>Figure 13</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">In the same box as all your toggles, you will see a 
+                button that contains 2 tiny polygons <em>(Shown in Figure 14)</em>.  </i></span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 14.jpg" width="79" height="41"><br clear="left">
+
+<font size="1"><i><b>Figure 14</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">This handy button will automatically repair your polygon to create a convex polygon. 
+                The benefit is less clean up work you need to perform. The downside is that some collision points you wish to keep might be deleted.</i> 
+                <BR><BR><BR>
+                You do not have much choice which ones get deleted by this function.  Activate "New Points Between Neighbors" and disable "Show Convex Hull". 
+                Create a series of points that form a concave polygon <em>(Shown in Figure 15)</em>.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 15.jpg" width="356" height="356"><br clear="left">
+
+<font size="1"><i><b>Figure 15</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+          <td>
+            <span style="font-family: Arial">Obviously, this will not work, so go ahead and click on that button 
+                of the two polygons to let the Editor handle the repairs.  
+  <BR><BR><BR>
+              Every invalid point, which was marked in red, is deleted leaving you with a convex polygon <em>(Shown in Figure 16)</em>.</span></td>
+              </tr><tr>
+          <td><img src="images/Collisions Polygons 16.jpg" width="356" height="356"><br clear="left">
+
+<font size="1"><i><b>Figure 16</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Next to your polygon repair button is another radio button consisting 
+                of 2 ratio options <em>(Shown in Figure 17)</em>.  Your options are Square or Scene aspects.  
+                <BR><BR>
+                Whenever you drag a new object onto your scene, it is always square.  If you adjust its size and 
+                stretch it out, you have modified its ratio.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 17.jpg" width="145" height="55"><br clear="left">
+
+<font size="1"><i><b>Figure 17</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">Within the editor, you can use these toggles to view 
+                your object in different ways.  Assuming we stretched our object before editing its 
+                collision polygon, Figure 18 shows your image if you have "Scene Aspect Ratio" toggled.
+                <BR><BR>
+                Using Scene Aspect Ratio makes the editor render the object exactly how it is in your game scene.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 18.jpg" width="356" height="356"><br clear="left">
+
+<font size="1"><i><b>Figure 18</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+            <td>
+                <span style="font-family: Arial">The final set of buttons is in the lower right (<em>Shown in Figure 19</em>). 
+                The green arrows allow you to undo and redo your latest action, just like any word or paint editor.</span></td>
+                </tr><tr>
+          <td><img src="images/Collisions Polygons 19.jpg" width="213" height="51"><br clear="left">
+
+<font size="1"><i><b>Figure 19</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3"></font></font>&nbsp;</p>
+    <table>
+        <tr>
+          <td>
+            <span style="font-family: Arial">The Display Scene Background does exactly what it describes. 
+                If there are other objects in the scene that overlap the image you are editing, they will be 
+                displayed in the editor as well. 
+        <BR><BR>
+                <em>Figure 20</em> shows the difference between having this toggle on and off.
+                <BR><BR>
+                Finally, cancel will discard your changes and return back to your game editing.  
+              Save does the opposite by keeping your collision changes and returning to your main scene graph.</span></td>
+              </tr><tr>
+          <td><img src="images/Collisions Polygons 20.jpg" width="356" height="357"><br clear="left">
+
+<font size="1"><i><b>Figure 20</b></i></font></td>
+        </tr>
+    </table>
+
+<br>
+<p class="western" style="margin-bottom: 0in; font-style: normal; text-decoration: none;" align="justify"><font face="Arial, sans-serif"><font size="3">When you've finished with the collision polygon, click the <i>Save</i>.
+<BR><BR>So, there you have it.  The latest version of T2D's Collision Editor has quite a few more features than previous releases.  Hopefully, these new features and this tutorial have made your collision editing a lot easier. </font></font></p>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

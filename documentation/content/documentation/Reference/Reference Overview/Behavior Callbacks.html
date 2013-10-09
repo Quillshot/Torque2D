@@ -1,0 +1,324 @@
+﻿<html>
+
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 83;
+   parent.leftFrame.expandToItem('tree2', 'doc83');
+   var element = parent.leftFrame.document.getElementById('doc83');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="KEYWORDS" content="T2D/Behaviors/Callbacks" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>T2D/Behaviors/Callbacks - TDN</title>
+
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/container.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/navelements.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/sidebar.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/content.css"/>
+
+<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css" />
+
+<script type="text/javascript" src="/wiki/skins/common/wikibits.js"> </script>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  >
+
+
+<div id="main"><div id="main-content">
+
+
+          <h1 class="firstHeading">T2D/Behaviors/Callbacks</h1>
+                              <div id="bodyContent">
+            <h3 id="siteSub">From TDN</h3>
+            <div id="contentSub"></div>
+                                    <!-- start content -->
+
+<table width="700" cellspacing="0" cellpadding="0" border="0" style="width: 700px; padding: 10px;">
+<tr>
+<td width="700">
+
+<table id='toc' class='toc'><tbody><tr><td><div id='toctitle'><h2>Contents</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#Initialization"><span class="tocnumber">1</span> <span class="toctext">Initialization</span></a>
+<ul>
+<li class='toclevel-2'><a href="#onBehaviorAdd"><span class="tocnumber">1.1</span> <span class="toctext">onBehaviorAdd</span></a></li>
+
+<li class='toclevel-2'><a href="#onBehaviorRemove"><span class="tocnumber">1.2</span> <span class="toctext">onBehaviorRemove</span></a></li>
+<li class='toclevel-2'><a href="#onLevelLoaded"><span class="tocnumber">1.3</span> <span class="toctext">onLevelLoaded</span></a></li>
+<li class='toclevel-2'><a href="#onLevelEnded"><span class="tocnumber">1.4</span> <span class="toctext">onLevelEnded</span></a></li>
+<li class='toclevel-2'><a href="#onAddToScene"><span class="tocnumber">1.5</span> <span class="toctext">onAddToScene</span></a></li>
+<li class='toclevel-2'><a href="#onRemoveFromScene"><span class="tocnumber">1.6</span> <span class="toctext">onRemoveFromScene</span></a></li>
+
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Mouse_Events"><span class="tocnumber">2</span> <span class="toctext">Mouse Events</span></a>
+<ul>
+<li class='toclevel-2'><a href="#onMouseMove"><span class="tocnumber">2.1</span> <span class="toctext">onMouseMove</span></a></li>
+<li class='toclevel-2'><a href="#onMouseEnter"><span class="tocnumber">2.2</span> <span class="toctext">onMouseEnter</span></a></li>
+<li class='toclevel-2'><a href="#onMouseLeave"><span class="tocnumber">2.3</span> <span class="toctext">onMouseLeave</span></a></li>
+
+<li class='toclevel-2'><a href="#onMouseDown"><span class="tocnumber">2.4</span> <span class="toctext">onMouseDown</span></a></li>
+<li class='toclevel-2'><a href="#onMouseDragged"><span class="tocnumber">2.5</span> <span class="toctext">onMouseDragged</span></a></li>
+<li class='toclevel-2'><a href="#onMouseUp"><span class="tocnumber">2.6</span> <span class="toctext">onMouseUp</span></a></li>
+<li class='toclevel-2'><a href="#onRightMouseDown"><span class="tocnumber">2.7</span> <span class="toctext">onRightMouseDown</span></a></li>
+<li class='toclevel-2'><a href="#onRightMouseDragged"><span class="tocnumber">2.8</span> <span class="toctext">onRightMouseDragged</span></a></li>
+
+<li class='toclevel-2'><a href="#onRightMouseUp"><span class="tocnumber">2.9</span> <span class="toctext">onRightMouseUp</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Game_Events"><span class="tocnumber">3</span> <span class="toctext">Game Events</span></a>
+<ul>
+<li class='toclevel-2'><a href="#onCollision"><span class="tocnumber">3.1</span> <span class="toctext">onCollision</span></a></li>
+<li class='toclevel-2'><a href="#onWorldLimit"><span class="tocnumber">3.2</span> <span class="toctext">onWorldLimit</span></a></li>
+
+<li class='toclevel-2'><a href="#onUpdate"><span class="tocnumber">3.3</span> <span class="toctext">onUpdate</span></a></li>
+<li class='toclevel-2'><a href="#onPositionTarget"><span class="tocnumber">3.4</span> <span class="toctext">onPositionTarget</span></a></li>
+<li class='toclevel-2'><a href="#onRotationTarget"><span class="tocnumber">3.5</span> <span class="toctext">onRotationTarget</span></a></li>
+<li class='toclevel-2'><a href="#onTimer"><span class="tocnumber">3.6</span> <span class="toctext">onTimer</span></a></li>
+</ul>
+
+</li>
+<li class='toclevel-1'><a href="#Animation_Events"><span class="tocnumber">4</span> <span class="toctext">Animation Events</span></a>
+<ul>
+<li class='toclevel-2'><a href="#onAnimationStart"><span class="tocnumber">4.1</span> <span class="toctext">onAnimationStart</span></a></li>
+<li class='toclevel-2'><a href="#onAnimationEnd"><span class="tocnumber">4.2</span> <span class="toctext">onAnimationEnd</span></a></li>
+<li class='toclevel-2'><a href="#onFrameChange"><span class="tocnumber">4.3</span> <span class="toctext">onFrameChange</span></a></li>
+
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Trigger_Events"><span class="tocnumber">5</span> <span class="toctext">Trigger Events</span></a>
+<ul>
+<li class='toclevel-2'><a href="#onEnter"><span class="tocnumber">5.1</span> <span class="toctext">onEnter</span></a></li>
+<li class='toclevel-2'><a href="#onStay"><span class="tocnumber">5.2</span> <span class="toctext">onStay</span></a></li>
+<li class='toclevel-2'><a href="#onLeave"><span class="tocnumber">5.3</span> <span class="toctext">onLeave</span></a></li>
+
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+</p>
+</td>
+</tr>
+
+<tr><td>
+<p>This is a complete list of the callbacks available to use with behaviors in T2D.
+</p>
+<a name="Initialization"></a><h1>Initialization</h1>
+<p>These all are called at similar times, based on similar events, but they are different enough to all be necessary. For instance, some of these are called both in the game and editor, and some in the game only.
+</p>
+
+<a name="onBehaviorAdd"></a><h2>onBehaviorAdd</h2>
+<p>Called every time the behavior is added to an object, including in the editor. It should be used to initialize data. For instance, if a behavior requires mouse events, this would be a good place to call setUseMouseEvents on the object.
+</p>
+<a name="onBehaviorRemove"></a><h2>onBehaviorRemove</h2>
+<p>Called every time the behavior is removed from an object, including in the editor. Unless you are dynamically adding and removing the behavior from objects, it is not necessary to use this. If you are though, it is a good place to reset any data that was set in onBehaviorAdd. For instance, if you bind keys in onBehaviorAdd, you may want to unbind them in this method.
+</p>
+<a name="onLevelLoaded"></a><h2>onLevelLoaded</h2>
+
+<p><b>Parameters:</b>
+</p>
+<ul><li>%scenegraph - The t2dSceneGraph that the object is in.
+</li></ul>
+<p><br />
+This is only called in the game during a call to t2dSceneWindow::loadLevel. It is not called on objects that are created during the game, only on objects that are in a level file. This is a good place to initialize data that requires knowledge about the scenegraph, or that you don't want reflected in the editor.
+</p>
+<a name="onLevelEnded"></a><h2>onLevelEnded</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%scenegraph - The t2dSceneGraph that the object is in.
+
+</li></ul>
+<p><br />
+This is a mirror of onLevelLoaded, and as such, should be used to clean up anything that was done in onLevelLoaded. This is called on every object that is in the level that is being ended, including those created outside of the level file.
+</p>
+<a name="onAddToScene"></a><h2>onAddToScene</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%scenegraph - The t2dSceneGraph that the object was added to.
+</li></ul>
+<p><br />
+This is called anytime an object is added to a scenegraph, except in the editor. This includes when a level is loaded, when an object is moved from one scenegraph to another, or when an object is added to its first scenegraph.
+</p>
+
+<a name="onRemoveFromScene"></a><h2>onRemoveFromScene</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%scenegraph - The t2dSceneGraph that the object was removed from.
+</li></ul>
+<p><br />
+This is called anytime an object is removed from a scenegraph, except in the editor. This includes when a level is ended or when an object is moved from one scenegraph to another.
+</p>
+<a name="Mouse_Events"></a><h1>Mouse Events</h1>
+
+<p>For any of these events to be triggered, the object must have useMouseEvents enabled by calling setUseMouseEvents(true). Also, objects can call setLockMouse(true) to lock the mouse with the object. This allows the object to receive all mouse event callbacks regardless of whether or not the mouse is within the bounding box of the object.
+<br /><br />
+All mouse events are passed the same list of parameters. They are:
+<br />
+</p>
+<ul><li>%modifier - A bitmask specifying any modifier keys that are pressed.
+<ul><li>Bit 0: Left Shift
+</li><li>Bit 1: Right Shift
+</li><li>Bit 2: Left Control
+</li><li>Bit 3: Right Control
+</li><li>Bit 4: Left Alt (Windows) or Command (Mac)
+</li><li>Bit 5: Right Alt (Windows) or Command (Mac)
+</li><li>Bit 6: Left Option (Mac)
+</li><li>Bit 7: Right Option (Mac)
+</li></ul>
+</li><li>%worldPosition - The current position of the mouse.
+</li><li>%clicks - The number of times the mouse has been clicked in the same spot in a short amount of time.
+
+</li></ul>
+<a name="onMouseMove"></a><h2>onMouseMove</h2>
+<p>Called when the mouse moves within the object's bounding box.
+</p>
+<a name="onMouseEnter"></a><h2>onMouseEnter</h2>
+<p>Called when the mouse enters the object's bounding box.
+</p>
+<a name="onMouseLeave"></a><h2>onMouseLeave</h2>
+
+<p>Called when the mouse leaves the object's bounding box.
+</p>
+<a name="onMouseDown"></a><h2>onMouseDown</h2>
+<p>Called when the left mouse button is clicked within the object's bounding box.
+</p>
+<a name="onMouseDragged"></a><h2>onMouseDragged</h2>
+<p>Called when the left mouse button is held down and the mouse moves within the object's bounding box.
+</p>
+<a name="onMouseUp"></a><h2>onMouseUp</h2>
+
+<p>Called when the left mouse button is released within the object's bounding box.
+</p>
+<a name="onRightMouseDown"></a><h2>onRightMouseDown</h2>
+<p>Called when the right mouse button is clicked within the object's bounding box.
+</p>
+<a name="onRightMouseDragged"></a><h2>onRightMouseDragged</h2>
+<p>Called when the right mouse button is held down and the mouse moves within the object's bounding box.
+</p>
+<a name="onRightMouseUp"></a><h2>onRightMouseUp</h2>
+
+<p>Called when the right mouse button is released within the object's bounding box.
+</p>
+<a name="Game_Events"></a><h1>Game Events</h1>
+<a name="onCollision"></a><h2>onCollision</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%dstObj - The object that is being collided with.
+</li><li>%srcRef - Custom information set by the source object. Only used by t2dTileLayer to pass the logical tile position of the tile that is colliding.
+
+</li><li>%dstRef - Custom information set by the destination object. Only used by t2dTileLayer to pass the logical tile position of the tile that is collided with.
+</li><li>%time - The time since the previous tick when the collision happened.
+</li><li>%normal - The normal vector of the collision.
+</li><li>%contacts - The number of contacts in the collision.
+</li><li>%points - The list of contact points.
+</li></ul>
+<p><br />
+This is called when an object collides with another object in the scene. Collision callbacks must be enabled on the object initiating the collision with a call to setCollisionCallback(true) for the callback to be triggered.
+</p>
+<a name="onWorldLimit"></a><h2>onWorldLimit</h2>
+<p><b>Parameters:</b>
+</p>
+
+<ul><li>%limitMode - The world limit response mode set on the object.
+</li><li>%limit - This is either "Left", "Right", "Top", or "Bottom", depending on the side of the world limit that was hit.
+</li></ul>
+<p><br />
+This is called when an object reaches its world limit. It must be enabled in the editor by checking the callback box in the World Limit rollout.
+</p>
+<a name="onUpdate"></a><h2>onUpdate</h2>
+<p>This is called every tick (32 milliseconds). It should be used only when necessary as it can have pretty serious performance implications. Because of this, it must be enabled with a call to enableUpdateCallback. It can be disabled by calling disableUpdateCallback.
+</p>
+<a name="onPositionTarget"></a><h2>onPositionTarget</h2>
+
+<p>This is called when an object reaches its position target as set by setPositionTarget or moveTo.
+</p>
+<a name="onRotationTarget"></a><h2>onRotationTarget</h2>
+<p>This is called when an object reaches its rotation target as set by setRotationTarget or rotateTo.
+</p>
+<a name="onTimer"></a><h2>onTimer</h2>
+<p>This is called when the timer set on an object via setTimerOn is triggered.
+</p>
+<a name="Animation_Events"></a><h1>Animation Events</h1>
+
+<a name="onAnimationStart"></a><h2>onAnimationStart</h2>
+<p>The animation has started to play.
+</p>
+<a name="onAnimationEnd"></a><h2>onAnimationEnd</h2>
+<p>The animation has stopped playing.
+</p>
+<a name="onFrameChange"></a><h2>onFrameChange</h2>
+
+<p><b>Parameters:</b>
+</p>
+<ul><li>%frame - The frame that was changed to.
+</li></ul>
+<p><br />
+The animation has entered a new frame of playback.
+</p>
+<a name="Trigger_Events"></a><h1>Trigger Events</h1>
+<a name="onEnter"></a><h2>onEnter</h2>
+
+<p><b>Parameters:</b>
+</p>
+<ul><li>%object - The object that entered the trigger.
+</li></ul>
+<p><br />
+Called when an object enters the trigger.
+</p>
+<a name="onStay"></a><h2>onStay</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%object - The object that is in the trigger.
+
+</li></ul>
+<p><br />
+Called when an object remains inside a trigger.
+</p>
+<a name="onLeave"></a><h2>onLeave</h2>
+<p><b>Parameters:</b>
+</p>
+<ul><li>%object - The object that left the trigger.
+</li></ul>
+<p><br />
+Called when an object leaves the trigger.
+</p><p><br />
+
+</p>
+</td>
+
+</tr>
+
+</table>
+
+            <div class="visualClear"></div>
+
+          </div>
+
+
+</div></div>
+
+<hr class="cleaner" />
+
+</div>
+
+</script>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 77;
+   parent.leftFrame.expandToItem('tree2', 'doc77');
+   var element = parent.leftFrame.document.getElementById('doc77');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252">
+  
+
+
+  <title>Torque 2D &ndash; Mounting Using Link Points</title><meta name="GENERATOR" content="OpenOffice.org 2.0 (Win32)">
+
+  <meta name="AUTHOR" content="User">
+
+  <meta name="CREATED" content="20050225;10000000">
+
+  <meta name="CHANGEDBY" content="Matt">
+
+  <meta name="CHANGED" content="20060731;17161500">
+
+  <style>
+<!--
+@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+A:link { color: #0000ff }
+      .style1
+      {
+          width: 453px;
+      }
+      .style2
+      {
+          height: 100px;
+          width: 455px;
+      }
+      .style3
+      {
+          height: 100px;
+          width: 365px;
+      }
+      .style4
+      {
+          width: 374px;
+      }
+      .style5
+      {
+          width: 378px;
+      }
+      .style6
+      {
+          height: 147px;
+          width: 370px;
+      }
+      .style7
+      {
+          height: 100px;
+          width: 369px;
+      }
+-->
+  </style></head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang="en-US" link="#0000ff">
+
+<p class="western" style="margin-bottom: 0in; font-style: normal;" align="justify"><font color="#333333"><font face="Arial, sans-serif"><font size="2"><strong>Mounting</strong></font></font></font></p>
+
+<span style="font-size: 12pt;">In
+order to mount objects using link points, you must first set up the
+link point(s) on the destination object.<BR><BR>
+    <table>
+        <tbody><tr>
+            <td class="style5">
+                <span>Select your object and click
+the left chain icon above it <em>(as shown in Figure
+                    1)</em>.</span></td>
+            <td style="width: 100px;"><img src="images/Mounting Using Link Points 01.jpg" width="288" height="216"><br clear="left">
+
+<font size="1"><i><b>Figure 1</b></i></font></td>
+        </tr>
+    </tbody></table><BR>
+    <table>
+        <tbody><tr>
+            <td style="width: 325px;">
+          <font size="1"><span style="font-size: 12pt;">Once you click the widget, the </span></font><span style="font-size: 12pt;">Linkpoint</span><font size="1"><span style="font-size: 12pt;"> Editor will appear <em>(Shown in Figure 2)</em>. <BR><BR>The main window shows your object with a graph overlay.</i> If you click anywhere </span></font><span style="font-size: 12pt;">on your object or within the graph, you will create a new link point.<BR><BR> The blue-green outline around your image represents the bounds of your scene object.</span></td>
+            <td style="width: 100px; font-size: 12pt;"><img src="images/Mounting Using Link Points 02.jpg" width="400" height="274"><br clear="left">
+
+<font size="1"><i><b>Figure&nbsp;2</b></i></font></td>
+        </tr>
+    </tbody></table>
+</span><BR>
+    <table style="font-size: 12pt;">
+        <tbody><tr>
+            <td class="style6">
+                <span>As you create mount points, they will be added to list <em>(as shown in Figure 3)</em>. </span>            </td>
+            <td style="width: 100px; height: 147px;"><img src="images/Mounting Using Link Points 03.jpg" width="299" height="147"><br clear="left">
+
+<font size="1"><i><b>Figure 3</b></i></font></td>
+        </tr>
+    </tbody></table>
+<BR>
+    <table style="font-size: 12pt;">
+        <tbody><tr>
+            <td height="149" class="style7">
+                <span>As an alternative to clicking on yoru image, you can create new points using the <em>New Linkpoint</em> button<em>(as shown in Figure 4)</em>. </span>            </td>
+            <td style="width: 100px; height: 100px;"><img src="images/Mounting Using Link Points 04.jpg" width="300" height="57"><br clear="left">
+
+<font size="1"><i><b>Figure 4</b></i></font></td>
+        </tr>
+    </tbody></table>
+    <BR>
+    <table style="font-size: 12pt;">
+        <tbody><tr>
+            <td height="149" style="width: 324px; height: 100px;">
+                <span>You can zoom in and out of the editing view by moving the Area slider <em>(as shown in Figure 5)</em>.</span></td>
+            <td style="width: 100px; height: 100px;"><img src="images/Mounting Using Link Points 05.jpg" width="408" height="40"><br clear="left">
+
+<font size="1"><i><b>Figure 5</b></i></font></td>
+        </tr>
+    </tbody></table>
+    
+<p style="margin-top: 0.08in;"><font size="1"><i><b>
+        <table>
+            <tbody><tr>
+                <td rowspan="2" class="style1">
+                    <span>Next to the Area slider, you will find 2 radio buttons <em>(as shown in Figure 6)</em> that control the ratio aspect of your editing area. 
+                    <BR><BR>Assuming we stretched our object before editing its linkpoints, you can see its actual ratio using "Scene Aspect Ratio."
+                    <BR><BR>By selecting "Square Aspect Ratio" you will be modifying the linkpoints using the objects original square shape, which might look stretched <em>(as shown in Figure 7)</em>.
+                    </span>
+                </td>
+                <td style="width: 100px;"><img src="images/Mounting Using Link Points 06.jpg" width="140" height="46"><br clear="left">
+
+<font size="1"><i><b>Figure 6</b></i></font></td>
+            </tr>
+            <tr>
+                <td style="width: 100px;"><p style="margin-top: 0.08in;"><img src="images/Mounting Using Link Points 07.jpg" width="213" height="211"><br clear="left">
+
+<font size="1"><i><b>Figure 7</b></i></font></p>
+              </td>
+            </tr>
+        </tbody></table>
+    </b></i></font>
+</p>
+<BR>
+    <table style="font-size: 12pt;">
+        <tbody><tr>
+            <td height="149" class="style2">
+                <span>The final set of buttons is in the lower right <em>(Shown in Figure 8)</em>. The green arrows allow you to undo and redo your latest action, just like any word or paint editor.
+                <BR>
+                <BR>Cancel will discard your changes and return back to your game editing. Save does the opposite by keeping your linkpoint changes and returning to your main scene graph.
+          </span></td>
+          <td style="width: 100px; height: 100px;"><img src="images/Mounting Using Link Points 08.jpg" width="211" height="58"><br clear="left">
+
+<font size="1"><i><b>Figure 8</b></i></font></td>
+        </tr>
+    </tbody></table><BR>
+<table style="font-size: 12pt;">
+        <tbody><tr>
+            <td height="149" class="style3">
+                <span>To mount an object to the selected link point, first select the object you want to mount. 
+                <BR><BR>Next, click the Mount button above the particle effect <em>(as shown in Figure 8)</em>.</span></td>
+          <td style="width: 100px; height: 100px;"><img src="images/Mounting Using Link Points 09.jpg" width="296" height="294"><br clear="left">
+
+<font size="1"><i><b>Figure 9</b></i></font></td>
+        </tr>
+    </tbody></table><BR>
+<p style="margin-top: 0.08in;"><font size="1"><i><b>
+        <table>
+            <tbody><tr>
+                <td rowspan="2" class="style4">
+                    <span>When you click this button, the chosen object will jump to your mouse and move with it. You can see the yellow crosshair where your link point was placed. If you drag your mouse close to the link point, the object will snap to that point. Click to mount your object there <em>(as shown in Figures 10 and 11)</em>.
+                    </span>
+                </td>
+                <td style="width: 100px;"><img src="images/Mounting Using Link Points 10.jpg" width="288" height="216"><br clear="left">
+
+<font size="1"><i><b>Figure 10</b></i></font></td>
+            </tr>
+            <tr>
+                <td style="width: 100px;"><p style="margin-top: 0.08in;"><img src="images/Mounting Using Link Points 11.jpg" width="288" height="216"><br clear="left">
+
+<font size="1"><i><b>Figure 11</b></i></font></p>
+              </td>
+            </tr>
+        </tbody></table>
+    </b></i></font>
+</p>
+<BR>
+<p class="western" style="margin-bottom: 0in;" align="justify"><font face="Arial, sans-serif"><font size="2"> </font></font>&nbsp;</p>
+
+<p style="margin-top: 0.08in;"><font size="1"><i><b></b></i></font>&nbsp;</p>
+
+<br>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></html><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 62;
+   parent.leftFrame.expandToItem('tree2', 'doc62');
+   var element = parent.leftFrame.document.getElementById('doc62');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Tile Maps Tutorial</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="AUTHOR" CONTENT="User">
+      <META NAME="CREATED" CONTENT="20050225;10000000">
+      <META NAME="CHANGEDBY" CONTENT="Matt">
+      <META NAME="CHANGED" CONTENT="20060804;10552800">
+      <STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	H2 { margin-left: -0.25in; margin-bottom: 0.04in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	H2.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: en-US }
+	H2.cjk { font-family: "Times New Roman", serif; font-size: 16pt }
+	H2.ctl { font-family: "Arial", sans-serif; font-size: 14pt; so-language: ar-SA; font-style: italic }
+	H3 { margin-bottom: 0.04in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	H3.western { font-family: "Arial", sans-serif; so-language: en-US }
+	H3.cjk { font-family: "Times New Roman", serif }
+	H3.ctl { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	      .style1
+          {
+              width: 704px;
+              height: 403px;
+          }
+	      .style2
+          {
+              width: 640px;
+              height: 223px;
+          }
+	--></STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <p><B>Torque 2D - Tile Map Tutorial</B></p>
+      </DIV>
+      <p><b>The TileMap Builder</b></p>
+      <H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">What are tile maps 
+         for?</H3>
+      
+      <p>The 
+               main use of the T2D Tile Map Builder is to make the map of your game world. Any 
+               2D game that happens in some sort of a world will use a map of some kind, 
+               whether it is a top-down map (e.g. Frogger), side-view map (e.g. Mario Bros.), 
+               or something more complicated like a "3/4 view" map (e.g. Double Dragon). In 
+               almost every case, the map used for a 2D game will have repeating elements. 
+               Using the examples above, here are screenshots with some repeating elements 
+               outlined in yellow:</p>
+      <p><img alt="" class="style2" src="images/TileMapsFigure1.jpg" /><br clear="left" />
+         <FONT SIZE="1"><I><B>Figure 1</B></I></FONT></p>
+      
+      
+      <P></p>
+      
+      <p>
+         Using a tilemap to create repeating 
+               elements has many advantages. One of the most important of these is that memory 
+               is used more efficiently... rather than having to load a large graphics file 
+               with your whole map in it, your game refers to a few small files that are 
+               repeated. This decreases overall file size for your game as well, which means 
+               faster download time for online games. Another advantage is the ease of level 
+               construction. When you use a tilemap system, you have a level construction set 
+               that makes initial construction and changes very quick and simple.</p>
+      
+      
+      
+      
+      
+      <H3 class="western">Setting up for this Tutorial</H3>
+      
+      <p>
+         A good, standard practice 
+                  for T2D when starting something new is to create a new project. Load up the 
+                  Level Builder and click on <B>File...New Project</B> (figure 2). Feel free to 
+                  name this new project whatever you wish, the example used here will be 
+                  <strong>TileTutorial</strong>. Our Template will remain <strong>Empty Game</strong><I> (figure 3)</I></FONT>.</p>
+      
+      
+      <TABLE>
+         <TR>
+            <TD>
+               <IMG SRC="images/TileMapsFigure2.jpg" NAME="graphics2" ALIGN="left" BORDER="0"><br clear="left" />
+               <FONT SIZE="1"><I><B>Figure 2</B></I></FONT>
+            </TD>
+            <TD width="20">
+            </TD>
+            <TD>
+               <IMG SRC="images/TileMapsFigure3.jpg" NAME="graphics3" ALIGN="left" BORDER="0"><br clear="left" />
+               <FONT SIZE="1"><I><B>Figure 3</B></I></FONT>
+            </TD>
+         </TR>
+      </TABLE>
+      
+      
+      
+      
+      <p>
+         After your project is created, navigate 
+               to your <strong>T2D\resources\starterArt\images</strong> folder and copy the 
+               <strong>tileMap.png</strong> image into your <strong>games\TileTutorial\game\data\images</strong> folder.</p>
+
+      <p>
+         Inside the Level Builder again, click 
+               on the &quot;Create a new ImageMap&quot; button found in the <strong>Create Tab</strong> <I>(as shown in 
+                  Figure 4)</I>.</p>
+      
+      <p><IMG SRC="images/TileMapsFigure4.jpg" NAME="graphics5" ALIGN="left" BORDER="0"><br clear="left" />
+         <FONT SIZE="1"><I><B>Figure 4</B></I></FONT></p>
+      
+      
+            
+            <br clear="left" />Find the <strong>tileMap.png</strong> you pasted into your images folder and click 
+       <strong>Select</strong>. It will
+	    load as a full image under <strong>Static Sprites</strong>.  Double click it to open the<strong> Image Builder</strong>.
+            In the Image Builder, change the<strong> Image Mode</strong> to <strong>
+       CELL</strong>. The only other thing needs 
+            changing is the cell width and cell height parameters, we need to change them 
+            to 100 <I>(as shown in Figure 5)</I>. Click Save and now you are ready to work 
+            with the <strong>Tile Editor</strong>. 
+      
+      <p><IMG SRC="images/TileMapsFigure6.jpg" NAME="graphics6" ALIGN="left" BORDER="0"><br clear="left" />
+         <FONT SIZE="1"><I><B>Figure 5</B></I></FONT></p>
+      
+      
+      
+      
+      <H3 class="western">Creating 
+         a New Tilemap</H3>
+      
+      <p>
+         To create a new tilemap, select the 
+          <strong>Create</strong><I>
+               </I>tab on the right side of the level builder, go to the <strong>Tilemaps</strong> section, 
+               and drag the object labeled <strong>newLayer.lyr</strong> into your level.
+         
+         
+      </p>
+      <p>
+         In the Scene View, your screen changes to the tilemap 
+          <strong>Edit View</strong>. You should see several properties 
+               specific to tilemaps as well. They are:</p>
+      
+      
+      <ul>
+         <li>
+            <p>
+               <B>Auto Pan</B> - This property 
+                     specifies the speed at which the tilemap will automatically scroll the tiles 
+                     across its surface. This makes your tilemap operate much like a T2D Scroller 
+                     object. Try putting 10 in the Auto Pan X edit box. You'll see your tile layer 
+                     moving along the X axis.</p></li>
+         <li>
+            <p>
+               <B>Pan Position</B><SPAN>
+	- Directly sets the offset of the tiles on the surface of the
+	tilemap.  This has the same sort of effect as Auto Pan, but allows
+	you to set the tilemap's position by hand, rather than have it
+	automatically move.</SPAN></p></li>
+         <li>
+            <p>
+               <B>Wrap</B><SPAN>
+	- Specifies whether or not the tiles should be repeated across
+	the surface of the tilemap.  You probably noticed when playing with
+	Auto Pan and Pan that the "test textures" don't go on
+	forever.  The Wrap property lets you set your tilemap to repeat,
+	along whichever axes you choose.</SPAN></p></li>
+         <li>
+            <p>
+               <B>Tile Count</B><SPAN>
+	- The number of tiles in the tilemap.</SPAN></p></li>
+         <li>
+            <p>
+               <B>Tile Size</B><SPAN>
+	- The dimensions of each tile in the tilemap.</SPAN></p>
+         </li>
+      </ul>
+      
+      <p>
+         For this tutorial we will be using the 
+               default tile count and tile size. If you changed the Pan or Auto Pan values, 
+               set them all back to zero.</p>
+      
+      <H3 class="western">Editing the Tilemap</H3>
+      
+      <p>
+         To actually paint tiles on your new 
+               tilemap, or any existing tilemap, and set various tile properties, you will 
+               need to remain in the tilemap editing tool. If you accidentally left the tile editor, you need to reactivate it. To do this, either click on the 
+          <strong>Edit 
+                  Tile Layer</strong> button in the edit panel, or click on the widget labeled 
+          <strong>Edit 
+                  This Tilemap</strong> that appears when hovering over a selected tilemap.</p>
+      
+      
+      
+      <p>
+         You will now see a new section in the 
+          <strong>Edit</strong>
+               tab of the level builder (<I>Figure 6)</I><SPAN STYLE="TEXT-DECORATION: none">.
+ It is important to note that tilemap editing mode is a special level
+builder mode, much like defining world limits or collision boxes.  In
+tilemap editing mode, you can only work on the currently selected
+tilemap.  In order to return to normal level builder editing mode,
+you must press either <strong>Escape</strong> or <strong>Enter</strong>.</SPAN></p>
+     <p><img alt="" class="style1" src="images/TileMapsFigure6.jpg" /> <br clear="left" />
+         <FONT SIZE="1"><I><B>Figure 6</B></I></FONT></p>
+      
+      
+      <p>
+         The two buttons at the top allow you to 
+               save changes made to the tilemap, or load a previously saved tilemap into your 
+               tilemap object. The toolbar just below contains five tools for manipulating the 
+               tilemap. They are (from left to right):</p>
+      
+      <UL>
+         <LI>
+            <p>
+               <B>Selection Tool</B><SPAN>
+	- Clicking on a tile will select it. Double clicking will
+	select all connected tiles with the same image. This is used in
+	conjunction with the <strong>Apply To Selection</strong> button at the bottom
+	of the editor to quickly assign properties to several tiles at once.</SPAN></p>
+         <LI>
+            <p>
+               <B>Paint Tool</B><SPAN>
+	- The paint tool will apply the various selected settings to
+	any tile that is clicked on.</SPAN></p>
+         <LI>
+            <p>
+               <B>Flood Fill</B><SPAN>
+	- This works like the paint tool, except that the selected
+	settings are applied to all connected tiles using the same image.</SPAN></p>
+         <LI>
+            <p>
+               <B>Eye Dropper</B><SPAN>
+	- Clicking on a tile with this tool will copy all of the tiles
+	settings to the paint tool.</SPAN></p>
+         <LI>
+            <p>
+               <B>Eraser</B><SPAN>
+	- Any tile clicked on will have all its settings cleared.</SPAN></p>
+         </LI>
+      </UL>
+      
+      <p>
+         The <strong>Selection</strong><I>, </I> 
+               <strong>Paint</strong><I>, </I> 
+               and <strong>Eraser</strong> 
+               can all be used to perform their corresponding action in a selected rectangle. 
+               To do this, hold down the <strong>Shift</strong> key, then click and drag the mouse. A 
+               rectangle will be drawn on the screen around the area that the mouse is 
+               dragging. When you release the mouse, the tools action will be performed on all 
+               tiles touching this rectangle.</p>
+      
+      <p>
+         To see an example of a couple of these 
+               tools in action, select "<strong>tileMapImageMap</strong>" image in the Image<I> </I>drop down. 
+               Select the <strong>Paint Tool</strong> and draw some tiles on your tilemap. Now select the 
+               <strong>Eraser</strong> tool, and hold down <strong>Shift</strong> while dragging across the tiles you 
+               drew. Release the mouse button, and your tiles will be erased.</p>
+      
+      <p>
+         Now that you have an idea how the tools 
+               work, let's examine the different properties that you can set in each tile. 
+               Ignoring the <strong>Brush</strong> drop down list for now, the properties that can be applied 
+               to each tile are as follows:</p>
+      
+      <UL>
+         <LI>
+            <p>
+               <B>Image</B><SPAN>
+	- The imagemap used to create your tilemap.</SPAN></p>
+         <LI>
+            <p>
+               <B>Frame</B><SPAN>
+	- Clicking this will open a tile palette. These are the individual cells you created when made your imagemap.</SPAN> The frame number increases from left to right, top to bottom.</p>
+         <LI>
+            <p>
+               <B>Tile Script</B><SPAN>
+	- The text to pass to the <I>onTileScript</I> callback when
+	the tile is first displayed on the screen.</SPAN></p>
+         <LI>
+            <p>
+               <B>Custom Data</B><SPAN>
+	- This is a text field that can be defined per tile to store
+	whatever information you want.</SPAN></p>
+         <LI>
+            <p>
+               <B>Flip Horizontal</B><SPAN>
+	- With this checked, the image on the tile will be flipped
+	horizontally.</SPAN></p>
+         <LI>
+            <p>
+               <B>Flip Vertical</B><SPAN>
+	- With this checked, the image on the tile will be flipped
+	vertically.</SPAN></p>
+         <LI>
+            <p>
+               <B>Collision</B><SPAN>
+	- Check this to enable collisions on the tile.</SPAN></p>
+         </LI>
+      </UL>
+      
+      <p>
+         Below these properties, there is a 
+               preview window that displays the current settings visually. In this window, the 
+               collision polygon for the tile can be defined by clicking and dragging points 
+               with the mouse. Note that you will only see the collision polygon for a tile if 
+               the <strong>Collision</strong> checkbox is set and you have defined two or more points. You will 
+               also notice that when in tilemap editing mode, you can see the collision 
+               polygons for all tiles in the selected tilemap.</p>
+      
+      <p>
+         It is important to note that this tile 
+               editor does not work like a standard painting program. <B><U>You are not just 
+                     painting images onto the tiles, but rather you are painting properties.</U></B>
+               The properties you are painting are the 6 listed above. Because of this, each 
+               property can be set to <strong>No Change</strong>. If, for example, you wanted to change 
+               the Image of a tile, but nothing else, you would set the Image drop down to 
+               your image of choice, then set the other properties to <strong>No Change</strong>. <B><U>Any 
+                     property not set to No Change will be applied by the Paint and Flood tools.</U></B></p>
+      
+      <p>
+         In the case of the drop down lists, 
+               simply select <strong>No Change</strong>. For the special tilemap three-state checkboxes, 
+               you will need to select the <strong>No</strong><I><strong> </strong> </I>
+          <strong>Change</strong> state. In <I>Figure 7</I>, the top 
+               checkbox is in the <strong>True</strong> state, the middle checkbox is in the 
+          <strong>False</strong>
+               state, and the bottom checkbox is in the <strong>No Change</strong> state.</p>
+      
+      <p><IMG SRC="images/TileMapsFigure10.png" NAME="graphics10" ALIGN="left" BORDER="0"><br clear="left" />
+         <FONT SIZE="1"><I><B>Figure 7</B></I></FONT></p>
+      
+      
+      
+      <H3 class="western">Brushes</H3>
+      
+      <p>
+         
+               <SPAN STYLE="TEXT-DECORATION: none">A
+set of tile properties can be saved in a brush. With this system, you
+can define several tile configurations as brushes and quickly switch
+between them. To create a brush, type the name in the text box next
+to the <strong>Save Brush</strong> button. Then, click on the <strong>Save Brush</strong>
+button. Now, the name of the brush will appear in the drop down list
+labeled <strong>Brush</strong> at the top of the tilemap edit panel. Any time
+you would like to use this brush, on this or any other tilemap in
+your project, you can select it from the drop down list and start
+painting.</SPAN></p>
+      
+      <H3 class="western" >Using Tile Scripts</H3>
+      
+      <p>
+         The <strong>onTileScript</strong> callback is 
+               called on a tile by the engine the first time the tile is rendered on the 
+               screen. The callback looks like this:</p>
+      
+      <p>
+         <FONT FACE="Courier New, monospace"><FONT SIZE="2">t2dTileMap::onTileScript(%map, 
+               %layer, %tile, %script);</p></FONT></FONT>
+      
+      <p>
+         The parameters passed to the callback 
+               are as follows:</p>
+      
+      <UL>
+         <LI VALUE="1">
+            <p>
+                <I>
+               <B>%map</B></I><SPAN>
+	- The tilemap containing the layer of the tile.</SPAN></p>
+         <LI>
+            <p>
+               <B><I>%layer</I></B><SPAN>
+	- The layer object containing the tile.</SPAN></p>
+         <LI>
+            <p>
+               <I><B>%tile</B></I><SPAN><SPAN STYLE="FONT-STYLE: normal">
+	- The tile that the script is being called on. This is the
+	logical position of the tile in the layer.</SPAN>
+                     </SPAN></p>
+         <LI>
+            <p>
+               <I><B>%script -</B></I><SPAN><SPAN STYLE="FONT-STYLE: normal">
+	This is the text that is supplied to the tile layer during editing
+	in the </SPAN>
+                        <I>Tile Script</I><SPAN STYLE="FONT-STYLE: normal">
+	field.</SPAN>
+                     </SPAN></p>
+         </LI>
+      </UL>
+      
+      <p>
+         Tile scripts can be used in many 
+               different situations. They are especially useful as markers for more 
+               complicated effects that you can generate in script, such as spawn points.</p>
+      <p>
+      </p>
+      <H3 class="western" >Using Tile Custom Data</H3>
+      
+      <p>
+         Custom data can be stored on each tile 
+               to store information specific to that tile. For instance, you might want to 
+               mark a tile as a &quot;lava&quot; so that you can have your player object take damage 
+               when it touches a "lava" tile. This can be especially useful if you have 5 lava 
+               tiles with different graphics. The tile Custom Data can be accessed using a 
+               tile's location in a tilemap using the following function:</p>
+      
+      <p>
+         <FONT FACE="Courier New, monospace"><FONT SIZE="2">t2dTileLayer::getTileCustomData(%tileX, 
+               %tileY);</p></FONT></FONT>
+      
+      <p>
+         Note that the <FONT FACE="Courier New, monospace" size="2">
+                     <strong>onCollision</strong></FONT></FONT> function automatically passes tile locations in 
+               the <FONT SIZE="2"><FONT FACE="Courier New, monospace">%srcRef </FONT></FONT>and
+               <FONT SIZE="2"><FONT FACE="Courier New, monospace">%dstRef </FONT></FONT>arguments.</p>
+      
+      <H3 class="western" >Conclusion</H3>
+      
+      <p>
+         This has been a basic introduction to 
+               T2D's Tile Map editing system. There are a great many uses for tilemaps in both 
+               side-view and top-view style games. And remember, you can use animations for 
+               tiles as well as static image maps.</p>
+      
+      <p>
+         Happy Tiling!</SDFIELD></p>
+      <DIV TYPE="FOOTER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><I><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><FONT FACE="Arial, sans-serif">Revision 
+                     3.1</I></p>
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

@@ -1,0 +1,416 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 94;
+   parent.leftFrame.expandToItem('tree2', 'doc94');
+   var element = parent.leftFrame.document.getElementById('doc94');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>Audio</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">Audio</h8>
+<span class = "classDescription">
+<span class = "descriptionTitleText">Description:</span> Functions dealing with the OpenAL audio layer.
+</span>
+
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">alGetListener3f(Alenum)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alGetListeneri(Alenum)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alGetString(string item)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> This wraps . 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alListener3f(ALenum,"x y z")</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> or alListener3f(ALenum, x, y, z) 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxCreateSource(profile)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> or (profile, x,y,z) or (description, filename) or (description, filename, x,y,z) 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetChannelVolume(int channel_id)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">channel_id:</span> ID of channel to fetch volume from. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetListenerf(Alenum)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetSource3f(handle, ALenum)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetSourcef(handle, ALenum)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetSourcei(handle, ALenum)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetStreamDuration(handle)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetStreamPosition(handle)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Volume of channel. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxGetWaveLen(string filename)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">filename:</span> File to determine length of. 
+
+</span>
+</span>
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Length in milliseconds. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxIsPlaying(handle)</h4>
+<span class = "functionBox">
+
+
+
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Length in milliseconds. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxListenerf()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> alxListener(ALenum, value) 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Length in milliseconds. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxPlay(handle)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> or alxPlay(profile) or alxPlay(profile, x,y,z) 
+
+</span>
+
+<span class = "returnHead">Return:</span>
+<span class = "returnBox">
+Length in milliseconds. 
+</span>
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxSetChannelVolume(int channel_id, float volume)</h4>
+<span class = "functionBox">
+
+
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">channel_id:</span> ID of channel to set volume on. 
+
+</span><span class = "param">
+<span class = "paramTitle">volume:</span> New volume of channel, from 0.0f-1.0f 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxSource3f(handle, ALenum, x, y, z)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxSourcef(handle, ALenum, value)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxSourcei(handle, ALenum, value)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxStop(int handle)</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">alxStopAll()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">OpenALInitDriver()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Initializes the OpenAL driver.
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">OpenALRegisterExtensions()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">OpenALShutdownDriver()</h4>
+<span class = "functionBox">
+
+
+
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+
+
+
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

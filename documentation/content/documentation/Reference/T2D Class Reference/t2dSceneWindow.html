@@ -1,0 +1,1565 @@
+<html>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 316;
+   parent.leftFrame.expandToItem('tree2', 'doc316');
+   var element = parent.leftFrame.document.getElementById('doc316');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<title>t2dSceneWindow</title>
+<link href="./referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()" >
+<h8 class = "classHead">t2dSceneWindow</h8>
+
+<span class = "hierarchyHead">Hierarchy:</span>
+<span class = "hierarchyBox">
+<span class = "hierarchyBasedHead">This object is derived from:</span>
+<ul class = "hierarchyBasedList">
+<li class = "hierarchyEntry">
+GuiControl
+</li>
+</ul>
+<span class = "hierarchyDerivedHead">Object's derived from this:</span>
+<ul class = "hierarchyDerivedList">
+<li class = "hierarchyEntry">
+LevelBuilderSceneWindow
+</li>
+</ul>
+</span>
+<br>
+<br>
+<span class = "classBox">
+<h2 class = "functionsHead">Methods:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">completeCameraMove()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Complete Camera Move. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">dismount()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Dismounts Camera from object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCanvasPoint(X/Y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns Canvas coordinate of Window coordinate. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCurrentCameraArea()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get current camera Area. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCurrentCameraPosition()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get current camera Position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCurrentCameraSize()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get current camera Size. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getCurrentCameraZoom()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Get current camera Zoom. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsCameraMounted()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Is Camera Mounted Status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsCameraMoving()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Is Camera Moving Status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getIsWindowPoint(X/Y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Checks if World coordinate is inside Window. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getLockMouse()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the window mouse-lock status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getMousePosition()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets Current Mouse Position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRenderGroupMask()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the group mask which controls what is rendered. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getRenderLayerMask()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets the layer mask which controls what is rendered. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getSceneGraph()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns the  associated with this window. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getUseObjectMouseEvents()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether mouses-events are monitored by the scene-objects. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getUseWindowMouseEvents()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Gets whether mouses-events are monitored by the window. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWindowExtents()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Fetch Window Extents (Pos/Size). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWindowPoint(X/Y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns Window coordinate of World coordinate. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">getWorldPoint(X/Y)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Returns World coordinate of Window coordinate. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">mount(t2dSceneObject,[offsetX/offsetY],[mountForce],[sendToMount?])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Mounts Camera onto a specified object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">resetSceneGraph()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Detaches the window from any  Object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCameraInterpolationMode(interpolationMode)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set camera interpolation mode. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCameraInterpolationTime(interpolationTime)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set camera interpolation time. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCurrentCameraArea(x1/y1/x2/y2)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set current camera area. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCurrentCameraPosition(x/y/[width/height])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set current camera position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setCurrentCameraZoom(zoomFactor)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set current camera Zoom Factor. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setDebugBanner(fontName, fontSize, textR/G/B/[A]$, backgroundR/G/B/[A]$)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set Debug Font/Size/textColour/backgroundColour 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setLockMouse()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the window mouse-lock status. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setMousePosition()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets Current Mouse Position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setObjectMouseEventFilter()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> groupMask, layerMask, [useInvisible?] - Sets Filter for Object Mouse-Events. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setObjectMouseEventGroupFilter(groups $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the group filter. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setObjectMouseEventInvisibleFilter()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> useInvisible - Sets the use invisible flag 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setObjectMouseEventLayerFilter(layers $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the layer filter. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRenderGroups(groups $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the render group(s). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRenderLayers(layers $)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the render layers(s). 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setRenderMasks(layerMask, groupMask)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets the layer/group mask which control what is rendered. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setSceneGraph(t2dSceneGraph)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Associates  Object. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setTargetCameraArea(x/y/width/height)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set target camera area. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setTargetCameraPosition(x/y/[width/height])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set target camera position. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setTargetCameraZoom(zoomFactor)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set target camera Zoom Factor. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setUseObjectMouseEvents(mouseStatus)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets whether mouses-events are monitored by the scene-Objects. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setUseWindowMouseEvents(mouseStatus)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Sets whether mouses-events are monitored by the window. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setViewLimitOff()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set View Limit Off. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">setViewLimitOn([minX/minY/maxX/maxY])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Set View Limit On. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">startCameraMove([interpolationTime])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Start Camera Move. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">startCameraShake(shakeMagnitude, time)</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Starts the camera shaking. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">stopCameraMove()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Stop Camera Move. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">stopCameraShake()</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Stops the camera shaking. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">undoCameraMove([interpolationTime])</h4>
+<span class = "functionBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Undo Camera Move. 
+
+</span>
+
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "functionsHead">Callbacks:</h2>
+<span class = "functionsBox">
+<h4 class = "functionHead">onExtentChange(%this, %newExtent)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> The size of the scene window changed. This is the size of the GuiControl, not the camera area.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow whose size changed.
+
+</span><span class = "param">
+<span class = "paramTitle">fontSize:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseMove(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseEnter(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseLeave(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseDown(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseDragged(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onMouseUp(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseDown(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseDragged(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br><h4 class = "functionHead">onRightMouseUp(%this, %modifier, %worldPosition, %clicks)</h4>
+<span class = "functionBox">
+
+<span class = "briefDescription">
+<span class = "descriptionTitleText">Brief Description:</span> A mouse event occurred in the scene window.
+
+</span>
+
+<span class = "paramHead">Params:</span>
+<span class = "paramBox">
+<span class = "param">
+<span class = "paramTitle">this:</span> The t2dSceneWindow receiving the mouse event.
+
+</span><span class = "param">
+<span class = "paramTitle">modifier:</span> The modifier keys that are pressed. <br>
+<br><span class = "fieldListHead">Possible Values<br></span><ul class = "fieldList">
+<li><span class = "fieldListTitle">Bit 0</span>: Left Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 1</span>: Right Shift <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 2</span>: Left Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 3</span>: Right Control <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 4</span>: Left Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 5</span>: Right Alt (Windows) or Command (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 6</span>: Left Option (Mac) <br</li>
+<br>
+<li><span class = "fieldListTitle">Bit 7</span>: Right Option (Mac</li></ul>
+
+</span><span class = "param">
+<span class = "paramTitle">worldPosition:</span> The current mouse position.
+
+</span><span class = "param">
+<span class = "paramTitle">clicks:</span> 
+
+</span>
+</span>
+
+
+</span>
+<span class = "functionSpacer">
+</span>
+<br>
+<br>
+</span>
+<h2 class = "variablesHead">Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">lockMouse</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">useObjectMouseEvents</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">useWindowMouseEvents</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+<h2 class = "variablesHead">Inherited Fields:</h2>
+<span class = "variablesBox">
+<h4 class = "variableHead">Accelerator</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">AltCommand</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">canSave</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Command</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Extent</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">HorizSizing</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">MinExtent</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Modal</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> deprecated
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Position</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> Point2I
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Profile</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> GuiProfile
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">setFirstResponder</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> deprecated
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Variable</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">VertSizing</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> enumval
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">Visible</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">canSaveDynamicFields</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">internalName</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">parentGroup</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Group hierarchy parent of the object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> SimObjectPtr
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">class</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script SuperClass of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">superclass</h2>
+<span class = "variableBox">
+
+
+<span class = "detailedDescription">
+<span class = "descriptionTitleText">Description:</span> Script Class of object. 
+
+</span>
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">hovertime</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> int
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">ToolTip</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">tooltipprofile</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> GuiProfile
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">isContainer</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> bool
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span><h4 class = "variableHead">langTableMod</h2>
+<span class = "variableBox">
+
+
+
+<span class = "typeDescription">
+<span class = "descriptionTitleText">Type:</span> string
+</span>
+
+</span>
+<span class = "variableSpacer">
+</span>
+</span>
+<br>
+<br>
+</span>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

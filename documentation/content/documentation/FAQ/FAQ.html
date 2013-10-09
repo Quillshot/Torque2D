@@ -1,0 +1,263 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 0;
+   parent.leftFrame.expandToItem('tree2', 'doc0');
+   var element = parent.leftFrame.document.getElementById('doc0');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Frequently Asked Questions</title>
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque2D_FAQ skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#What_is_Torque_2D.3F"><span class="tocnumber">1</span> <span class="toctext">What is Torque 2D?</span></a></li>
+                          <li class="toclevel-1"><a href="#How_much_does_Torque_2D_cost.3F"><span class="tocnumber">2</span> <span class="toctext">How much does Torque 2D cost?</span></a></li>
+                          <li class="toclevel-1"><a href="#Do_I_have_to_pay_for_each_game_I_make_or_pay_royalties.3F"><span class="tocnumber">3</span> <span class="toctext">Do I have to pay for each game I make or pay royalties?</span></a></li>
+                          <li class="toclevel-1"><a href="#What_is_the_latest_version_of_the_engine.3F"><span class="tocnumber">4</span> <span class="toctext">What is the latest version of the engine?</span></a></li>
+                          <li class="toclevel-1"><a href="#Can_I_make_non-game_applications_for_iOS_with_this_engine.3F"><span class="tocnumber">5</span> <span class="toctext">Can I make non-game applications for 
+                              Windows or the Mac with this engine?</span></a></li>
+                          <li class="toclevel-1"><a href="#Can_I_make_3D_games_with_this_engine.3F"><span class="tocnumber">
+                              6</span> <span class="toctext">Can I make 3D games with this engine?</span></a></li>
+                          <li class="toclevel-1">
+                              <a href="#Why_do_I_get_the_.22Unable_to_open_project.22_message_when_I_try_to_load_a_project.3F">
+                              7 <span class="toctext">Why do I get the "Unable to open project" message when I try to load a project?</span></a></li>
+                          <li class="toclevel-1">
+                              <a href="#Why_do_my_images_show_in_the_editor.2C_but_not_in_the_game.3F">8 <span class="toctext">Why do my images show in the editor, but not in the game?</span></a></li>
+                          <li class="toclevel-1"><a href="#How_do_I_create_new_level_datablocks_files.3F">9 <span class="toctext">How do I create new level datablocks files?</span></a></li>
+                          <li class="toclevel-1"><a href="#Why_can.27t_I_see_sprites_larger_than_the_camera_area.3F"><span class="tocnumber">10</span> <span class="toctext">Why can't I see sprites larger than the camera area?</span></a>
+                            <ul>
+                              <li class="toclevel-2"><a href="#On_Windows"><span class="tocnumber">10.1</span> <span class="toctext">On Windows</span></a></li>
+                              <li class="toclevel-2"><a href="#On_OS_X"><span class="tocnumber">10.2</span> <span class="toctext">On OS X</span></a></li>
+                            </ul>
+                          </li>
+                            <li class="toclevel-1"><a href="#Why_do_my_particles_stop_working_off_screen.3F">
+                                <span class="tocnumber">11</span> <span class="toctext">Why do my particles stop working off screen?</span></a></li>
+                            <li class="toclevel-1">
+                                <a href="#Do_we_still_use_behaviors.3F_What_do_we_use_instead.3F">
+                                <span class="tocnumber">12</span> <span class="toctext">Do we still use behaviors? What do we use instead?</span></a></li>
+                            <li class="toclevel-1"><a href="#How_can_I_make_my_game_run_faster.3F">
+                                <span class="tocnumber">13</span> <span class="toctext">How can I make my game run faster?</span></a></li>
+                            <li class="toclevel-1"><a href="#When_is_the_next_update.3F">
+                                <span class="tocnumber">14</span> <span class="toctext">When is the next update?</span></a></li>
+                            <li class="toclevel-1"><a href="#When_will_.22X.22_feature_be_in_the_engine.3F">
+                                <span class="tocnumber">15</span> <span class="toctext">When will "X" feature be in the engine?</span></a></li>
+                            <li class="toclevel-1"><a href="#How_can_I_contribute_to_Torque_2D.3F">
+                                <span class="tocnumber">16</span> <span class="toctext">How can I contribute to Torque 2D?</span></a></li>
+                        </ul>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="What_is_Torque_2D.3F" id="What_is_Torque_2D.3F"></a>
+                <br><h2> <span class="mw-headline"> What is Torque 2D? </span></h2>
+                <p>A game engine dedicated to 2D game and app development featuring 
+                  full source code access, WYSIWYG editors, a simple scripting language 
+                  and support for many Windows and Mac features. </p>
+                <a name="How_much_does_Torque_2D_cost.3F" id="How_much_does_Torque_2D_cost.3F"></a>
+                <br><h2> <span class="mw-headline"> How much does Torque 2D cost? </span></h2>
+                <p>$128</p>
+                <a name="Do_I_have_to_pay_for_each_game_I_make_or_pay_royalties.3F" id="Do_I_have_to_pay_for_each_game_I_make_or_pay_royalties.3F"></a>
+                <br><h2> <span class="mw-headline"> Do I have to pay for each game I make or pay royalties? </span></h2>
+                <p>No. Pay $128 once, release as many games as you want royalty free. </p>
+                <a name="What_is_the_latest_version_of_the_engine.3F" id="What_is_the_latest_version_of_the_engine.3F"></a>
+                <br><h2> <span class="mw-headline"> What is the latest version of the engine? </span></h2>
+                <p>1.7.6</p>
+                <a name="Can_I_make_non-game_applications_for_iOS_with_this_engine.3F" id="Can_I_make_non-game_applications_for_iOS_with_this_engine.3F"></a>
+                <br><h2> <span class="mw-headline"> Can I make non-game applications for 
+                      Windows or the Mac with this engine? </span></h2>
+                <p>Yes you can. The GarageGames EULA specifically states you can make non-game applications.</p>
+                <a name="Can_I_make_3D_games_with_this_engine.3F" id="Can_I_make_3D_games_with_this_engine.3F"></a>
+                <br><h2> <span class="mw-headline"> Can I make 3D games with this engine? </span></h2>
+                <p>Unfortunately no. We do not currently offer a 3D iPhone engine. </p>
+                <a name="Why_do_I_get_the_.22Unable_to_open_project.22_message_when_I_try_to_load_a_project.3F" id="Why_do_I_get_the_.22Unable_to_open_project.22_message_when_I_try_to_load_a_project.3F"></a>
+                <br><h2> <span class="mw-headline"> Why do I get the "Unable to open project" message when I try to load a project? </span></h2>
+                <p>This is a Windows security issue. UAC is preventing Torque 2D from 
+                  saving out the necessary files required to create and open projects. To 
+                  resolve this issue, you must go through the following steps on Windows 7
+                  or Windows Vista: </p>
+                <p><br />
+                  1. Please navigate to the target file/folder. </p>
+                <p>2. Right-click on the file/folder and choose Properties. </p>
+                <p>3. Click the "Security" tab and see if your current user is 
+                  listed in the "Group or user names" list. If not, please click Edit-&gt;
+                  Add button, type the name of your current user in the "Enter the object
+                  names to select " box, then click "OK" to add this group. </p>
+                <p>4. Select the user from the list and then check the "Allow" checkbox next to "Full Control". </p>
+                <p><br />
+                  You can learn more about the solution in this thread: <a href="http://www.garagegames.com/community/forums/viewthread/119243" class="external free" title="http://www.garagegames.com/community/forums/viewthread/119243" rel="nofollow">http://www.garagegames.com/community/forums/viewthread/119243</a> </p>
+                <a name="Why_do_my_images_show_in_the_editor.2C_but_not_in_the_game.3F" id="Why_do_my_images_show_in_the_editor.2C_but_not_in_the_game.3F"></a>
+                <br><h2> <span class="mw-headline"> Why do my images show in the editor, but not in the game? </span></h2>
+                <p>You need to add your imageMaps to the level's datablocks file. You 
+                  can do this using the Level Datablocks Editor. Once you have added them,
+                  you will be able to see your images during game play. You can see an 
+                  example of this in the Rainy Day tutorial. </p>
+                <p><br />
+                  The Level Datablocks system is an optimization feature. When you are 
+                  editing your project in the Torque 2D Editor, all of the sprites, 
+                  animations, scrollers, tilemaps and so on are loaded into memory at all 
+                  times. However, you may not need all of them for every single level. </p>
+                <p>For example, you may only need four specific sprites and 
+                  animations for one level, then a completely separate set in another 
+                  level. The Level Datablocks editor allows you to manually control what 
+                  gets loaded on a per-level basis, thus reducing the overall memory 
+                  consumption of your game. </p>
+                <a name="How_do_I_create_new_level_datablocks_files.3F" id="How_do_I_create_new_level_datablocks_files.3F"></a>
+                <br><h2> <span class="mw-headline"> How do I create new level datablocks files? </span></h2>
+                <p>Each level needs to have its own datablocks file. Typically, the 
+                  editor will create the file automatically when you create a new level. 
+                  If you are porting an older project, you will need to manually create 
+                  the file. For example, let's say you create a new level called 
+                  myLevel.t2d. You should create a myLevel_datablocks.cs file in 
+                  level/datablocks directory. Simply creating the file will link it to 
+                  your project and the Level Datablock Editor will handle the rest. </p>
+                <a name="Why_can.27t_I_see_sprites_larger_than_the_camera_area.3F" id="Why_can.27t_I_see_sprites_larger_than_the_camera_area.3F"></a>
+                <br><h2> <span class="mw-headline"> Why can't I see sprites larger than the camera area? </span></h2>
+                <p>This is an optimization that can be toggled on and off. The 
+                  optimization prevents unnecessary rendering of objects outside of the 
+                  camera view, but it is applied to any sprite that is outside the 
+                  boundaries (regardless of it being inside as well). Here are the steps 
+                  to disable this optimization: </p>
+                <a name="On_Windows" id="On_Windows"></a>
+                <h3> <span class="mw-headline"> On Windows </span></h3>
+                <p>1. Open YOUR_GAME/buildFiles/VisualStudio2008/Torque2DGame.sln </p>
+                <p>2. Right click on the Torque2DGame project, then click on properties </p>
+                <p>3. Expand Configuration Properties-&gt;C/C++-&gt;Preprocessor </p>
+                <p>4. Remove PUAP_OPTIMIZE from the preprocessor definitions </p>
+                <p>5. Recompile the engine </p>
+                <a name="On_OS_X" id="On_OS_X"></a>
+                <h3> <span class="mw-headline"> On OS X </span></h3>
+                <p>1. Open YOUR_GAME/buildFiles/Xcode/Torque2DGame.xcodeproj </p>
+                <p>2. Double click the T2DGame target, then click on Get Info </p>
+                <p>3. Switch to the Build tab </p>
+                <p>4. Scroll down to the Preprocessing section </p>
+                <p>5. Remove PUAP_OPTIMIZE from the list </p>
+                <p>6. Recompile the game </p>
+                <a name="Why_do_my_particles_stop_working_off_screen.3F" id="Why_do_my_particles_stop_working_off_screen.3F"></a>
+                <br><h2> <span class="mw-headline"> Why do my particles stop working off screen? </span></h2>
+                <p>See above answer. </p>
+                <a name="Do_we_still_use_behaviors.3F_What_do_we_use_instead.3F" id="Do_we_still_use_behaviors.3F_What_do_we_use_instead.3F"></a>
+                <br><h2> <span class="mw-headline"> Do we still use behaviors? What do we use instead? </span></h2>
+                <p>Yes, behaviors are still used. Any behaviors added to the folder 
+                  named "behaviors" in your game's projectFiles/scripts/ directory. Any 
+                  behavior scripts you put in that folder will automatically load into the
+                  engine. </p>
+                <a name="How_can_I_make_my_game_run_faster.3F" id="How_can_I_make_my_game_run_faster.3F"></a>
+                <br><h2> <span class="mw-headline"> How can I make my game run faster? </span></h2>
+                <p>There are several methods of optimization. The following tips are not
+                  always required, but you can cherry pick from them to see if they 
+                  improve your games' performance: </p>
+                <ul>
+                  <li> Try to keep your individual art files square and at a power of two resolution (64x64, 128x128, 256x256, etc) </li>
+                </ul>
+                <ul>
+                  <li> Extremely complex and math heavy code is best kept in C++. 
+                    Native code, such as C++, will always execute faster than a scripting 
+                    language. TorqueScript is still useful for creating game play, but 
+                    sometimes it is worth diving into C++ to create the complex parts </li>
+                </ul>
+                <ul>
+                  <li> Combine images together into an "atlas". If you have four 
+                    images that are all static (not animated) and can fit in a 512x512 or 
+                    lower image, you should use the UnChaos tool. You can find this in the 
+                    tools folder where you installed Torque 2D. This tool will create a new
+                    image file (png) containing your selected sprites and arrange them in 
+                    an optimal way. You will be provided with texture coordinates, which are
+                    fed into the Source Rect property of a sprite in the editor. </li>
+                </ul>
+                <ul>
+                  <li> When you can, pool objects. For example, let's say your game 
+                    has enemies spawn off screen and move into the camera view. The player 
+                    is able to destroy these enemies, thus removing them from the scene. 
+                    Rather than delete those objects, disable their visibility and move them
+                    off screen. From there, reset their state or restore their original 
+                    values then send them back at the player. This avoids constantly 
+                    creating and destroying objects, which will use less of the CPU and 
+                    memory. </li>
+                </ul>
+                <a name="When_is_the_next_update.3F" id="When_is_the_next_update.3F"></a>
+                <br><h2> <span class="mw-headline"> When is the next update? </span></h2>
+                <p>GarageGames does not provide exact dates for product releases. You 
+                  can track progress on development in the Torque 2D forums, where we 
+                  will reveal new features, new documentation and some plans for the 
+                  future. </p>
+                <a name="When_will_.22X.22_feature_be_in_the_engine.3F" id="When_will_.22X.22_feature_be_in_the_engine.3F"></a>
+                <br><h2> <span class="mw-headline"> When will "X" feature be in the engine? </span></h2>
+                <p>Anytime you see a feature in another engine that is
+                  not supported in Torque 2D, feel free to post a suggestion in our 
+                  forums. When a demand becomes popular amongst the community, there is a 
+                  good chance it will rise in our priority for a future release. </p>
+                <a name="How_can_I_contribute_to_Torque_2D.3F" id="How_can_I_contribute_to_Torque_2D.3F"></a>
+                <br><h2> <span class="mw-headline"> How can I contribute to Torque 2D? </span></h2>
+                <p>GarageGames has the best developer community you will find on the 
+                  web. We always appreciate people who are willing to give back to the 
+                  engine. If you have a sample game or code you want to share, jump to our
+                  resource section of the site to post it for everyone to enjoy. </p>
+                <p><br />
+                  If you are in a helping mood, lurk in our IRC channel to talk to other 
+                  developers and help solve problems. This is a live chat room where 
+                  experienced Torque 2D users and GarageGames employees lurk, waiting to 
+                  help those with emergency problems. </p>
+                <p><br />
+                  The forums are perhaps our best support tool. Just by asking a question 
+                  and getting an answer, you will help everyone else who might run into 
+                  the same problem. Don't be shy, join the employees and your fellow 
+                  Torque developers at GarageGames.com. You're always welcome. </p>
+                <p><br />
+                  If you think you have what it takes to be a part of GarageGames and join
+                  the Torque 2D engine team, you can find a list of open positions we 
+                  are hiring for on our Jobs page. If you find you are qualified for one 
+                  of the positions, do not hesitate to contact us and send in a resume. We
+                  are always looking for the most talented and passionate game 
+                developers in the industry. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

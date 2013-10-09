@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+   <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 59;
+   parent.leftFrame.expandToItem('tree2', 'doc59');
+   var element = parent.leftFrame.document.getElementById('doc59');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+      <TITLE>Torque 2D - Resources Tutorial</TITLE>
+      <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+      <META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Win32)">
+      <META NAME="AUTHOR" CONTENT="Anthony Fullmer">
+      <META NAME="CREATED" CONTENT="20060602;23521000">
+      <META NAME="CHANGED" CONTENT="20060612;9405100">
+      <STYLE> 
+      <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	-->
+      </STYLE>
+   </HEAD>
+   <BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" DIR="ltr" style="width: 700px; padding: 10px;">
+      <DIV TYPE="HEADER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt"><B>Torque 
+                     2D - Resource Tutorial</B></FONT></FONT></P>
+      </DIV>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P><a name="Introduction"></a>
+      <H3 style="MARGIN-BOTTOM: 0in">Introduction</H3>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Torque 
+                2D (T2D) offers many useful features designed to streamline workflow and 
+               improve usability. One feature is the ability to create an <strong>art resource</strong>. An art 
+               resource is basically a group of images, usually of similar theme, that are 
+               already set up in T2D for easy import. This includes both static and animated 
+               sprites. Resources are good for many reasons. First and foremost, they are very 
+               easy to import into a T2D project. Instead of individually importing images, 
+               the entire package is imported, properly set up, and named in just a few clicks 
+               . Secondly, since resources are not owned by any one project and are (ideally) 
+               modularized by theme, they become lego-like pieces that can be shared between 
+               many game projects easily. Finally, since it is not exclusive to any project, 
+               it allows developers to avoid having duplicate images in more than one project.</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">In this 
+               tutorial we are going to look at the process of creating and importing a 
+               resource.</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P><a name="Getting_Started"></a>
+      <H3 style="MARGIN-BOTTOM: 0in">Getting Started</H3>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">To begin 
+               with we need to open up T2D. When T2D loads, go to FILE -&gt; Open Project and 
+               find the project named <strong>games/TutorialBase/project.t2dproj</strong> <I>(as shown in Figure 1).</I> <B>*Note:</B> if you 
+               already have that project open, you will not see it in the open dialog.</FONT></FONT></P>
+<TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="203">
+               <COL WIDTH="446">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="203">
+                           <P STYLE="MARGIN-TOP: 0.08in"><img src="images/ResourcesFigure1.jpg" width="273" height="169"><BR CLEAR="left">
+                              <FONT SIZE="1"><I><B>Figure 1</B></I></FONT></P>
+                          <BR CLEAR="left">
+                        </TD>
+                     <TD WIDTH="446">
+                           <P><BR>
+                           </P>
+                           <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Once your project is open, you should 
+                                    see the create tab at the right filled with many different static and animated 
+                                    sprites. Now, though everything is already imported into this project, what if 
+                                    you wanted to use this art in a different project? You would have to copy the 
+                                    images into the new project's <strong>image</strong> folder and then individually import each 
+                                    graphic into the project, setting up its name and modes. However, thanks to our 
+                                    ability to create art resources in T2D, our lives are much simpler than that.
+                                    <SPAN STYLE="TEXT-DECORATION: none">We
+				are going to turn the art in the TutorialBase  project into a resource. </SPAN></FONT></FONT></P>
+                       </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">First, we 
+               need to create a place for our art resource in the place where all of the other 
+               resources are. Navigate to your <em><strong>T2DInstallationDirectory</strong></em><strong>\T2D\resources</strong> folder. 
+               Inside you should see all of the current art resources included in the engine <I>(as 
+                  shown in Figure 2)</I>.</FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="408">
+               <COL WIDTH="241">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="408">
+                           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ResourcesFigure2.jpg" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+                              <FONT SIZE="1"><I><B>Figure 2</B></I></FONT></P>
+                           <BR CLEAR="left">
+                           <BR>
+                        </TD>
+                        <TD WIDTH="241">
+                           <P><BR>
+                           </P>
+                           <P><BR>
+                           </P>
+                           <P><BR>
+                           </P>
+                           <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Inside this folder we are going to 
+                                    create our own folder for our art. So, create a new folder and name it 
+                               <strong>testArt</strong>. 
+                                    Once you have created your folder, it is time to start piecing your resource 
+                                    together.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P><a name="Putting_Together_A_Resource"></a>
+      <H3 style="MARGIN-BOTTOM: 0in">Putting Together a Resource</H3>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Now that we 
+               have our folder set up for our art resource, let's get our images placed in the 
+               proper spot. Close T2D and navigate to your <strong>games\TutorialBase\game\data</strong> 
+               folder. Once you are there, copy the entire images folder. Once that folder is 
+               copied, navigate back to your <strong>testArt</strong> resource folder and paste your images 
+               folder into it. Now that we have our images folder in its proper place, there's 
+               one more thing we need to get our resource working correctly. </FONT></FONT>      </P>
+<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">We need to 
+               add a file into our <strong>testArt</strong> folder. This file is going to contain all of the 
+               code that will get our images to import properly. For all resources, this file 
+               is named the same thing: <strong>resourceDatabase.cs</strong>. If you browse into any of the 
+               other resource folders you will undoubtedly see this file. You will need to 
+               copy one of these files and put it into your folder. If, for whatever reason, 
+               you have no other resources and therefore, no <strong>resourceDatabase.cs</strong> files, create 
+               one in any plain text editor. Add the following code into the file:</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Create Resource Descriptor</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">$instantResource = new ScriptObject()</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Class = "testArt";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">Name = "testArt";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">User = "T2D";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">LoadFunction = "testArt::LoadResource";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">UnloadFunction = 
+                                 "testArt::UnloadResource";</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">};</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Load Resource Function - Hooks into 
+                                 game</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">function testArt::LoadResource( %this )</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Update Object library once 
+                                 datablocks are loaded.</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">GuiFormManager::BroadcastContentMessage( 
+                                 "LevelBuilderSidebarCreate", 0, "refresh" );</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Unload Resource Function - Remove 
+                                 from game Sim.</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">function testArt::UnloadResource( %this 
+                                 )</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">// We must clean up all the mess we've 
+                                 made in the Sim.</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">if( isObject( %this.Data ) &amp;&amp; 
+                                 %this.Data.GetCount() &gt; 0 )</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{ </FONT></FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">while( %this.Data.getCount() &gt; 0 )</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%datablockObj = %this.Data.getObject( 0 
+                                 );</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%this.Data.remove( %datablockObj );</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">if( isObject( %datablockObj ) )</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">%datablockObj.delete();</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Update Object library once 
+                                 datablocks are removed.</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">GuiFormManager::BroadcastContentMessage( 
+                                 "LevelBuilderSidebarCreate", 0, "refresh" );</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">}</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Resource Data</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">$instantResource.Data = new SimGroup() </FONT>
+                           </FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">canSaveDynamicFields = "1";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">The 
+               following code sets up everything we will need to get our images loaded 
+               correctly. The only thing we lack is the actual datablock definitions for the 
+               images in our resource. Also, you will note that I have already given our 
+               resource the name and class of <strong>testArt</strong>. All of the namespace functions have the 
+               name <strong>testArt</strong> as well. This is useful to note since you need to make sure that 
+               every resource you create is named properly. So, in the instance that you were 
+               creating a <strong>planeArt</strong> resource, you would do a Find and Replace in your<strong> 
+               resourceDatabase.cs</strong> file and change all of the <strong>testArt</strong> references to 
+          <strong>planeArt</strong>. 
+               Anyways, once you have your <strong>resourceDatabase.cs</strong> file created and saved, we need 
+               to get the datablock definitions for the images you are including in your 
+               resource. These definitions can be found in your 
+               <strong>games\TutorialBase\game\managed</strong> folder in your <strong>datablocks.cs</strong> file. Open 
+               this file and find the following code:</FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">$managedDatablockSet = new SimSet() {</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">canSaveDynamicFields = "1";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">internalName = "Datablocks";</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Right below 
+               this code is all of the datablock definitions we will need for our resource. 
+               Copy everything below this code, except for the last line, which should look 
+               like this: </FONT></FONT>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P STYLE="BACKGROUND: #c0c0c0"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Everything 
+               else should be copied from that file. Once you have it copied, open your 
+               <strong>resourceDatabase.cs</strong> and find the following code (should be at the bottom of the 
+               file):</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Resource Data</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">$instantResource.Data = new SimGroup() </FONT>
+                           </FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">canSaveDynamicFields = "1";</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in">
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">and paste 
+               your datablock definitions in the following place:</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="100%" BORDER="1" BORDERCOLOR="#000000" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="256">
+               <THEAD>
+                  <TR>
+                     <TD WIDTH="100%" VALIGN="top" BGCOLOR="#c0c0c0">
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">// Resource Data</FONT></FONT></P>
+                        <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">$instantResource.Data = new SimGroup() </FONT>
+                           </FONT>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">{</FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">canSaveDynamicFields = "1";</FONT></FONT></P>
+                        <P><BR>
+                        </P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">//<B>PASTE DATABLOCK DEFINITIONS HERE</B></FONT></FONT></P>
+                        <P>
+                           <FONT FACE="Arial, sans-serif"><FONT SIZE="3">};</FONT></FONT></P>
+                     </TD>
+                  </TR>
+               </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">Once you 
+               have your definitions pasted in the correct spot, save your<strong> resourceDatabase.cs</strong> 
+               file and open T2D back up. Our last step is going to be importing our resource 
+               into a new project. </FONT></FONT>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P><a name="Importing_Our_Resource"></a>
+      <H3 style="MARGIN-BOTTOM: 0in">Importing Our Resource</H3>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">When T2D 
+               opens up go to <strong>FILE -&gt; New Project</strong> and create a new project named 
+               &quot;<strong>testProject</strong>&quot; (figure 3)</FONT></FONT></P>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="216">
+               <COL WIDTH="433">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="216">
+                           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ResourcesFigure3.jpg" NAME="graphics3" ALIGN="left" BORDER="0"><BR CLEAR="left">
+                              <FONT SIZE="1"><I><B>Figure 3</B></I></FONT></P>
+                           <BR CLEAR="left">
+                           <BR>
+                        </TD>
+                        <TD WIDTH="433">
+                           <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+                              <BR>
+                           </P>
+                           <P STYLE="FONT-STYLE: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE="3">This will 
+                                    create a new project with no images imported into it. To import our resource, 
+                                    type <strong>CTRL+R</strong> or click on <strong>PROJECT -&gt; Resources</strong>. A resource dialog should pop 
+                                    up showing us all of the recognized resources in our Resources folder, 
+                                    including the one we just created <I>(as shown in Figure 4)</I>.</FONT></FONT></P>
+                        </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <P STYLE="MARGIN-BOTTOM: 0in"><BR>
+      </P>
+      <TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+         <COLGROUP>
+            <COL WIDTH="244">
+               <COL WIDTH="405">
+                  <THEAD>
+                     <TR VALIGN="top">
+                        <TD WIDTH="244">
+                           <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/ResourcesFigure4.jpg" NAME="graphics4" ALIGN="left" WIDTH="100%"
+                                 BORDER="0"><BR CLEAR="left">
+                              <FONT SIZE="1"><I><B>Figure 4</B></I></FONT></P>
+                           <BR CLEAR="left">
+                           <BR>
+                        </TD>
+                        <TD WIDTH="405">
+                           <P><BR>
+                           </P>
+                           <P><FONT FACE="Arial, sans-serif"><FONT SIZE="3">To import our resource from this 
+                                    dialog, click on our resource (<strong>testArt</strong>), and click the 
+                               <strong>Add to Project</strong> button. 
+                                    When you do this, our testArt resource should move to the Current Project 
+                                    Resources list. Once it moves there, click on the <strong>Save</strong> button to finish 
+                                    importing <I>(as shown in Figure 5).</I></FONT></FONT></P>
+                        </TD>
+                     </TR>
+                  </THEAD>
+      </TABLE>
+      <TABLE>
+         <TR>
+            <TD>
+               <IMG SRC="images/ResourcesFigure5.jpg" NAME="graphics5" ALIGN="left" BORDER="0"><BR CLEAR="left">
+               <FONT SIZE="1"><I><B>Figure 5</B></I></FONT>
+            </TD>
+            <TD>
+               <IMG SRC="images/ResourcesFigure6.jpg" NAME="graphics6" ALIGN="left" BORDER="0">
+            </TD>
+            <TD>
+               <IMG SRC="images/ResourcesFigure8.jpg" NAME="graphics7" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            </TD>
+         </TR>
+      </TABLE>
+      <P></P><a name="Conclusion"></a>
+      <H3 style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">Conclusion</H3>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <BR>
+      </P>
+      <P STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+         <FONT FACE="Arial, sans-serif"><FONT SIZE="3">With that, our sprite library should be 
+               the same as the original T2D project: everything should be imported and named 
+               properly. If you ever want to remove a resource, simply bring up the resource 
+               dialog and work backwards, select the resource, click the remove button, and 
+               save. As you can see, a resource is not only convenient, its can be used to 
+               make workflow much more efficient. Have fun and good luck!</FONT></FONT></P>
+      <DIV TYPE="FOOTER">
+         <P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision 
+                     1.10</I></FONT></FONT></P>
+      </DIV>
+   <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML>

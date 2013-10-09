@@ -1,0 +1,140 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 80;
+   parent.leftFrame.expandToItem('tree2', 'doc80');
+   var element = parent.leftFrame.document.getElementById('doc80');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+<title>Torque 2D - Introduction</title>
+
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_DefineT2D skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table id="toc" summary="Contents">
+          <tbody>
+            <tr>
+              <td><div id="toctitle">
+                  <h2>Contents</h2>
+                  </div>
+                <ul>
+                  <li class="toclevel-1"><a href="#Torque_Technology"><span class="tocnumber">1</span> <span class="toctext">Torque Technology</span></a></li>
+                  <li class="toclevel-1"><a href="#The_Engine"><span class="tocnumber">2</span> <span class="toctext">The Engine</span></a></li>
+                  <li class="toclevel-1"><a href="#TorqueScript"><span class="tocnumber">3</span> <span class="toctext">TorqueScript</span></a></li>
+                  <li class="toclevel-1"><a href="#Editors"><span class="tocnumber">4</span> <span class="toctext">Editors</span></a></li>
+                  <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                </ul></td>
+            </tr>
+          </tbody>
+        </table>
+        <br><a name="Torque_Technology" id="Torque_Technology"></a>
+        <h2> <span class="mw-headline">Torque Technology</span></h2>
+        <p>Torque 2D is the world's most powerful and easy-to-use 2D game engine. 
+			Built atop the common Torque core architecture, it offers many of the features 
+			of our cutting-edge 3D game engine, but customized for 2D gameplay. 
+			Development paths allow publishing to Windows and Mac. 
+			And with its intuitive and powerful editor, anyone can jump into game creation 
+			with little to no prior knowledge. </p>
+        <p><br />
+          Using a game engine is not just a shortcut to finishing a game. Using 
+          Torque 2D will save you the time and effort required to create a 
+          complex rendering system, real time editors, and a scripting system. 
+		  However, you must also realize that there is a lot of power "under 
+          the hood" that should be harnessed. </p>
+        
+		<br><a name="The_Engine" id="The_Engine"></a>
+        
+		<h2> <span class="mw-headline">The Engine</span></h2>
+        <p>The engine, also referred to as the source code, was developed 
+          entirely in C++ and Objective C. The most important thing to realize 
+          about Torque 2D is that it is a large, complex system. Having source 
+          code access allows you to extend the engine to be whatever you want and 
+          optimize game play code using a native language. </p>
+        <p><br />
+          For instance, if you wish to add in MYSQL functionality or integrate 
+            <a href="http://www.box2d.org/">Box2D</a>, the path is not closed to you. Another benefit of having source 
+          code access is the ability to read through the comments and structures 
+          to gain a better understanding of how the script system is set up. </p>
+        <p><br />
+          Do not be intimidated. If you wish to start working with the engine, you
+          can do so whenever you feel comfortable. These docs will not force you 
+          into the engine. </p>
+        <br><a name="TorqueScript" id="TorqueScript"></a>
+        <h2> <span class="mw-headline">TorqueScript</span></h2>
+        <p>TorqueScript is a very powerful, flexible language with syntax 
+          similar to C++. The benefit of writing script code is that you do not 
+          have to recompile your executable, which means you do not have to dive 
+          into the source code. Simply create or modify a script, save it, then 
+          run the game to see the effects. You MUST restart your game in order to 
+          see the script changes. </p>
+        <p><br />
+          To utilize TorqueScript you do not need to be a code guru or know the 
+          nitty-gritty specifics of a particular language like C++. If you are 
+          already familiar with the basics of computer programming, you already 
+          have a head start using this system. </p>
+        <p><br />
+          Even without prior experience coding or scripting, <a href="../Scripting/Overview/Introduction.html">we have included 
+          several TorqueScript articles</a> that will teach you syntax, 
+          functionality and how to use it in conjunction with the engine and 
+          editors. Still, the more past programming experience you have, the 
+          further ahead you will be when picking up Torque 2D. </p>
+        <br><a name="Editors" id="Editors"></a>
+        <h2> <span class="mw-headline">Editors</span></h2>
+        <p>A large part of your initial learning experience will have you working with Torque 2D's editors. 
+		   The key term to remember is <b>WYSIWYG</b>, which stands for 
+		   <b>W</b>hat <b>Y</b>ou <b>S</b>ee <b>I</b>s <b>W</b>hat <b>Y</b>ou <b>G</b>et. 
+		   This means you can modify your game's level and immediately receive visual feedback on how it looks. </p>
+        <p><br />
+          <b>Builder</b> - The Builder is where you will spend 99% of your time 
+          when putting together your levels, importing assets, building particles,
+          etc. It is actually a collection of editors that work together to help 
+          combine multiple elements of your game: Collision Editor, Particle 
+          Editor, Scene Editor and so on. You can even tie script code and 
+          behaviors to objects through the Builder. </p>
+        <p><b>GUI Editor</b> - GUI stands for Graphical User Interface. 
+          Examples GUIs include splash screens, options dialogs and sometimes in 
+          game HUD (Heads Up Display). With the GUI Editor, you can design and 
+          create your menus, player inventory, a health bar, loading screens, etc. </p>
+        <br><a name="Conclusion" id="Conclusion"></a>
+        <h2> <span class="mw-headline">Conclusion</span></h2>
+        <p>Now that you have read though this article, you are familiar with some of the most important 
+		   aspects of Torque 2D. As you familiarize yourself with Torque 2D, you may also want to take a 
+		   look at the various Torque add-ons and community resources available on our site.</p>
+        
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

@@ -1,0 +1,165 @@
+﻿<html>
+<HEAD><SCRIPT SRC="../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../";</SCRIPT><link href="../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 5;
+   parent.leftFrame.expandToItem('tree2', 'doc5');
+   var element = parent.leftFrame.document.getElementById('doc5');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../include/content.css" />
+
+<title>Torque 2D - Paths</title>
+</head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque 2D_Editors_Builder_Interface skin-monobook">
+
+<table width="700" cellspacing="0" cellpadding="15" border="0" style="text-align: justify;">
+<tr>
+<td width="700">
+
+<div id="globalWrapper">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="0" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                          </div>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#Creation"><span class="tocnumber">2</span> <span class="toctext">Creation</span></a></li>
+                          <li class="toclevel-1"><a href="#Properties"><span class="tocnumber">3</span> <span class="toctext">Properties</span></a></li>
+                          <li class="toclevel-1"><a href="#Script_Representation"><span class="tocnumber">4</span> <span class="toctext">Script Representation</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a name="Introduction" id="Introduction"></a>
+                <br><h2> <span class="mw-headline"> Introduction </span></h2>
+                <p>Paths (t2dPath) are spline-based line segments which you can constrain an 
+                  object to. Think of them like a rollercoaster track - a path could be 
+                  laid down to resemble a series of complex movements, and can then have a
+                  car placed on it to move and follow its curves. Paths are good if, for 
+                  example, you have a sawblade that you wish to have move around the edges
+                  of a platform. Through simple properties, you can set the sawblade to 
+                  follow the path around the platform forever. </p>
+                <a name="Creation" id="Creation"></a>
+                <br><h2> <span class="mw-headline"> Creation </span></h2>
+                <p>Open the Create Panel by pressing cmd-c or tapping on the 'Create' 
+                  tab. Find the 'Other' drop-down section at the bottom of the Create 
+                  panel. Here you will find the Path Object. </p>
+                <p><br />
+                  <img alt="File:RainyDay_PathButton.png" src="images/RainyDay_PathButton.png" border="0" height="80" width="61" /> </p>
+                <p><br />
+                  Click on the Path Object and drag it into your Scene. Release the mouse 
+                  button when you have found a proper location for the path. The path 
+                  object now exists but it has no nodes. A path must have at least two 
+                  nodes to be valid. Click the mouse on where you want your path to start,
+                  and again where you want your path to end. </p>
+                <p><br />
+                  <img alt="File:RainyDay_PathEditor_LineSegment.png" src="images/RainyDay_PathEditor_LineSegment.png" border="0" height="177" width="233" /> </p>
+                <p><br />
+                  Now press Enter to close the Path Editor. You have successfully created a path that can now be have object mounted upon it! </p>
+                <p><br />
+                  If you need to edit the path once it has been placed, select the Path in
+                  the Scene Editor, move the mouse-cursor to the top of the Path Object 
+                  so the Edit Buttons display, and click on 'Edit this Path' to re-open 
+                  the path editor. Just as before, press Enter when you are finished 
+                  editing. </p>
+                <p><br />
+                  <img alt="File:RainyDay_PathEditor_EditPathButton.png" src="images/RainyDay_PathEditor_EditPathButton.png" border="0" height="204" width="261" /> </p>
+                <a name="Properties" id="Properties"></a>
+                <br><h2> <span class="mw-headline"> Properties </span></h2>
+                <p>Torque 2D ships with 3 types of paths, and has the capabilities for 
+                  the user to add in new types. Each Path Type refers to a different 
+                  mathematical way of representing the path, and directly effects the way 
+                  path angles are handled. </p>
+                <p><br />
+                  <img alt="File:RainyDay_PathTypeMenu.jpg" src="images/RainyDay_PathTypeMenu.jpg" border="0" height="139" width="487" /> </p>
+                <p><br />
+                  <b>LINEAR</b> - The default path type. Creates sharp edges with no 
+                  curves or smooth tweening. A Linear path can be a line segment with a 
+                  specific beginning and end - this is the only path type that is not 
+                  required to loop. </p>
+                <p><br />
+                  <img alt="File:RainyDay_Path_Linear.png" src="images/RainyDay_Path_Linear.png" border="0" height="313" width="351" /> </p>
+                <p><br />
+                  <b>BEZIER</b> - The edges of a Bezier path can have their curves 
+                  individually edited. Simply drag the white handles next to each curve. 
+                  Smaller curves will be sharper with a more direct movement, while wide 
+                  curves will have a slower, smoother movement. </p>
+                <p><br />
+                  <img alt="File:RainyDay_Path_Bezier.png" src="images/RainyDay_Path_Bezier.png" border="0" height="468" width="413" /> </p>
+                <p><br />
+                  <b>CATMULL</b> - The edges of a Catmull path are determined dynamically 
+                  by the placement of each node in the path. This is good for when you 
+                  need a very smooth path, but do not require direct control of every 
+                  individual node in the path. </p>
+                <p><br />
+                  <img alt="File:RainyDay_Path_Catmull.png" src="images/RainyDay_Path_Catmull.png" border="0" height="338" width="357" /> </p>
+                <p><br />
+                  <b>CUSTOM</b> - Custom allows for new mathematical path variations to be
+                  programmed into the engine. Refer to the engine programming 
+                  documentation for more information on Custom Paths in Torque 2D. </p>
+                <a name="Script_Representation" id="Script_Representation"></a>
+                <br><h2> <span class="mw-headline"> Script Representation </span></h2>
+                <pre>   new t2dPath() {
+      pathType = "CATMULL";
+      canSaveDynamicFields = "1";
+      Position = "68.105 9.227";
+      size = "866.210 681.546";
+      CollisionMaxIterations = "3";
+      AlphaTestValue = "-1";
+         node0 = "203.389572 350.000000 0.000000 10.000000";
+         node1 = "334.140015 313.904816 0.000000 10.000000";
+         node2 = "347.630157 95.000000 0.000000 10.000000";
+         node3 = "501.209991 -56.554741 0.000000 10.000000";
+         node4 = "177.447021 -331.545715 0.000000 10.000000";
+         node5 = "-365.000000 -192.493683 0.000000 10.000000";
+         node6 = "-148.391357 230.000000 0.000000 10.000000";
+         nodeCount = "7";
+         objectCount = "0";
+   };
+</pre>
+                <a name="Conclusion" id="Conclusion"></a>
+                <br><h2> <span class="mw-headline"> Conclusion </span></h2>
+                <p>From reading the Path documentation for the Torque 2D editor, you 
+                  should now understand how to create a path in your Scene, and how to 
+                  mount objects to that path. You should also understand the different 
+                  types of paths offered by default in the Torque 2D editor. </p></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        
+        
+        
+    
+  </div>
+  
+  </div>
+
+</td></tr></table><div class="footer">   <a href="../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</html>

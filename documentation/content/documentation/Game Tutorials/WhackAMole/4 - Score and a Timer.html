@@ -1,0 +1,290 @@
+<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 44;
+   parent.leftFrame.expandToItem('tree2', 'doc44');
+   var element = parent.leftFrame.document.getElementById('doc44');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE>Torque 2D - Wack-A-Mole Tutorial Part 4</TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+<META content="Microsoft FrontPage 4.0" name="GENERATOR">
+<META content="20060525;16445800" name="CREATED">
+<META content="Matt" name="CHANGEDBY">
+<META content="20060731;16380400" name="CHANGED">
+<STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	--></STYLE>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+	<P style="MARGIN-BOTTOM: 0.2in" align="center"><FONT face="Arial, sans-serif"><FONT style="FONT-SIZE: 20pt" size="5">Torque 
+				2D - Whack-A-Mole Tutorial Part 4</FONT></FONT></P>
+</DIV>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="4"><B>Part 4 - Score 
+				and a Timer</B></FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="3"><I><B>Creating a 
+					background</B></I></FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">In this 
+			section, we'll be making Whack-A-Mole a more complete game by adding a 
+			background, score, and a timer.&nbsp; Let's start with the background.&nbsp; 
+			Simply drag and drop the imageMoleBackground static-sprite from the Create 
+			tab.&nbsp; Then go to the Edit tab and enter the following properties: Position 
+			(0,0), Size (100, 75), &nbsp;Layer 30 (<EM>As shown in Figure 4.1</EM>)</FONT></FONT></P>
+<BR>
+<P style="MARGIN-TOP: 0.08in"><IMG src="images/WhackAMoleGameFigure4-1.jpg" 
+        align="left" border="0" name="graphics10" width="700"><BR clear="left">
+	<FONT size="1"><I><B>Figure 4.1</B></I></FONT><BR>
+	<BR>
+</P>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="3"><I><B>Adding text to 
+					the level </B></I></FONT></FONT>
+</P>
+<STRONG><EM><FONT face="Arial"></FONT></EM></STRONG>
+<P style="MARGIN-BOTTOM: 0in"><BR>
+	<FONT face="Arial, sans-serif"><FONT size="2">Now that we have a background, we are 
+			going to add a very simple gui to the game.&nbsp;Go to the&nbsp;Create tab and 
+			open the Other rollout.&nbsp;Drag a Text Object onto the grass at the 
+			upper-right corner of the level.&nbsp;(<EM>See Figure 4.2</EM>)</FONT></FONT>&nbsp;<BR>
+	&nbsp;<BR clear="left">
+	<IMG src="images/WhackAMoleGameFigure4-2.jpg" align="left" border="0" 
+        name="graphics9" width="700"><BR clear="left">
+	<FONT size="1"><I><B>Figure 4.2</B></I></FONT></P>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial" size="2">When you drop the text 
+		object, you will see a cursor.&nbsp;Enter the text "Whacked: ", then press 
+		Escape to exit the Text Edit mode.&nbsp;The text's default is way too big, so 
+		go to the Edit tab and,&nbsp;in the Text Object rollout, change 
+		the&nbsp;Character Height to 4. Also, we'll want to add a number to the end in 
+		the game, so turn off "Hide Overflow". (<EM>See Figure 4.3</EM>)</FONT></P>
+<P style="MARGIN-TOP: 0.08in"><IMG src="images/WhackAMoleGameFigure4-3.jpg" 
+        align="left" border="0" name="graphics9" width="700"><BR clear="left">
+	<FONT size="1"><I><B>Figure 4.3</B></I></FONT><BR>
+	<BR>
+	<BR>
+	Using this same process, create two more Text Objects with the 
+	text&nbsp;"Missed:" and "Timer:" (you may want to use the Edit tab to position 
+	them evenly).&nbsp;Next, go to the Scripting rollout of the Edit tab and name 
+	the three Text Objects "MoleGuiWhacked", "MoleGuiMissed", and "MoleGuiTimer" 
+	respectively.&nbsp; (<EM>See Figure 4.4</EM>)<BR>
+	<BR>
+	<IMG src="images/WhackAMoleGameFigure4-4.jpg" align="left" border="0" name="graphics9"><BR clear="left">
+	<FONT size="1"><I><B>Figure 4.4</B></I></FONT><BR>
+</P>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="3"><I><B>Updating the GUIs</B></I></FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">You should be 
+			presented with the whole new background when you click Run Game. What we have 
+			to do is update the GuiTextCtrls. That will happen mostly in moleLevel.cs. 
+			First we modify MoleLevel::onLevelLoaded to reset score and then we introduce a 
+			global variable that holds the number of seconds one game lasts.</FONT></FONT></P>
+<BR>
+<pre class="code">$MOLE_LEVEL::timePerGame = 30; // seconds
+
+
+function moleLevel::onLevelLoaded(%this)
+{
+   %this.respawnPointSet = new SimSet();
+
+   // set the occupied counter to zero
+   %this.spawnPointsOccupied = 0;
+
+   %this.maxCreationInterval = $MOLE_FACTORY::maxCreationInterval;
+   %this.minCreationInterval = $MOLE_FACTORY::minCreationInterval;
+   %this.speedUp = $MOLE_FACTORY::speedUp;
+
+   <b>// Reset score
+   %this.whackedCount = 0;
+   %this.missedCount = 0;
+
+
+   // Reset the GuiTextCtrls
+   MoleGuiWhacked.text = "Whacked:" SPC %this.whackedCount;
+   MoleGuiMissed.text = "Missed:" SPC %this.missedCount;
+</b>
+   // start the mole creation
+   %this.startFactory();
+}
+
+
+<b>
+
+//Then we'll add functions to increase score and update the GuiTextCtrls.
+function moleLevel::incWhackedCount(%this)
+{
+   %this.whackedCount++;
+   MoleGuiWhacked.text = "Whacked:" SPC %this.whackedCount;
+}
+
+
+function moleLevel::incMissedCount(%this)
+{
+   %this.missedCount++;
+   MoleGuiMissed.text = "Missed:" SPC %this.missedCount;
+}</b>
+</pre>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="1"><I><B>Code Sample 4.1</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">Now we only 
+			have to call MoleLevel::incWhackedCount() and MoleLevel::incMissedCount() 
+			whenever a mole is whacked or missed. We do that in mole::onAnimationEnd() (in 
+			the mole.cs):</FONT></FONT></P>
+<BR>
+<PRE class="code">function mole::onAnimationEnd(%this)
+{
+   if( %this.getAnimationName() !$= ("animMoleComeOut" @ %this.moleColor) )
+   {
+      // free the respawn point for other moles
+      %this.respawnPoint.isOccupied = "";
+
+
+      // decrement the occupied counter
+      %this.sceneGraph.spawnPointsOccupied -= 1;
+
+      <B>// update score
+      if( %this.getAnimationName() $= ("animMoleWhacked" @ %this.moleColor) )
+         %this.scenegraph.incWhackedCount();
+      else
+         %this.sceneGraph.incMissedCount();
+      </B>
+      //%this.sceneGraph.schedule( 1500, "spawnMole");
+      // we don't need to do the above line anymore because the factory will do it
+      %this.safeDelete();
+   }
+}
+</PRE>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="1"><I><B>Code Sample 4.2</B></I></FONT></FONT><BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">And there you 
+			have it: A simple scoring system.</FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">Next we will 
+			update the timer. When the level is loaded, a new scenegraph is created for it. 
+			That means that we can keep a timer based on the &quot;scene-time&quot;, which should 
+			reflect the time the level is running. Let's use that for our timer code. We 
+			will use the onUpdateScene() callback (a &quot;callback&quot; is simply a function 
+			automatically called by the engine, that way we can place the function in 
+			script and respond to that event) of the scenegraph to update the GuiTextCtrl 
+			of the timer. Add this function to moleLevel.cs:</FONT></FONT></P>
+<BR>
+<pre class="code">$MOLE_LEVEL::timePerGame = 60;
+function moleLevel::onUpdateScene(%this) {
+
+   // Calculate how much time is left
+   %timeLeft = $MOLE_LEVEL::timePerGame - 
+    %this.getSceneTime(); // Round it to full seconds
+   %timeLeft = mFloor(
+   %timeLeft + 0.5 );
+
+   // Update the GuiTextCtrl
+   
+   MoleGuiTimer.text = "Timer:" SPC %timeLeft ;
+}
+</pre>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="1"><I><B>Code Sample 4.3</B></I></FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always"><FONT face="Arial, sans-serif"><FONT size="3"><I><B>Game 
+					Over</B></I></FONT></FONT></P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">Now we need to 
+			add a check so that when the game is over, we show a "GAME OVER" message.&nbsp; 
+			We will not be adding a way to restart the game- you can add that yourself if 
+			you feel up to the challenge.&nbsp; First create a Text Object in the center of 
+			the screen with the text "GAME OVER" and the name MoleGuiGameOver.&nbsp; (<EM>See 
+				Figure 4.5</EM>)</FONT></FONT></P>
+<P style="MARGIN-BOTTOM: 0in"><IMG src="images/WhackAMoleGameFigure4-5.jpg" 
+        align="left" border="0" name="graphics9" width="700"><BR clear="left">
+	<FONT size="1"><I><B>Figure 4.5</B></I></FONT><BR>
+</P>
+<BR>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="2">Now we just 
+			need to add a couple lines to startGame and moleLevel::onUpdateScene to operate 
+			the Game Over message.&nbsp; In startGame, we want to make the&nbsp;Game Over 
+			invisible.&nbsp; Then, when we are out of time, we want to pause the scene and 
+			make it visible again.&nbsp; </FONT></FONT>
+</P>
+<BR>
+<pre class="code">function startGame(%level)
+{
+   //exec game scripts
+   exec("./mole.cs");
+   exec("./molelevel.cs");
+
+
+   // Set The GUI.
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+
+   moveMap.push();
+
+
+   // this has been added:
+   sceneWindow2D.setUseObjectMouseEvents( true );
+
+   if( isFile( %level ) || isFile( %level @ ".dso"))
+      sceneWindow2D.loadLevel(%level);
+      
+   <B>moleGuiGameOver.visible = 0;</B>
+}
+</pre>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="1"><I><B>Code Sample 4.4</B></I></FONT></FONT>
+	<BR>
+</P>
+<pre class="code">function moleLevel::onUpdateScene(%this)
+{
+   // Calculate how much time is left
+   %timeLeft = $MOLE_LEVEL::timePerGame - %this.getSceneTime();
+
+   // Round it to full seconds
+   %timeLeft = mFloor( %timeLeft + 0.5 );
+
+  <B>// Time-check
+   if( %timeLeft &lt; 0 )
+   {
+      %this.setScenePause( true );
+      MoleGuiGameOver.visible = 1;
+      %timeLeft = 0;
+   } </B>   
+   
+   // Update the GuiTextCtrl
+   MoleGuiTimer.text = "Timer:" SPC %timeLeft ;
+}
+</pre>
+<P style="MARGIN-BOTTOM: 0in"><FONT face="Arial, sans-serif"><FONT size="1"><I><B>Code Sample 4.5</B></I></FONT></FONT></P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<P style="MARGIN-BOTTOM: 0in">&nbsp;</P>
+<BR>
+<BR>
+<BR>
+<DIV TYPE="FOOTER">
+	<P style="MARGIN-BOTTOM: 0in" align="center"><FONT face="Arial, sans-serif"><FONT style="FONT-SIZE: 8pt" size="1"><I>Revision 
+					2.1</I></FONT></FONT></P>
+</DIV>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

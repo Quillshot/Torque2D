@@ -1,0 +1,262 @@
+<HTML>
+		<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 41;
+   parent.leftFrame.expandToItem('tree2', 'doc41');
+   var element = parent.leftFrame.document.getElementById('doc41');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+			<TITLE>Torque 2D - Wack-A-Mole Tutorial Part 1</TITLE>
+			<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		</HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="CREATED" CONTENT="20060525;16445800">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;14154000">
+<STYLE> <!-- @page { size: 8.5in 11in; margin: 0.79in }
+	P { margin-bottom: 0.08in }
+	TD P { margin-bottom: 0in }
+	--></STYLE>
+		<BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+	<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0.2in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 20pt">Torque 
+				2D - Whack-A-Mole Tutorial Part 1</FONT></FONT></P>
+</DIV>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">In this 
+			tutorial you will learn how to create a Whack-A-Mole game using Torque 
+            2D (T2D) Level Builder and some scripting. The tutorial consists of five 
+			parts in which we will gradually create a playable game from the ground up.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>First things 
+				first - Creating a New Project</B></FONT></FONT></P>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Our first step is to
+create a new project in Torque 2D called &ldquo;WackAMole&rdquo;. <a class = "componentNoJSLink" href = "../../../Component Tutorials/Projects/Create a New Project.html">If you're unsure on how to do this click here.</a><a id = "componentLink0" class = "componentLink" onClick = "loadComponent('Projects/Create a New Project', '0', 'If you\'re unsure on how to do this click here.')"><u>If you're unsure on how to do this click here.</u></a><span class = "componentBox" ID = "componentTag0" style="overflow:hidden;display:none;"></span>
+</font></font></p>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4"><B>Part 1 - Create 
+				a Mole</B></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Load in our 
+					images</B></I></FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2"> Now we will 
+			create the first version of the mole. The aim for this level is to put the mole 
+			on the screen and make him disappear when clicked on.</FONT></FONT></P>
+<BR>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">First we need 
+			to setup the images and Animations for our mole. Import the "moleArt" 
+			resource.&nbsp;<a class = "componentNoJSLink" href = "../../../Component Tutorials/Adding Assets/Importing Resources.html">If you don't know how to add resources, click here.</a><a id = "componentLink1" class = "componentLink" onClick = "loadComponent('Adding Assets/Importing Resources', '1', 'If you don\'t know how to add resources, click here.')"><u>If you don't know how to add resources, click here.</u></a><span class = "componentBox" ID = "componentTag1" style="overflow:hidden;display:none;"></span></FONT></FONT></P>
+<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now your object 
+			library should be populated with all of the mole art <I>(as shown in Figure 1.4)</I></FONT></FONT></P>.
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure1-4.jpg" 
+                    NAME="graphics2" ALIGN="left" BORDER="0" width="700"><BR CLEAR="left">
+				<FONT FACE="Times New Roman, serif"><FONT SIZE="1"><I><B>Figure 1.4</B></I></FONT></FONT></P>
+			<BR CLEAR="left">
+			<BR>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Putting our mole 
+								on the screen</B></I></FONT></FONT></P>
+			<BR>
+			
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we will put 
+						the mole on the screen. This is rather easy. Go to the right panel and select 
+						the CREATE tab. Next, go down to the Animated Sprites rollout and drag and drop 
+						the three mole sprites with heads above-ground into the center of your level <I>(as 
+							shown in Figure 1.5)</I>.</FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure1-5.jpg" 
+                    NAME="graphics6" ALIGN="left" BORDER="0" width="700"><BR CLEAR="left">
+				<FONT FACE="Times New Roman, serif"><FONT SIZE="1"><I><B>Figure 1.5</B></I></FONT></FONT></P>
+			<BR CLEAR="left">
+			<BR>
+			<br>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">You can test 
+						the game going to Project &gt; Run Game. You will probably be told that you 
+						have to save the level before you can test it. Save it as level1.t2d in 
+						WhackAMole/data/levels/. When you finally test your game, you should see the 
+						moles sitting there doing nothing. In the next part of the tutorial, we will 
+						change that.</FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in; PAGE-BREAK-BEFORE: always"><FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B>Making 
+								our mole disappear</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Next we need to 
+						make the mole disappear when it is clicked on. To accomplish this we will need 
+						some scripting. Close T2D and create a new file called mole.cs in 
+						WhackAMole/gameScripts/ and open it in your favorite script editor. Let's first 
+						write the function mole::onAdd(). This function will be called automatically 
+						when a new mole is created. We use onAdd() here instead of onLevelLoaded() 
+						because later on we will be creating moles after the game has been loaded and 
+						started. This way, even those moles will be setup correctly. We will use this 
+						to set our moles to use &quot;mouse events&quot;. Mouse events will allow us to perform 
+						an action when we click or drag on our object.</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function mole::onAdd(%this)
+{
+   // enable mouse events for the mole so we can easily determine when it is clicked on
+   %this.setUseMouseEvents( true );
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 1.1</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now let's make 
+						the mole clickable. Add this function right after the other one:</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function mole::onMouseDown(%this, %modifier, %worldPosition, %mouseClicks)
+{
+   if( %this.getAnimationName() $= ("animMoleComeOut" @ %this.moleColor) )
+      %this.playAnimation( "animMoleWhacked" @ %this.moleColor );
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 1.2</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">If the mole is 
+						playing the animMoleComeOutXXX animation when you click on it, it will play the 
+						animMoleWhackedXXX animation. If you click on the mole while it's sinking into 
+						the hole again, it will start playing the animMoleWhackedXXX animation again 
+						from the beginning. Note that we append the variable %this.moleColor to the 
+						animation names. This variable must hold the color - Red, Green, or Lilac - of 
+						the mole. This way the right animation names are generated and we use the same 
+						code for moles of all colors. For now we have to set this variable by hand in 
+						the level builder but later in the tutorial you will see that this is done 
+						automatically. The mole also should disappear when the animation has finished, 
+						so we add another function to the end of our file:</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function mole::onAnimationEnd(%this)
+{
+   if( %this.getAnimationName() !$= ("animMoleComeOut" @ %this.moleColor) )
+      %this.safeDelete();
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 1.3</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">When an 
+						animation has completed this function is called. Then we check to make sure 
+						that the animation that has just ended is not the animation that is triggered 
+						when the mole comes out, if so then the mole is deleted at the end of its 
+						animation.</FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">We need to do 
+						two things. First we need to make sure the engine knows to run the script file 
+						we just created. We can do this with a command called &quot;exec()&quot;. This command 
+						basically tells the engine that we want a script file included when it runs, 
+						otherwise anything in that script won't be utilized. The second thing we have 
+						to do is turn on mouse events for the t2dSceneWindow our game runs in 
+						(otherwise the mole::onMouseDown() function we specified above will not work). 
+						This is done by navigating to the WhackAMole/gameScripts/game.cs file and 
+						modifying the startGame() function to look like this (new code is bolded):</FONT></FONT></P>
+			<BR>
+			<pre class="code">
+function startGame(%level)
+{
+   //exec game scripts
+   <b>exec("./mole.cs");   </b>
+
+
+   // Set The GUI.
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+
+   new ActionMap(moveMap);   
+   moveMap.push();
+
+   $enableDirectInput = true;
+   activateDirectInput();
+   enableJoystick();
+
+   // this has been added:
+   <b>sceneWindow2D.setUseObjectMouseEvents( true );</b>
+
+      sceneWindow2D.loadLevel(%level);
+}
+</pre>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code Sample 1.4</B></I></FONT></FONT></P>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now open the 
+						level builder, select one of the mole sprites in the Scene View and go to the 
+						EDIT tab to the right <I>(as shown in Figure 1.6)</I>. </FONT></FONT>
+			</P>
+			<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure1-6.jpg" 
+                    NAME="graphics8" ALIGN="left" BORDER="0" dir="ltr" width="700"><BR CLEAR="left">
+				<FONT FACE="Times New Roman, serif"><FONT SIZE="1"><I><B>Figure 1.6</B></I></FONT></FONT></P>
+			<BR CLEAR="left">
+			Set the mole's class to "Mole".&nbsp; <a class = "componentNoJSLink" href = "../../../Component Tutorials/Script Linking/Setting an Objects Class.html"> If you don't know how to do this,click here.</a><a id = "componentLink2" class = "componentLink" onClick = "loadComponent('Script Linking/Setting an Objects Class', '2', ' If you don\'t know how to do this,click here.')"><u> If you don't know how to do this,click here.</u></a><span class = "componentBox" ID = "componentTag2" style="overflow:hidden;display:none;"></span>
+			<p>Next, add a dynamic field to the mole called "moleColor" and give it a value 
+				depending on the mole you are editing (either "red", "green", or 
+				"Lilac").&nbsp;<a class = "componentNoJSLink" href = "../../../Component Tutorials/Field Editing/Using Dynamic Fields.html">If you don't know how to add dynamic fields, click here.</a><a id = "componentLink3" class = "componentLink" onClick = "loadComponent('Field Editing/Using Dynamic Fields', '3', 'If you don\'t know how to add dynamic fields, click here.')"><u>If you don't know how to add dynamic fields, click here.</u></a><span class = "componentBox" ID = "componentTag3" style="overflow:hidden;display:none;"></span><BR>
+			</p>
+			<TABLE WIDTH="700" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+				<COLGROUP>
+					<COL WIDTH="128">
+						<COL WIDTH="128">
+							<THEAD>
+								<TR VALIGN="top">
+									<TD WIDTH="50%">
+										<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure1-8.jpg" NAME="graphics10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+											<FONT SIZE="1"><I><B>Figure 1.8</B></I></FONT></P>
+										<BR CLEAR="left">
+										<BR>
+									</TD>
+									<TD WIDTH="50%">
+										<P STYLE="MARGIN-BOTTOM: 0in"><BR>
+										</P>
+										<IMG SRC="images/WhackAMoleGameFigure1-9.jpg" NAME="graphics11" ALIGN="left" BORDER="0"
+											width="283" height="201"><BR CLEAR="left">
+										<FONT FACE="Times New Roman, serif"><FONT SIZE="1"><I><B>Figure 1.9</B></I></FONT></FONT>
+									</TD>
+								</TR>
+							</THEAD>
+			</TABLE>
+			<BR>
+			<BR>
+			<BR>
+			<TABLE WIDTH="665" BORDER="0" CELLPADDING="4" CELLSPACING="0">
+				<COLGROUP>
+					<COL WIDTH="223">
+						<COL WIDTH="426">
+							<THEAD>
+								<TR VALIGN="top">
+									<TD WIDTH="223">
+										<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/WhackAMoleGameFigure1-10.jpg" NAME="graphics12" ALIGN="left" BORDER="0"><BR CLEAR="left">
+											<FONT SIZE="1"><I><B>Figure 1.10</B></I></FONT></P>
+									</TD>
+									<TD WIDTH="426">
+										<P><FONT FACE="Arial, sans-serif"><FONT SIZE="2">That should be enough to get the mole 
+													clickable. Save all files, and click on the Play Level Button <I>(as shown in 
+														Figure 1.10)</I> or go to Project &gt; Run Game. </FONT></FONT>
+										</P>
+									</TD>
+								</TR>
+							</THEAD>
+			</TABLE>
+			<BR>
+			<P STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now when you 
+						click on a mole, first the animMoleWhackedXXX animation should be played then 
+						it should disappear altogether.</FONT></FONT></P>
+			<DIV TYPE="FOOTER">
+				<P ALIGN="center" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1" STYLE="FONT-SIZE: 8pt"><I>Revision
+							</I></FONT></FONT>
+		</FONT><font size="1"><i><font style="FONT-SIZE: 8pt">2.1</font></i></font></P>
+</DIV></FONT> <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

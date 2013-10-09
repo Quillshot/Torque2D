@@ -1,0 +1,600 @@
+<html>
+
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 82;
+   parent.leftFrame.expandToItem('tree2', 'doc82');
+   var element = parent.leftFrame.document.getElementById('doc82');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="A-Star%20Path%20Finding_files/filelist.xml">
+<title>Hierarchy</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>StephenZ</o:Author>
+  <o:LastAuthor>StephenZ</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>88</o:TotalTime>
+  <o:Created>2008-04-22T17:49:00Z</o:Created>
+  <o:LastSaved>2008-04-22T18:42:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>945</o:Words>
+  <o:Characters>5391</o:Characters>
+  <o:Lines>44</o:Lines>
+  <o:Paragraphs>12</o:Paragraphs>
+  <o:CharactersWithSpaces>6324</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--p
+	{widows: 2;
+	orphans: 2 ;}
+p.WESTERN
+	{so-language: en-US ;}
+p.CTL
+	{so-language: ar-SA ;}
+h1
+	{widows: 2;
+	orphans: 2 ;}
+h1.WESTERN
+	{so-language: en-US ;}
+h1.CTL
+	{so-language: ar-SA ;}
+h2
+	{widows: 2;
+	orphans: 2 ;}
+h2.WESTERN
+	{so-language: en-US;}
+h2.CTL
+	{so-language: ar-SA;}
+h3
+	{widows: 2;
+	orphans: 2 ;}
+h3.WESTERN
+	{so-language: en-US;}
+h3.CTL
+	{so-language: ar-SA ;}
+td p
+	{widows: 2;
+	orphans: 2 ;}
+td p.WESTERN
+	{so-language: en-US ;}
+td p.CTL
+	{so-language: ar-SA ;}
+pre
+	{widows: 2;
+	orphans: 2 ;}
+pre.WESTERN
+	{so-language: en-US ;}
+pre.CTL
+	{so-language: ar-SA ;}
+p.QUICK-DEFINITION-WESTERN
+	{so-language: en-US ;}
+p.QUICK-DEFINITION-CTL
+	{so-language: ar-SA ;}
+
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.5pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.western, li.western, div.western
+	{mso-style-name:western;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.cjk, li.cjk, div.cjk
+	{mso-style-name:cjk;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.ctl, li.ctl, div.ctl
+	{mso-style-name:ctl;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.quick-definition-western, li.quick-definition-western, div.quick-definition-western
+	{mso-style-name:quick-definition-western;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:maroon;}
+p.quick-definition-cjk, li.quick-definition-cjk, div.quick-definition-cjk
+	{mso-style-name:quick-definition-cjk;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:maroon;}
+p.quick-definition-ctl, li.quick-definition-ctl, div.quick-definition-ctl
+	{mso-style-name:quick-definition-ctl;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:5.75pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:maroon;}
+p.western1, li.western1, div.western1
+	{mso-style-name:western1;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.cjk1, li.cjk1, div.cjk1
+	{mso-style-name:cjk1;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.ctl1, li.ctl1, div.ctl1
+	{mso-style-name:ctl1;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:274102655;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2115047670 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1174615811;
+	mso-list-template-ids:987376358;}
+@list l2
+	{mso-list-id:1794249466;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1360319058 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1841653368;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1951219464 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1930775254;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2123048614 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<BODY id = "BODYID" onLoad = "initComponent()"  style="width: 700px; padding: 10px;" lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<div TYPE=FOOTER>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:18.0pt'>T2D A-Star Path Finding<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1>Overview</h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>T2D 1.7.3 introduced an
+integrated A-Star path finding implementation designed to work directly with
+your level. As an introductory feature, the <span class=SpellE>AStar</span> implementation
+provides the key capabilities needed for many styles of games that benefit from
+dynamic path finding. The initial implementation was based off the excellent
+work performed by Phil <span class=SpellE>Shenk</span>, as first released in
+his T2D resource <a
+href="http://www.garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=9711">A-Star
+<span class=SpellE>Pathfinding</span> Extension for T2D</a>. Some of the
+features have been streamlined and reconfigured for binary only users, and a
+few capabilities added or adjusted in this release, providing additional
+flexibility. Many Thanks to Phil for his outstanding work!</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1>A-Star Concepts</h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>A-Star Path Finding is a common computer AI requirement that
+allows developers to create a set of data within their game world to enable agents to navigate within the world in a (relatively) smart manner. It is
+based on a powerful and flexible algorithm designed around the concept of a
+grid that contains values indicating how much &quot;effort&quot; it requires to navigate
+across a grid square, allowing objects to make decisions about what path to
+take to reach a destination.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>A-Star calculations are relatively expensive compared to
+other aspects of a game engine, and it's important to realize from the
+beginning that they don't have unlimited power-the size of a grid, and therefore
+the total number of navigation points within the grid, directly impacts the time
+it takes to calculate an A-Star path. Careful selection of a navigation grid
+size is very important for every game and is dependent on a number of factors,
+so it is important to realize that you can only go so far with how you use A-Star
+navigation before you run into performance issues.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>There are many different strategies and techniques for
+optimizing A-Star Path Finding, and while we've selected a basic feature set
+that balances functionality and performance, some games may require more
+capability, or more performance. A Torque 2D source code license
+allows you to modify the underlying algorithms, and as the T2D A-Star
+implementation matures we will be leveraging requests and suggestions from the
+Torque Community to make this feature as powerful and robust as feasible for
+our users.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h2>Torque 2D A-Star Implementation</h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>As Phil describes in his resource, T2D Path Finding is based
+around two key concepts:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Integration with
+    t2dTileMap objects:</b> While the <span class=SpellE>AStar</span> grid and paths are independent
+classes within T2D, they utilize Tile Maps and Tile Layers to provide the
+weight data, allowing users to leverage the existing Tile Map editor interface
+for custom grid development. Users create a Tile Map and Tile Layer to
+represent their path finding grid, and create brushes with custom data values
+to define the weights of the grid itself. When an A-Star path is desired, the
+built in classes access the data within the Tile Layers to generate their
+paths.</p>
+
+<p>To create a grid with predefined path information, you should use the T2D tile map editor, and define any brushes meant to represent tiles with travel costs via the customData field.</p>
+<ul>
+<li>CustomData value of 0: No cost to travel</li>
+<li>CustomData value of 10: tile is not passable</li>
+<li>CustomData value between 0-10: increased cost of travel, which will control if this tile is used based on relative path weights of the nearby tiles</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Powerful TorqueScript
+Interface:</b> All of the major A-Star functionality is managed via
+TorqueScript, with the ability to create and utilize A-Star paths with no C++
+code. This implementation also allows <span class=SpellE>aStarActors</span> to
+use <span class=SpellE>T2D's</span> <span class=SpellE><span class=GramE>moveTo</span></span><span
+class=GramE>(</span>) capability to control how objects within the scene
+navigate across the A-Star grid based on information provided by the <span
+class=SpellE>createPath</span>() script call.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3>Torque 2D A-Star Objects (C++)</h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>There are two classes that implement the A-Star
+functionality within T2D, both of which are fully accessible via TorqueScript:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>pathGrid2d: </b>This
+class represents the data grid used for <span class=SpellE>aStarActors</span>
+to interact with the navigation grid. It provides the following key
+functionalities:</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>Tile
+     Layer Integration-access to the T2D Tile Layer that defines the weights
+     for the navigation grid.</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>Path
+     Creation-allows <span class=SpellE>aStarActors</span> to provide a start
+     point and an end point, and calculates a list of nodes to navigate to the
+     destination</li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>Path
+     Management - stores all paths that have been created for this grid, and allows
+     for both creation and deletion of A-Star paths.</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>pathAStar2d:</b> This
+class represents an individual path that has been created based upon the grid
+data. It allows for:</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list .5in'>Creating
+     and <span class=GramE>Deleting</span> paths-using the data within the <span
+     class=SpellE>pathGrid</span>, <span class=SpellE>aStarActors</span> can
+     individually create their own paths, and use the list of nodes within the
+     path to navigate through the game world.</li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo3;tab-stops:list .5in'>Accessing
+     path information-<span class=SpellE>aStarActors</span> can either use the stock
+     navigation harness to traverse the path, or can query the path directly
+     for more advanced navigation, such as <span class=SpellE>spline</span>
+     based movement.</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h3>Torque 2D A-Star Script <span class=SpellE>NameSpaces</span> (TorqueScript)</h3>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Torque 2D also provides a TorqueScript interface
+to the underlying implementation that allows for easy use of the navigation
+grid without delving deep into the A-Star implementation. Individual T2D
+objects can be assigned a class or <span class=SpellE>superclass</span> of <span
+class=SpellE><b style='mso-bidi-font-weight:normal'>aStarActor</b></span>,
+which manages higher level needs for developers, including:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo4;tab-stops:list .5in'>Management
+     of actor states-notification and handling of basic AI dependent on the
+     validity of assigned paths, world change notifications (dynamic weight
+     assignment to the grids), and path creation/deletion management. Also
+     provides for Active, Frustrated, and Dead states for <span class=SpellE>aStarActors</span>.</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo4;tab-stops:list .5in'>Integration
+     with T2D <span class=SpellE>moveTo</span>()-utilizing the path information
+     provided by the pathAStar2d class, <span class=SpellE>aStarActors</span>
+     can control how they move along a list of nodes, including callback
+     notification for each node achieved.</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo4;tab-stops:list .5in'>World
+     change notification-handles dynamic (real time) changes to the <span
+     class=SpellE>aStarGrid</span>, and re-calculates paths based on world
+     state changes.</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>T2D also provides utility functions for working with the
+pathGrid2d C++ class via the <b style='mso-bidi-font-weight:normal'>pathGrid2d</b>
+namespace, including:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo5;tab-stops:list .5in'>Creation
+     of and coupling with T2D Level Builder Tile Layers identified as a <span
+     class=SpellE><b style='mso-bidi-font-weight:normal'>PathLayer</b></span>.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo5;tab-stops:list .5in'>Grid
+     weight access methods for modifying and retrieving navigation grid weights
+     based on either world coordinates or grid index pairs.</li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo5;tab-stops:list .5in'>Interface
+     with the <span class=SpellE>aStarActor</span> namespace for notification of
+     world change events.</li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h2>Use of the T2D A-Star Implementation</h2>
+
+<p class=MsoNormal>An introduction tutorial is provided 
+    <a href="A-Star%20Basic%20Setup.html">&lt;here&gt;</a> to guide you through the 
+    features of the T2D A-Star system.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</div>
+
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+
+</html>

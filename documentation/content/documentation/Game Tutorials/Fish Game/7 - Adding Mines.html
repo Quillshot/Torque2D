@@ -1,0 +1,494 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 32;
+   parent.leftFrame.expandToItem('tree2', 'doc32');
+   var element = parent.leftFrame.document.getElementById('doc32');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Game Tutorial Part 7</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;12200900">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Game Tutorial - Part 7</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>7. 
+            Adding Mines</B></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B></B></I></FONT></FONT>
+</P>
+<H3 class="western" style="MARGIN-BOTTOM: 0in" align="justify">7.1 A new obstacle</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now our fish game has bubbles we need 
+         to eat, and fish that try to eat it before us, as well as the need to eat the 
+         bubbles in time to survive. It's missing one thing though, exploding fish! That 
+         is why we need mines, to add a true peril as well as exploding fish. We already 
+         have an image that will work as our mine in our multi-frame fish image. So we 
+         will need to create a new class for this mine. Our mine will react a bit 
+         differently than any of our other objects. We don't want it to just sit there, 
+         since that doesn't make that great of an obstacle. We also don't want it to 
+         just drop like our bubbles do, that just doesn't seem to fit a mine quite so 
+         well (plus it makes it a bit too predictable). So, what we will do is drop the 
+         mine from the top of the screen, and calculate a random center position (we'll 
+         give it a proper range of our level's height). Then it will float up and down 
+         around that position. That should provide an interesting enough obstacle! On 
+         top of that if the player fish touches it, it will go off and decrease the 
+         player's life substantially. Thus we have exploding fish!</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="3"><I><B></B></I></FONT></FONT>
+</P>
+<H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">7.2 
+   Creating our base mine script</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our first step will be to browse out to <I>
+            MyFishGame/gameScripts</I> and to add a &quot;mine.cs&quot; script file. Now that we 
+         have the script file, we need to be sure to exec it, so open up your <I>game.cs</I>
+         script file and modify your <I>startGame()</I> function to look like this.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+function startGame(%level)
+{
+   exec("./player.cs");
+   exec("./fishfood.cs");
+   exec("./fish.cs");
+   exec("./mine.cs");
+
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+   
+   new ActionMap(moveMap);   
+   moveMap.push();
+   
+   $enableDirectInput = true;
+   activateDirectInput();
+   enableJoystick();
+   
+   sceneWindow2D.loadLevel(%level);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.2.1</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now let's open our <I>mine.cs</I> and 
+         add our first function. Our <I>onLevelLoaded()</I> function.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">      
+function Mine::onLevelLoaded(%this, %scenegraph)
+{
+   %this.startingY = %this.getPositionY();
+   %this.spawn();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.2.2</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">All we do here is store the starting Y 
+         position, and call another function called <I>spawn()</I>. Since we plan to 
+         call <I>spawn()</I> whenever the player fish hits our mine, we want to separate 
+         it out into its own function. That way we can just call it now.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now lets add our <I>spawn()</I> function.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+function Mine::spawn(%this)
+{
+   %this.state = "fallingDown";
+   %this.speed = getRandom(%this.minSpeed, %this.maxSpeed);
+
+
+   %this.originX = getRandom(%this.minX, %this.maxX);
+   %this.originY = getRandom(%this.minY, %this.maxY);
+
+
+   %this.setPosition(%this.originX, %this.startingY);
+
+
+   %this.moveTo(%this.originX, %this.originY, %this.speed, true, true);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.2.3</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">In our first step, we set a field on 
+         our mine called &quot;state&quot; to &quot;fallingDown.&quot; For our mine we are going to set up a 
+         very simple state machine, that way we can have it fall and then continually 
+         float up and down. Next we set a field on our mine called &quot;speed&quot; to a random 
+         value between a min and max speed. As you may have guessed we will be setting 
+         the <I>minSpeed</I> and <I>maxSpeed</I> values as dynamic fields on our mine 
+         object when we create it. </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Next we set a &quot;originX&quot; and &quot;originY&quot; 
+         position, by getting random values from the min and max values for X and Y. 
+         This is going to be the position we want to fall down to, and then begin the 
+         float up and down. We need to store it like this, so we can use it as a point 
+         of reference for our floating up and down states. We then set our mine's 
+         position to our random X origin position, and then our &quot;startingY&quot; position. 
+         Our <I>startingY</I> position was set in our <I>onLevelLoaded()</I> function. 
+         This will reset the mine to the top of the screen every time we spawn our mine. </FONT>
+   </FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final line of script calls a very 
+         useful function that any T2D object can call, the <I>moveTo()</I> function. 
+         We first pass it the X and Y positions we want it to move to. We then pass it 
+         the speed at which we want it to move there. The next value is a <I>true</I> or <I>
+            false</I> value defining whether we want it to auto stop when it reaches 
+         it's destination. The final &quot;true&quot; is telling it to perform a callback function 
+         when it reaches there. This is our next function, so add these lines after our 
+         previous function.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+function Mine::onPositionTarget(%this)
+{
+   %this.floatRange = getRandom(%this.minFloatRange, %this.maxFloatRange);
+
+
+   switch$(%this.state)
+   {
+      case "fallingDown":
+         %this.floatDown();
+
+
+      case "floatingDown":
+         %this.floatUp();
+
+      case "floatingUp":
+         %this.floatDown();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.2.4</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This function is called whenever we've 
+         reached a destination that we've defined in our <I>moveTo()</I> function. The 
+         first thing we do is get a random float range. This adds another dynamic aspect 
+         to our mines. Each time they float up and down, they'll change how far they 
+         will float. We then have a string <I>switch</I> statement for our state. As you 
+         can see we have three possible states. Our <I>fallingDown</I> state is for our 
+         initial drop, our <I>floatingDown</I> state is after we've gotten to our origin 
+         and we are simply floating downward, and our <I>floatingUp</I> state is when we 
+         float back up to repeat the <I>floatingDown</I> state and back again, etc. Each 
+         state calls an appropriate function. If this is called and our state is set to 
+         falling down then we need to fall down, if we're floating down then we need to 
+         float down, and finally if we're floating up we need to float up. </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now lets add our <I>floatUp</I> and <I>floatDown</I>
+         functions, they are fairly similar so I will give you both of them together.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+function Mine::floatUp(%this)
+{
+   %this.state = "floatingUp";
+
+
+   %targetY = %this.originY - %this.floatRange;
+
+
+   %this.moveTo(%this.originX, %targetY, %this.speed, true, true);
+}
+
+
+function Mine::floatDown(%this)
+{
+   %this.state = "floatingDown";
+
+
+   %targetY = %this.originY + %this.floatRange;
+
+
+   %this.moveTo(%this.originX, %targetY, %this.speed, true, true);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.2.5</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">In each of our functions, the first 
+         thing we do is set our state to the mode we're entering. We then get a 
+         &quot;targetY&quot; position. In our <I>floatUp</I> function, our <I>targetY</I> is 
+         determined by taking our <I>originY</I> and subtracting our <I>floatRange</I>. 
+         In our <I>floatDown</I> function, it's determined by taking our <I>originY</I> and 
+         adding our <I>floatRange</I>. We then call the <I>moveTo</I> function with our 
+         newly generated <I>targetY</I> position and already set speed, telling it to 
+         auto stop and perform a callback.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we are done with our mine script 
+         for the moment. We won't worry about collision right now, we want to first make 
+         sure we can drop our mine and it will indeed behave the way we've scripted it 
+         to. Be sure to save your scripts, and we can move on to the <I>Level Builder</I>.
+      </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">7.3 
+   Creating our base mine in the Level Builder
+</H3>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our level should have our player fish, 
+         four other fish, our background images, and our little bubble just above the 
+         level. It's time to add another image, so look for your 14 frame fish image in 
+         your <I>Static Sprites</I> library and click the image until you get to frame 
+         13 <I>(as shown in Figure 7.3.1)</I>. Now drag and drop our mine image, just 
+         above the level. You can use the bubble's position as a reference. Resize it to 
+         about twice the bubbles size as well. We have our mine object! Next we need to 
+         apply the Mine class we created to the mine object. Click the &quot;Edit&quot; tab and 
+         expand the Scripting section. Then type in &quot;Mine&quot; under the class field (as 
+         shown in Figure 7.3.2). Now we need to add a few dynamic fields to it for our 
+         script to use. So ensure the mine is selected, and then click the <I>Edit</I> tab. 
+         Click the <I>Dynamic Fields</I> label to expand it, and add the following 
+         fields and values <I>(as shown in Figure 7.3.2b)</I>.</FONT></FONT></P>
+<table id="Table1">
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-3-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 7.3.1</B></I></FONT></P>
+      </td>
+      <td width="25">
+      </td>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-3-3.jpg" NAME="graphics2" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 7.3.2</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-3-2.jpg" NAME="graphics7" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 7.3.2b</B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">These values give us a good range of 
+         data for our mine to use to perform our scripted functionality. Now we can save 
+         and click the <I>Play Level</I> button to test our level. Once your game starts 
+         you should see your mine appear and float down at some random point. At a 
+         random Y position it will begin floating up and down.</FONT></FONT></P>
+<BR CLEAR="left">
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">So now our mine drops and floats, our 
+      next step is setting up the damage to the player. </FONT></FONT>
+<P>&nbsp;</P>
+<H3>7.4 Making our mine collide with our player fish</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that we have our mine behaving 
+         properly, we need to make it do more than just float and act as an interesting 
+         decoration. To make it do damage to our player, we must make it collide with 
+         our player. This is a pretty simple process, though, much similar to our bubble 
+         colliding with our player. We will start by opening up our <I>mine.cs</I> script 
+         file and adding this function to it.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+function Mine::onCollision(%srcObj, %dstObj, %srcRef, %dstRef, %time, %normal,
+     %contactCount, %contacts)
+{
+   if(%dstObj.class $= "PlayerFish")
+   {
+      %srcObj.spawn();
+      %dstObj.modifyLife(-%srcObj.damageValue);
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.4.1</B></I></FONT></FONT></P>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">This <I>onCollision</I> function for 
+      our mine, is very similar to our fish food. In fact the only difference is that 
+      we don't have a case for colliding with other fish, and instead of adding life 
+      we subtract the amount of life stored in our mine's <I>damageValue</I> field.</FONT></FONT>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now be sure to save your script file. 
+         Select your mine and click on the <I>Edit</I> tab. Click on the <I>Collision</I>
+         label to expand your collision options. Check <I>Send Collision</I>, and 
+         uncheck both the <I>Send Physics</I> and <I>Receive Physics</I> options. Now 
+         check the <I>Callback</I> option, to be sure the script we just added will be 
+         called. Click the dropdown option for <I>Detection Mode</I> and set it to 
+         CIRCLE. When you do this, you should get a couple of more options. Be sure to 
+         uncheck the <I>Superscribe Ellipse</I> option <I>(as shown in Figure 7.4.1)</I>.
+      </FONT></FONT>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-4-1.jpg" NAME="graphics4" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 7.4.1</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final step is to add a dynamic 
+         field for &quot;damageValue&quot;, so our script can pass the proper damage to our player 
+         fish. So click on your <I>Dynamic Fields</I> label to expand it and add the 
+         field &quot;damageValue&quot; and the value of &quot;20&quot; <I>(as shown in Figure 7.4.2)</I>. 
+         Now you can save your level, and click the <I>Play Level</I> button to test it. </FONT>
+   </FONT>
+</P>
+<br>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-4-2.jpg" NAME="graphics5" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 7.4.2</B></I></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Once your level loads, you should see 
+         your fish sitting in the center, then the other fish swimming around. Your 
+         bubble should start falling at a random location and then slowly your mine 
+         should begin to fall. Move your fish into the mine and it should spawn again 
+         and you should take a large loss of life! Not quite the visual response we 
+    expect from 
+         exploding fish, but we do have our fish taking mine damage!</FONT></FONT></P>
+<BR>
+<BR>
+<H3 class="western" style="MARGIN-BOTTOM: 0in; FONT-STYLE: normal" align="justify">7.5 
+   Adding better mine behavior</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you may have noticed, with your mine 
+         just sitting in the same spot floating up and down it isn't that much of an 
+         obstacle. Even if you have two or three of them like that it isn't, since you 
+         can just get used to the pattern and dodge the same spots. So to add a bit more 
+         of a challenge for the player we should add a time limit on the mine, so it 
+         will go off and respawn. Fortunately this is a very easy addition. Open up your <I>
+            mine.cs</I> script file and add the following to the end of your spawn 
+         function.</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<pre class="code">
+   if(isEventPending(%this.respawnSchedule))
+      cancel(%this.respawnSchedule);
+
+   %respawnTime = getRandom(%this.minRespawnTime, %this.maxRespawnTime);
+
+
+   %this.respawnSchedule = %this.schedule(%respawnTime, "spawn");
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 7.5.1</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><BR>
+</P>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">After you spawn your object it will 
+      check if there already is a respawn schedule pending and if so it will cancel 
+      it. Then it calculates the respawn time by getting a random value between our 
+      min respawn time and max respawn time. These will be set in the <I>Level Builder</I>
+      under the <I>Dynamic Fields</I>. Next it will schedule a spawn with the time 
+      being set by the random respawn time we've calculated. </FONT></FONT>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Make sure your mine is selected and 
+         click the <I>Edit</I> tab and select the <I>Dynamic Fields</I> label. Now add 
+         the dynamic fields &quot;minRespawnTime&quot; at a value &quot;10000&quot; (milliseconds), and 
+         &quot;maxRespawnTime&quot; at value &quot;20000&quot;, which should produce a time between 10 and 
+         20 seconds <I>(as shown in Figure 7.5.1)</I>. Now our mine should randomly 
+         respawn between 10 and 20 seconds after it is spawned. There is one more final 
+         modification we should do before playing our level. Right now with just one 
+         mine and one food spawn the game is a bit too simple. Select your bubble, go to 
+         your <I>Edit</I> menu and select the <I>Copy</I> option. Then go to the <I>Edit</I>
+         menu and hit the <I>Paste</I> option. Now drag the copy (it should be at the 
+         exact same position, so it will look, at first, like your moving the original 
+         copy) to the right side of the level. Do the same with the mines, but make two 
+         copies to have a total of three mines <I>(as shown in Figure 7.5.2)</I>. </FONT>
+   </FONT>
+</P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-5-1.jpg" NAME="graphics6" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 7.5.1</B></I></FONT></P>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure7-5-2.jpg" NAME="graphics8" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 7.5.2</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now be sure to save your level, then 
+         press the <I>Play Level</I> button. We have a much more dynamic and fun game. 
+         You should have three mines falling at random locations, as well as randomly 
+         respawning. Then you should have two bubbles randomly falling for food. </FONT>
+   </FONT>
+</P>
+          <P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <BR>
+</P>
+<h3>Conclusion</h3>
+<p class="western"><font face="Arial, sans-serif" size="2">We've added fish, food, more fish and mines to our game, along with tons of 
+    activity and peril.&nbsp; Hopefully we've also learned a lot about how to use 
+    the Level Builder and scripting to put together a fun and interesting game.</font></p>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

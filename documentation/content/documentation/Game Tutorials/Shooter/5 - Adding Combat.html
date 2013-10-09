@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 38;
+   parent.leftFrame.expandToItem('tree2', 'doc38');
+   var element = parent.leftFrame.document.getElementById('doc38');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Torque 2D &ndash; Shooter Tutorial Part 5</TITLE>
+	<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+	<META NAME="AUTHOR" CONTENT="User">
+	<META NAME="CREATED" CONTENT="20050225;10000000">
+	<META NAME="CHANGEDBY" CONTENT="Matt">
+	<META NAME="CHANGED" CONTENT="20060731;17084000">
+    <STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+		P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		TD P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+		TD P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		TD P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		TD P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</STYLE>
+</HEAD>
+<BODY id = "BODYID" onLoad = "initComponent()"  LANG="en-US" TEXT="#000000" LINK="#0000ff" DIR="LTR" style="width: 700px; padding: 10px;">
+<DIV TYPE=HEADER>
+	<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0.73in; font-style: normal">
+	<FONT FACE="Arial, sans-serif"><FONT SIZE=5 STYLE="font-size: 17pt"><B>Torque
+	2D &ndash; Shooter Tutorial &ndash; Part 5</B></FONT></FONT></P>
+</DIV>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>5.
+Adding Combat</B></FONT></FONT></P>
+<BR>
+
+<H2 CLASS="western">5.1 Making Missiles</H2>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>First we will need to get
+the player shooting at the enemy. To do this requires quite a bit of
+scripting &ndash; so first we need to give our player another dynamic
+field. Go into the playerShip's dynamic field rollout and add a
+variable missileSpeed &ndash; I set my value to 1000 <I>(as shown in
+Figure 5.1.1)</I>.&nbsp; </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-1-1.jpg" NAME="graphics1" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.1.1</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This field will define
+how fast our missile goes when we fire it. Now that you have your
+field set up, it is time to start scripting! Save your progress and
+close out T2D. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once you have T2D closed
+out, browse out to yourProjectName/gameScripts folder and open up
+your player.cs file. When you have your player.cs file open, add this
+to your onLevelLoaded function with all of your other keybind
+functions:</FONT></FONT></P>
+
+<pre class = "code">
+moveMap.bindCmd(keyboard, &quot;space&quot;, &quot;$pShip.createMissile();&quot;, &quot;&quot;);
+</pre>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.1</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This simply binds your
+space key to the global function createMissile. As you can see, we
+had to specify which object would be using the createMissile function
+&ndash; our player's ship. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now that we have the
+space bar calling the createMissile function, let's create that
+function. Place this code at the bottom of your player.cs file:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+function playerShip::createMissile(%this)
+{
+   %this.playerMissile = new t2dStaticSprite()
+   {
+      scenegraph = %this.scenegraph;
+      class = playerMissile;
+      missileSpeed=%this.missileSpeed;
+      player = %this;
+   };
+   %this.playerMissile.fire();
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.2</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This line of code creates
+our missile, and sets class and speed. Also, it creates fields that
+store the scenegraph and player. These will be used later on when our
+missile fires. After it creates the missile, it calls the fire
+function for the playerMissile class that we haven't created yet.
+This code is all that we need to add to the player.cs file, however,
+now we need to create a new file for the player's missile. </FONT></FONT>
+</P>
+
+<BR>
+
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; page-break-before: always">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>In your
+yourProjectName/gameScripts folder, create a new .cs file named
+&ldquo;playerMissile&rdquo;. This file will hold everything that we
+need for our player's missile to work properly. The first function we
+will need in our playerMissile.cs file is our fire function:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+function playerMissile::fire(%this)
+{
+   %this.setWorldLimit( kill, &quot;-85 -115 155 50&quot; );
+   %this.setLinearVelocityX(%this.missileSpeed);
+   %this.setPosition(%this.player.getPosition());
+   %this.setImageMap(playerMissileImageMap);
+   %this.setSize(12, 2);
+   %this.setCollisionActive( true, true );
+   %this.setCollisionPhysics(false, false);
+   %this.setCollisionCallback(true);
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.3</B></I></FONT></FONT></P>
+<BR>
+
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=256*>
+	<THEAD>
+		<TR>
+			<TD WIDTH=100% VALIGN=TOP BGCOLOR="#00ff00">
+				<P CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=2><B>**NOTE**</B></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>The
+				first line of this function: <B><I>%this.setWorldLimit( kill,
+				&quot;-85 -115 155 50&quot; );</I></B> assumes that your camera
+				view is exactly the same size as mine. Since this is highly
+				unlikely, you will probably have to alter the numbers to match
+				your camera view. The parameters for this function are as follows
+				<B><I>setWorldLimit(%mode, %minX, %minY, %maxX, %maxY).  </I></B><SPAN STYLE="font-style: normal">Look
+				under the World Limits tab of your Player ship for a good idea of
+				what values to use.</SPAN></FONT></FONT></P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This function handles
+most of the settings of our missile. It sets the world limit for us.
+I used numbers slightly larger than the player's world limit because
+I only wanted the missiles to be in code as long as they were on the
+screen. The next line sets the missile's  speed to a variable
+missileSpeed. This variable is the one we created on our player
+before we began coding. The next line sets the missile's position to
+be equal to the player's position. We did it like that so that no
+matter where the player is on screen, the missile will fire from the
+player's location. The next line sets the image of the missile, which
+is the name of the graphic we imported for the player's missile.   We
+then set the size of the missile.  The &ldquo;22&rdquo; represents
+the width of the missile and the &ldquo;2&rdquo; represents the
+height of the missile.  In my case this size worked well, your camera
+size might not exactly match mine, so remember this location to go
+back to if you want to tweak the missile's size.  The last three
+lines turn the collision on, turn the physics off, and turn on
+collision callbacks. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The next function we need
+deals with what is going to happen to our missile when it collides
+with something:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+function playerMissile::onCollision( %srcObj, %dstObj, %srcRef, %dstRef, %time, 
+    %normal, %contactCount, %contacts )
+{
+   if(%dstObj.class $= &quot;enemyShip&quot;)
+   {
+      %srcObj.explode();
+      %dstObj.explode();
+   }
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.4</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>This function is pretty
+simple &ndash; it is only triggered when the missile collides with
+something. When it collides, it checks the class of what it collided
+with. If it collided with an object with the class of &ldquo;enemyShip&rdquo;,
+it calls its own explode function and the enemyShip's explode
+function. </FONT></FONT>
+</P>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>The final function we
+will need for the playerMissile is the explode function that is
+triggered when it collides with an enemy ship:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+function playerMissile::explode(%this)
+{
+   %this.safeDelete();
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.5</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>All this function does is
+delete the missile when it is called. Now that we have our
+playerMissile set up, we need to add the explode function to our
+enemy.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>Open up your enemy.cs
+file. After you open it, add this function to the bottom of the file:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+function enemyShip::explode(%this)
+{
+   %this.spawn();
+}
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.6</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>All it does is call the
+enemy's spawn function when it is triggered. Save your files (if you
+haven't already) and go into your game.cs file and make your exec
+statements look like this:</FONT></FONT></P>
+
+<BR>
+
+<pre class = "code">
+   exec(&quot;./player.cs&quot;);
+   exec(&quot;./enemy.cs&quot;);
+   exec(&quot;./playerMissile.cs&quot;);
+</pre>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=1><I><B>Code
+Sample 5.1.7</B></I></FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=2>That is all the code you
+need to get your enemy ready to die &ndash; the rest of the work is
+done in the Level Builder. </FONT></FONT>
+</P>
+<BR>
+
+<BR>
+
+
+<BR>
+
+<H2 CLASS="western">5.2 Drawing Up Collision</H2>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in; font-style: normal; font-weight: medium">
+<FONT SIZE=2>
+<FONT FACE="Arial, sans-serif">Open your level builder
+back up and select your enemy. Use the Collision Poly Tool to define a custom
+collision polygon for the enemy ship.</FONT></FONT>
+<FONT FACE="Arial, sans-serif"><font size="2">I
+suggest that your first four points make a diamond shape around the
+ship <I>(as shown in Figure 5.2.2)</I>.&nbsp;</FONT></P>
+<BR>
+<IMG SRC="images/ShooterFigure5-2-2d.jpg" NAME="graphics6" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.2d</B></I></FONT>
+<p>
+<BR>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Once
+you have your diamond, outline, if you click around your ship, a new
+point will appear and be connected to the rest of the shape. <B>NOTE:
+</B><SPAN STYLE="font-weight: medium">You cannot create concave
+collision polygons, if you find that your point is not moving where
+you want it to go, chances are you are trying to make a concave
+shape. Once you have the collision polygon created <I>(as shown in
+Figure 5.2.3)</I>, it is time to set the enemy's collision
+properties. If you haven't already exited out of edit collision polygon mode, click the
+selection tool <I>(as shown in Figure 5.2.4)</I>:</SPAN></FONT></FONT></P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-2-3.jpg" NAME="graphics7" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.3</B></I></FONT></P>
+<BR>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-2-4.png" NAME="graphics8" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.4</B></I></FONT></P>
+<BR>
+
+<BR>
+
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>Now,
+with the enemy ship still selected, go into the edit tab and find the
+Collision rollout. </FONT></FONT>
+</P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>When
+you get into your rollout, <B>uncheck</B> Send and Receive Physics
+and <B>check</B> Send Collision, Receive Collision, and Callback <I>(as
+shown in Figure 5.2.5)</I></FONT></FONT></P>
+<BR>
+
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-2-5a.jpg" NAME="graphics9" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.5a</B></I></FONT></P>
+
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-2-5b.jpg" NAME="graphics10" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.5b</B></I></FONT></P>
+<BR>
+
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE=2>That
+should be enough to get your collision working in your game. Now
+would be a good time to save your progress, jump into your game, and
+blast some enemy ships <I>(as shown in Figure 5.2.6)</I>!</FONT></FONT></P>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"> 
+</P>
+	<P STYLE="margin-top: 0.08in"><IMG SRC="images/ShooterFigure5-2-6.png" NAME="graphics55" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><FONT SIZE=1><I><B>Figure
+	5.2.6</B></I></FONT></P>
+<BR CLEAR=LEFT><BR>
+<BR>
+
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><FONT SIZE=2><FONT FACE="Arial, sans-serif"><B>NOTE:
+</B><SPAN STYLE="font-weight: medium">If you created more than one
+enemy ship, they will all have to be modified in the same way to
+work. You can either modify each one individually, or delete all but
+your modified ship and COPY/PASTE more ships into the level.</SPAN></FONT></FONT></P>
+<div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</HTML><br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>

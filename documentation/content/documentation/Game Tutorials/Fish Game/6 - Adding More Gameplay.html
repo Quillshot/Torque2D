@@ -1,0 +1,687 @@
+<HTML>
+      <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 31;
+   parent.leftFrame.expandToItem('tree2', 'doc31');
+   var element = parent.leftFrame.document.getElementById('doc31');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+         <TITLE>Torque 2D - Fish Game Tutorial Part 6</TITLE>
+         <META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      </HEAD>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="AUTHOR" CONTENT="User">
+<META NAME="CREATED" CONTENT="20050225;10000000">
+<META NAME="CHANGEDBY" CONTENT="Matt">
+<META NAME="CHANGED" CONTENT="20060731;12152000">
+<STYLE> <!-- @page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.5in; margin-bottom: 0.5in }
+	P { margin-bottom: 0.08in; direction: ltr; color: #000000; text-align: left; widows: 2; orphans: 2 }
+	P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+	P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+	P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	A:link { color: #0000ff }
+	--></STYLE>
+      <BODY id = "BODYID" onLoad = "initComponent()"  lang="en-US" dir="ltr" text="#000000" link="#0000ff" style="width: 700px; padding: 10px;">
+<DIV TYPE="HEADER">
+   <P CLASS="western" ALIGN="center" STYLE="MARGIN-BOTTOM: 0.73in"><FONT FACE="Arial, sans-serif"><FONT SIZE="5" STYLE="FONT-SIZE: 16pt"><B>Torque 
+               2D - Fish Game Tutorial - Part 6</B></FONT></FONT></P>
+</DIV>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="4" STYLE="FONT-SIZE: 16pt"><B>6. 
+            Adding More Gameplay</B></FONT></FONT></P>
+<H3>
+   <BR>
+   6.1 Other fish
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Ok now that we have our basic game play 
+         implemented, we can add a few more aspects to it. Right now, the goal of the 
+         fish is to gather the food. So what we can do, is add in another fish that 
+         swims by at random locations, and picks up the food instead of our fish. This 
+         means we will create a new class for this new type of fish, though we don't 
+         have to worry about any input aspects. These new fish will simply swim from one 
+         side of the level to the other. Once off screen we can move them to a random Y 
+         location and then make them swim back. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our first step is to create the scripts 
+         that will control the movement of the fish. So browse to the <I>MyFishGame/gameScripts</I>
+         folder and create a new script file called &quot;fish.cs.&quot; Also remember that since 
+         we have added a new script file, we need to make sure it gets included when T2D
+         runs. Open up your <I>game.cs</I> script file so we can add a new <I>exec()</I> 
+         command. We need to add another exec statement to our <I>startGame()</I> function.
+         <component name="Scripting/Executing Scripts">[How to Exec Scripts]  Make your
+<I>startGame()</I>
+         function look like this. </FONT></FONT>
+</P>
+<BR>
+<BR>
+<pre class="code">
+function startGame(%level)
+{
+   exec("./player.cs");
+   exec("./fishfood.cs");
+   exec("./fish.cs");
+
+   Canvas.setContent(mainScreenGui);
+   Canvas.setCursor(DefaultCursor);
+   
+   new ActionMap(moveMap);   
+   moveMap.push();
+   
+   $enableDirectInput = true;
+   activateDirectInput();
+   enableJoystick();
+   
+   sceneWindow2D.loadLevel(%level);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now our new <I>fish.cs</I> script will 
+         be included when we run T2D. Open it up, and before we add our <I>onLevelLoaded()</I>
+         function for our new fish, lets add a couple of helper functions. This fish 
+         class will act a bit differently than our <I>FishPlayer</I> class. Since we 
+         aren't controlling it, we just want it to go from the left side to the right 
+         side. This can be handled in the <I>onWorldLimit </I>callback, just like our 
+         bubble. Instead of checking for a bottom world limit we'll be checking for left 
+         or right. We also want to add a bit more than just the fish moving back and 
+         forth trying to eat our food, so we will make it randomly reposition itself on 
+         the Y axis when it hits the world limit. When the fish goes to the left and off 
+         the screen, it hits the world limit, flips around, randomly repositions itself 
+         in the Y axis and comes back. On top of this, we can have it choose a random 
+         speed between its min and max, just like our bubble did. Now with all of these 
+         aspects combined, we should have a more fun game experience. First we will add 
+         some helper functions. </FONT></FONT>
+</P>
+<BR>
+<pre class="code">
+function Fish::getSpeed(%this)
+{
+   return getRandom(%this.minSpeed, %this.maxSpeed);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.2</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This function is fairly simple. When we 
+         call this <I>getSpeed()</I> function, it returns a random number between our 
+         min and max speeds. Now lets add our repositioning function.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function Fish::reposition(%this)
+{
+   %this.setPositionY(getRandom(-45, 30));
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This function is simple as well. We 
+         call <I>reposition()</I> and the function generates a random position between 
+         -45 and 30, and then places our fish there. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we can add our <I>onLevelLoaded</I> 
+         callback. With these helper functions, that will be a lot easier.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function Fish::onLevelLoaded(%this, %scenegraph)
+{
+   %this.setLinearVelocityX(%this.getSpeed());
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.4</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We default our fish to moving in 
+         the&nbsp;positive X direction (right), because the fish image is defaulted to 
+         facing right. When we switch back and forth, we will need to handle the 
+         flipping of the image in script. Now add our <I>onWorldLimit</I> function.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function Fish::onWorldLimit(%this, %mode, %limit)
+{
+   switch$(%limit)
+   {
+      case "left":
+         %this.setFlipX(false);
+         %this.setLinearVelocityX(%this.getSpeed());
+         %this.reposition();
+
+      case "right":
+         %this.setFlipX(true);
+         %this.setLinearVelocityX(-%this.getSpeed());
+         %this.reposition();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.5</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">In this function, we don't use an <I>if</I>
+         statement like in our bubble. Since we are checking for two directions it's 
+         much easier to use a <I>switch</I> statement. A switch statement allows you to 
+         handle multiple value comparisons to a variable, instead of using a lot of <I>else 
+            if</I> statements. As you can see, we look at our <I>%limit</I> variable 
+         (which should contain either &quot;left&quot;, &quot;right&quot;, &quot;top&quot;, or &quot;bottom) and depending 
+         on whether its <I>case</I> is &quot;left&quot; or &quot;right&quot; we handle it differently. Also 
+         notice that we use a &quot;switch$&quot; with the extra &quot;$&quot; for this statement. If we 
+         were doing a numerical comparison (for example if <I>%limit</I> held the value 
+         of 5) then we wouldn't need this extra &quot;$&quot;. We add it since we are doing a 
+         string comparison (just like &quot;$=&quot; is a string comparison as well).</FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">If we hit our left limit, we flip the 
+         image to face right, set its velocity to a positive speed, and then reposition 
+         it. If we hit our right limit, we flip the image back to its default facing of 
+         left, set it to a negative velocity in the X axis and reposition it. As you can 
+         see, the helper functions definitely simplify this.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our last step before testing is to add 
+         a collision case for our bubble. Since this is a different class, we want to 
+         add it to the comparison so the bubble can be respawned if it collides. Open up 
+         your <I>fishfood.cs</I> and find your <I>onCollision</I> function. Make it look 
+         like this.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function FishFood::onCollision(%srcObj, %dstObj, %srcRef, %dstRef, %time, %normal,
+     %contactCount, %contacts)
+{
+   if(%dstObj.class $= "PlayerFish" || %dstObj.class $= "Fish")
+   {
+      %srcObj.spawn();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.1.6</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Notice that all we added was '|| 
+         %dstObj.class $= &quot;Fish&quot;' to the <I>if</I> statement. If you aren't familiar 
+         with coding/scripting the &quot;||&quot; means <I>or</I>. So if our colliding object is 
+         either of the <I>PlayerFish</I> class <I>or</I> the <I>Fish</I> class, then we 
+         spawn the bubble again. Be sure to save your scripts, and now we can move on to 
+         the <I>Level Builder</I>.</FONT></FONT></P>
+<P><FONT face="Arial, sans-serif"><FONT size="2"> Time to go back to the Level 
+         Builder.&nbsp; Go to the <I>Animated Sprites</I> object library and 
+         click&nbsp;one of the fish animations&nbsp;(I would suggest choosing a 
+         different one than your player fish)&nbsp; <I>(as shown in Figure 6.1.1)</I>. 
+         Now, drag the fish animated sprite and drop it off to the 
+         right side of your level <I>(as shown in Figure 6.1.2)</I>. You may need to 
+         resize it to be more appropriate.&nbsp; Also be sure to set the new fish's 
+         layer to<STRONG> 16</STRONG> so it will also swim in between the rocks like the 
+         player fish.</FONT></FONT></P>
+<table>
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-1.jpg" NAME="graphics1" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.1.1</B></I></FONT></P>
+      </td>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG NAME="graphics3" ALIGN="left" BORDER="0" src="images/FishGameFigure6-1-3.jpg"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.1.2</B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that our new fish is in the level 
+      and sized properly, we can edit some of its properties. Click the <I>Edit</I> tab. 
+      Now click the <I>Scripting</I> label to expand the scripting options. In the <I>Class</I>
+      field type in &quot;Fish&quot; and press enter <I>(as shown in Figure 6.1.3)</I>. </FONT>
+</FONT>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-5.jpg" NAME="graphics5" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.1.3</B></I></FONT></P>
+<br>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that our class is set, we need to 
+         do a couple of more things. We need to set up the world limit for this fish so 
+         that they fit just outside of the level <I>(as shown in Figure 6.1.4)</I>. Make 
+         sure that the world limit gives the fish enough space to move completely off 
+         screen on the left and right side.&nbsp;
+         
+      </FONT></FONT>
+</P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal"><FONT SIZE="2"><font face="Arial, sans-serif">
+         We need to set the properties for the world limit. In the right panel expand 
+         the <I>World Limits</I> label and change the world <I>Limit Mode</I> from &quot;OFF&quot; 
+         to &quot;NULL&quot; mode. Also be sure to check the <I>Callback</I> check box to make 
+         sure we get that script callback</font> <I>(as shown in Figure 6.1.5)</I>. </FONT>
+</P>
+<br>
+<table>
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-7.jpg" NAME="graphics7" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.1.4</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-8.jpg" NAME="graphics8" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="2"><I><B><FONT SIZE="1">Figure 6.1.5</FONT></B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<BR>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now that the world limit is set up we 
+      need to set up the collision, since we want this fish to gather the food as 
+      well. So click on your <I>Collision</I> label to expand the options. Check <I>Receive 
+         Collision</I> and uncheck both <I>Send Physics</I> and <I>Receive Physics</I>, 
+      since we aren't using any physics response (and don't want any physics 
+      response). Change the <I>Detection Mode</I> from &quot;POLYGONAL&quot; to &quot;FULL&quot;. This 
+      will use the entire object to detect collision. Since this fish is a simple 
+      obstacle, we don't need to set up the precise collision polygon (feel free to 
+      go back later and set that up if you want to, though). That should be all the 
+      collision settings we need <I>(as shown in Figure 6.1.6)</I>. </FONT></FONT>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-9.jpg" NAME="graphics9" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.1.6</B></I></FONT></P>
+<br>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">Our final step is to add the <I>minSpeed</I>
+      and <I>maxSpeed</I> to the object's dynamic fields. We can do it the same way 
+      we did for the bubble. Expand the <I>Dynamic Fields</I> label and then add 
+      &quot;minSpeed&quot; at &quot;5&quot; and &quot;maxSpeed&quot; at &quot;30&quot; which should give us a good range <I>(as 
+         shown in Figure 6.1.7)</I>.&nbsp;
+     
+   </FONT></FONT>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-1-11.jpg" NAME="graphics10" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.1.7</B></I></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we can save our level and press the <I>
+            Play Level</I> button to test it! You should see your newly added fish swim 
+         back and forth, it also should gather up the food.&nbsp; If you are not getting 
+         the proper results be sure you have saved your script file changes to each 
+         file. </FONT></FONT>
+</P>
+<H3>
+   <BR>
+   <BR>
+   6.2 Add more fish
+</H3>
+<P>
+   <BR>
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Well, the one fish swimming around 
+         eating up your food adds a bit more of a game play element, but more fish would 
+         make it even more interesting. Fortunately this is very easy. Select your newly 
+         added fish, then go to the <I>Edit</I> menu in the top toolbar. Choose <I>Copy</I>
+         from the menu <I>(as shown in Figure 6.2.1)</I>. Now go back to the <I>Edit</I> 
+         menu and choose paste <I>(as shown in Figure 6.2.2)</I>. Now click and drag 
+         your selected fish, we now have two fish <I>(as shown in Figure 6.2.3)</I>! Go 
+         to your <I>Edit</I> tab, and at the top you should see an <EM>Animation </EM>option 
+         with a dropdown to the right of it. Click the dropdown and change the animation <I>
+            (as shown in Figure 6.2.4)</I>. You should see the fish change to a 
+         different animated sprite. Now we have two fish. Repeat this process two more 
+         times, and choose a different fish&nbsp;animation frame each time <I>(as shown in 
+            Figure 6.2.5)</I>.&nbsp; Keep in mind you may have to resize the object 
+         after you change the animation to fit appropriately for the new animation.</FONT></FONT>
+   <br>
+</P>
+<table>
+   <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-2-1.jpg" NAME="graphics12" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.2.1</B></I></FONT></P>
+      </td>
+      </tr>
+      <tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-2-2.jpg" NAME="graphics13" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.2.2</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-2-3.jpg" NAME="graphics14" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.2.3</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      
+      <td>
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-2-4.jpg" NAME="graphics15" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.2.4</B></I></FONT></P>
+      </td>
+      </tr><tr>
+      <td colspan="8">
+         <P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-2-5.jpg" NAME="graphics16" ALIGN="left" BORDER="0"><BR CLEAR="left">
+            <FONT SIZE="1"><I><B>Figure 6.2.5</B></I></FONT></P>
+      </td>
+   </tr>
+</table>
+<H3>
+   <BR>
+   6.3 Adding a motivation
+   <BR>
+</H3>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">With multiple fish swimming back and 
+         forth, fish that also have different images and are going at random speeds each 
+         pass, our game is starting to be interesting and fun. Now that we have a goal 
+         and some obstacles, we need to provide a motivation for reaching that goal. Why 
+         does it need to eat the food? Also why does it need to eat food before the 
+         enemies do? We will give the fish a life (total). Its life will slowly decrease 
+         and when it eats food it will increase its life a certain amount. That way, 
+         when the fish doesn't eat food quickly enough it will die. This means two 
+         things, we need to visually represent the fish's life somehow, and we need to 
+         give it a death event. One of the easiest visual ways to notify the player that 
+         the fish is dying is it's size. We can have it resize itself in relation to its 
+         life. That way if you don't get food you shrink and die, and if you get food 
+         you grow larger. We can make its starting size at about 80% of its life. That 
+         way another 20% and it will be fully grown; but if it gets to less than 30% of 
+         its size then it will die. </FONT></FONT>
+</P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We will need to add an update function 
+         to our <I>FishPlayer</I> class that will gauge its life and size the fish 
+         accordingly. First, we must determine what its full size will be. My fish 
+         currently is about&nbsp;15 width and&nbsp;15 height. So if we size it up about 
+         20% more it will be about&nbsp;18 and&nbsp;18. We also need to store the fish's 
+         life. We will store it as a percent, so it will be a value between 0 and 100. 
+         The easiest way to store this is in the <I>Level Builder</I> , by selecting our 
+         player fish and adding two dynamic fields. Add &quot;maxWidth&quot; at &quot;18&quot; and 
+         &quot;maxHeight&quot; at &quot;18&quot;. Also add another field called &quot;life&quot; and set it to &quot;100&quot; <I>(as 
+            shown in Figure 6.3.1)</I>. Now that we have these values attached to our 
+         fish player, we can reference them in script. Doing things this way allows us 
+         to easily test different values by simply changing fields in the <I>Level Builder</I>
+         and then playing the level to see the results. </FONT></FONT>
+</P>
+<BR>
+<P STYLE="MARGIN-TOP: 0.08in"><img src="images/FishGameFigure6-3-1.jpg" width="273" height="239"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.3.1</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Be sure to save the level, and now we 
+         are finished with the Level Builder and can dig into the <I>player.cs</I> script 
+         file(under your <I>MyFishGame/gameScripts</I> folder). We are going to need to 
+         add a couple more functions to our <I>PlayerFish </I>class. First we will add a <I>
+            modifyLife()</I> function that we can pass a positive or negative number 
+         which will adjust our total <I>life</I> value. Inside this function we will 
+         also need to make sure our life stays above 0 and below 100. Add this function 
+         after your <I>PlayerFish::updateMovement(%this)</I> function (after its ending 
+         curly brace <I>}</I>). </FONT></FONT>
+</P>
+<BR>
+<BR>
+<pre class="code">
+function PlayerFish::modifyLife(%this, %dmg)
+{
+   %this.life += %dmg;
+
+
+   if(%this.life &gt; 100)
+   {
+      %this.life = 100;
+   } else if (%this.life &lt; 0)
+   {
+      %this.life = 0;
+   }
+
+
+   if(%this.life &lt;= 30)
+   {
+      %this.dead();
+   } else
+   {
+      %this.updateLifeSize();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.1</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Here we added a new function to the <I>PlayerFish</I>
+         class called &quot;modifyLife().&quot; We pass this function only one value (the <I>%this</I>
+         value is automatically inserted). The <I>%dmg</I> value will represent either 
+         damage or life gained. If we want to add life we pass a positive value, and if 
+         we want to subtract life we pass a negative value. First we check to see if 
+         this new life value is greater than 100, if so, we set it to 100 since our fish 
+         can't have more than 100% life. We then check if the fish's life is less than 
+         0, if so we set it to 0 since we don't want to have negative life. We then do 
+         one final check after comparing the life to zero. If our fish has 30% life or less, 
+         then it is dead and we call the <I>dead()</I> function (this is a function we 
+         need to add). If the fish's life isn't zero, then it is still alive and we need 
+         to update it's size, so we call <I>updateLifeSize()</I> (this is also a 
+         function we need to create). Now, lets create our <I>updateLifeSize()</I> function. 
+         So add this after our <I>modifyLife()</I> function.</FONT></FONT></P>
+<BR>
+<BR>
+<pre class="code">
+function PlayerFish::updateLifeSize(%this)
+{
+   %lifeMultiplier = %this.life / 100;
+
+
+   %newWidth = %this.maxWidth * %lifeMultiplier;
+   %newHeight = %this.maxHeight * %lifeMultiplier;
+
+   %this.setSize(%newWidth, %newHeight);
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.2</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">First we create a local variable called <I>
+            %lifeMultiplier</I>. Since our life is a percentage we will want to multiply 
+         it against our <I>maxWidth</I> and <I>maxHeight,</I> so we can get the width 
+         and height in relation to what our percent life is. To do this we need to 
+         divide our current life by 100, to get a number between 0.00 and 1.00. This 
+         will allow us to directly multiply our multiplier against our max values, 
+         (which is what we do in the next two lines), and store those values in <I>%newWidth</I>
+         and <I>%newHeight</I>. Our last line of this function we set the new size, 
+         which should be linked to how much life we have. Add this next function after 
+         our previous function.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::dead(%this)
+{
+   %this.setFlipY(true);
+   %this.setLinearVelocityY(-10);
+   %this.dead = true;
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.3</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">When we call this function and we want 
+         our fish to die, we will flip its Y direction so it is upside-down. We then set 
+         it to a negative velocity in the Y direction, so it will float up. Our final 
+         line sets the <I>dead</I> value on the fish object to true. We can use this 
+         value to stop key movement when we're dead. Our final function will be one that 
+         we can call to constantly lower our fish player's life. You can add this 
+         function after our previous function.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::lowerLife(%this)
+{
+   %this.modifyLife(%this.lifeDrain);
+
+   if(!%this.dead)
+   {
+      %this.schedule(500, "lowerLife");
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.4</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This function first calls our <I>modifyLlife()</I>
+         function, passing it
+         <SPAN LANG="en-US">the
+&quot;lifeDrain&quot; field on our fish object</SPAN>. This will effectively decrease our fish's 
+         life by however much we want to specify in the <I>Level Builder</I>. We then 
+         check to make sure that our fish isn't dead. If it is still alive, we call a 
+         function called &quot;schedule&quot; on our fish. This function is very useful, this will 
+         tell T2D to call whichever method of the object we're on, in a specified 
+         time. So we set 500 as the time (500 milliseconds, which is about half a 
+         second) and we pass &quot;lowerLife&quot; as the function name. This means that every 
+         half second it will call itself, which will lower our fish's life, and then 
+         schedule itself to be called again, effectively creating a &quot;loop&quot; functionality 
+         of sorts. One of our last changes to our <I>player.cs</I> is to simply call 
+         this <I>lowerLife</I> funciton when our fish is loaded. So make your <I>onLevelLoaded</I>
+         function look like this.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::onLevelLoaded(%this, %scenegraph)
+{
+   $FishPlayer = %this;
+
+
+   moveMap.bindCmd(keyboard, "w", "fishPlayerUp();", "fishPlayerUpStop();");
+   moveMap.bindCmd(keyboard, "s", "fishPlayerDown();", "fishPlayerDownStop();");
+   moveMap.bindCmd(keyboard, "a", "fishPlayerLeft();", "fishPlayerLeftStop();");
+   moveMap.bindCmd(keyboard, "d", "fishPlayerRight();", "fishPlayerRightStop();");
+   moveMap.bindCmd(keyboard, "space", "fishPlayerBoost();", "fishPlayerBoostStop();");
+
+
+   %this.lowerLife();
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.5</B></I></FONT></FONT></P>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We also need to prevent the user from 
+         moving the fish if it's already dead. To do this, go to your <I>updateMovement</I>
+         function. We are going to add two lines to the beginning of this function, so 
+         make the beginning of your <I>updateMovement</I> function look like this.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function PlayerFish::updateMovement(%this)
+{
+   if(%this.dead)
+      return;
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.6</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">This checks if our fish is dead. If it 
+         is dead, then it returns (which means it will exit out of the function), since 
+         we don't want our dead fish moving. This will now prevent our user from moving 
+         using the <I>a</I>, <I>s</I>, <I>w</I>, and <I>d</I> keys, though our <I>boost</I>
+         function uses a different method. Add the same two lines to the beginning of 
+         your <I>fishPlayerBoost()</I> function to make the beginning look like this.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function fishPlayerBoost()
+{
+   if($FishPlayer.dead)
+      return;
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.7</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Now we are done with our <I>PlayerFish</I>
+         class and our <I>player.cs</I> file. The last modification needs to be made to 
+         our <I>fishfood.cs,</I> to allow it to give our fish life when gathered. So 
+         open up your <I>fishfood.cs</I> in the same folder. Find your <I>onCollision</I>
+         function, it should look like this.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function FishFood::onCollision(%srcObj, %dstObj, %srcRef, %dstRef, %time, %normal,
+     %contactCount, %contacts)
+{
+   if(%dstObj.class $= "PlayerFish" || %dstObj.class $= "Fish")
+   {
+      %srcObj.spawn();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.8</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As you can see, right now we do the 
+         same response for both <I>PlayerFish</I> and <I>Fish</I> classes. We need to 
+         change this so we can add life to our <I>PlayerFish</I> and not do so for other <I>
+            Fish</I>. Switch that <I>onCollision()</I> function out with this one.</FONT></FONT></P>
+<BR>
+<pre class="code">
+function FishFood::onCollision(%srcObj, %dstObj, %srcRef, %dstRef, %time, %normal,
+     %contactCount, %contacts)
+{
+   if(%dstObj.class $= "PlayerFish")
+   {
+      %srcObj.spawn();
+      %dstObj.modifyLife(%srcObj.lifeValue);
+   } else if (%dstObj.class $= "Fish")
+   {
+      %srcObj.spawn();
+   }
+}
+</pre>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in"><FONT FACE="Arial, sans-serif"><FONT SIZE="1"><I><B>Code 
+               Sample 6.3.9</B></I></FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">Instead of checking if it's either <I>PlayerFish</I>
+         or <I>Fish,</I> we first check if it's of the <I>PlayerFish</I> class. We then 
+         do an <I>else if</I> check if its of the <I>Fish</I> class. This way we can do 
+         different responses. As you can see both responses still call <I>spawn()</I> but 
+         the <I>PlayerFish</I> response also calls <I>modifyLife</I> passing it a value 
+         stored in the field &quot;lifeValue&quot; on our bubble. We will need to add that dynamic 
+         field. This way we can make our bubbles different values for giving life.</FONT></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">We are now done with the scripts. Be 
+         sure to save them. The first thing we need to do before we play our level, is 
+         to select our bubble object, click the <I>Edit</I> tab, and expand the <I>Dynamic 
+            Fields</I> label. Then add the field of &quot;lifeValue&quot; and set it to &quot;5&quot;, so 
+         our fish player will gain life when it gathers the bubbles <I>(as shown in Figure 
+            6.3.2)</I>. </FONT></FONT>
+</P>
+<br>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-3-2.jpg" NAME="graphics18" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.3.2</B></I></FONT></P>
+<BR>
+<FONT FACE="Arial, sans-serif"><FONT SIZE="2">We need to do one more thing before we 
+      can test our level, though. We need to add the <I>lifeDrain</I> dynamic field 
+      and value to our fish object. So select your fish player object, and add the 
+      field &quot;lifeDrain&quot; at the value of &quot;-2&quot; to your <I>Dynamic Fields</I> <I>(as shown 
+         in Figure 6.3.3)</I>. Be sure to save the level and then lets play it! </FONT>
+</FONT>
+<br>
+<P STYLE="MARGIN-TOP: 0.08in"><IMG SRC="images/FishGameFigure6-3-3.jpg" NAME="graphics19" ALIGN="left" BORDER="0"><BR CLEAR="left">
+   <FONT SIZE="1"><I><B>Figure 6.3.3</B></I></FONT></P>
+<BR>
+<P CLASS="western" ALIGN="justify" STYLE="MARGIN-BOTTOM: 0in; FONT-STYLE: normal">
+   <FONT FACE="Arial, sans-serif"><FONT SIZE="2">As time goes on you'll notice your fish 
+         shrinking, but if you get a food bubble it will then grow a bit. If you don't 
+         get food for a certain amount of time you die. If you find that this is too 
+         easy, you can go back and change the <I>lifeDrain</I> value to -3 or -4 to 
+         increase the difficulty. You can also increase or decrease the value of the 
+         gain from the bubble.</FONT></FONT></P>
+<BR>
+<BR> <div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body></HTML>
+<br><font size = '2'><i>Document intended for Torque Game Builder version(s) 1.1 - 1.1.4.</i></font>
